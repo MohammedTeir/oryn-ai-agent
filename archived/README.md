@@ -56,3 +56,9 @@ The approved PNGs are retained as separate exported design assets and **have not
 - `oryn-app-icon-v1.1-approved.png`: text-free blue/cyan orbital ring and sparkle on navy rounded-square background.
 - Included in ORYN Approved Designs v1.6 organized ZIP under `Approved_Logos/`; PNG binary is not yet committed to GitHub.
 - Visual approval only. Android adaptive foreground/background layers and themed monochrome asset still require production preparation and testing.
+
+## Icon Only — supplied transparent asset v1.4
+
+- `oryn-icon-only-v1.4-transparent.png`: user-supplied icon-only ring and sparkle, RGBA with genuine alpha channel, 1276×1276.
+- Included under `Approved_Logos/` in downloadable ORYN Approved Designs v1.7 organized archive; PNG binary has not been committed to GitHub.
+- Technical transparency verified; further vector/master consistency and Android export validation remain separate production tasks.
