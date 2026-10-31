@@ -1,6 +1,6 @@
 # ORYN — Production-Grade Master Project Specification
 
-**Version:** 1.6  
+**Version:** 1.7  
 **Product name:** ORYN  
 **Product descriptor:** Autonomous AI Agent for Android  
 **Tagline (provisional):** Intelligence in Action.  
@@ -117,6 +117,20 @@ Selecting any command or shortcut must **open Command Review**, not immediately 
 **Live-data rule:** Termux connection/readiness, terminal output (stdout/stderr/exit code), running/cancelled/completed status, and elapsed time must come from real backend state and events. Mockup screenshots and fixture values are not runtime evidence. When disconnected or uncertain, display the truthful state rather than stale success.
 
 **Acceptance tests:** (1) manual input, Quick Commands, Saved Commands, history rerun, and AI proposals all open the same review gate; (2) rejecting any entry point executes nothing; (3) a previously approved saved command requires a new approval on every run; (4) edited commands invalidate prior approval; (5) direct native dispatch without a valid per-action approval is rejected; (6) Termux connection and command output are never simulated as real results.
+
+### Tools Tab — Verified Inventory & Runtime Compatibility (mandatory)
+
+The approved Tools-tab screenshot is a **visual mockup only**. Every operational field MUST be derived from current, verified runtime/backend observations, never from screenshot fixtures, hardcoded examples, or assumed package availability.
+
+- **Connection:** Show `Termux Connected` only after a successful backend handshake and an actual supported execution/capability check. Otherwise expose accurate states such as Checking, Disconnected, Permission Required, Unavailable, or Unknown.
+- **Installed / Not Installed / Checked:** Derive these statuses from real inventory and verification results for the selected backend. Distinguish `Detected` from `Verified Working`; do not equate a package-manager record or executable path with successful execution. Show `Not Checked`, `Checking`, `Failed`, or `Unknown` where applicable, and timestamp/cache-age indicators when displaying prior observations.
+- **Versions and paths:** Resolve executable paths and versions from backend observations, associate them with the correct backend/device, and represent unavailable or unverified fields explicitly. Never hardcode sample versions, paths, or counts shown in approved designs.
+- **Available tools and installation:** Derive installability from the current backend, repository/package metadata, architecture, Android constraints, permissions, root availability, dependencies, and any required setup. `Available` must not imply universally installable. Installation, upgrade, repair, verification commands, and retries MUST go through the per-action Command Review and native approval gate before execution.
+- **Docker compatibility:** Do **not** hardcode Docker as `Unsupported` or `Supported`. Evaluate the actual runtime and device capabilities (including daemon requirements, kernel features, privileges, architecture, and supported integration strategy). Display `Supported`, `Requires Setup`, `Unsupported`, or `Unknown / Not Checked` with a reason and available next steps. Do not claim native Docker Engine support on ordinary unprivileged Termux without verification.
+- **Diagnostics:** Display `Healthy` / `Checked` only after a completed real diagnostic with supporting results. Report failures and stale/partial checks truthfully. Diagnostics that dispatch shell commands require explicit approval; purely local UI inspection may be non-executable.
+- **Refresh and backend changes:** Invalidate or clearly mark stale tool status when changing backends, losing connectivity, changing permissions, or refreshing inventory. Never carry a verified status from one backend into another.
+
+**Acceptance tests:** (1) no operational status, count, version, or path comes from mockup constants; (2) disconnected/permission-denied backends cannot show Connected or fresh Verified Working; (3) failed checks cannot show Checked/Healthy; (4) Docker classification changes appropriately across supported, unsupported, unknown, and requires-setup test environments; (5) switching backend invalidates prior inventory; (6) all shell-backed Check, Install, Fix, and retry actions require a fresh approval.
 
 ### Screen B — Terminal & Tools
 - Streaming terminal output and separate stdout/stderr filters.
