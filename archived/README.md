@@ -20,3 +20,9 @@ The approved PNGs are retained as separate exported design assets and **have not
 - Include the design status and important behavior in this index.
 - Mockup text and runtime values are illustrative only. Production UI must bind connection status, approvals, timing, outputs and results to real backend state as required by `docs/ORYN_Master_Project_Specification.md`.
 - Do not add Settings screenshots until explicitly approved.
+
+## Tools tab — approved v1.0
+
+- **Approved visual asset:** `oryn-tools-tab-v1.0-approved.png` (exported in ORYN Approved Screens v1.1 ZIP; binary not yet committed to GitHub).
+- Light-mode Tools tab with inventory, search/filter, installation review, command-check review, dynamic compatibility status, and diagnostics.
+- All displayed tool statuses and Termux connection details are illustrative; implementation must use live backend state and per-action approval per the master specification v1.6.
