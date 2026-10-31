@@ -32,3 +32,9 @@ The approved PNGs are retained as separate exported design assets and **have not
 - **Approved visual asset:** `oryn-settings-v1.0-approved.png` (included in ORYN Approved Screens v1.2 ZIP; PNG binary not yet committed to GitHub).
 - Light-mode Settings page: AI Configuration, Terminal & Runtime, Root & Permissions, Security & Approvals, Data & Storage, and About ORYN.
 - Mandatory behavior: root shell checks use Review Check; all shell actions require independent approval; Gemini key is excluded from logs and exports; runtime status must be verified; destructive actions and imports require confirmation. See master specification v1.8.
+
+## UI States & Execution Flow — approved v1.3
+
+- **Approved image:** `oryn-ui-states-execution-flow-v1.3-approved.png` (available in the downloadable ORYN Approved Designs v1.3 ZIP; PNG binary has not been committed to this GitHub repository).
+- Covers Termux connection states, root verification, per-command review and approval, execution lifecycle, confirmation dialogs, import preview, and fresh approval on retry.
+- Visual examples only; real runtime status and permission diagnostics must come from the device. Refer to `docs/ORYN_Master_Project_Specification.md` v1.8 for mandatory enforcement.
