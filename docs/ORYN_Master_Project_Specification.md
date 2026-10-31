@@ -1,6 +1,6 @@
 # ORYN — Production-Grade Master Project Specification
 
-**Version:** 1.3  
+**Version:** 1.4  
 **Product name:** ORYN  
 **Product descriptor:** Autonomous AI Agent for Android  
 **Tagline (provisional):** Intelligence in Action.  
@@ -17,7 +17,8 @@
 - **Descriptor:** Autonomous AI Agent for Android.
 - **Provisional tagline:** Intelligence in Action.
 - **Brand personality:** Intelligent, calm, capable, reliable, minimal, modern.
-- **Provisional visual direction:** Dark-first, midnight navy `#151B29`, soft indigo accent `#8EA7FF`, restrained typography and accessible contrast. These are creative starting points, not approved final brand assets.
+- **Approved visual direction:** Light Mode only. Calm, minimalist, spacious, and readable, with white/off-white surfaces, restrained pale-blue accents, subtle gray borders, and dark navy text. Do not implement Dark Mode, dark-first layouts, or the superseded midnight-navy palette.
+- **Approved brand mark:** ORYN logo concept **#2** from the 12-option exploration: a blue-gradient circular open ring with a small four-point sparkle at its upper-right. Use the same symbol consistently in the app header, assistant avatar, and selected AI Agent tab; retain the ORYN wordmark and `AI AGENT FOR ANDROID` descriptor in the header. The logo artwork must be finalized as reusable, scalable assets; do not replace it with unrelated leaf/ribbon marks or generate a different logo.
 - **Working repository slug:** `oryn-ai-agent` (subject to availability).
 - **Application ID:** To be selected after ownership and namespace checks; do not assume a package identifier is available.
 - **Naming clearance:** ORYN has not been verified for trademark, app-store listing, repository, or domain availability. Complete clearance before public release.
@@ -60,6 +61,21 @@ A technical user wants to ask the agent to prepare development tools, inspect a 
 Example request: “Check whether Python, Git, and FFmpeg are available; install any missing tools; verify each installation; and report the results.”
 
 Expected behavior: inspect approved environment scope → inventory commands → propose installation actions → request approval → execute → collect exit codes and logs → verify installed versions → summarize results. If installation fails, generate a new proposed remediation action and request fresh approval.
+
+### Approved UI direction (design decision, 2026-10-31)
+
+- **Theme:** Light Mode only. White and off-white background, very light cool-gray cards, pale blue highlights, dark navy text, subtle outlines, restrained shadows, and accessible contrast. No dark theme or theme toggle unless separately approved.
+- **Brand identity:** Use approved logo concept #2 (blue gradient open circular ring + small upper-right sparkle). The symbol must remain legible at Android launcher-icon and small-avatar sizes. Produce consistent app icon, adaptive icon foreground, header lockup, assistant avatar, and tab-icon variants from one canonical master asset. Preserve the approved silhouette; do not invent extra symbols.
+- **Design reference:** The user-approved refined AI Agent mockup is a visual reference, not a literal screenshot to embed or an assertion of actual terminal results. Recreate its components natively in React Native, with responsive layout, dynamic text, accessibility labels, and real state bindings.
+- **Navigation:** Exactly two primary bottom tabs, `AI Agent` and `Terminal & Tools`. Settings is opened from the header as a secondary page/sheet, never a third tab.
+- **Screen-by-screen workflow:** Design, review, and implement **AI Agent** first. Do not start redesigning Terminal & Tools or Settings before separate review/approval. Keep components reusable without prematurely adding UI.
+- **AI Agent header:** Approved logo and ORYN wordmark, search/history access where implemented, Settings icon, and a compact connection/runtime indicator showing real Termux availability. Never show `Ready` or `Connected` unless verified.
+- **Chat flow:** User message, assistant response, structured action proposal, per-action approval, execution status, and verified result. Display only states relevant to the current task; the reference image showing approval, running, and success simultaneously is a component showcase, **not** the runtime state machine.
+- **Approval card:** Show the exact proposed command(s), target backend, and a `View Details` expansion containing executable/arguments, working directory, privilege, expected filesystem/network effects, timeout, and risk explanation. Provide Approve, Reject/Cancel, and Edit Request affordances. A multi-command plan preview is **not** blanket authorization: each executable action still requires its own explicit native-validated approval.
+- **Running state:** Show live progress, command-specific status, expandable output, and an obvious `Stop` control. On cancellation, represent actual backend termination or uncertainty honestly.
+- **Result state:** Summarize verified outcomes, errors, and next steps. Never show fabricated version numbers, tool inventory, successful completion, or root/permission state in production UI.
+- **Visual discipline:** Prefer generous spacing, clean typography, consistent icon stroke/size, and progressive disclosure. Avoid decorative clutter, celebratory emoji as primary UI, oversized gradients, and extra navigation destinations.
+- **Accessibility:** Support screen readers, adequate touch targets, scalable fonts, status announcements, and sufficient contrast on pale surfaces.
 
 ## 4. UX and Screens
 
