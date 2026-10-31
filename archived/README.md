@@ -43,3 +43,10 @@ The approved PNGs are retained as separate exported design assets and **have not
 - **Approved visual asset:** `oryn-design-system-components-v1.2-approved.png` (included in downloadable ORYN Approved Designs v1.4 ZIP; binary not yet committed to GitHub).
 - Light-mode design tokens (Android dp/sp), typography, colors, icons, reusable buttons and inputs, runtime status indicators, approval review variants with and without root, execution states, two-tab navigation, reset confirmation, and import preview.
 - Runtime data must be live and verified; all shell executions, including retries and root checks, require fresh explicit approval. Mockup values and command examples are not executable defaults.
+
+## Brand logos — approved visual concepts v1.1
+
+- `oryn-primary-logo-v1.1-approved.png`: horizontal, white background, approved.
+- `oryn-secondary-logo-v1.1-approved.png`: vertical, white background, approved.
+- Both are included in the downloadable ORYN Approved Designs v1.5 organized archive under `Approved_Logos/`; PNG binaries have not been committed to this GitHub repository.
+- Visual approval only; a consistent production vector master should be constructed before using the logos as canonical app assets.
