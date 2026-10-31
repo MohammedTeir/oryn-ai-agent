@@ -19,7 +19,6 @@ The approved PNGs are retained as separate exported design assets and **have not
 - Never overwrite a previous approved revision; add a new version.
 - Include the design status and important behavior in this index.
 - Mockup text and runtime values are illustrative only. Production UI must bind connection status, approvals, timing, outputs and results to real backend state as required by `docs/ORYN_Master_Project_Specification.md`.
-- Do not add Settings screenshots until explicitly approved.
 
 ## Tools tab — approved v1.0
 
@@ -38,3 +37,9 @@ The approved PNGs are retained as separate exported design assets and **have not
 - **Approved image:** `oryn-ui-states-execution-flow-v1.3-approved.png` (available in the downloadable ORYN Approved Designs v1.3 ZIP; PNG binary has not been committed to this GitHub repository).
 - Covers Termux connection states, root verification, per-command review and approval, execution lifecycle, confirmation dialogs, import preview, and fresh approval on retry.
 - Visual examples only; real runtime status and permission diagnostics must come from the device. Refer to `docs/ORYN_Master_Project_Specification.md` v1.8 for mandatory enforcement.
+
+## Design System & Components — approved v1.2
+
+- **Approved visual asset:** `oryn-design-system-components-v1.2-approved.png` (included in downloadable ORYN Approved Designs v1.4 ZIP; binary not yet committed to GitHub).
+- Light-mode design tokens (Android dp/sp), typography, colors, icons, reusable buttons and inputs, runtime status indicators, approval review variants with and without root, execution states, two-tab navigation, reset confirmation, and import preview.
+- Runtime data must be live and verified; all shell executions, including retries and root checks, require fresh explicit approval. Mockup values and command examples are not executable defaults.
