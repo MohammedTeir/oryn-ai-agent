@@ -1,6 +1,6 @@
 # ORYN — Production-Grade Master Project Specification
 
-**Version:** 1.4  
+**Version:** 1.5  
 **Product name:** ORYN  
 **Product descriptor:** Autonomous AI Agent for Android  
 **Tagline (provisional):** Intelligence in Action.  
@@ -76,6 +76,20 @@ Expected behavior: inspect approved environment scope → inventory commands →
 - **Result state:** Summarize verified outcomes, errors, and next steps. Never show fabricated version numbers, tool inventory, successful completion, or root/permission state in production UI.
 - **Visual discipline:** Prefer generous spacing, clean typography, consistent icon stroke/size, and progressive disclosure. Avoid decorative clutter, celebratory emoji as primary UI, oversized gradients, and extra navigation destinations.
 - **Accessibility:** Support screen readers, adequate touch targets, scalable fonts, status announcements, and sufficient contrast on pale surfaces.
+
+### Real-Time UI State & Data Binding (mandatory)
+
+The approved AI Agent mockup is a **visual reference only**, not a source of runtime truth. All operational labels, progress, durations, command output, and result cards MUST be driven by validated application/native-backend state. Do not hardcode sample values from screenshots in production components.
+
+- **Connection/readiness:** Display `Ready` / `Connected to Termux` only after a real backend capability/connection check. Represent `Checking`, `Disconnected`, `Permission Required`, `Unavailable`, and `Unknown` accurately when applicable; a detected app installation alone is not proof that command execution works.
+- **Execution lifecycle:** Bind `Queued`, `Awaiting Approval`, `Running`, `Paused`, `Completed`, `Failed`, and `Cancelled` to persisted task/action state transitions. Never display approval controls for an already-executed action or a final success card while required commands are still running.
+- **Timing and progress:** Derive elapsed time from real process timestamps and completion from real execution events. Estimates must be clearly marked as estimates. Do not fabricate percentages or completion counts when the backend cannot report them.
+- **Command results:** Bind stdout, stderr, exit code, errors, and installed-tool versions to actual backend responses and independent verification when appropriate. Sample values such as `Python 3.11.6`, `Git 2.42.0`, and `0.4s` are mockup examples only.
+- **Approval and safety:** Derive each action's approval status from the native approval ledger. A queued command must never auto-execute merely because a preceding command completed; it requires its own explicit approval. Reflect cancellation requests and confirmed termination distinctly.
+- **Loss of certainty:** On app restart, backend disconnection, undelivered result, timeout, or stale status, show `Unknown`, `Reconnecting`, or another truthful state until reconciled; never infer success from missing telemetry.
+- **Mock/demo separation:** Mock data is permitted only in explicitly labeled previews, Storybook-style fixtures, and tests. Production builds must not silently fall back to simulated success.
+
+**Acceptance tests:** (1) Termux unavailable never shows `Connected`; (2) permission denied shows an actionable permission state; (3) elapsed time and output change only from actual events; (4) queued commands do not run without new approval; (5) a failed or interrupted process cannot produce a success summary; (6) after restart/disconnect, uncertain status is visibly reconciled rather than assumed successful.
 
 ## 4. UX and Screens
 
