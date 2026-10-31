@@ -26,3 +26,9 @@ The approved PNGs are retained as separate exported design assets and **have not
 - **Approved visual asset:** `oryn-tools-tab-v1.0-approved.png` (exported in ORYN Approved Screens v1.1 ZIP; binary not yet committed to GitHub).
 - Light-mode Tools tab with inventory, search/filter, installation review, command-check review, dynamic compatibility status, and diagnostics.
 - All displayed tool statuses and Termux connection details are illustrative; implementation must use live backend state and per-action approval per the master specification v1.6.
+
+## Settings — approved v1.0
+
+- **Approved visual asset:** `oryn-settings-v1.0-approved.png` (included in ORYN Approved Screens v1.2 ZIP; PNG binary not yet committed to GitHub).
+- Light-mode Settings page: AI Configuration, Terminal & Runtime, Root & Permissions, Security & Approvals, Data & Storage, and About ORYN.
+- Mandatory behavior: root shell checks use Review Check; all shell actions require independent approval; Gemini key is excluded from logs and exports; runtime status must be verified; destructive actions and imports require confirmation. See master specification v1.8.
