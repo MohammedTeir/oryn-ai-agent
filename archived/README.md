@@ -50,3 +50,9 @@ The approved PNGs are retained as separate exported design assets and **have not
 - `oryn-secondary-logo-v1.1-approved.png`: vertical, white background, approved.
 - Both are included in the downloadable ORYN Approved Designs v1.5 organized archive under `Approved_Logos/`; PNG binaries have not been committed to this GitHub repository.
 - Visual approval only; a consistent production vector master should be constructed before using the logos as canonical app assets.
+
+## App Icon — approved visual concept v1.1
+
+- `oryn-app-icon-v1.1-approved.png`: text-free blue/cyan orbital ring and sparkle on navy rounded-square background.
+- Included in ORYN Approved Designs v1.6 organized ZIP under `Approved_Logos/`; PNG binary is not yet committed to GitHub.
+- Visual approval only. Android adaptive foreground/background layers and themed monochrome asset still require production preparation and testing.
