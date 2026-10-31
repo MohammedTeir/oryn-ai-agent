@@ -1,6 +1,6 @@
 # ORYN — Production-Grade Master Project Specification
 
-**Version:** 1.5  
+**Version:** 1.6  
 **Product name:** ORYN  
 **Product descriptor:** Autonomous AI Agent for Android  
 **Tagline (provisional):** Intelligence in Action.  
@@ -102,6 +102,21 @@ The approved AI Agent mockup is a **visual reference only**, not a source of run
 - Approval cards showing exact executable, arguments, working directory, environment-variable names (never secret values), filesystem effects, network effects, required privilege, timeout, and risk explanation.
 - Approve / Reject / Edit Request / Stop controls.
 - Live concise progress, error explanations, and final verification report.
+
+### Terminal & Tools — Unified Command Review Gate
+
+**Mandatory implementation rule:** Every command entry point in the Terminal & Tools screen MUST use the same **Review → Explicit Approval → Native Validation → Execute** workflow. This includes:
+
+- Commands typed manually into the terminal command input.
+- **Quick Commands** presets, including any shortcuts, tool checks, or suggested commands.
+- **Saved Commands**, command history, favorites, and rerun/retry actions.
+- Commands initiated by the AI Agent or proposed as follow-up remediation steps.
+
+Selecting any command or shortcut must **open Command Review**, not immediately dispatch execution. A saved or previously approved command is **not pre-authorized** for another execution. In the review, show the exact executable and arguments, backend, working directory, privilege, relevant filesystem/network effects, timeout, and risk information. Allow Edit Request, Reject/Cancel, and Approve & Run. Any edit or change in execution context requires a fresh approval bound to the new immutable action descriptor. The Kotlin/native approval gateway must enforce this rule regardless of UI entry point; hiding or disabling a button alone is not a security boundary.
+
+**Live-data rule:** Termux connection/readiness, terminal output (stdout/stderr/exit code), running/cancelled/completed status, and elapsed time must come from real backend state and events. Mockup screenshots and fixture values are not runtime evidence. When disconnected or uncertain, display the truthful state rather than stale success.
+
+**Acceptance tests:** (1) manual input, Quick Commands, Saved Commands, history rerun, and AI proposals all open the same review gate; (2) rejecting any entry point executes nothing; (3) a previously approved saved command requires a new approval on every run; (4) edited commands invalidate prior approval; (5) direct native dispatch without a valid per-action approval is rejected; (6) Termux connection and command output are never simulated as real results.
 
 ### Screen B — Terminal & Tools
 - Streaming terminal output and separate stdout/stderr filters.
