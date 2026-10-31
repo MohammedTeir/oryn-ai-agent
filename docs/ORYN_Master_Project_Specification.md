@@ -1,6 +1,6 @@
 # ORYN — Production-Grade Master Project Specification
 
-**Version:** 1.7  
+**Version:** 1.8  
 **Product name:** ORYN  
 **Product descriptor:** Autonomous AI Agent for Android  
 **Tagline (provisional):** Intelligence in Action.  
@@ -131,6 +131,18 @@ The approved Tools-tab screenshot is a **visual mockup only**. Every operational
 - **Refresh and backend changes:** Invalidate or clearly mark stale tool status when changing backends, losing connectivity, changing permissions, or refreshing inventory. Never carry a verified status from one backend into another.
 
 **Acceptance tests:** (1) no operational status, count, version, or path comes from mockup constants; (2) disconnected/permission-denied backends cannot show Connected or fresh Verified Working; (3) failed checks cannot show Checked/Healthy; (4) Docker classification changes appropriately across supported, unsupported, unknown, and requires-setup test environments; (5) switching backend invalidates prior inventory; (6) all shell-backed Check, Install, Fix, and retry actions require a fresh approval.
+
+### Settings — Security & Runtime Requirements (mandatory)
+
+The approved Settings design is illustrative only. Implement the following as enforced behavior, not merely UI labels:
+
+1. **Verified runtime status:** Display `Connected`, `Not Available`/`Unavailable`, root capability, tool versions, executable paths, and working-directory paths only from current verified backend/device observations. Distinguish `Unknown`, `Checking`, `Disconnected`, `Permission Required`, and stale cached data. Never populate operational statuses from screenshot examples or hardcoded values.
+2. **Per-command approval including root checks:** Every Shell command—including root detection or verification commands, diagnostics, retries, installations, and commands initiated from Settings—MUST pass the same Command Review → explicit per-action approval → native authorization gate before dispatch. A non-shell Android API capability query need not create a fake shell approval, but must respect Android permission and consent requirements. Enabling a root preference never pre-authorizes privileged execution.
+3. **Gemini API key confidentiality:** Store the user-provided API key using Android Keystore-backed secure storage. Never log, print, include in telemetry, terminal output, crash reports, debug traces, prompts sent to tools, or **export/backup files** in plaintext or recoverable form. Redact secrets from error messages and diagnostics. Export/import must exclude the API key by default and require the user to re-enter it after restore. Avoid exposing the full key through UI reveal without deliberate user interaction.
+4. **Destructive/import confirmations:** Clearing logs, clearing approval history, resetting settings to defaults, importing data, and any destructive or overwriting action MUST present an explicit confirmation describing scope, affected data, overwrite behavior, and reversibility before changes are applied. Import must validate file format/schema, size, provenance and sensitive fields; preview proposed changes and obtain confirmation before applying them. Failed imports should not leave partially applied configuration.
+5. **Safety Checks cannot weaken approvals:** The Safety Checks toggle may control only additional validation. It MUST NOT disable, bypass, or weaken the mandatory per-action Command Review and native approval enforcement. The `Always Required — Enforced` approval policy is non-configurable in the UI, settings files, imports, and backend APIs. No reset, import, or migration may change that invariant.
+
+**Acceptance tests:** (1) mocked screenshots cannot produce Connected, root capability, or paths in runtime state; (2) shell-backed root checks are blocked without fresh action-specific approval; (3) Gemini API keys never appear in logs, diagnostics, or exported backups; (4) reset, clear, and import operations require confirmation and support safe cancellation; (5) malformed imports are rejected without partial mutation; (6) turning Safety Checks off, restoring defaults, and importing settings cannot bypass the approval gateway.
 
 ### Screen B — Terminal & Tools
 - Streaming terminal output and separate stdout/stderr filters.
