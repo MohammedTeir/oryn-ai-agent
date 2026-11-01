@@ -119,11 +119,11 @@ v1 targets both external and embedded Termux-compatible capabilities. Prototype 
 
 ## 3. Target Users and Primary Use Cases
 
-A technical user wants to ask the agent to prepare development tools, inspect a project workspace, run a script, diagnose a build failure, install FFmpeg or Python if supported, check versions, or summarize a log. The user remains in control of every executable step.
+A technical user wants to ask the agent to prepare development tools, inspect a project workspace, run a script, diagnose a build failure, install FFmpeg or Python if supported, check versions, or summarize a log. The user retains authority over executable steps through Strict individual approvals, fixed reviewed Batch grants, or bounded Session grants.
 
 Example request: “Check whether Python, Git, and FFmpeg are available; install any missing tools; verify each installation; and report the results.”
 
-Expected behavior: inspect approved environment scope → inventory commands → propose installation actions → request approval → execute → collect exit codes and logs → verify installed versions → summarize results. If installation fails, generate a new proposed remediation action and request fresh approval.
+Expected behavior: inspect approved environment scope → inventory commands → propose installation actions → request approval → execute → collect exit codes and logs → verify installed versions → summarize results. If installation fails, diagnose and propose a specific remediation; request new approval if it is outside the existing authorized grant, or if it is root/high-risk.
 
 ### Approved UI direction (design decision, 2026-10-31)
 
@@ -133,7 +133,7 @@ Expected behavior: inspect approved environment scope → inventory commands →
 - **Navigation:** Exactly two primary bottom tabs, `AI Agent` and `Terminal & Tools`. Settings is opened from the header as a secondary page/sheet, never a third tab.
 - **Screen-by-screen workflow:** Design, review, and implement **AI Agent** first. Do not start redesigning Terminal & Tools or Settings before separate review/approval. Keep components reusable without prematurely adding UI.
 - **AI Agent header:** Approved logo and ORYN wordmark, search/history access where implemented, Settings icon, and a compact connection/runtime indicator showing real Termux availability. Never show `Ready` or `Connected` unless verified.
-- **Chat flow:** User message, assistant response, structured action proposal, per-action approval, execution status, and verified result. Display only states relevant to the current task; the reference image showing approval, running, and success simultaneously is a component showcase, **not** the runtime state machine.
+- **Chat flow:** User message, assistant response, structured action proposal, applicable Strict/Batch/Session authorization, execution status, and verified result. Display only states relevant to the current task; the reference image showing approval, running, and success simultaneously is a component showcase, **not** the runtime state machine.
 - **Approval card:** Show complete executable/arguments, working directory, runtime, privilege, risk, effects and timeout. Offer Strict individual approval, immutable fully enumerated Batch approval or scoped Session approval (15-minute/20-command defaults). Plan preview alone is NOT authorization; root/high-risk actions require separate exact confirmation.
 - **Running state:** Show live progress, command-specific status, expandable output, and an obvious `Stop` control. On cancellation, represent actual backend termination or uncertainty honestly.
 - **Result state:** Summarize verified outcomes, errors, and next steps. Never show fabricated version numbers, tool inventory, successful completion, or root/permission state in production UI.
@@ -168,7 +168,7 @@ The approved AI Agent mockup is a **visual reference only**, not a source of run
 
 ### Terminal & Tools — Unified Command Review Gate
 
-**Mandatory implementation rule:** Every command entry point in the Terminal & Tools screen MUST use the same **Review → Explicit Approval → Native Validation → Execute** workflow. This includes:
+**Mandatory implementation rule:** Every command entry point MUST pass the same **Native Grant Validation → Policy Checks → Execute** gateway; explicit user review creates a Strict, fixed Batch or scoped Session grant before any authorized dispatch. This includes:
 
 - Commands typed manually into the terminal command input.
 - **Quick Commands** presets, including any shortcuts, tool checks, or suggested commands.
@@ -190,7 +190,7 @@ The approved Tools-tab screenshot is a **visual mockup only**. Every operational
 - **Versions and paths:** Resolve executable paths and versions from backend observations, associate them with the correct backend/device, and represent unavailable or unverified fields explicitly. Never hardcode sample versions, paths, or counts shown in approved designs.
 - **Available tools and installation:** Resolve installability from runtime, architecture, dependencies, trusted package sources, Android permissions and root. The v1 Tools Manager supports verified install, update, uninstall, repair, version/path checks, provenance and history. Every executable operation must match a native Strict/Batch/Session grant; privileged/high-risk actions require separate approval.
 - **Docker compatibility:** Do **not** hardcode Docker as `Unsupported` or `Supported`. Evaluate the actual runtime and device capabilities (including daemon requirements, kernel features, privileges, architecture, and supported integration strategy). Display `Supported`, `Requires Setup`, `Unsupported`, or `Unknown / Not Checked` with a reason and available next steps. Do not claim native Docker Engine support on ordinary unprivileged Termux without verification.
-- **Diagnostics:** Display `Healthy` / `Checked` only after a completed real diagnostic with supporting results. Report failures and stale/partial checks truthfully. Diagnostics that dispatch shell commands require explicit approval; purely local UI inspection may be non-executable.
+- **Diagnostics:** Display `Healthy` / `Checked` only after completed real checks. Report failures and stale/partial data. Diagnostics dispatching shell commands require valid native authorization under the selected mode; pure non-executable UI inspection does not imply a shell grant.
 - **Refresh and backend changes:** Invalidate or clearly mark stale tool status when changing backends, losing connectivity, changing permissions, or refreshing inventory. Never carry a verified status from one backend into another.
 
 **Acceptance tests:** (1) no operational status, count, version, or path comes from mockup constants; (2) disconnected/permission-denied backends cannot show Connected or fresh Verified Working; (3) failed checks cannot show Checked/Healthy; (4) Docker classification changes appropriately across supported, unsupported, unknown, and requires-setup test environments; (5) switching backend invalidates prior inventory; (6) all shell-backed actions require a live matching native grant.
@@ -341,7 +341,7 @@ ORYN must support **three evaluated integration strategies** without coupling th
 3. All backends implement the same capability probe, start, event stream, cancellation, and normalized result semantics; unsupported features must be reported explicitly.
 4. Store task state, audit records, and approval decisions independently of the backend so a backend can change without rewriting the two-screen UI or Gemini orchestrator.
 5. Prototype **Strategies A and B** early (A may lead to validate the security contract); validate each embedded capability on actual devices for v1, retain C for research.
-6. Migrate only after parity tests pass for command execution, stdout/stderr, exit codes, cancellation, installations, recovery, root separation, and per-action approvals.
+6. Enable each backend capability only after proving its own command/result semantics, cancellations, package support, recovery, root separation and applicable Strict/Batch/Session authorization checks. Full parity is not required when unsupported embedded functions are declared and external fallback is offered.
 7. Never silently switch an already-approved action to a backend with different permissions or side effects; request a new approval when the effective execution context changes.
 
 **Upstream references for implementation verification:**
@@ -548,18 +548,18 @@ android-ai-agent/
 ## 16. Delivery Phases — Incremental gates, not a reduction of v1 requirements
 
 ### Phase 0 — Feasibility Spike
-- Build a custom Expo development APK with a Kotlin native module.
+- Build a custom Expo development APK with a Kotlin native module; prototype embedded-runtime feasibility as well as external Termux.
 - Probe runtime capabilities and return structured results.
 - Run a harmless, explicitly approved command through the external Termux backend.
 - Capture stdout, stderr, exit code, timeout, and cancellation.
 - Verify Android version/ABI compatibility on at least one real device.
-- **Exit gate:** prove external integration and separately test embedded runtime feasibility; do not assume either works without evidence.
+- **Exit gate:** prove external integration and measure embedded-runtime feasibility on devices; do not claim either works without evidence.
 
 ### Phase 1 — App Foundation
 - Implement exactly two primary screens (AI Agent Chat and Terminal & Tools), primary navigation between them, secondary Settings, and task persistence.
 - Add Gemini API key onboarding and encrypted storage.
 - Implement typed Native Module calls and event streaming.
-- Add explicit approvals with native enforcement and audit logging.
+- Implement native Strict, fixed Batch and scoped Session grant enforcement with audit logging and independent root/high-risk confirmation.
 
 ### Phase 2 — Functional Agent
 - Add structured planning, tool inventory, installation proposals, and execution feedback.
@@ -586,7 +586,7 @@ android-ai-agent/
 2. A token cannot be reused or applied to a changed command.
 3. Rejecting an installation produces no installation side effect.
 4. `stdout`, `stderr`, exit code, duration, and cancellation are correctly recorded.
-5. A failed command triggers diagnosis and a new approval request before remediation.
+5. Failed actions trigger diagnosis; a changed/out-of-scope repair needs fresh authorization, and root/high-risk repair always requires separate exact-action approval.
 6. Missing Termux is detected and explained without crashes.
 7. Non-root mode never silently escalates privileges.
 8. Root permission denial is handled safely.
