@@ -1,0 +1,1171 @@
+{
+ "name": "ORYN Brand Assets Production v3.0",
+ "generated": "2026-11-01",
+ "approved_by_user": true,
+ "files": [
+  {
+   "path": "00_Original_Approved_Designs/Approved_Designs/oryn-ai-agent-v1.0-approved.png",
+   "bytes": 1298995,
+   "sha256": "e3cc9a08367043e4a1504c051bc6eecf85ccfb35e1e6c04f3902df27322a399b",
+   "width": 1024,
+   "height": 1536,
+   "mode": "RGB",
+   "icc_embedded": false,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/Approved_Designs/oryn-design-system-components-v1.2-approved.png",
+   "bytes": 1893857,
+   "sha256": "e71f4a4fe357855cde1918e41ced328658733b508b3568cc530b83557d881492",
+   "width": 1536,
+   "height": 1024,
+   "mode": "RGB",
+   "icc_embedded": false,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/Approved_Designs/oryn-settings-v1.0-approved.png",
+   "bytes": 274626,
+   "sha256": "eac528e6f4ff3ff5cfddbe8865efb1b1f3933fe2a1fa48281b06c1105470d439",
+   "width": 1024,
+   "height": 1536,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/Approved_Designs/oryn-terminal-tools-v1.0-approved.png",
+   "bytes": 901211,
+   "sha256": "ca26304c7dcc9571793e6fc122daf9641effe7c9d00382b62c7e5652a543a712",
+   "width": 1024,
+   "height": 1536,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/Approved_Designs/oryn-tools-tab-v1.0-approved.png",
+   "bytes": 245354,
+   "sha256": "0f0dda4df67cfa609eb103738bea32b674d709dd0ea637762ea0f571f5d40986",
+   "width": 1024,
+   "height": 1536,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/Approved_Designs/oryn-ui-states-execution-flow-v1.3-approved.png",
+   "bytes": 382492,
+   "sha256": "9ea9316033aebd98e8ca698b6070495c9ddcd3b7bf271fc03c62f6193d983310",
+   "width": 1536,
+   "height": 1024,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/Approved_Logos/README.txt",
+   "bytes": 251,
+   "sha256": "e0489f7d683f426464b07e5d2330749b4f77954f49e2d8cc46c4fbc623aea5b2",
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/Approved_Logos/oryn-app-icon-v1.1-approved.png",
+   "bytes": 1403007,
+   "sha256": "5d2625049a743c1610184ca1f290e0f3aa5b4bc513bce6dbec3323f477f15208",
+   "width": 1254,
+   "height": 1254,
+   "mode": "RGB",
+   "icc_embedded": false,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/Approved_Logos/oryn-icon-only-v1.4-transparent.png",
+   "bytes": 522317,
+   "sha256": "f4b0d2a0f54e4dc3286f36d972e1fd270c3139aa28b702281a9e971342b6d986",
+   "width": 1276,
+   "height": 1276,
+   "mode": "RGBA",
+   "icc_embedded": false,
+   "status": "CANDIDATE - not approved (unchanged original)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/Approved_Logos/oryn-primary-logo-v1.1-approved.png",
+   "bytes": 1065169,
+   "sha256": "c74ba7aaa67b35d54fa034fec140061c074b29d9d3101881345c9106b2642012",
+   "width": 2172,
+   "height": 724,
+   "mode": "RGB",
+   "icc_embedded": false,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/Approved_Logos/oryn-secondary-logo-v1.1-approved.png",
+   "bytes": 1103690,
+   "sha256": "9593173667ae1fe7125271aa9d0444d23c4916c22adbd3282114fb7d2792dad7",
+   "width": 1199,
+   "height": 1312,
+   "mode": "RGB",
+   "icc_embedded": false,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/ORYN_Split_Approved_Designs/Design_System_Components_v1.2/01_color_system.png",
+   "bytes": 130157,
+   "sha256": "7ead9f5c82b5a93eff13bc0e75f413d77c8b4bc81b58f97f26958dbad6ec33a2",
+   "width": 313,
+   "height": 452,
+   "mode": "RGB",
+   "icc_embedded": false,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/ORYN_Split_Approved_Designs/Design_System_Components_v1.2/02_typography.png",
+   "bytes": 78510,
+   "sha256": "f7c2a7107d4715c7c0048196f0c01e46c08bde81936a1abc5a4052e97a359be0",
+   "width": 313,
+   "height": 209,
+   "mode": "RGB",
+   "icc_embedded": false,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/ORYN_Split_Approved_Designs/Design_System_Components_v1.2/03_spacing_radius_elevation.png",
+   "bytes": 89743,
+   "sha256": "c079167d79a8418563afc42b71a55bd4f98b16aa29669aef60949d17539de3d5",
+   "width": 313,
+   "height": 279,
+   "mode": "RGB",
+   "icc_embedded": false,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/ORYN_Split_Approved_Designs/Design_System_Components_v1.2/04_icon_system.png",
+   "bytes": 113716,
+   "sha256": "602d110b5b30bb044bb7dc176d38ea837290e4d0aebcd8146cfe015d45880a49",
+   "width": 403,
+   "height": 284,
+   "mode": "RGB",
+   "icc_embedded": false,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/ORYN_Split_Approved_Designs/Design_System_Components_v1.2/05_buttons.png",
+   "bytes": 139242,
+   "sha256": "c6732200889a74dd2dc436a12eba25db70931ddcfaf96c7951ceb40b9bcfe4f2",
+   "width": 403,
+   "height": 362,
+   "mode": "RGB",
+   "icc_embedded": false,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/ORYN_Split_Approved_Designs/Design_System_Components_v1.2/06_input_components.png",
+   "bytes": 110476,
+   "sha256": "db7e3d2a45ddff21f2ff5d58e927d5c714924bb9bf744d41ba9f9f0399aead09",
+   "width": 403,
+   "height": 299,
+   "mode": "RGB",
+   "icc_embedded": false,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/ORYN_Split_Approved_Designs/Design_System_Components_v1.2/07_cards_containers.png",
+   "bytes": 137101,
+   "sha256": "1d1bc5c13123aa9db8b2f4250924a9b5b7dc5d1e758dfe00305570eaaab67a43",
+   "width": 425,
+   "height": 295,
+   "mode": "RGB",
+   "icc_embedded": false,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/ORYN_Split_Approved_Designs/Design_System_Components_v1.2/08_status_indicators.png",
+   "bytes": 134119,
+   "sha256": "7b80cd4d09c54c63baf84931b2644219bce2d707518b1479dde94347df4f1ff7",
+   "width": 380,
+   "height": 296,
+   "mode": "RGB",
+   "icc_embedded": false,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/ORYN_Split_Approved_Designs/Design_System_Components_v1.2/09_command_review_variants.png",
+   "bytes": 246955,
+   "sha256": "eb8cbae74e39a36584c9f08f2f3cff5ca47a8d061d5a8572ab4d59cb20903a6b",
+   "width": 349,
+   "height": 644,
+   "mode": "RGB",
+   "icc_embedded": false,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/ORYN_Split_Approved_Designs/Design_System_Components_v1.2/10_execution_states.png",
+   "bytes": 148789,
+   "sha256": "658a362c7fd590c3564e01898d0124a4b8586a63cee7bf9313a8455716eb202a",
+   "width": 456,
+   "height": 318,
+   "mode": "RGB",
+   "icc_embedded": false,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/ORYN_Split_Approved_Designs/Design_System_Components_v1.2/11_navigation.png",
+   "bytes": 49341,
+   "sha256": "4549da2373c9d9e562d5bd32e5333da76e01078a33e8c06adc4b1b223feafed3",
+   "width": 456,
+   "height": 126,
+   "mode": "RGB",
+   "icc_embedded": false,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/ORYN_Split_Approved_Designs/Design_System_Components_v1.2/12_dialog_components.png",
+   "bytes": 113534,
+   "sha256": "1cfaa3771b53aa4aff1e5d7374805b66811f2842aa64a58ba263a3a241e695db",
+   "width": 456,
+   "height": 204,
+   "mode": "RGB",
+   "icc_embedded": false,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/ORYN_Split_Approved_Designs/README.txt",
+   "bytes": 245,
+   "sha256": "cf80e6c1bc8fc26dd9bea9bfa003a9dd6521ae161776f1984a6aa4a5ed552264",
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/ORYN_Split_Approved_Designs/UI_States_Execution_Flow_v1.3/01_termux_connection_states.png",
+   "bytes": 483878,
+   "sha256": "cb951b9cd3d00644c65649a3f464efe644e58bcc99c4d54a707847a41c942bb8",
+   "width": 1510,
+   "height": 322,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/ORYN_Split_Approved_Designs/UI_States_Execution_Flow_v1.3/02_root_status_states.png",
+   "bytes": 205990,
+   "sha256": "606dc9f79e919705b372dde3f2b62de8f21ddaa1fc4c2115a171d6b82949e7d0",
+   "width": 660,
+   "height": 370,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/ORYN_Split_Approved_Designs/UI_States_Execution_Flow_v1.3/03_command_review_approval.png",
+   "bytes": 178735,
+   "sha256": "0bf33ee4e356d2a4aac4ac9a3b957dab60c5e301fd76f8fac6fb18c8aead1567",
+   "width": 415,
+   "height": 375,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/ORYN_Split_Approved_Designs/UI_States_Execution_Flow_v1.3/04_execution_states.png",
+   "bytes": 165272,
+   "sha256": "f6680d710e690805608208d501c54228fbe88f31c84faff535ce5655aaf0ca68",
+   "width": 455,
+   "height": 375,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/ORYN_Split_Approved_Designs/UI_States_Execution_Flow_v1.3/05_dialogs_confirmations.png",
+   "bytes": 388391,
+   "sha256": "1564a43e06f9f92f9274d67c4d6e96c03752c4ff9ebf0e23b8ca58024c4c6cc7",
+   "width": 1510,
+   "height": 234,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "00_Original_Approved_Designs/ORYN_Split_Approved_Designs/manifest.json",
+   "bytes": 2295,
+   "sha256": "cc0d6535275d2990f3caee48c7c3c3967b6df21b620df4e1ef0692a930e9d0dd",
+   "status": "approved-original (unchanged)"
+  },
+  {
+   "path": "01_Primary_Logo/oryn-primary-logo-reversed-for-dark-transparent.png",
+   "bytes": 314469,
+   "sha256": "c7699b924bc90a4ea06b1e54f3c6c8d8d980578d9d0705937d24db193c58b0d9",
+   "width": 2172,
+   "height": 724,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "01_Primary_Logo/oryn-primary-logo-reversed-for-dark.svg",
+   "bytes": 563892,
+   "sha256": "ddc789922958f50133653b796f2253db9a0ca7d75e7c9aa126cf4e9605a37e9a",
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "01_Primary_Logo/oryn-primary-logo-reversed-on-navy-preview.png",
+   "bytes": 320727,
+   "sha256": "b9ba19c1b16305aa1c8bdb9cbecb712fbd4261ae48f92a0c2f89fc8b45fdb092",
+   "width": 2172,
+   "height": 724,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "01_Primary_Logo/oryn-primary-logo-transparent.png",
+   "bytes": 315451,
+   "sha256": "470ea9d68e48c1f98d50f94107c668751826fb09330ce97d388c180611ce8334",
+   "width": 2172,
+   "height": 724,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "01_Primary_Logo/oryn-primary-logo-transparent@2x-vector-render.png",
+   "bytes": 391457,
+   "sha256": "2dc53c54b32a90e4c4753cc34d9ed3a62e07096235aee420ed45dbdaaba66d6c",
+   "width": 4344,
+   "height": 1448,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "01_Primary_Logo/oryn-primary-logo-white-bg.png",
+   "bytes": 316405,
+   "sha256": "4f7680d3a8facfa20a9a6bb9b9fb24889f857498affaff647ad0cf3435e57dd6",
+   "width": 2172,
+   "height": 724,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "01_Primary_Logo/oryn-primary-logo-white-bg@2x-vector-render.png",
+   "bytes": 368271,
+   "sha256": "d6a47457241d2ba01aae1202400b08f6d21f58e1990ec2acb0b5527ee4bb59bd",
+   "width": 4344,
+   "height": 1448,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "01_Primary_Logo/oryn-primary-logo.svg",
+   "bytes": 563825,
+   "sha256": "c03e01aa3c501fb1f34d9d4dc47a00c7ccf595f4334c60e80d71a94b88d69d18",
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "02_Secondary_Logo/oryn-secondary-logo-reversed-for-dark-transparent.png",
+   "bytes": 280459,
+   "sha256": "66e8bcea9c848195c5ec5579521b19d215a4a30314018fa5905619078aa05145",
+   "width": 1254,
+   "height": 1254,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "02_Secondary_Logo/oryn-secondary-logo-reversed-for-dark.svg",
+   "bytes": 559532,
+   "sha256": "99184663102254b73a6b01412818db14da22e91c2960c0c6a9a7a450ccb3da28",
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "02_Secondary_Logo/oryn-secondary-logo-reversed-on-navy-preview.png",
+   "bytes": 275929,
+   "sha256": "1539a74f45780d724184ed9f48e7bb987963f718cfa3fc31c144686cc536e5cc",
+   "width": 1254,
+   "height": 1254,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "02_Secondary_Logo/oryn-secondary-logo-transparent.png",
+   "bytes": 281007,
+   "sha256": "adc1b13992b0dd78c7e83f8a01528a79679a15fd0db0e537a111f3fdea4a4123",
+   "width": 1254,
+   "height": 1254,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "02_Secondary_Logo/oryn-secondary-logo-transparent@2x-vector-render.png",
+   "bytes": 374587,
+   "sha256": "2a04396b0f1257ee2e8698d303638863bff60e83f3ad947d51eb0022c4a87cd1",
+   "width": 2508,
+   "height": 2508,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "02_Secondary_Logo/oryn-secondary-logo-white-bg.png",
+   "bytes": 272547,
+   "sha256": "f6534e31ece529de9e38024f6b7bfe7617c49ebfc00f594cad0278e9c094198f",
+   "width": 1254,
+   "height": 1254,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "02_Secondary_Logo/oryn-secondary-logo-white-bg@2x-vector-render.png",
+   "bytes": 349980,
+   "sha256": "bf7f65907e495bc73f0c29f03f1df17e0b2d414aa0b4f0ca9278f7132e0cc508",
+   "width": 2508,
+   "height": 2508,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "02_Secondary_Logo/oryn-secondary-logo.svg",
+   "bytes": 559465,
+   "sha256": "03824e4a8a0070998f2bf9522c86a800d2f400a9921ffdf9808434c7518aa0e8",
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "03_Icon_Only/oryn-icon-only-1024.png",
+   "bytes": 354747,
+   "sha256": "c039ae6d487a12355188e1ba9cfcaa39e194a8586c221ee558936312a6f389a6",
+   "width": 1024,
+   "height": 1024,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "03_Icon_Only/oryn-icon-only-128.png",
+   "bytes": 10824,
+   "sha256": "695f57b07eb6d2e5ddd9f9b4b39dc04f418fd1e49bfac45430a52825df8ba102",
+   "width": 128,
+   "height": 128,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "03_Icon_Only/oryn-icon-only-2048-vector-render.png",
+   "bytes": 496103,
+   "sha256": "0d4ea3718d93c8950764f1ae7dafe786b2159ce22d87ff8c5e9a147641bc1da4",
+   "width": 2048,
+   "height": 2048,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "03_Icon_Only/oryn-icon-only-256.png",
+   "bytes": 33030,
+   "sha256": "8b797cc1cbb7550da313a75e5042cc802da32866b89f069c580732b04ede842d",
+   "width": 256,
+   "height": 256,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "03_Icon_Only/oryn-icon-only-4096-vector-render.png",
+   "bytes": 1227689,
+   "sha256": "34d622f0bf262a62550de4a525aac1f53947b88c338839d00e54d72d0e16f078",
+   "width": 4096,
+   "height": 4096,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "03_Icon_Only/oryn-icon-only-512.png",
+   "bytes": 109570,
+   "sha256": "15f8999111e8bbcf812d325787b6c3893263896c5be40de9f96aef81d9f1d83f",
+   "width": 512,
+   "height": 512,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "03_Icon_Only/oryn-icon-only-64.png",
+   "bytes": 3982,
+   "sha256": "b7062fbda901d43943ca5f8ba41b7b63c5d552447a81601f212f4d5192c06b5d",
+   "width": 64,
+   "height": 64,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "03_Icon_Only/oryn-icon-only-transparent.png",
+   "bytes": 513559,
+   "sha256": "3f3c9b8f61c84aa6e3f3d880fe78954f820dc21e6225333b91a5369c69d2e534",
+   "width": 1260,
+   "height": 1260,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "03_Icon_Only/oryn-icon-only.svg",
+   "bytes": 1880893,
+   "sha256": "dd1301a1551f37e2452785078c042bf36c1cb8e9d135667212ac15a6b05deb49",
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "04_Monochrome/oryn-icon-only-mono-black.png",
+   "bytes": 53678,
+   "sha256": "4728ba77266b4595893030ce120ff12db828ac5ff7527978d2951f2a98eda6e2",
+   "width": 1260,
+   "height": 1260,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "04_Monochrome/oryn-icon-only-mono-black.svg",
+   "bytes": 11287,
+   "sha256": "6429247f76a01d60890973fe8e4be40e52adfe9fd7d842382d5f5706ee5c0bcc",
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "04_Monochrome/oryn-icon-only-mono-navy.png",
+   "bytes": 60339,
+   "sha256": "0ea1cd0cdbfd5a5e4c3583f03f3bbe1c4fd181f10516341d6e0ffef23131067e",
+   "width": 1260,
+   "height": 1260,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "04_Monochrome/oryn-icon-only-mono-navy.svg",
+   "bytes": 11285,
+   "sha256": "31fa4a2c5da9279de72cf0002dac16be3dfb2804d3db8a42cb5c1807b7521c9e",
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "04_Monochrome/oryn-icon-only-mono-white.png",
+   "bytes": 57037,
+   "sha256": "7c92c8ec6cd3a3fea4527f08ae431acab28139faeafe576548c3eaadb74b3357",
+   "width": 1260,
+   "height": 1260,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "04_Monochrome/oryn-icon-only-mono-white.svg",
+   "bytes": 11287,
+   "sha256": "3499d2cba611f9729779e6c3cb834635bb3ae3d44a87fe02ceb4e5c490c66b04",
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "04_Monochrome/oryn-primary-logo-mono-black.png",
+   "bytes": 151207,
+   "sha256": "22814fb026190045d94dcf56784c9343b35b65a531655d8906a3fe18f1c04505",
+   "width": 2172,
+   "height": 724,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "04_Monochrome/oryn-primary-logo-mono-black.svg",
+   "bytes": 31241,
+   "sha256": "546b6cbdbd67f39b71231508044d64b07c066769bd46867b7f4325db0932e70f",
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "04_Monochrome/oryn-primary-logo-mono-navy.png",
+   "bytes": 161889,
+   "sha256": "7eec1b1386e8d7964203ce080d03097e5cfc46c70245f08675bd5f98319f8f90",
+   "width": 2172,
+   "height": 724,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "04_Monochrome/oryn-primary-logo-mono-navy.svg",
+   "bytes": 31239,
+   "sha256": "0e030465e565499fcd647211b6e31df026a0643b716124d6a3aeaf2d2b1ebcec",
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "04_Monochrome/oryn-primary-logo-mono-white.png",
+   "bytes": 158883,
+   "sha256": "150bdfe4a7b9113e40999402135b7e2e1dedf2e84f0c88beb872b0ff38f92352",
+   "width": 2172,
+   "height": 724,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "04_Monochrome/oryn-primary-logo-mono-white.svg",
+   "bytes": 31241,
+   "sha256": "574af55fe842097abdc6a84bf5be73a0165bb6b4da4aa9f53fc8884eada33f79",
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "04_Monochrome/oryn-secondary-logo-mono-black.png",
+   "bytes": 112111,
+   "sha256": "e9b53e9168ea7ab0305194f571d8118b74fecae8d6a299090b268cbab89e706d",
+   "width": 1254,
+   "height": 1254,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "04_Monochrome/oryn-secondary-logo-mono-black.svg",
+   "bytes": 30030,
+   "sha256": "e3b3ec4c215dbf2cd4c52486cda65c06278707010363b7f03263307bcc19e2c3",
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "04_Monochrome/oryn-secondary-logo-mono-navy.png",
+   "bytes": 122263,
+   "sha256": "0cb3eb64995d98b7618af4757da574919e74c8f2587cf568f903227ff473d20f",
+   "width": 1254,
+   "height": 1254,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "04_Monochrome/oryn-secondary-logo-mono-navy.svg",
+   "bytes": 30028,
+   "sha256": "33e4213b91da51b39f9411ee16243e7ca9dfa29cc312853e4d143228bec9cc6a",
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "04_Monochrome/oryn-secondary-logo-mono-white.png",
+   "bytes": 119011,
+   "sha256": "93ebe50ee641ccbc7a5b47795b87f570d17b6a12635d4023f252c777fa1fa825",
+   "width": 1254,
+   "height": 1254,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "04_Monochrome/oryn-secondary-logo-mono-white.svg",
+   "bytes": 30030,
+   "sha256": "2aa004406b9940ea730dd00b5b963c0a9133e0ca94009cbbe8d5b158b5a29d13",
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/expo/adaptive-icon-background.png",
+   "bytes": 770784,
+   "sha256": "d4fc5f1d14fa651f54b7073d3d21158883060b95164318e3e6614cd97db44535",
+   "width": 1024,
+   "height": 1024,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/expo/adaptive-icon-foreground.png",
+   "bytes": 188426,
+   "sha256": "e173d679613107eda60cb2109b756daf20359ea43e78dcc9e57087707f7e452e",
+   "width": 1024,
+   "height": 1024,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/expo/adaptive-icon-monochrome.png",
+   "bytes": 29465,
+   "sha256": "a6ddf2d50f08ca0681f6e21d0ce961fdba665647878812736cd8f289d1471f01",
+   "width": 1024,
+   "height": 1024,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/expo/icon.png",
+   "bytes": 630493,
+   "sha256": "57fdd3a9f415c12a17ab8eef95dd7ac61d9a167f3269b26ed1d22a3cb9439824",
+   "width": 1024,
+   "height": 1024,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/expo/notification-icon.png",
+   "bytes": 2489,
+   "sha256": "17280da1d5f4c4282e3251559e89263e1190a1a232c570ae15c4c823e47b1c6e",
+   "width": 96,
+   "height": 96,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/play-store/ic_launcher-512.png",
+   "bytes": 234769,
+   "sha256": "e03c8d011cfeef0c00b041f83ca98c27871a26d8fb7759c4585e612c4ca6120c",
+   "width": 512,
+   "height": 512,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/drawable-hdpi/ic_stat_oryn.png",
+   "bytes": 1115,
+   "sha256": "8eecf8ce698ef537e2fde462b9cb7f636e00c8ab33cfbd37a12053021bcf0088",
+   "width": 36,
+   "height": 36,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/drawable-mdpi/ic_stat_oryn.png",
+   "bytes": 874,
+   "sha256": "382dadfcc69057ea879b76f209e0cdcd6de62128345a647d29e49ea99a791def",
+   "width": 24,
+   "height": 24,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/drawable-xhdpi/ic_stat_oryn.png",
+   "bytes": 1355,
+   "sha256": "f2926f7fa86f71e0d657564a993a2e2df4de59a47af89ae5370cbf1f09d47bca",
+   "width": 48,
+   "height": 48,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/drawable-xxhdpi/ic_stat_oryn.png",
+   "bytes": 1934,
+   "sha256": "d99093c4f3744aa9ba0129a4eea54b068912258268fd03b501032008f78c59a1",
+   "width": 72,
+   "height": 72,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/drawable-xxxhdpi/ic_stat_oryn.png",
+   "bytes": 2489,
+   "sha256": "17280da1d5f4c4282e3251559e89263e1190a1a232c570ae15c4c823e47b1c6e",
+   "width": 96,
+   "height": 96,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-anydpi-v26/ic_launcher.xml",
+   "bytes": 338,
+   "sha256": "3003196af2ea0bf160619bcc047002eb06fa674441ca1832b8d747d2c8b358a5",
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+   "bytes": 338,
+   "sha256": "3003196af2ea0bf160619bcc047002eb06fa674441ca1832b8d747d2c8b358a5",
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-hdpi/ic_launcher.png",
+   "bytes": 9084,
+   "sha256": "85096dc5c168a85da72c7b84aaad15476fde7c79f72bc42da5d230a800305b8f",
+   "width": 72,
+   "height": 72,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-hdpi/ic_launcher_background.png",
+   "bytes": 25332,
+   "sha256": "a42f22dd77ca119f13c7929f94c019c1f8c4e2bc91df1bc71748deab7a1c718c",
+   "width": 162,
+   "height": 162,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-hdpi/ic_launcher_foreground.png",
+   "bytes": 8643,
+   "sha256": "032aec582ad33e1522dc0c1b53b6aa7e9942dc679c302c5e1fa802a0ea265e11",
+   "width": 162,
+   "height": 162,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-hdpi/ic_launcher_monochrome.png",
+   "bytes": 3022,
+   "sha256": "64de7144728228b16d6e925ee40c15b55e6d20fe69919a1c8600b33aea7d6154",
+   "width": 162,
+   "height": 162,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-hdpi/ic_launcher_round.png",
+   "bytes": 8848,
+   "sha256": "70fc3c5fc308c14162d8427e79a9c42b8d87fbbeefbb3b92c285b157d59aad7b",
+   "width": 72,
+   "height": 72,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-mdpi/ic_launcher.png",
+   "bytes": 4919,
+   "sha256": "a5175a052f0fa37c75f844ba163a0e8723ea934ea444f7d032f18d2821dcf685",
+   "width": 48,
+   "height": 48,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-mdpi/ic_launcher_background.png",
+   "bytes": 12862,
+   "sha256": "6e8de5e6f4eefe6f05c250984a4007f426658223023badee938290d9508a290c",
+   "width": 108,
+   "height": 108,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-mdpi/ic_launcher_foreground.png",
+   "bytes": 4758,
+   "sha256": "a9a12130abb68c324153b72e8749a6a611c82b495d99f3e1a52e26dea355772e",
+   "width": 108,
+   "height": 108,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-mdpi/ic_launcher_monochrome.png",
+   "bytes": 1938,
+   "sha256": "97767fbabf437efda4a0bfb1a06dc370ff811f9d142b6577452e9502fedc7c8f",
+   "width": 108,
+   "height": 108,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-mdpi/ic_launcher_round.png",
+   "bytes": 4908,
+   "sha256": "9fb775c3df23d07f3d6062d9e9cdbab829a538f9d4622a0b20805b3578e44b6a",
+   "width": 48,
+   "height": 48,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-xhdpi/ic_launcher.png",
+   "bytes": 14104,
+   "sha256": "e61f72ed13042a539e78327adf823bc6b8199f40e7133becb13ae650eeea3618",
+   "width": 96,
+   "height": 96,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-xhdpi/ic_launcher_background.png",
+   "bytes": 42119,
+   "sha256": "fc7fce80c3c8dd79ffb53194806909aa1f8f5252b45b0edbfba3675be4c06fb6",
+   "width": 216,
+   "height": 216,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-xhdpi/ic_launcher_foreground.png",
+   "bytes": 13508,
+   "sha256": "a60f28eab02f9e5a22b55394e1fb4de8f7474e3af19a6d24f9085b152f041209",
+   "width": 216,
+   "height": 216,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-xhdpi/ic_launcher_monochrome.png",
+   "bytes": 4146,
+   "sha256": "0b22afb40e8d06418cce49a646a4d9642c428e66400d241cba0966a27500fb7c",
+   "width": 216,
+   "height": 216,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-xhdpi/ic_launcher_round.png",
+   "bytes": 13707,
+   "sha256": "d787aadb078592204056fe64ab10838127e3e3b775aa39cf642add0f69149be3",
+   "width": 96,
+   "height": 96,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-xxhdpi/ic_launcher.png",
+   "bytes": 26990,
+   "sha256": "b7e05fff681d238a2a8a69894611abb740d3b543e23eeaa4a8020d11bef2ceb9",
+   "width": 144,
+   "height": 144,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-xxhdpi/ic_launcher_background.png",
+   "bytes": 91407,
+   "sha256": "933df6fe69ecf01cbcb4456f710460b3ccbf0731a0c8f4dc3c4afca6dffedd94",
+   "width": 324,
+   "height": 324,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-xxhdpi/ic_launcher_foreground.png",
+   "bytes": 26204,
+   "sha256": "b36c2ca1bae4433e4cb26d84f4a12af7396030bb08e39b07b0800267612de770",
+   "width": 324,
+   "height": 324,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-xxhdpi/ic_launcher_monochrome.png",
+   "bytes": 6841,
+   "sha256": "42aa91635dacec204835948253c63f1d73e10a03b36bd1fb1a3f7ccce429b677",
+   "width": 324,
+   "height": 324,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-xxhdpi/ic_launcher_round.png",
+   "bytes": 25530,
+   "sha256": "b3007b31b13db14242fdce9afe0323362a4f4dc1125eca24f9dd93abe9c685f9",
+   "width": 144,
+   "height": 144,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-xxxhdpi/ic_launcher.png",
+   "bytes": 43628,
+   "sha256": "ac3ea91e46c8f28cdd8432e282763afe6b7f7dde7bf9a54484d5accb76b41343",
+   "width": 192,
+   "height": 192,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-xxxhdpi/ic_launcher_background.png",
+   "bytes": 160498,
+   "sha256": "27ce5460aa681c158394ff83f4c6f515b615aa0fc1f1b4e474c4af99039db4da",
+   "width": 432,
+   "height": 432,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-xxxhdpi/ic_launcher_foreground.png",
+   "bytes": 42176,
+   "sha256": "0dac755cadbc5fabad12d7909440ba6b7aeaaf3a1a8cf66f0ed8ea7a8b40bc01",
+   "width": 432,
+   "height": 432,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-xxxhdpi/ic_launcher_monochrome.png",
+   "bytes": 9866,
+   "sha256": "3bacc3ece2eb62cf8060f213f2d2cd0cb16777ddf17707554c06a7beba11d11b",
+   "width": 432,
+   "height": 432,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/mipmap-xxxhdpi/ic_launcher_round.png",
+   "bytes": 40788,
+   "sha256": "0cf42b39eb9464926b0c73bea76d0ad1e8d9beb44c4e04d333c1e7b89ab7ffb7",
+   "width": 192,
+   "height": 192,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/res/values/ic_launcher_colors.xml",
+   "bytes": 127,
+   "sha256": "039acf4ad81a539c90644375e345ac2d6ceb25e1304913da73544b75848086eb",
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "05_Android_App_Icons/source-layers/foreground-1024.png",
+   "bytes": 188426,
+   "sha256": "e173d679613107eda60cb2109b756daf20359ea43e78dcc9e57087707f7e452e",
+   "width": 1024,
+   "height": 1024,
+   "mode": "RGBA",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "06_Previews/preview-android-launcher-masks-themed-safezone.png",
+   "bytes": 261405,
+   "sha256": "1220ea53ae358d31a51a27251dc92e6d08b567d5dd3a69ce09561e26106426e9",
+   "width": 2592,
+   "height": 432,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "06_Previews/preview-icon-only-white-navy-gray.png",
+   "bytes": 155631,
+   "sha256": "67ce780adf040ef5ef400674170481bdeefa0c266319280ac1b445af04fe72d2",
+   "width": 1776,
+   "height": 628,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "06_Previews/preview-icon-small-sizes-128-to-16.png",
+   "bytes": 82285,
+   "sha256": "b973ec7984350fb0cd342177d7d0742201ccaa1cb4511a2e7852ad9015faf935",
+   "width": 1760,
+   "height": 900,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "06_Previews/preview-monochrome-variants.png",
+   "bytes": 238466,
+   "sha256": "da5835e82d81d88c9cd2f46438b795766bcad3202ec7a2470e0a0ad2c978c00c",
+   "width": 2600,
+   "height": 790,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "06_Previews/preview-primary-logo-white-navy-gray.png",
+   "bytes": 172596,
+   "sha256": "9148de49a7739e119a93d6493352f9e0d7e6c7e845d62d0fe7a28d7d990541e5",
+   "width": 3000,
+   "height": 416,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "06_Previews/preview-secondary-logo-white-navy-gray.png",
+   "bytes": 184201,
+   "sha256": "b9f0ff156be8f247419bd3a428dbc4427e167b311d3a04f28c32070b1ffe9f48",
+   "width": 1962,
+   "height": 636,
+   "mode": "RGB",
+   "icc_embedded": true,
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "07_Design_Tokens/color-tokens.json",
+   "bytes": 1433,
+   "sha256": "90a30230f0faf4cf779586844f1d3aba888620974b5fae86aac1150d6ec5417e",
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "07_Design_Tokens/typography-spacing-tokens.json",
+   "bytes": 836,
+   "sha256": "51d691c7ddedffe2033a50904d179b2b65948665e212ee22670c924f10c14df5",
+   "status": "production - approved by owner 2026-11-01"
+  },
+  {
+   "path": "08_QA_and_Documentation/ANDROID-INTEGRATION.md",
+   "bytes": 3024,
+   "sha256": "bb9c0e92aa695a8ff193d71325c8c988c0c07db6bc4b66ab3688da49fca022b7",
+   "status": "documentation"
+  },
+  {
+   "path": "08_QA_and_Documentation/QA-report.md",
+   "bytes": 5232,
+   "sha256": "06a512b8201328025e2ffb0abb4700e86e818b30e18f0d9dae1f1cfa15ca7ef0",
+   "status": "documentation"
+  },
+  {
+   "path": "08_QA_and_Documentation/qa-checks.json",
+   "bytes": 47209,
+   "sha256": "f533e708d4951b641cfcb144b3513cb7a1cb963d54208909db4b1db367d4c229",
+   "status": "documentation"
+  },
+  {
+   "path": "ANDROID-INTEGRATION.md",
+   "bytes": 3024,
+   "sha256": "bb9c0e92aa695a8ff193d71325c8c988c0c07db6bc4b66ab3688da49fca022b7",
+   "status": "documentation"
+  },
+  {
+   "path": "QA-report.md",
+   "bytes": 5232,
+   "sha256": "06a512b8201328025e2ffb0abb4700e86e818b30e18f0d9dae1f1cfa15ca7ef0",
+   "status": "documentation"
+  },
+  {
+   "path": "README.md",
+   "bytes": 3352,
+   "sha256": "d15e2d4e9cbf5ea6f717e8be7991624ed772c30c82aaa2966339286f30156c80",
+   "status": "documentation"
+  },
+  {
+   "path": "asset-manifest.json",
+   "bytes": 38333,
+   "sha256": "2d99753687dad300538af6099ff5abb180e547b1161cce77264c351dd6ad0a38",
+   "status": "documentation"
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+{
+  "_meta": {
+    "source": "ORYN Design System & Components v1.2 (approved), page '1. Color System (Light Mode)'; brand/logo colours sampled from approved logo images",
+    "note": "Hex values were read from the approved design image; verify against the master specification v1.8 (not in the archive)"
+  },
+  "ui_light_mode": {
+    "primary": "#2563FF",
+    "primaryDark": "#1D4EDB",
+    "primaryLight": "#DBEAFE",
+    "success": "#10B981",
+    "warning": "#F59E0B",
+    "error": "#EF4444",
+    "info": "#06B6D4",
+    "purple": "#8B5CF6",
+    "pink": "#EC4899",
+    "textPrimary": "#0F172A",
+    "textSecondary": "#64748B",
+    "surface": "#F8FAFC",
+    "background": "#FFFFFF",
+    "border": "#E2E8F0",
+    "disabled": "#CBD5E1"
+  },
+  "ui_dark_mode": "NOT PROVIDED in the archive (design system sheet documents light mode only)",
+  "logo_sampled": {
+    "symbolCyan": "#02FCFE",
+    "symbolBlue": "#0009FD",
+    "wordmarkNavy": "#000225",
+    "taglineSlate": "#4E5A7A",
+    "note": "Sampled from approved logo raster / icon-only candidate; gradient is multi-stop, not two-stop"
+  },
+  "monochrome_variants": {
+    "black": "#000000",
+    "white": "#FFFFFF",
+    "navy": "#020727"
+  },
+  "preview_backgrounds": {
+    "white": "#FFFFFF",
+    "navy": "#0A0F1F",
+    "lightGray": "#E5E7EB"
+  },
+  "android_launcher": {
+    "adaptiveBackgroundCentre": "#011553",
+    "note": "Approximation of the approved app-icon navy; see QA"
+  }
+}

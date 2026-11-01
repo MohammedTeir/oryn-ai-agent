@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "source": "Design System v1.2 page '2. Typography (Android - sp)'",
+    "fontFamily": "NOT SPECIFIED in archive; wordmark is custom lettering (outlined), not a font"
+  },
+  "scale": {
+    "H1": {
+      "sp": 32,
+      "weight": "Bold"
+    },
+    "H2": {
+      "sp": 24,
+      "weight": "Bold"
+    },
+    "H3": {
+      "sp": 20,
+      "weight": "Semibold"
+    },
+    "H4": {
+      "sp": 16,
+      "weight": "Semibold"
+    },
+    "Body": {
+      "sp": 16,
+      "weight": "Regular"
+    },
+    "BodySmall": {
+      "sp": 14,
+      "weight": "Regular"
+    },
+    "Caption": {
+      "sp": 12,
+      "weight": "Regular"
+    }
+  },
+  "spacing_dp": [
+    4,
+    8,
+    12,
+    16,
+    24,
+    32
+  ],
+  "cornerRadius_dp": [
+    4,
+    8,
+    12,
+    16,
+    24
+  ],
+  "elevation_dp": [
+    0,
+    1,
+    2,
+    4,
+    8
+  ]
+}

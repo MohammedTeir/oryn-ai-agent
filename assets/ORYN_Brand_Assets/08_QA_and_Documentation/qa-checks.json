@@ -1,0 +1,1752 @@
+[
+ {
+  "group": "Originals",
+  "file": "00_Original_Approved_Designs/**",
+  "check": "byte-identical copy of all 30 archive files (SHA-256)",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "01_Primary_Logo/oryn-primary-logo-reversed-for-dark-transparent.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "01_Primary_Logo/oryn-primary-logo-reversed-for-dark-transparent.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(2172, 724)"
+ },
+ {
+  "group": "All PNG",
+  "file": "01_Primary_Logo/oryn-primary-logo-reversed-for-dark-transparent.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "01_Primary_Logo/oryn-primary-logo-reversed-on-navy-preview.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "01_Primary_Logo/oryn-primary-logo-reversed-on-navy-preview.png",
+  "check": "opaque RGB/RGBA by design",
+  "result": "PASS",
+  "detail": "mode=RGB size=(2172, 724)"
+ },
+ {
+  "group": "All PNG",
+  "file": "01_Primary_Logo/oryn-primary-logo-transparent.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "01_Primary_Logo/oryn-primary-logo-transparent.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(2172, 724)"
+ },
+ {
+  "group": "All PNG",
+  "file": "01_Primary_Logo/oryn-primary-logo-transparent.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "01_Primary_Logo/oryn-primary-logo-transparent@2x-vector-render.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "01_Primary_Logo/oryn-primary-logo-transparent@2x-vector-render.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(4344, 1448)"
+ },
+ {
+  "group": "All PNG",
+  "file": "01_Primary_Logo/oryn-primary-logo-transparent@2x-vector-render.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "01_Primary_Logo/oryn-primary-logo-white-bg.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "01_Primary_Logo/oryn-primary-logo-white-bg.png",
+  "check": "opaque RGB/RGBA by design",
+  "result": "PASS",
+  "detail": "mode=RGB size=(2172, 724)"
+ },
+ {
+  "group": "All PNG",
+  "file": "01_Primary_Logo/oryn-primary-logo-white-bg@2x-vector-render.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "01_Primary_Logo/oryn-primary-logo-white-bg@2x-vector-render.png",
+  "check": "opaque RGB/RGBA by design",
+  "result": "PASS",
+  "detail": "mode=RGB size=(4344, 1448)"
+ },
+ {
+  "group": "All PNG",
+  "file": "02_Secondary_Logo/oryn-secondary-logo-reversed-for-dark-transparent.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "02_Secondary_Logo/oryn-secondary-logo-reversed-for-dark-transparent.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(1254, 1254)"
+ },
+ {
+  "group": "All PNG",
+  "file": "02_Secondary_Logo/oryn-secondary-logo-reversed-for-dark-transparent.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "02_Secondary_Logo/oryn-secondary-logo-reversed-on-navy-preview.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "02_Secondary_Logo/oryn-secondary-logo-reversed-on-navy-preview.png",
+  "check": "opaque RGB/RGBA by design",
+  "result": "PASS",
+  "detail": "mode=RGB size=(1254, 1254)"
+ },
+ {
+  "group": "All PNG",
+  "file": "02_Secondary_Logo/oryn-secondary-logo-transparent.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "02_Secondary_Logo/oryn-secondary-logo-transparent.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(1254, 1254)"
+ },
+ {
+  "group": "All PNG",
+  "file": "02_Secondary_Logo/oryn-secondary-logo-transparent.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "02_Secondary_Logo/oryn-secondary-logo-transparent@2x-vector-render.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "02_Secondary_Logo/oryn-secondary-logo-transparent@2x-vector-render.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(2508, 2508)"
+ },
+ {
+  "group": "All PNG",
+  "file": "02_Secondary_Logo/oryn-secondary-logo-transparent@2x-vector-render.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "02_Secondary_Logo/oryn-secondary-logo-white-bg.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "02_Secondary_Logo/oryn-secondary-logo-white-bg.png",
+  "check": "opaque RGB/RGBA by design",
+  "result": "PASS",
+  "detail": "mode=RGB size=(1254, 1254)"
+ },
+ {
+  "group": "All PNG",
+  "file": "02_Secondary_Logo/oryn-secondary-logo-white-bg@2x-vector-render.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "02_Secondary_Logo/oryn-secondary-logo-white-bg@2x-vector-render.png",
+  "check": "opaque RGB/RGBA by design",
+  "result": "PASS",
+  "detail": "mode=RGB size=(2508, 2508)"
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-1024.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-1024.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(1024, 1024)"
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-1024.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-128.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-128.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(128, 128)"
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-128.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-2048-vector-render.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-2048-vector-render.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(2048, 2048)"
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-2048-vector-render.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-256.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-256.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(256, 256)"
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-256.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-4096-vector-render.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-4096-vector-render.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(4096, 4096)"
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-4096-vector-render.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-512.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-512.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(512, 512)"
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-512.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-64.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-64.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(64, 64)"
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-64.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-transparent.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-transparent.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(1260, 1260)"
+ },
+ {
+  "group": "All PNG",
+  "file": "03_Icon_Only/oryn-icon-only-transparent.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-icon-only-mono-black.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-icon-only-mono-black.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(1260, 1260)"
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-icon-only-mono-black.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-icon-only-mono-navy.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-icon-only-mono-navy.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(1260, 1260)"
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-icon-only-mono-navy.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-icon-only-mono-white.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-icon-only-mono-white.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(1260, 1260)"
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-icon-only-mono-white.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-primary-logo-mono-black.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-primary-logo-mono-black.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(2172, 724)"
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-primary-logo-mono-black.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-primary-logo-mono-navy.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-primary-logo-mono-navy.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(2172, 724)"
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-primary-logo-mono-navy.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-primary-logo-mono-white.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-primary-logo-mono-white.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(2172, 724)"
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-primary-logo-mono-white.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-secondary-logo-mono-black.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-secondary-logo-mono-black.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(1254, 1254)"
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-secondary-logo-mono-black.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-secondary-logo-mono-navy.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-secondary-logo-mono-navy.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(1254, 1254)"
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-secondary-logo-mono-navy.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-secondary-logo-mono-white.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-secondary-logo-mono-white.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(1254, 1254)"
+ },
+ {
+  "group": "All PNG",
+  "file": "04_Monochrome/oryn-secondary-logo-mono-white.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/expo/adaptive-icon-background.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/expo/adaptive-icon-background.png",
+  "check": "opaque RGB/RGBA by design",
+  "result": "PASS",
+  "detail": "mode=RGB size=(1024, 1024)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/expo/adaptive-icon-foreground.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/expo/adaptive-icon-foreground.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(1024, 1024)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/expo/adaptive-icon-foreground.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/expo/adaptive-icon-monochrome.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/expo/adaptive-icon-monochrome.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(1024, 1024)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/expo/adaptive-icon-monochrome.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/expo/icon.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/expo/icon.png",
+  "check": "opaque RGB/RGBA by design",
+  "result": "PASS",
+  "detail": "mode=RGB size=(1024, 1024)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/expo/notification-icon.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/expo/notification-icon.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(96, 96)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/expo/notification-icon.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/play-store/ic_launcher-512.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/play-store/ic_launcher-512.png",
+  "check": "opaque RGB/RGBA by design",
+  "result": "PASS",
+  "detail": "mode=RGB size=(512, 512)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/drawable-hdpi/ic_stat_oryn.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/drawable-hdpi/ic_stat_oryn.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(36, 36)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/drawable-hdpi/ic_stat_oryn.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/drawable-mdpi/ic_stat_oryn.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/drawable-mdpi/ic_stat_oryn.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(24, 24)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/drawable-mdpi/ic_stat_oryn.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/drawable-xhdpi/ic_stat_oryn.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/drawable-xhdpi/ic_stat_oryn.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(48, 48)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/drawable-xhdpi/ic_stat_oryn.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/drawable-xxhdpi/ic_stat_oryn.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/drawable-xxhdpi/ic_stat_oryn.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(72, 72)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/drawable-xxhdpi/ic_stat_oryn.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/drawable-xxxhdpi/ic_stat_oryn.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/drawable-xxxhdpi/ic_stat_oryn.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(96, 96)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/drawable-xxxhdpi/ic_stat_oryn.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-hdpi/ic_launcher.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-hdpi/ic_launcher.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(72, 72)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-hdpi/ic_launcher.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-hdpi/ic_launcher_background.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-hdpi/ic_launcher_background.png",
+  "check": "opaque RGB/RGBA by design",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(162, 162)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-hdpi/ic_launcher_foreground.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-hdpi/ic_launcher_foreground.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(162, 162)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-hdpi/ic_launcher_foreground.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-hdpi/ic_launcher_monochrome.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-hdpi/ic_launcher_monochrome.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(162, 162)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-hdpi/ic_launcher_monochrome.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-hdpi/ic_launcher_round.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-hdpi/ic_launcher_round.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(72, 72)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-hdpi/ic_launcher_round.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-mdpi/ic_launcher.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-mdpi/ic_launcher.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(48, 48)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-mdpi/ic_launcher.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-mdpi/ic_launcher_background.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-mdpi/ic_launcher_background.png",
+  "check": "opaque RGB/RGBA by design",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(108, 108)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-mdpi/ic_launcher_foreground.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-mdpi/ic_launcher_foreground.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(108, 108)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-mdpi/ic_launcher_foreground.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-mdpi/ic_launcher_monochrome.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-mdpi/ic_launcher_monochrome.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(108, 108)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-mdpi/ic_launcher_monochrome.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-mdpi/ic_launcher_round.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-mdpi/ic_launcher_round.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(48, 48)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-mdpi/ic_launcher_round.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xhdpi/ic_launcher.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xhdpi/ic_launcher.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(96, 96)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xhdpi/ic_launcher.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xhdpi/ic_launcher_background.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xhdpi/ic_launcher_background.png",
+  "check": "opaque RGB/RGBA by design",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(216, 216)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xhdpi/ic_launcher_foreground.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xhdpi/ic_launcher_foreground.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(216, 216)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xhdpi/ic_launcher_foreground.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xhdpi/ic_launcher_monochrome.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xhdpi/ic_launcher_monochrome.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(216, 216)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xhdpi/ic_launcher_monochrome.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xhdpi/ic_launcher_round.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xhdpi/ic_launcher_round.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(96, 96)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xhdpi/ic_launcher_round.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxhdpi/ic_launcher.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxhdpi/ic_launcher.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(144, 144)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxhdpi/ic_launcher.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxhdpi/ic_launcher_background.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxhdpi/ic_launcher_background.png",
+  "check": "opaque RGB/RGBA by design",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(324, 324)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxhdpi/ic_launcher_foreground.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxhdpi/ic_launcher_foreground.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(324, 324)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxhdpi/ic_launcher_foreground.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxhdpi/ic_launcher_monochrome.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxhdpi/ic_launcher_monochrome.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(324, 324)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxhdpi/ic_launcher_monochrome.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxhdpi/ic_launcher_round.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxhdpi/ic_launcher_round.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(144, 144)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxhdpi/ic_launcher_round.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxxhdpi/ic_launcher.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxxhdpi/ic_launcher.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(192, 192)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxxhdpi/ic_launcher.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxxhdpi/ic_launcher_background.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxxhdpi/ic_launcher_background.png",
+  "check": "opaque RGB/RGBA by design",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(432, 432)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxxhdpi/ic_launcher_foreground.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxxhdpi/ic_launcher_foreground.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(432, 432)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxxhdpi/ic_launcher_foreground.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxxhdpi/ic_launcher_monochrome.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxxhdpi/ic_launcher_monochrome.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(432, 432)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxxhdpi/ic_launcher_monochrome.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxxhdpi/ic_launcher_round.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxxhdpi/ic_launcher_round.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(192, 192)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/res/mipmap-xxxhdpi/ic_launcher_round.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/source-layers/foreground-1024.png",
+  "check": "sRGB ICC embedded",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/source-layers/foreground-1024.png",
+  "check": "RGBA with true alpha (min alpha 0)",
+  "result": "PASS",
+  "detail": "mode=RGBA size=(1024, 1024)"
+ },
+ {
+  "group": "All PNG",
+  "file": "05_Android_App_Icons/source-layers/foreground-1024.png",
+  "check": "alpha=0 pixels carry no colour residue",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "Dimensions",
+  "file": "03_Icon_Only/*, 05_Android_App_Icons/**",
+  "check": "37 PNGs match specified pixel dimensions",
+  "result": "PASS",
+  "detail": "[]"
+ },
+ {
+  "group": "Icon Only",
+  "file": "03_Icon_Only/oryn-icon-only-transparent.png",
+  "check": "connected components (ring + sparkle = 2)",
+  "result": "PASS",
+  "detail": "2"
+ },
+ {
+  "group": "Icon Only",
+  "file": "03_Icon_Only/oryn-icon-only-transparent.png",
+  "check": "no checkerboard-grey opaque pixels (chroma<8, L 195-242)",
+  "result": "PASS",
+  "detail": "0 px"
+ },
+ {
+  "group": "Icon Only",
+  "file": "03_Icon_Only/oryn-icon-only-transparent.png",
+  "check": "ring interior fully transparent",
+  "result": "PASS",
+  "detail": "max alpha in centre 0"
+ },
+ {
+  "group": "Icon Only",
+  "file": "03_Icon_Only/oryn-icon-only-transparent.png",
+  "check": "grey/white edge-halo fraction (edge px, chroma<10 & L>200) < 5%",
+  "result": "PASS",
+  "detail": "1.28%"
+ },
+ {
+  "group": "Icon Only",
+  "file": "small-size render 64px",
+  "check": "ring counter open + symbol fills >75% of padded canvas",
+  "result": "PASS",
+  "detail": "centre alpha 0, coverage 0.83"
+ },
+ {
+  "group": "Icon Only",
+  "file": "small-size render 48px",
+  "check": "ring counter open + symbol fills >75% of padded canvas",
+  "result": "PASS",
+  "detail": "centre alpha 0, coverage 0.81"
+ },
+ {
+  "group": "Icon Only",
+  "file": "small-size render 32px",
+  "check": "ring counter open + symbol fills >75% of padded canvas",
+  "result": "PASS",
+  "detail": "centre alpha 0, coverage 0.81"
+ },
+ {
+  "group": "Icon Only",
+  "file": "small-size render 24px",
+  "check": "ring counter open + symbol fills >75% of padded canvas",
+  "result": "PASS",
+  "detail": "centre alpha 0, coverage 0.79"
+ },
+ {
+  "group": "Icon Only",
+  "file": "small-size render 16px",
+  "check": "ring counter open + symbol fills >75% of padded canvas",
+  "result": "PASS",
+  "detail": "centre alpha 0, coverage 0.81"
+ },
+ {
+  "group": "SVG",
+  "file": "03_Icon_Only/oryn-icon-only.svg",
+  "check": "rendered SVG vs raster: silhouette IoU",
+  "result": "PASS",
+  "detail": "IoU 0.9972"
+ },
+ {
+  "group": "SVG",
+  "file": "03_Icon_Only/oryn-icon-only.svg",
+  "check": "rendered SVG vs raster: mean colour error (0-255)",
+  "result": "PASS",
+  "detail": "MAE 2.09, p95 6.0"
+ },
+ {
+  "group": "SVG",
+  "file": "01_Primary_Logo/oryn-primary-logo.svg",
+  "check": "rendered SVG vs raster: silhouette IoU",
+  "result": "PASS",
+  "detail": "IoU 0.9886"
+ },
+ {
+  "group": "SVG",
+  "file": "01_Primary_Logo/oryn-primary-logo.svg",
+  "check": "rendered SVG vs raster: mean colour error (0-255)",
+  "result": "PASS",
+  "detail": "MAE 0.99, p95 4.0"
+ },
+ {
+  "group": "SVG",
+  "file": "02_Secondary_Logo/oryn-secondary-logo.svg",
+  "check": "rendered SVG vs raster: silhouette IoU",
+  "result": "PASS",
+  "detail": "IoU 0.9890"
+ },
+ {
+  "group": "SVG",
+  "file": "02_Secondary_Logo/oryn-secondary-logo.svg",
+  "check": "rendered SVG vs raster: mean colour error (0-255)",
+  "result": "PASS",
+  "detail": "MAE 1.26, p95 5.0"
+ },
+ {
+  "group": "SVG",
+  "file": "01_Primary_Logo/oryn-primary-logo-reversed-for-dark.svg",
+  "check": "well-formed XML, pure vector (no <image>, no external refs)",
+  "result": "PASS",
+  "detail": "67 paths, 550 KB"
+ },
+ {
+  "group": "SVG",
+  "file": "01_Primary_Logo/oryn-primary-logo.svg",
+  "check": "well-formed XML, pure vector (no <image>, no external refs)",
+  "result": "PASS",
+  "detail": "67 paths, 550 KB"
+ },
+ {
+  "group": "SVG",
+  "file": "02_Secondary_Logo/oryn-secondary-logo-reversed-for-dark.svg",
+  "check": "well-formed XML, pure vector (no <image>, no external refs)",
+  "result": "PASS",
+  "detail": "67 paths, 546 KB"
+ },
+ {
+  "group": "SVG",
+  "file": "02_Secondary_Logo/oryn-secondary-logo.svg",
+  "check": "well-formed XML, pure vector (no <image>, no external refs)",
+  "result": "PASS",
+  "detail": "67 paths, 546 KB"
+ },
+ {
+  "group": "SVG",
+  "file": "03_Icon_Only/oryn-icon-only.svg",
+  "check": "well-formed XML, pure vector (no <image>, no external refs)",
+  "result": "PASS",
+  "detail": "65 paths, 1836 KB"
+ },
+ {
+  "group": "SVG",
+  "file": "04_Monochrome/oryn-icon-only-mono-black.svg",
+  "check": "well-formed XML, pure vector (no <image>, no external refs)",
+  "result": "PASS",
+  "detail": "1 paths, 11 KB"
+ },
+ {
+  "group": "SVG",
+  "file": "04_Monochrome/oryn-icon-only-mono-navy.svg",
+  "check": "well-formed XML, pure vector (no <image>, no external refs)",
+  "result": "PASS",
+  "detail": "1 paths, 11 KB"
+ },
+ {
+  "group": "SVG",
+  "file": "04_Monochrome/oryn-icon-only-mono-white.svg",
+  "check": "well-formed XML, pure vector (no <image>, no external refs)",
+  "result": "PASS",
+  "detail": "1 paths, 11 KB"
+ },
+ {
+  "group": "SVG",
+  "file": "04_Monochrome/oryn-primary-logo-mono-black.svg",
+  "check": "well-formed XML, pure vector (no <image>, no external refs)",
+  "result": "PASS",
+  "detail": "1 paths, 30 KB"
+ },
+ {
+  "group": "SVG",
+  "file": "04_Monochrome/oryn-primary-logo-mono-navy.svg",
+  "check": "well-formed XML, pure vector (no <image>, no external refs)",
+  "result": "PASS",
+  "detail": "1 paths, 30 KB"
+ },
+ {
+  "group": "SVG",
+  "file": "04_Monochrome/oryn-primary-logo-mono-white.svg",
+  "check": "well-formed XML, pure vector (no <image>, no external refs)",
+  "result": "PASS",
+  "detail": "1 paths, 30 KB"
+ },
+ {
+  "group": "SVG",
+  "file": "04_Monochrome/oryn-secondary-logo-mono-black.svg",
+  "check": "well-formed XML, pure vector (no <image>, no external refs)",
+  "result": "PASS",
+  "detail": "1 paths, 29 KB"
+ },
+ {
+  "group": "SVG",
+  "file": "04_Monochrome/oryn-secondary-logo-mono-navy.svg",
+  "check": "well-formed XML, pure vector (no <image>, no external refs)",
+  "result": "PASS",
+  "detail": "1 paths, 29 KB"
+ },
+ {
+  "group": "SVG",
+  "file": "04_Monochrome/oryn-secondary-logo-mono-white.svg",
+  "check": "well-formed XML, pure vector (no <image>, no external refs)",
+  "result": "PASS",
+  "detail": "1 paths, 29 KB"
+ },
+ {
+  "group": "Monochrome",
+  "file": "04_Monochrome/oryn-icon-only-mono-black.png",
+  "check": "single exact colour, alpha identical to colour master",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "Monochrome",
+  "file": "04_Monochrome/oryn-icon-only-mono-white.png",
+  "check": "single exact colour, alpha identical to colour master",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "Monochrome",
+  "file": "04_Monochrome/oryn-icon-only-mono-navy.png",
+  "check": "single exact colour, alpha identical to colour master",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "Monochrome",
+  "file": "04_Monochrome/oryn-primary-logo-mono-black.png",
+  "check": "single exact colour, alpha identical to colour master",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "Monochrome",
+  "file": "04_Monochrome/oryn-primary-logo-mono-white.png",
+  "check": "single exact colour, alpha identical to colour master",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "Monochrome",
+  "file": "04_Monochrome/oryn-primary-logo-mono-navy.png",
+  "check": "single exact colour, alpha identical to colour master",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "Monochrome",
+  "file": "04_Monochrome/oryn-secondary-logo-mono-black.png",
+  "check": "single exact colour, alpha identical to colour master",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "Monochrome",
+  "file": "04_Monochrome/oryn-secondary-logo-mono-white.png",
+  "check": "single exact colour, alpha identical to colour master",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "Monochrome",
+  "file": "04_Monochrome/oryn-secondary-logo-mono-navy.png",
+  "check": "single exact colour, alpha identical to colour master",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "Lockups",
+  "file": "01_Primary_Logo/oryn-primary-logo-transparent.png",
+  "check": "no checkerboard-grey/off-white background pixels remain",
+  "result": "PASS",
+  "detail": "0 px"
+ },
+ {
+  "group": "Lockups",
+  "file": "01_Primary_Logo/oryn-primary-logo-transparent.png",
+  "check": "corners fully transparent",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "Lockups",
+  "file": "02_Secondary_Logo/oryn-secondary-logo-transparent.png",
+  "check": "no checkerboard-grey/off-white background pixels remain",
+  "result": "PASS",
+  "detail": "0 px"
+ },
+ {
+  "group": "Lockups",
+  "file": "02_Secondary_Logo/oryn-secondary-logo-transparent.png",
+  "check": "corners fully transparent",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "Geometry",
+  "file": "icon vs secondary",
+  "check": "symbol silhouette IoU after bbox normalisation (>=0.95 = consistent)",
+  "result": "PASS",
+  "detail": "0.981"
+ },
+ {
+  "group": "Geometry",
+  "file": "icon vs primary",
+  "check": "symbol silhouette IoU after bbox normalisation (>=0.95 = consistent)",
+  "result": "PASS",
+  "detail": "0.981"
+ },
+ {
+  "group": "Geometry",
+  "file": "secondary vs primary",
+  "check": "symbol silhouette IoU after bbox normalisation (>=0.95 = consistent)",
+  "result": "PASS",
+  "detail": "0.989"
+ },
+ {
+  "group": "Android",
+  "file": "05_Android_App_Icons/res/mipmap-mdpi/ic_launcher_foreground.png",
+  "check": "content inside 66dp safe-zone circle (r<=33dp)",
+  "result": "PASS",
+  "detail": "r=32.60dp of 33"
+ },
+ {
+  "group": "Android",
+  "file": "05_Android_App_Icons/res/mipmap-mdpi/ic_launcher_monochrome.png",
+  "check": "content inside 66dp safe-zone circle (r<=33dp)",
+  "result": "PASS",
+  "detail": "r=32.60dp of 33"
+ },
+ {
+  "group": "Android",
+  "file": "05_Android_App_Icons/res/mipmap-hdpi/ic_launcher_foreground.png",
+  "check": "content inside 66dp safe-zone circle (r<=33dp)",
+  "result": "PASS",
+  "detail": "r=32.39dp of 33"
+ },
+ {
+  "group": "Android",
+  "file": "05_Android_App_Icons/res/mipmap-hdpi/ic_launcher_monochrome.png",
+  "check": "content inside 66dp safe-zone circle (r<=33dp)",
+  "result": "PASS",
+  "detail": "r=32.39dp of 33"
+ },
+ {
+  "group": "Android",
+  "file": "05_Android_App_Icons/res/mipmap-xhdpi/ic_launcher_foreground.png",
+  "check": "content inside 66dp safe-zone circle (r<=33dp)",
+  "result": "PASS",
+  "detail": "r=32.31dp of 33"
+ },
+ {
+  "group": "Android",
+  "file": "05_Android_App_Icons/res/mipmap-xhdpi/ic_launcher_monochrome.png",
+  "check": "content inside 66dp safe-zone circle (r<=33dp)",
+  "result": "PASS",
+  "detail": "r=32.31dp of 33"
+ },
+ {
+  "group": "Android",
+  "file": "05_Android_App_Icons/res/mipmap-xxhdpi/ic_launcher_foreground.png",
+  "check": "content inside 66dp safe-zone circle (r<=33dp)",
+  "result": "PASS",
+  "detail": "r=32.26dp of 33"
+ },
+ {
+  "group": "Android",
+  "file": "05_Android_App_Icons/res/mipmap-xxhdpi/ic_launcher_monochrome.png",
+  "check": "content inside 66dp safe-zone circle (r<=33dp)",
+  "result": "PASS",
+  "detail": "r=32.26dp of 33"
+ },
+ {
+  "group": "Android",
+  "file": "05_Android_App_Icons/res/mipmap-xxxhdpi/ic_launcher_foreground.png",
+  "check": "content inside 66dp safe-zone circle (r<=33dp)",
+  "result": "PASS",
+  "detail": "r=32.23dp of 33"
+ },
+ {
+  "group": "Android",
+  "file": "05_Android_App_Icons/res/mipmap-xxxhdpi/ic_launcher_monochrome.png",
+  "check": "content inside 66dp safe-zone circle (r<=33dp)",
+  "result": "PASS",
+  "detail": "r=32.23dp of 33"
+ },
+ {
+  "group": "Android",
+  "file": "05_Android_App_Icons/expo/adaptive-icon-foreground.png",
+  "check": "content inside 66dp safe-zone circle (r<=33dp)",
+  "result": "PASS",
+  "detail": "r=32.15dp of 33"
+ },
+ {
+  "group": "Android",
+  "file": "05_Android_App_Icons/expo/adaptive-icon-monochrome.png",
+  "check": "content inside 66dp safe-zone circle (r<=33dp)",
+  "result": "PASS",
+  "detail": "r=32.15dp of 33"
+ },
+ {
+  "group": "Android",
+  "file": "expo/adaptive-icon-foreground.png",
+  "check": "foreground carries no pre-rounded/launcher background (transparent canvas corners)",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "Android",
+  "file": "expo/adaptive-icon-background.png",
+  "check": "background is full-bleed opaque square",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "Android",
+  "file": "expo/adaptive-icon-monochrome.png",
+  "check": "monochrome layer: alpha identical to foreground silhouette",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "Android",
+  "file": "res/mipmap-anydpi-v26/*.xml",
+  "check": "adaptive-icon XML well-formed (background/foreground/monochrome)",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "Lockups",
+  "file": "01_Primary_Logo/oryn-primary-logo-reversed-for-dark-transparent.png",
+  "check": "same alpha as colour logo, text pixels light (contrast on #0A0F1F)",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "Lockups",
+  "file": "02_Secondary_Logo/oryn-secondary-logo-reversed-for-dark-transparent.png",
+  "check": "same alpha as colour logo, text pixels light (contrast on #0A0F1F)",
+  "result": "PASS",
+  "detail": ""
+ },
+ {
+  "group": "Lockups",
+  "file": "01/02 SVG",
+  "check": "wordmark #000225 and tagline #4E5A7A identical in primary and secondary",
+  "result": "PASS",
+  "detail": "({'#000225', '#4E5A7A'}, {'#000225', '#4E5A7A'})"
+ }
+]

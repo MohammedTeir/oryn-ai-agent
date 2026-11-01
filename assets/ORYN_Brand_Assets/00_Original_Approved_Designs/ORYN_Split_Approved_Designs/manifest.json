@@ -1,0 +1,159 @@
+{
+  "UI_States_Execution_Flow_v1.3": [
+    {
+      "file": "01_termux_connection_states.png",
+      "crop": [
+        15,
+        98,
+        1525,
+        420
+      ]
+    },
+    {
+      "file": "02_root_status_states.png",
+      "crop": [
+        15,
+        420,
+        675,
+        790
+      ]
+    },
+    {
+      "file": "03_command_review_approval.png",
+      "crop": [
+        665,
+        420,
+        1080,
+        795
+      ]
+    },
+    {
+      "file": "04_execution_states.png",
+      "crop": [
+        1070,
+        420,
+        1525,
+        795
+      ]
+    },
+    {
+      "file": "05_dialogs_confirmations.png",
+      "crop": [
+        15,
+        790,
+        1525,
+        1024
+      ]
+    }
+  ],
+  "Design_System_Components_v1.2": [
+    {
+      "file": "01_color_system.png",
+      "crop": [
+        10,
+        84,
+        323,
+        536
+      ]
+    },
+    {
+      "file": "02_typography.png",
+      "crop": [
+        10,
+        536,
+        323,
+        745
+      ]
+    },
+    {
+      "file": "03_spacing_radius_elevation.png",
+      "crop": [
+        10,
+        745,
+        323,
+        1024
+      ]
+    },
+    {
+      "file": "04_icon_system.png",
+      "crop": [
+        325,
+        84,
+        728,
+        368
+      ]
+    },
+    {
+      "file": "05_buttons.png",
+      "crop": [
+        325,
+        365,
+        728,
+        727
+      ]
+    },
+    {
+      "file": "06_input_components.png",
+      "crop": [
+        325,
+        725,
+        728,
+        1024
+      ]
+    },
+    {
+      "file": "07_cards_containers.png",
+      "crop": [
+        730,
+        84,
+        1155,
+        379
+      ]
+    },
+    {
+      "file": "08_status_indicators.png",
+      "crop": [
+        1156,
+        84,
+        1536,
+        380
+      ]
+    },
+    {
+      "file": "09_command_review_variants.png",
+      "crop": [
+        730,
+        380,
+        1079,
+        1024
+      ]
+    },
+    {
+      "file": "10_execution_states.png",
+      "crop": [
+        1080,
+        380,
+        1536,
+        698
+      ]
+    },
+    {
+      "file": "11_navigation.png",
+      "crop": [
+        1080,
+        696,
+        1536,
+        822
+      ]
+    },
+    {
+      "file": "12_dialog_components.png",
+      "crop": [
+        1080,
+        820,
+        1536,
+        1024
+      ]
+    }
+  ]
+}
