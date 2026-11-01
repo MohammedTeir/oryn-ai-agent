@@ -559,3 +559,41 @@ The standalone milestone is complete only when the same workflow runs against a 
 **Recommended implementation:** Expo + React Native for the two-screen UI; TypeScript for Gemini orchestration; Expo Native Modules and Kotlin for secure process execution, permission checks, and audit enforcement; a pluggable terminal backend beginning with external Termux and progressing to a validated embedded runtime; optional Root support as a separate, explicitly authorized capability.
 
 **ORYN product principle:** The agent can autonomously reason and propose the next step, but the user remains the authority for every execution.
+
+## Icon System Implementation Guidelines (Approved Decision — 2026-11-01)
+
+**Scope:** In-app interface icons, not the ORYN brand mark or launcher assets. This is an implementation rule for the approved light-mode Design System / Icon System. Preserve the approved two-tab navigation and visual hierarchy.
+
+- **Default in-app icon library:** `lucide-react-native` with `react-native-svg` for Expo / React Native. Prefer a single consistent Lucide stroke family rather than mixing Ionicons, Material, and Feather indiscriminately. `@expo/vector-icons` is an available fallback only when a needed glyph is unavailable or an approved design specifically requires it.
+- **Install with:** `npx expo install lucide-react-native react-native-svg`. Confirm compatibility with the project's pinned Expo SDK, package versions, and Android development build.
+- **Do not trace screenshot icons.** Use library vectors for ordinary UI actions and statuses; preserve brand artwork for ORYN-specific identity assets.
+- **Brand assets:** Header logo, assistant avatar, AI Agent tab icon, app launcher, adaptive foreground/background, and notification icon should use approved ORYN artwork from `assets/ORYN_Brand_Assets/` in the correct variant. Prefer the clean master-derived PNG for full-color artwork rather than the approximate traced SVG. For notification icons, use a platform-compatible monochrome transparent resource. The AI Agent tab should use the approved small ORYN symbol (monochrome when appropriate), **not a generic house/home glyph**.
+- **Custom SVG exception:** Use a purpose-built, reviewed SVG only when a genuinely custom UI symbol is needed; this does not make the traced ORYN SVG the default application master.
+
+### Suggested Lucide mapping (verify exports against the pinned package version)
+
+| UI meaning | Lucide component/export |
+|---|---|
+| Terminal & Tools | `Terminal` |
+| Settings | `Settings` |
+| Scan | `Scan` |
+| Security / approval | `ShieldCheck` |
+| Tools / fix | `Wrench` |
+| Connected / disconnected | `Wifi` / `WifiOff` (only if semantically appropriate; Termux connection is not Wi-Fi connectivity) |
+| Root access | `KeyRound` or `ShieldCheck` with explicit Root label/status; **avoid Fingerprint**, which implies biometrics |
+| Success / error | `CircleCheck` / `CircleX` |
+| Warning | `TriangleAlert` |
+| Run / stop / retry | `Play` / `Square` / `RefreshCw` |
+| Download / upload | `Download` / `Upload` |
+| Copy / info / help | `Copy` / `Info` / `CircleHelp` |
+| More / close | `Ellipsis` / `X` |
+
+### Component and accessibility contract
+
+- Implement a reusable typed `AppIcon` component with a constrained semantic-name-to-Lucide-component mapping (remove the space in `Lucide` when implementing), default size/stroke/color tokens, disabled/error/success states, and optional accessibility labels. Avoid repeating ad hoc icon props throughout screens.
+- Use the approved design tokens: icon dimensions and spacing in Android **dp** (React Native logical density-independent units), text in scalable **sp** via platform text scaling. Support system font scaling, accessible contrast, screen-reader descriptions, and sufficient touch targets. Do not encode critical status solely through icon shape or color.
+- Suggested default stroke width is `2`; choose icon sizes from approved design tokens and verify them visually on actual devices rather than hardcoding all icons to 24.
+- **Runtime truthfulness:** Icon appearance and status labels must reflect actual detected backend/tool/permission state. Do not infer Termux connectivity from Wi-Fi, or Root availability from an icon. Never allow an icon-only action to bypass mandatory per-command Review → Explicit Approval → Execute, including retries and Root actions.
+- Validate every mapped icon name against the installed library exports during implementation and test rendering on Android. Do not substitute icons or alter the approved navigation without design review.
+
+**Acceptance:** Ordinary UI icons use a consistent Lucide family; brand surfaces use approved ORYN assets; the AI Agent tab is ORYN-branded; Root is not depicted as biometrics; Android accessibility and explicit command approval remain intact.
