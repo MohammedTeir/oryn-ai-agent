@@ -1,121 +1,199 @@
 # ORYN — Implementation Plan
 
-**Status:** Planning / implementation not yet verified  
-**Last reviewed:** 2026-11-01  
-**Source of truth:** [Master Project Specification v1.8](docs/ORYN_Master_Project_Specification.md)  
-**Brand assets:** [ORYN Brand Assets](assets/ORYN_Brand_Assets/)  
-**Scope:** Android-first Expo/React Native + TypeScript + Kotlin native modules + Gemini + pluggable terminal backends.
+**Status:** Planning only — no app implementation verified by this document  
+**Last requirements reconciliation:** 2026-11-01 (eight interview batches)  
+**Specification:** [ORYN Master Project Specification v1.9](docs/ORYN_Master_Project_Specification.md)  
+**Approved assets:** [ORYN Brand Assets](assets/ORYN_Brand_Assets/)  
+**Release objective:** Signed Android 10+ APK on GitHub Releases; complete verified v1 capabilities, with honest embedded/external runtime compatibility reporting.
 
-> This is an actionable delivery plan, not evidence that the application has been implemented. Update checkboxes only after inspecting code, tests, and real-device results. The master specification wins if a discrepancy is found.
+> **Important:** This plan is a delivery checklist, not a statement that any task is implemented. The [specification](docs/ORYN_Master_Project_Specification.md) and the user's eight-batch interview decisions define scope. Do not infer implementation from screenshots, asset QA, documentation, or untested backend assumptions.
 
-## Guiding invariants
+## 1. Confirmed v1 product scope
 
-- [ ] Exactly **two primary destinations**: AI Agent and Terminal & Tools; Settings is a secondary screen.
-- [ ] Light Mode only, aligned with the approved UI designs and design tokens.
-- [ ] **Every command** (diagnostics, scans, installs, quick commands, retries, root checks) goes through Review → explicit Approve → Execute. Enforce the gate in native execution code, not just UI.
-- [ ] No automatic root elevation. Privileged actions require explicit, separately disclosed approval.
-- [ ] Runtime, permission, connection, root, tool, and execution statuses reflect real observations; never hardcode optimistic states.
-- [ ] Gemini API key is stored using Android-backed secure storage/Keystore, never logged, exported, or embedded in shell commands.
-- [ ] Treat model outputs, tool output, terminal stdout/stderr, and external files as untrusted data.
-- [ ] Keep a backend-independent terminal execution contract. External Termux is a feasibility target, **not** an assumed guaranteed capability.
-- [ ] Do not treat visual approval of brand assets as proof of runtime or launcher correctness.
+- [ ] **First-launch wizard:** welcome → Gemini BYOK setup/validation → detection of embedded/external runtime → permissions explanation/consent → main UI.
+- [ ] **Exactly two primary navigation destinations:** AI Agent (Chat) and Terminal & Tools; Settings is a secondary page, sheet or modal.
+- [ ] **Approved design:** Light Mode, canonical ORYN logos/launcher/notification icons; UI icon family `lucide-react-native`, shared `AppIcon` mapping and accessible status indicators.
+- [ ] **Bilingual v1:** Arabic and English translations and RTL layouts, with correct LTR presentation for code, paths, commands and identifiers.
+- [ ] **Gemini:** user-provided API key, secure storage, dynamically discovered available models with user selection, reliable error handling, context limits, visible confirmed usage or clearly labeled estimates, user-set budget and enforceable stop behavior.
+- [ ] **Autonomous planning, not autonomous authorization:** produce a complete ordered task plan, propose execution steps, collect real results, independently verify, diagnose failures, propose repairs and enforce bounded retries.
+- [ ] **Execution queue:** only one active execution task; additional requested tasks wait.
+- [ ] **Terminal backends:** verified external Termux integration and a feasibility-gated **Termux-compatible embedded runtime**. Include only proven embedded capabilities, visibly offer external fallback on unsupported operations, and disclose device/runtime differences.
+- [ ] **Automatic backend recommendation** from real capability probes, visible before dispatch; user may override; switching/retrying with a different backend requires authorization for the new context.
+- [ ] **Tools Manager:** per-backend discovery, tool path/version checks, package install/update/remove, diagnostics, trusted source/provenance, logs and independent post-action verification.
+- [ ] **Workspaces:** user-selected file/folder access, authorized reading/editing, scripts, Git commands and test/build workflows; request separate permission for broader access where supported.
+- [ ] **Root optional:** root manager capability check, explicit separate per-root-command approval and risk warning, fully functional non-root flow.
+- [ ] **Local-first persistence:** conversation, plan, actions, results, grants/approvals, runtime/tool snapshots, redacted audit trail and settings; deletion, export, retention and confirmations; secrets protected and omitted from exports.
+- [ ] **Offline:** retain UI/local history and supported local terminal functions; pause Gemini-dependent planning with truthful offline state.
+- [ ] **No mandatory accounts in v1:** future optional login/sync extension points only; future sync limited to conversations, plans and non-sensitive settings, excluding raw command/output logs by default.
+- [ ] **Release:** real Android 10+ device testing, security, integration, accessibility/RTL, signed APK, support/capability matrix and known limitations.
 
-## Phase 0 — Repository baseline and feasibility spike (highest priority)
+**Explicit exclusions from v1:** cloud login/sync implementation, iOS/web clients, Google Play release, hosted shared AI backend, offline local LLM, unrestricted remote shell, guaranteed support for every Linux package and indefinite background execution.
 
-- [ ] Inventory the repository and verify current implementation against source files (not README claims).
-- [ ] Initialize the Expo TypeScript project and Android development build tooling; document Node, Expo SDK, Gradle, Kotlin, Android SDK versions.
-- [ ] Define application ID only after ownership/namespace checks.
-- [ ] Create a minimal Kotlin Expo module and verify it is callable from React Native on a physical Android device.
-- [ ] Research and test external Termux integration using supported APIs/intents, required Termux configuration, package visibility, permissions, Android version constraints, and result delivery.
-- [ ] Detect Termux installation and distinguish checking / connected / not installed / permission required / disconnected / unsupported / unknown.
-- [ ] Implement a minimal native-side approval token/gate and demonstrate that a diagnostic command cannot run without a fresh explicit approval.
-- [ ] Execute one harmless, approved command on a real device; capture real stdout, stderr, exit code, duration, and failure cases.
-- [ ] Document reproducible feasibility results, supported device/Android/Termux versions, limitations, and a go/no-go decision for the external backend.
+## 2. Native authorization policy — mandatory release gate
 
-**Exit gate:** A physical-device demo proves approved command execution and result capture; if integration is blocked, record evidence and evaluate alternatives before committing to a UI-only mock.
+Approval is not an optional UI feature. **All shell execution must be authorized by the user through the Kotlin-native policy gateway; no LLM/JavaScript direct-execution bypass.**
 
-## Phase 1 — App foundation and approved UI
+| Mode | Review and authority | Hard constraints |
+|---|---|---|
+| Strict | One exact user-reviewed command/action | Immutable backend, arguments/script, working directory, environment, privilege and effects; one-use dispatch authorization |
+| Batch | User reviews **all exact commands in a fixed set** and approves the entire set | No commands may be added; no context mutation; each dispatch verified against fixed grant; no replay |
+| Session | User chooses temporary authorized tools, directories, operations, backend and allowed privileges | Default **15 minutes**, at most **20 commands**, limited reads/writes, immediate revoke, native checks on each action |
 
-- [ ] Implement navigation with two bottom tabs (AI Agent; Terminal & Tools) and a Settings subpage.
-- [ ] Apply approved Light Mode design tokens, responsive layouts, Android dp/sp sizing, dynamic text scaling, accessibility labels and contrast.
-- [ ] Use `lucide-react-native` as the **primary UI icon library**; verify exports against a pinned version. Install with `npx expo install lucide-react-native react-native-svg` when compatible.
-- [ ] Centralize icon names, stroke widths, sizes, semantic colors, and accessibility in a reusable `AppIcon` component; avoid ad-hoc icon imports throughout screens.
-- [ ] Map UI semantics to Lucide (terminal, settings, scan, shield-check, wrench, wifi/wifi-off, key-round or shield-check for root, circle-check, circle-x, triangle-alert, play, square, refresh-cw, download, upload, copy, info, circle-help, ellipsis, x). Do **not** use fingerprint to imply root permission.
-- [ ] Use the canonical ORYN symbol PNG for branding, assistant avatar and selected AI Agent tab; do not replace it with a generic house icon. Preserve the ORYN wordmark/tagline as approved.
-- [ ] Use original PNG-based brand assets for launcher, Play Store, and brand surfaces; retain traced SVGs only where vector scaling is genuinely needed, with documented fidelity limits.
-- [ ] Integrate Expo icon, adaptive foreground/background, themed monochrome, and notification assets from `assets/ORYN_Brand_Assets/05_Android_App_Icons/`.
-- [ ] Implement AI Agent chat shell, Terminal & Tools terminal/tools segmented views, Settings, status components, command review variants, and confirmation dialogs.
-- [ ] Implement empty/loading/error/unknown/disconnected states using real state contracts; do not fake connection, installed tools, or command output.
-- [ ] Require confirmation for destructive resets and history clearing; import must show a changes preview, never import an API key.
-- [ ] Verify launcher masks, safe zones, themed icon, notification icon, and small-size legibility on real Android launchers.
+- [ ] Implement one authorization contract across manual commands, quick actions, saved commands, tool scans, installs, fixes, retries, Agent proposals, Settings checks and runtime fallback.
+- [ ] Default to **Strict** until the user changes it (working assumption; confirm before shipping).
+- [ ] Implement immutable action/grant records, canonical descriptors, bounded grants, per-dispatch proof, replay protection, tamper resistance, expiration, revocation, deny logs and transactionally recorded audit events.
+- [ ] Enforce Batch as an *enumerated set of exact actions*, never a blanket approval for a changing plan; new commands require separate authorization.
+- [ ] Enforce Session's approved operations, backend, directories, tools, wall-clock duration and command count at native execution time.
+- [ ] **Root and high-risk/destructive actions require separate exact-action approval even within Batch and Session.** Never silently elevate, broaden privileges or persist automatic root authorization.
+- [ ] Establish a concrete high-risk classification and **user-approved prohibited-operations list** before implementing unrestricted command dispatch. **The list's entries are still OPEN — do not invent or silently finalize them.**
+- [ ] Threat-model shell expansion, symlinks, relative paths, redirections, interpreters, scripts, child processes, subprocesses and indirect filesystem writes. A command cannot enter Session auto-execution unless its declared scope can be reliably enforced.
+- [ ] If a safe Session boundary cannot be proven, require Strict review or deny the action. Do not claim an Android sandbox or shell text filter provides stronger isolation than tests demonstrate.
+- [ ] Stop new command dispatch while app is backgrounded. Existing running command may complete only when Android/runtime permits; on foreground resume reconcile current and uncertain states.
+- [ ] Test denial, revoke, expiry, 21st command, changed arguments, changed backend, dangerous/root action, batch mutation, replay, process death, and no-command-after-background.
 
-**Exit gate:** UI matches approved designs; accessibility checks pass; status views can render real runtime observations; icons are visually validated on-device.
+**Authorization exit gate:** All invocation paths either obtain a valid, mode-appropriate native grant or execute nothing. Root/high-risk always require extra confirmation; prohibited actions never run.
 
-## Phase 2 — Agent, Gemini, and tool inventory
+## 3. Milestone 0 — Repository and platform feasibility (first engineering step)
 
-- [ ] Implement Gemini API key onboarding, secure storage, revocation, and error handling; exclude secrets from telemetry, exports and diagnostics.
-- [ ] Discover selectable Gemini models dynamically from actual provider availability; do not hardcode a purported current model list.
-- [ ] Define strict typed contracts for plans, proposed commands, approval requests, execution results, tool inventory, and agent state transitions.
-- [ ] Build plan → review → approval → execute → observe → verify lifecycle; no model-produced command can bypass review.
-- [ ] Inspect actual installed tools with verified name, version, path, backend and availability; clearly distinguish unknown, unsupported, and missing.
-- [ ] Support tool-install proposals only through reviewed commands; detect environment compatibility before proposing installation.
-- [ ] Handle timeouts, cancellation, stdout/stderr limits, process lifecycle, retry budgets and failures; **Review & Retry** must generate a fresh approval request.
-- [ ] Persist redacted task history and audit events without credentials or unnecessary sensitive output.
+**Goal:** Find Android/Termux blockers before committing to production architecture. **This milestone is not the v1 product.**
 
-**Exit gate:** A real end-to-end Gemini-assisted task produces a reviewable command, executes only after approval, and reports verified results/failures.
+- [ ] Inventory actual tracked source files, existing configs and assets; do not infer functionality from README or QA self-reports.
+- [ ] Record exact compatible Expo SDK, React Native, Kotlin, Gradle, Android SDK, `lucide-react-native`, Gemini SDK and Termux versions **after reviewing current upstream documentation**. Record Android minimum, target SDK, ABI/architecture and device test matrix.
+- [ ] Check app ID ownership/namespace before choosing it.
+- [ ] Prove minimal Expo custom development build and callable Kotlin Expo Module on a physical Android device. Expo Go cannot satisfy the custom native integration.
+- [ ] External Termux spike: supported integration contract, installed/ready/permission states, real command results, cancellation/timeout, background/process-death behavior and missing Termux handling.
+- [ ] Embedded runtime spike **in parallel in scope**: investigate Termux-compatible packaging, linker/binaries, filesystem layout, package manager, executable restrictions, ABIs, app identity/permissions, update/rollback, licenses and redistribution.
+- [ ] Prototype one benign, explicitly approved command through each feasible backend, collecting genuine stdout, stderr, exit code and timestamps.
+- [ ] Test installation of one compatible benign tool in the embedded environment *if supported*, with verified post-install invocation; record what fails.
+- [ ] Draft backend capability matrix: unsupported / unknown / requires setup / verified working by Android/device/ABI/runtime/tool.
+- [ ] Prove a native approval gate cannot be bypassed by calling the backend directly from React Native or an invalid token.
+- [ ] Record a go/no-go decision and fallback for each runtime capability; incomplete embedded Termux parity is not grounds for false claims.
 
-## Phase 3 — Security and reliability hardening
+**Exit gate:** Real-device test evidence for Kotlin bridge, native grant enforcement, external integration and an honest embedded-runtime feasibility decision. No app code is claimed production-ready at this stage.
 
-- [ ] Threat-model model prompt injection, terminal output injection, shell quoting, command substitution, path traversal, secret exposure, and approval replay.
-- [ ] Bind each approval to the exact immutable command, arguments, backend, working directory, privilege scope, and expiration; reject modified/replayed approvals.
-- [ ] Validate and display root-required operations separately; never silently retry with `su`.
-- [ ] Test backgrounding, app termination, reconnection, partial results, duplicate execution, and cancellation.
-- [ ] Add unit, integration, native and on-device negative tests; verify denied approval always means zero execution.
-- [ ] Add structured, privacy-conscious diagnostic logs and clear recovery messaging.
+## 4. Milestone 1 — UI, onboarding and local foundation
 
-**Exit gate:** Security tests pass, execution cannot bypass approval, and failure/recovery paths are demonstrated.
+- [ ] Build the native-enabled Expo/React Native/TypeScript app structure and exactly two primary routes with secondary Settings, without adding a third tab.
+- [ ] Implement approved Light Mode design tokens, UI components, English/Arabic/RTL strings, text scaling, contrast, accessibility labels and offline/error/unknown states.
+- [ ] Use the approved PNG master-derived brand icons and correct Expo/Android adaptive foreground/background/monochrome/notification resources; validate launcher safe zones and mask variants on devices.
+- [ ] Install and pin compatible `lucide-react-native` and `react-native-svg`; implement shared typed `AppIcon` semantic mapping. AI Agent tab uses the ORYN mark rather than generic House. Root icon must not imply fingerprint biometrics.
+- [ ] Setup Wizard: welcome, API-key validation and secure persistence, runtime detection and actionable permission prompts.
+- [ ] Local transactional persistence schema and migrations for conversations, tasks, plans, proposals, grants, executions, events, tool inventory, runtime capability snapshots and settings.
+- [ ] Encrypt credentials using Android Keystore-backed storage, redact/limit raw output, implement user-controlled retention and safe deletion/export. Imports require schema validation, preview and confirmation; never import/export the API key.
+- [ ] Implement task queue state and truthful UI states bound to native backend observations, not asset/mockup fixtures.
+- [ ] Provide no-account local operation; isolate future sync interfaces without shipping a cloud backend.
 
-## Phase 4 — Embedded runtime research (conditional)
+**Exit gate:** Device screenshots match approved designs, navigation and onboarding work, accessible RTL flows are tested, and no mock connection or command result is presented as real.
 
-- [ ] Assess Android executable restrictions, ABIs, packaging size, process isolation, filesystem access, and long-term maintenance.
-- [ ] Prototype the embedded backend behind the same `TerminalBackend` contract; compare feasibility against external Termux and fork alternatives.
-- [ ] Proceed only after documenting a feasible, testable approach; do not promise a self-contained APK prematurely.
+## 5. Milestone 2 — Secure terminal and dual-runtime integration
 
-## Phase 5 — Release engineering
+- [ ] Define a backend-neutral `TerminalBackend` interface for probe, execution, cancellation, event stream, normalized stdout/stderr, exit status and capability reporting.
+- [ ] Integrate Strict/Batch/Session grant validation **inside native dispatch** for both runtimes. Abort on tamper/revocation, and audit every authorization and execution.
+- [ ] Implement external Termux adapter with validated permissions/handshake and supported result delivery. Surface unavailable/permission denied/partial results honestly.
+- [ ] Integrate the **tested embedded runtime capability subset**; document unsupported tools/ABIs/packages and offer explicit external fallback for applicable actions.
+- [ ] Present actual chosen backend for each command and reauthorize when effective execution context changes.
+- [ ] Handle stdout/stderr, output sizes, progress, exit codes, cancellation semantics, unknown status, process restarts and disconnections.
+- [ ] Prove only one active execution task; queue others and reject duplicate starts.
+- [ ] Apply Android background rule: already-running command may finish when possible; do not schedule another command until foreground.
+- [ ] Implement optional root-manager adapter, real root capability check, extra command-specific confirmation and graceful non-root mode; native root checks that execute shell commands also pass the grant gate.
 
-- [ ] Configure CI for lint, typecheck, tests, Android development builds and reproducible release builds.
-- [ ] Verify app signing, package name, permissions disclosure, data handling, offline/error behavior and key protection.
-- [ ] Produce and install a real signed test APK; validate on representative Android versions and launcher configurations.
-- [ ] Verify brand/trademark/store-name availability and licensing of dependencies/assets before public distribution.
-- [ ] Publish release notes, known limitations, install instructions and an acceptance-test report.
+**Exit gate:** Device-tested backend functionality and secure authorization across both runtime classes (or clearly documented embedded limits/fallback), with independent checks proving denied/out-of-scope commands never run.
 
-## Suggested implementation sequence
+## 6. Milestone 3 — Gemini agent, planning and budgets
 
-1. **Feasibility first:** Expo/Kotlin bridge → Termux detection → native approval gate → approved command → real output.
-2. **UI foundation:** navigation → design tokens/icons → screens → runtime-bound status and dialogs.
-3. **Intelligence:** Gemini model discovery → typed plans → approvals → execution observations.
-4. **Hardening:** root policy → threat tests → lifecycle reliability.
-5. **Packaging:** Android icon validation → signed APK → release readiness.
+- [ ] Gemini BYOK onboarding, secure key removal, model discovery from accessible provider data and user-selectable model.
+- [ ] Strict typed and schema-validated request/response contracts, prompt-injection defenses and provider error handling.
+- [ ] Complete task plan with ordered steps/dependencies and visible assumptions, estimated effects and review status.
+- [ ] Propose commands as structured actions through the native grant gateway, not direct tool execution.
+- [ ] Observe genuine output and exit status, verify task outcomes independently where appropriate, and propose failure diagnosis/repair.
+- [ ] Configurable retry/step/token/time/output limits; new or changed repair commands require authorization according to mode, high-risk/root needs separate review.
+- [ ] Usage tracking: provider-confirmed token data where available; label projections as estimates; respect configurable user budget and stop new API requests when the enforceable threshold is reached.
+- [ ] Queue other tasks while an execution task is active; surface queued/planning/running/failed/paused/completed states honestly.
+- [ ] Offline flow keeps local Terminal and histories available but pauses Gemini-dependent planning.
 
-## Required evidence per milestone
+**Exit gate:** End-to-end user task → full plan → authorize → execute → observe → verify/diagnose is demonstrated with real backend outputs and controllable budget errors.
 
-For each completed item record: code path/commit, device and Android version where relevant, test command or scenario, actual result, and any known limitation. Keep screenshots and design references distinct from executable proof.
+## 7. Milestone 4 — Tools Manager, workspaces and reliability
 
-## Immediate next task
+- [ ] Verified per-backend tool inventory and runtime capabilities: installed/working, version/path, unknown, unsupported, permission required and stale status.
+- [ ] Trusted compatible package-source discovery and user-reviewed install, upgrade, uninstall and repair workflows.
+- [ ] Track package provenance, diagnostic/error history, license/verification metadata and independently verify tool lifecycle actions.
+- [ ] User-selected file/folder permissions, safe read/edit workflows, project inspection, Git integration, scripts, build and test commands; all executable mutations require grants.
+- [ ] Validate import/backup semantics, log deletion, reset confirmation, privacy-safe export and local database upgrades.
+- [ ] Handle process death, network loss, Android Doze/battery restrictions, low storage, partial installations, interrupted installs, reconnects and unknown/stale execution status.
+- [ ] Test Android 10+ / ABI compatibility matrix and feature-specific unsupported cases; do not label all environments as equally compatible.
 
-**Start Phase 0:** scaffold the Expo project and Kotlin bridge, then prove external Termux detection and one explicitly approved harmless command on a real Android device. Do not begin autonomous command execution until the native approval enforcement is proven.
+**Exit gate:** Full tool management and development workflows verified on supported devices, truthful failure/recovery, permission isolation, and no uncontrolled shell execution.
 
-## Requirements grounding and anti-hallucination protocol (mandatory)
+## 8. Milestone 5 — Security, accessibility and full acceptance
 
-Before implementing **any** feature, the agent/developer must:
+- [ ] Threat-model and test model/file/output prompt injection, shell command injection, symlink/path escape, child-process bypass, root escalation, grant replay, memory/secret exposure and malicious package sources.
+- [ ] Draft and obtain product approval for **exact prohibited operations**, high-risk classification, safe root confirmation, and Session permitted operations; implement and test the policy, fail closed on unknown dangerous actions.
+- [ ] Verify Strict exact grants, Batch immutable fixed list, Session 15 minutes/20 commands/capability scope, immediate revocation and expiry, separate root/high-risk approval.
+- [ ] Verify backgrounding blocks *new* commands; interruption/reconnect never reports false success; denial and out-of-scope actions execute nothing.
+- [ ] Android storage permission coverage, secret-safe encrypted key persistence, redacted logs/exports, deletion and privacy checks.
+- [ ] Arabic/English/RTL acceptance, Android accessibility, readable status, offline and slow-network UX.
+- [ ] Automated unit, integration, native-module, security/negative tests and on-device end-to-end scenarios.
 
-1. Read `docs/ORYN_Master_Project_Specification.md`, this plan, the approved design assets and relevant existing source files. Inspect code rather than relying solely on README or historical summaries.
-2. Produce a brief **scope and stack inventory**: confirmed product goals, in-scope features, explicit non-goals, two-screen navigation, Android/Termux/Gemini/Expo/Kotlin architecture, and dependencies. Cite the exact specification heading or code path for each requirement.
-3. Classify each proposed behavior as **Confirmed (specified)**, **Verified (implemented and tested)**, **Proposed (needs approval)**, or **Unknown (requires investigation)**. Never present a proposed or unknown capability as existing.
-4. Do not invent screens, permissions, root behavior, Termux capabilities, Gemini model availability, APIs, dependencies, supported Android versions, UI states, command results, or acceptance criteria. Ask for a decision when the specification is silent or contradictory.
-5. Separate design mockups, assets, planned architecture, actual code, and device-tested behavior. Passing image QA does not prove an APK or backend works.
-6. Before changing scope, write a short change proposal with rationale, trade-offs, security impact, affected files, and acceptance criteria; wait for approval.
-7. For each task, report **evidence** (files changed, test/build commands and actual results), unresolved assumptions, blockers, and next action. Never claim tests or device validation were run unless they were.
-8. Keep implementation and documentation aligned; do not silently rewrite the master specification to justify implementation choices.
+**Exit gate:** No known approval bypass, demonstrable sandbox limitations handled conservatively, correct privacy and UI quality, and repeatable device evidence for required cases.
 
-**Pre-implementation gate:** If scope, feature behavior, tech choice, or runtime feasibility cannot be grounded in the specification or inspected code, mark it **Unknown** and investigate or ask before implementation.
+## 9. Milestone 6 — Packaging and release
+
+- [ ] Configure CI for formatting, lint, typecheck, tests, Android native builds and artifact provenance.
+- [ ] Build a **signed installable v1 APK**, validate installation, permissions, adaptive icons, notifications, first-launch setup, crashes, app lifecycle and performance on real devices.
+- [ ] Publish a support matrix listing Android version, ABI, device/root mode, Termux external version, verified embedded features, unavailable features and recommended fallback.
+- [ ] Validate dependency license compliance, upstream package distribution restrictions, brand/trademark/store naming and third-party legal obligations before public distribution.
+- [ ] Prepare GitHub Release assets, release notes, reproducible installation instructions, known limitations and real acceptance evidence.
+- [ ] No claim of a fully self-contained embedded Termux runtime unless independently tested; no untested feature marked working.
+
+**Final v1 gate:** The user can install the APK, complete setup, use the bilingual approved UI, perform agent-led approved tasks with Gemini, install/manage supported tools, run authorized workspace/Git/test commands, inspect verified results and logs, use Strict/Batch/Session, operate non-root or separately approved root flows, and access tested embedded capabilities and clearly explained external fallback.
+
+## 10. Implementation order and checkpoints
+
+1. **First:** Feasibility spikes for Kotlin, external Termux and embedded runtime, plus security gateway contract.
+2. **Then:** Two-screen UI, bilingual onboarding and local data foundation.
+3. **Then:** Native execution and three grant modes across both runtimes.
+4. **Then:** Gemini orchestration, budgets, diagnosis and verified results.
+5. **Then:** Full Tools Manager, workspaces, Git, optional root and resilience.
+6. **Finally:** Security/RTL/device acceptance and signed APK release.
+
+The embedded runtime is **within v1 scope**, but **its individual features are conditional on feasibility evidence**. The user explicitly accepted partial embedded functionality with an honest external fallback. Do not silently move the whole embedded objective out of v1 or promise all packages work.
+
+## 11. Assumptions and unresolved decisions (must not hallucinate)
+
+| Category | Status / action |
+|---|---|
+| Default Strict approval mode | **ASSUMPTION** until explicitly confirmed |
+| App package identifier | Unknown; check naming and ownership |
+| Android minimum 10 | **CONFIRMED**; full ABI/device matrix unknown |
+| Exact Expo/React Native/Kotlin/SDK versions | Unknown; verify currently supported combinations before pinning |
+| Embedded Termux compatibility | **High-risk feasibility UNKNOWN**; prototype and publish capability matrix |
+| External Termux API version/permissions | Unknown until current docs and real-device test |
+| Prohibited-operation list | **OPEN PRODUCT DECISION**; draft for user approval, do not invent as approved |
+| Session containment technology | **High-risk UNKNOWN**; require enforceable scope or strict fallback |
+| Storage database/library | Proposed only; choose after scope/compatibility review |
+| Gemini cost/quota availability | Provider-dependent; do not assert billing accuracy |
+| Android file access beyond selected folders | Platform-dependent; permission check required |
+| Root manager, hardware compatibility | Device-dependent; cannot presume access |
+| Optional future sync provider | Deferred beyond v1; **do not implement now** |
+| Release and performance thresholds | Device-test matrix/targets need explicit acceptance criteria before shipping |
+
+## 12. Requirement grounding & anti-hallucination protocol
+
+Before implementing **any** task, the assigned agent/developer MUST:
+
+1. Read the **v1.9 master specification**, this plan, approved designs and **actual source code/config/tests**; treat README and screenshots as secondary context.
+2. Produce a short **Scope & Stack Inventory**: target product, v1 in/out features, user journeys, Android/Expo/Kotlin/Termux/Gemini boundaries, security grants and exact confirmed dependencies. Link each requirement to a spec section or code path.
+3. Classify claims as **CONFIRMED** (user/spec), **VERIFIED** (inspected code + repeatable tests), **PROPOSED** (not approved) or **UNKNOWN** (research needed). Never blur these states.
+4. Never invent SDK versions, Gemini model availability, terminal capabilities, APIs, Android permissions, root status, installation success, CI passing, package support, user-visible runtime data, storage constraints or acceptance evidence.
+5. Check current official upstream docs whenever versions, Android restrictions, Termux APIs or Gemini capabilities matter. Pin exact chosen versions in implementation records; avoid copying unverified historical snippets.
+6. Flag contradictions between old docs and the eight-batch interview. The **master specification v1.9** and explicit user decisions are source of truth; ask for a decision rather than silently changing tech stack or scope.
+7. Before scope change, show reason, trade-offs, security/privacy impact, files involved and acceptance criteria, and obtain explicit approval.
+8. Give test evidence for every completed checkbox: exact code path/commit, tests run and output, target device/Android/ABI, verified runtime behavior, blockers and known limits.
+9. Do not mark an item done solely because design assets or a QA-report claim exist. No manual or automatic code execution is authorized by the existence of this plan.
+
+**Pre-implementation gate:** Unknown requirements, runtime claims or policy rules stay Unknown until researched or explicitly approved. Fail closed for unresolved execution/security policy.
+
+## 13. Immediate next engineering task (after separate implementation approval)
+
+Start Milestone 0: verify source and tooling baseline, inspect current upstream technical documentation, establish a real-device matrix, and prototype native authorization with Termux external and embedded feasibility. **Do not begin implementing until the user explicitly initiates implementation.**
