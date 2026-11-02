@@ -1,6 +1,6 @@
 # ORYN — Production-Grade Master Project Specification
 
-**Version:** 1.9 — reconciled with the eight-batch requirements interview (2026-11-01)  
+**Version:** 1.10 — v1.9 baseline (eight-batch requirements interview, 2026-11-01) plus UI refinements: header, approval card, Terminal & Tools segments, Arabic/RTL design gate, connection icon (2026-11-02)  
 **Product name:** ORYN  
 **Product descriptor:** Autonomous AI Agent for Android  
 **Tagline (provisional):** Intelligence in Action.  
@@ -14,11 +14,11 @@
 
 - **Official working product name:** ORYN (pronounced “Or-in” / أورين).
 - **Positioning:** A calm, capable, reliable autonomous AI agent that can plan, request approval, operate supported Android terminal environments, diagnose failures, and verify results.
-- **Descriptor:** Autonomous AI Agent for Android.
+- **Descriptor:** Autonomous AI Agent for Android (store listing and long-form copy). The logo lockup's short line is `AI AGENT FOR ANDROID` (logo artwork only). Both are intentional; do not mix them.
 - **Provisional tagline:** Intelligence in Action.
 - **Brand personality:** Intelligent, calm, capable, reliable, minimal, modern.
 - **Approved visual direction:** Light Mode only. Calm, minimalist, spacious, and readable, with white/off-white surfaces, restrained pale-blue accents, subtle gray borders, and dark navy text. Do not implement Dark Mode, dark-first layouts, or the superseded midnight-navy palette.
-- **Approved brand mark:** ORYN logo concept **#2** from the 12-option exploration: a blue-gradient circular open ring with a small four-point sparkle at its upper-right. Use the same symbol consistently in the app header, assistant avatar, and selected AI Agent tab; retain the ORYN wordmark and `AI AGENT FOR ANDROID` descriptor in the header. The logo artwork must be finalized as reusable, scalable assets; do not replace it with unrelated leaf/ribbon marks or generate a different logo.
+- **Approved brand mark:** ORYN logo concept **#2** from the 12-option exploration: a blue-gradient circular open ring with a small four-point sparkle at its upper-right. Use the same symbol consistently in the app header, assistant avatar, and selected AI Agent tab; the in-app header uses the symbol and the ORYN wordmark only. The `AI AGENT FOR ANDROID` line appears in the full logo lockup on the welcome screen and About page, because at header size it would fall below the 12 sp minimum text size. The logo artwork must be finalized as reusable, scalable assets; do not replace it with unrelated leaf/ribbon marks or generate a different logo.
 - **Working repository slug:** `oryn-ai-agent` (subject to availability).
 - **Application ID:** To be selected after ownership and namespace checks; do not assume a package identifier is available.
 - **Naming clearance:** ORYN has not been verified for trademark, app-store listing, repository, or domain availability. Complete clearance before public release.
@@ -132,12 +132,15 @@ Expected behavior: inspect approved environment scope → inventory commands →
 - **Design reference:** The user-approved refined AI Agent mockup is a visual reference, not a literal screenshot to embed or an assertion of actual terminal results. Recreate its components natively in React Native, with responsive layout, dynamic text, accessibility labels, and real state bindings.
 - **Navigation:** Exactly two primary bottom tabs, `AI Agent` and `Terminal & Tools`. Settings is opened from the header as a secondary page/sheet, never a third tab.
 - **Screen-by-screen workflow:** Design, review, and implement **AI Agent** first. Do not start redesigning Terminal & Tools or Settings before separate review/approval. Keep components reusable without prematurely adding UI.
-- **AI Agent header:** Approved logo and ORYN wordmark, search/history access where implemented, Settings icon, and a compact connection/runtime indicator showing real Termux availability. Never show `Ready` or `Connected` unless verified.
+- **AI Agent header:** Approved logo and ORYN wordmark, search/history access where implemented, Settings icon, and a compact connection/runtime indicator showing real Termux availability. At about 360 dp width the header must not wrap: symbol + wordmark, one compact connection chip, and History and Settings actions with touch targets of at least 48 dp; move secondary actions into an overflow menu instead of shrinking them. No tagline in the header. Never show `Ready` or `Connected` unless verified.
 - **Chat flow:** User message, assistant response, structured action proposal, applicable Strict/Batch/Session authorization, execution status, and verified result. Display only states relevant to the current task; the reference image showing approval, running, and success simultaneously is a component showcase, **not** the runtime state machine.
-- **Approval card:** Show complete executable/arguments, working directory, runtime, privilege, risk, effects and timeout. Offer Strict individual approval, immutable fully enumerated Batch approval or scoped Session approval (15-minute/20-command defaults). Plan preview alone is NOT authorization; root/high-risk actions require separate exact confirmation.
+- **Approval card:** Summary first: the exact command (expandable to its full text; arguments are never hidden by truncation), a risk badge with a text label, and a one-line effects summary. A **Details** disclosure shows the complete executable/arguments, working directory, runtime, privilege, environment-variable names, filesystem and network effects and timeout. Approve and Reject stay pinned at the bottom of the card or sheet. Strict is the default; immutable fully enumerated Batch approval and scoped Session approval (15-minute/20-command defaults) are offered under **More approval options**, with their scope shown before selection. Anything that could change the user's decision (root, network access, deletion, writes outside the workspace) must appear in the summary, not only in Details. Plan preview alone is NOT authorization; root/high-risk actions require separate exact confirmation.
 - **Running state:** Show live progress, command-specific status, expandable output, and an obvious `Stop` control. On cancellation, represent actual backend termination or uncertainty honestly.
 - **Result state:** Summarize verified outcomes, errors, and next steps. Never show fabricated version numbers, tool inventory, successful completion, or root/permission state in production UI.
 - **Visual discipline:** Prefer generous spacing, clean typography, consistent icon stroke/size, and progressive disclosure. Avoid decorative clutter, celebratory emoji as primary UI, oversized gradients, and extra navigation destinations.
+- **Queue indicator:** only one task executes at a time; show waiting tasks as a compact count/list on the AI Agent screen with their truthful `Queued` state. Do not imply reorder or cancel controls unless implemented.
+- **Arabic/RTL design gate:** before Milestone 1 exits, review Arabic mockups of onboarding, AI Agent, the approval card, Terminal & Tools and Settings. Select and record one font family that covers Arabic and Latin with a verified license (**Unknown** until chosen). Mirror layout direction and directional arrows/back chevrons; do not mirror the ORYN logo or Play/Stop/Retry glyphs; render commands, paths, logs and code as isolated LTR blocks; verify Arabic text expansion in buttons, chips and the approval card.
+- **Splash/launch:** light surface with the standard color logo (navy wordmark). The reversed (white wordmark) logo in the brand package is for dark backgrounds outside the app UI, because Dark Mode is not approved. The launcher icon's dark navy background follows the approved app icon and is intentional.
 - **Accessibility:** Support screen readers, adequate touch targets, scalable fonts, status announcements, and sufficient contrast on pale surfaces.
 
 ### Real-Time UI State & Data Binding (mandatory)
@@ -208,6 +211,7 @@ The approved Settings design is illustrative only. Implement the following as en
 **Acceptance tests:** (1) mocked screenshots cannot produce Connected, root capability, or paths in runtime state; (2) shell-backed root checks require matching native authorization; (3) Gemini API keys never appear in logs, diagnostics, or exported backups; (4) reset, clear, and import operations require confirmation and support safe cancellation; (5) malformed imports are rejected without partial mutation; (6) turning Safety Checks off, restoring defaults, and importing settings cannot bypass the approval gateway.
 
 ### Screen B — Terminal & Tools
+- Organize the tab with an in-page segmented control: **Terminal** (streaming output, stdout/stderr filters, process status, cancel), **Tools** (inventory, runtime compatibility, Tools Manager actions) and **History** (read-only logs and execution history). The segmented control is not primary navigation; the app still has exactly two primary tabs.
 - Streaming terminal output and separate stdout/stderr filters.
 - Process status, elapsed time, exit code, and cancellation.
 - Installed tools inventory with paths and versions.
@@ -630,7 +634,7 @@ Embedded support is accepted **per tested capability and Android device**; a ful
 - **Default in-app icon library:** `lucide-react-native` with `react-native-svg` for Expo / React Native. Prefer a single consistent Lucide stroke family rather than mixing Ionicons, Material, and Feather indiscriminately. `@expo/vector-icons` is an available fallback only when a needed glyph is unavailable or an approved design specifically requires it.
 - **Install with:** `npx expo install lucide-react-native react-native-svg`. Confirm compatibility with the project's pinned Expo SDK, package versions, and Android development build.
 - **Do not trace screenshot icons.** Use library vectors for ordinary UI actions and statuses; preserve brand artwork for ORYN-specific identity assets.
-- **Brand assets:** Header logo, assistant avatar, AI Agent tab icon, app launcher, adaptive foreground/background, and notification icon should use approved ORYN artwork from `assets/ORYN_Brand_Assets/` in the correct variant. Prefer the clean master-derived PNG for full-color artwork rather than the approximate traced SVG. For notification icons, use a platform-compatible monochrome transparent resource. The AI Agent tab should use the approved small ORYN symbol (monochrome when appropriate), **not a generic house/home glyph**.
+- **Brand assets:** Header logo, assistant avatar, AI Agent tab icon, app launcher, adaptive foreground/background, and notification icon should use approved ORYN artwork from `assets/ORYN_Brand_Assets/` in the correct variant. Prefer the clean master-derived PNG for full-color artwork rather than the approximate traced SVG. For notification icons, use a platform-compatible monochrome transparent resource. The AI Agent tab should use the approved small ORYN symbol (monochrome when appropriate), **not a generic house/home glyph**. Verify the symbol at 24 dp on real devices; if the sparkle is lost, use a dedicated tab-size variant of the same approved symbol, reviewed and approved by the owner, rather than a different glyph.
 - **Custom SVG exception:** Use a purpose-built, reviewed SVG only when a genuinely custom UI symbol is needed; this does not make the traced ORYN SVG the default application master.
 
 ### Suggested Lucide mapping (verify exports against the pinned package version)
@@ -642,7 +646,7 @@ Embedded support is accepted **per tested capability and Android device**; a ful
 | Scan | `Scan` |
 | Security / approval | `ShieldCheck` |
 | Tools / fix | `Wrench` |
-| Connected / disconnected | `Wifi` / `WifiOff` (only if semantically appropriate; Termux connection is not Wi-Fi connectivity) |
+| Connected / disconnected | `Plug` / `Unplug` (or `Link` / `Unlink`); do not use `Wifi` / `WifiOff`, because the Termux connection is not Wi-Fi connectivity |
 | Root access | `KeyRound` or `ShieldCheck` with explicit Root label/status; **avoid Fingerprint**, which implies biometrics |
 | Success / error | `CircleCheck` / `CircleX` |
 | Warning | `TriangleAlert` |
@@ -660,3 +664,15 @@ Embedded support is accepted **per tested capability and Android device**; a ful
 - Validate every mapped icon name against the installed library exports during implementation and test rendering on Android. Do not substitute icons or alter the approved navigation without design review.
 
 **Acceptance:** Use consistent Lucide UI glyphs and approved ORYN brand assets, keep the branded AI Agent tab, do not depict root as biometrics; test accessibility and native Strict/Batch/Session enforcement.
+
+## UI Acceptance Tests (v1.10)
+
+1. At 360 dp width and 200% font scale the header does not wrap or clip, and all header actions are at least 48 dp.
+2. The approval card summary shows the command, risk badge and every decision-relevant effect (root, network, deletion, writes outside the workspace) without opening Details; Approve/Reject remain visible while scrolling.
+3. Strict is preselected; Batch and Session show their exact scope before they can be selected.
+4. Terminal & Tools has the Terminal / Tools / History segments and the app still has exactly two primary tabs.
+5. Arabic mockups are approved, the font family is recorded, and RTL passes on device (mirrored layout, unmirrored logo and Play/Stop/Retry, LTR command blocks).
+6. The AI Agent tab symbol is recognizable at 24 dp on a real device.
+7. Connection indicators use Plug/Unplug (or Link/Unlink), never Wi-Fi icons, and no state is conveyed by color or icon shape alone.
+8. The splash uses the standard color logo on a light surface.
+
