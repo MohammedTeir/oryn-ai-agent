@@ -2,11 +2,11 @@
 
 **Status:** Planning only — no app implementation verified by this document  
 **Last requirements reconciliation:** 2026-11-01 (eight interview batches)  
-**Specification:** [ORYN Master Project Specification v1.9](docs/ORYN_Master_Project_Specification.md)  
+**Specification:** [ORYN Master Project Specification v1.10](ORYN_Master_Project_Specification.md)  
 **Approved assets:** [ORYN Brand Assets](assets/ORYN_Brand_Assets/)  
 **Release objective:** Signed Android 10+ APK on GitHub Releases; complete verified v1 capabilities, with honest embedded/external runtime compatibility reporting.
 
-> **Important:** This plan is a delivery checklist, not a statement that any task is implemented. The [specification](docs/ORYN_Master_Project_Specification.md) and the user's eight-batch interview decisions define scope. Do not infer implementation from screenshots, asset QA, documentation, or untested backend assumptions.
+> **Important:** This plan is a delivery checklist, not a statement that any task is implemented. The [specification](ORYN_Master_Project_Specification.md) and the user's eight-batch interview decisions define scope. Do not infer implementation from screenshots, asset QA, documentation, or untested backend assumptions.
 
 ## 1. Confirmed v1 product scope
 
