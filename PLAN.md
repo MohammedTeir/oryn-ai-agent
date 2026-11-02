@@ -77,13 +77,19 @@ Approval is not an optional UI feature. **All shell execution must be authorized
 - [ ] Implement approved Light Mode design tokens, UI components, English/Arabic/RTL strings, text scaling, contrast, accessibility labels and offline/error/unknown states.
 - [ ] Use the approved PNG master-derived brand icons and correct Expo/Android adaptive foreground/background/monochrome/notification resources; validate launcher safe zones and mask variants on devices.
 - [ ] Install and pin compatible `lucide-react-native` and `react-native-svg`; implement shared typed `AppIcon` semantic mapping. AI Agent tab uses the ORYN mark rather than generic House. Root icon must not imply fingerprint biometrics.
+- [ ] Approval card: summary-first with a Details disclosure, pinned Approve/Reject, Strict preselected, Batch/Session under More approval options; decision-relevant effects (root, network, deletion, writes outside workspace) always in the summary.
+- [ ] AI Agent header at 360 dp: symbol + wordmark, one connection chip, History and Settings (48 dp targets), overflow for extras, no tagline; show queued-task count.
+- [ ] Terminal & Tools: in-page segmented control (Terminal | Tools | History) without adding a third primary tab.
+- [ ] Connection icons Plug/Unplug (or Link/Unlink), not Wi-Fi; test the AI Agent tab symbol at 24 dp on devices (request an owner-approved tab-size variant if needed).
+- [ ] Arabic/RTL design gate: Arabic mockups, one recorded Arabic+Latin font with verified license, mirroring rules (arrows/back mirror; logo, Play/Stop/Retry do not), LTR command blocks.
+- [ ] Splash: light surface with the standard color logo; the reversed logo is not used in the in-app UI.
 - [ ] Setup Wizard: welcome, API-key validation and secure persistence, runtime detection and actionable permission prompts.
 - [ ] Local transactional persistence schema and migrations for conversations, tasks, plans, proposals, grants, executions, events, tool inventory, runtime capability snapshots and settings.
 - [ ] Encrypt credentials using Android Keystore-backed storage, redact/limit raw output, implement user-controlled retention and safe deletion/export. Imports require schema validation, preview and confirmation; never import/export the API key.
 - [ ] Implement task queue state and truthful UI states bound to native backend observations, not asset/mockup fixtures.
 - [ ] Provide no-account local operation; isolate future sync interfaces without shipping a cloud backend.
 
-**Exit gate:** Device screenshots match approved designs, navigation and onboarding work, accessible RTL flows are tested, and no mock connection or command result is presented as real.
+**Exit gate:** Device screenshots match approved designs, navigation and onboarding work, accessible RTL flows are tested (Arabic mockups approved, font recorded), the tab symbol is verified at 24 dp, the UI Acceptance Tests (v1.10) in the specification pass, and no mock connection or command result is presented as real.
 
 ## 5. Milestone 2 — Secure terminal and dual-runtime integration
 
