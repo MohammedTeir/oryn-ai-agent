@@ -19,7 +19,9 @@ fi
 # Only one device ABI is in the initial evidence matrix. Never infer device tests.
 (
   cd android
-  ./gradlew --no-daemon --max-workers=2 -PreactNativeArchitectures=arm64-v8a \
+  ./gradlew --no-daemon --max-workers="${ORYN_GRADLE_MAX_WORKERS:-2}" \
+    -Dorg.gradle.jvmargs="${ORYN_GRADLE_JVM_ARGS:--Xmx2g -XX:MaxMetaspaceSize=512m}" \
+    -PreactNativeArchitectures=arm64-v8a \
     :app:assembleDebug :app:lintDebug :oryn-observer:testDebugUnitTest
 )
 apk=android/app/build/outputs/apk/debug/app-debug.apk

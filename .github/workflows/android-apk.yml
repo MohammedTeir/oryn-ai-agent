@@ -1,0 +1,141 @@
+name: Signed feasibility APK
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build and verify signed arm64 test APK
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    defaults:
+      run:
+        shell: bash
+        working-directory: spikes/android-feasibility
+    env:
+      EXPO_NO_TELEMETRY: '1'
+      CI: '1'
+      ORYN_GRADLE_MAX_WORKERS: '2'
+      ORYN_GRADLE_JVM_ARGS: -Xmx3g -XX:MaxMetaspaceSize=768m
+    steps:
+      - name: Check out source
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Set runner-local tool and cache paths
+        run: |
+          printf 'GRADLE_USER_HOME=%s/oryn-gradle\n' "$RUNNER_TEMP" >> "$GITHUB_ENV"
+          printf 'ANDROID_USER_HOME=%s/oryn-android\n' "$RUNNER_TEMP" >> "$GITHUB_ENV"
+      - name: Set up Node
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24.22.1'
+          cache: npm
+          cache-dependency-path: spikes/android-feasibility/package-lock.json
+      - name: Set up the tested JDK
+        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: temurin
+          java-version: '21.0.13+9'
+      - name: Set up Android command-line tools
+        uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407 # v3
+        with:
+          cmdline-tools-version: '16111833'
+          packages: ''
+          accept-android-sdk-licenses: true
+          log-accepted-android-sdk-licenses: false
+      - name: Install the tested Android SDK packages
+        run: |
+          sdkmanager --install \
+            'platform-tools' \
+            'platforms;android-37.0' \
+            'build-tools;37.0.0' \
+            'build-tools;36.0.0' \
+            'ndk;27.1.12297006' \
+            'cmake;3.22.1'
+      - name: Cache Gradle dependencies and build outputs
+        uses: gradle/actions/setup-gradle@0723195856401067f7a2779048b490ace7a47d7c # v5
+        with:
+          cache-read-only: ${{ github.event_name == 'pull_request' }}
+      - name: Install frozen dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Check source before packaging
+        run: |
+          npx --no-install expo install --check
+          npm run lint
+          npm run typecheck
+          npm test
+      - name: Build and lint the development APK
+        run: |
+          mkdir -p artifacts
+          bash scripts/build-cloud.sh 2>&1 | tee artifacts/ci-debug-build.log
+      - name: Build and verify the bundled signed phone APK
+        run: bash scripts/build-phone.sh 2>&1 | tee artifacts/ci-phone-build.log
+      - name: Record APK provenance
+        run: |
+          git diff --exit-code -- package.json package-lock.json
+          git rev-parse HEAD > artifacts/source-commit.txt
+          (
+            cd artifacts
+            sha256sum oryn-feasibility-phone.apk > SHA256SUMS
+            sha256sum --check SHA256SUMS
+          )
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib
+          artifacts = pathlib.Path('artifacts')
+          apk = artifacts / 'oryn-feasibility-phone.apk'
+          info = {
+              'source_commit': (artifacts / 'source-commit.txt').read_text().strip(),
+              'run_url': f"{os.environ['GITHUB_SERVER_URL']}/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}",
+              'run_attempt': os.environ['GITHUB_RUN_ATTEMPT'],
+              'apk_sha256': hashlib.sha256(apk.read_bytes()).hexdigest(),
+              'signing': 'Android debug signer; test-only feasibility app',
+              'application_id': 'io.github.mohammedteir.oryn.feasibility',
+              'abi': 'arm64-v8a',
+              'minification': False,
+              'device_checks': 'Not performed by CI',
+          }
+          (artifacts / 'build-info.json').write_text(json.dumps(info, indent=2) + '\n')
+          PY
+          {
+            printf '### Signed feasibility APK\n\n'
+            printf 'Download **oryn-feasibility-phone** from this run’s Artifacts section.\n\n'
+            printf 'Test-only Android debug signer; bundled JS; arm64-v8a. Device behavior is not verified by CI.\n\n'
+            printf 'Source commit: `%s`\n\n' "$(git rev-parse HEAD)"
+            printf 'APK SHA-256: `%s`\n' "$(cat artifacts/phone-apk.sha256)"
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload signed phone APK and provenance
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: oryn-feasibility-phone-${{ github.run_number }}-${{ github.sha }}
+          path: |
+            spikes/android-feasibility/artifacts/oryn-feasibility-phone.apk
+            spikes/android-feasibility/artifacts/SHA256SUMS
+            spikes/android-feasibility/artifacts/build-info.json
+            spikes/android-feasibility/artifacts/source-commit.txt
+            spikes/android-feasibility/artifacts/phone-apk-signature.txt
+            spikes/android-feasibility/artifacts/phone-apk-badging.txt
+          if-no-files-found: error
+          retention-days: 14
+          compression-level: 6
+      - name: Upload build and lint diagnostics
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: feasibility-build-diagnostics-${{ github.run_number }}-${{ github.sha }}
+          path: |
+            spikes/android-feasibility/artifacts/ci-*-build.log
+            spikes/android-feasibility/artifacts/*signature.txt
+            spikes/android-feasibility/artifacts/*badging.txt
+            spikes/android-feasibility/android/app/build/reports/lint-results-*
+          if-no-files-found: ignore
+          retention-days: 7

@@ -4,7 +4,16 @@
 
 ORYN is a planned autonomous AI agent for Android that combines a conversational interface with terminal-based task execution, tool discovery, diagnostics, and human approval before every command.
 
-> **Status:** Planning / Milestone 1 not yet implemented. This repository currently contains project documentation, not a working Android application.
+> **Status:** Milestone 0 feasibility. An observation-only Android harness and automatic build workflows are available; the production application and required device/runtime checks are not complete.
+
+## Development checks and test APKs
+
+[Feasibility CI](https://github.com/MohammedTeir/oryn-ai-agent/actions/workflows/ci.yml)
+checks every push and pull request.
+[Signed feasibility APK](https://github.com/MohammedTeir/oryn-ai-agent/actions/workflows/android-apk.yml)
+builds an Android debug-signed test APK automatically. Download the APK ZIP from
+a successful run's **Artifacts** section. See [CI and download instructions](docs/ci.md)
+for checks, provenance, retention and signing scope.
 
 ## Vision
 

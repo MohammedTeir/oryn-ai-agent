@@ -1,0 +1,51 @@
+name: Feasibility CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Lint, types, tests and Android JS
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: bash
+        working-directory: spikes/android-feasibility
+    env:
+      EXPO_NO_TELEMETRY: '1'
+      CI: '1'
+    steps:
+      - name: Check out source
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Set up Node
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24.22.1'
+          cache: npm
+          cache-dependency-path: spikes/android-feasibility/package-lock.json
+      - name: Install frozen dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Check Expo dependency compatibility
+        run: npx --no-install expo install --check
+      - name: Lint
+        run: npm run lint
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Test artifact integrity checks
+        run: npm test
+      - name: Bundle Android JavaScript
+        run: npm run bundle:android
+      - name: Ensure dependency declarations were preserved
+        run: git diff --exit-code -- package.json package-lock.json

@@ -54,3 +54,6 @@ supported `--no-clean` prebuild option to preserve generated build caches.
 Keep custom native source in `modules/`, not in the generated Android directory.
 The phone artifact blocks template storage and overlay permissions; the standard
 development variant may retain its development-launcher overlay permission.
+
+GitHub automatically checks updates and builds signed test APK artifacts using
+the two workflows described in [CI and artifact downloads](../../docs/ci.md).

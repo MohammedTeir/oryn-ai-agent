@@ -9,8 +9,8 @@ test -d android
 mkdir -p artifacts
 (
   cd android
-  ./gradlew --no-daemon --max-workers=4 \
-    -Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=1g" \
+  ./gradlew --no-daemon --max-workers="${ORYN_GRADLE_MAX_WORKERS:-4}" \
+    -Dorg.gradle.jvmargs="${ORYN_GRADLE_JVM_ARGS:--Xmx4g -XX:MaxMetaspaceSize=1g}" \
     -Pandroid.enableMinifyInReleaseBuilds=false \
     -PreactNativeArchitectures=arm64-v8a \
     :app:assembleRelease :app:lintRelease
