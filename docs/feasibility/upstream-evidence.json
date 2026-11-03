@@ -1,0 +1,272 @@
+{
+  "record_date": "2026-11-03",
+  "record_kind": "published_snapshot_reinspection",
+  "base_commit": "6a2dad752c0ca0f37efbf34b923e8308c484e294",
+  "original_evidence_recovered": false,
+  "upstream_compatibility_review": "not_performed_in_this_record",
+  "versions": "Unknown; original harness and lockfile missing",
+  "observations": [
+    {
+      "url": "https://repo.reactnative.dev/",
+      "method": "HEAD through configured HTTPS proxy",
+      "tls_verification": true,
+      "result": "CONNECT 403 Forbidden",
+      "curl_exit_status": 56,
+      "scope": "host reachability only; no artifact metadata or checksum verified"
+    }
+  ],
+  "previous_checks": {
+    "source": "user report only",
+    "independently_reproduced": false
+  },
+  "device_checks_performed": false,
+  "milestone_complete": false,
+  "follow_up": {
+    "date": "2026-11-03",
+    "lineage": "New harness; original uncommitted harness not recovered.",
+    "network": {
+      "react_native_host": "HEAD returned HTTP 200 through configured proxy; previous denial resolved",
+      "configuration_changed_by_agent": false
+    },
+    "device": {
+      "model": "Redmi Note 8 Pro",
+      "android": "10",
+      "miui": "12.5.10",
+      "abi": "arm64-v8a",
+      "provenance": "user reported; not observed by APK",
+      "termux_version": "Unknown",
+      "termux_source": "Unknown"
+    },
+    "sources": [
+      {
+        "url": "https://docs.expo.dev/versions/latest/",
+        "retrieved_date": "2026-11-03",
+        "sha256": "054f5431c2f57f546be2b6e7506164e6fa3546911f21cec5bf10195bd6174f9e",
+        "local_snapshot": "/workspace/feasibility-upstream/expo54.html",
+        "scope": "Current page redirected from archived SDK URL; reviewed matrix: SDK 58, React Native 0.88, React 19.3.0, compile SDK 37, target 36."
+      },
+      {
+        "url": "https://docs.expo.dev/modules/get-started/",
+        "retrieved_date": "2026-11-03",
+        "sha256": "829c7cdbf0431c69dcebaec5b20c3312b03e5dca437cf3ebb509612ea01e1659",
+        "local_snapshot": "/workspace/feasibility-upstream/expo-modules.html",
+        "scope": "Custom development builds and local Expo Modules workflow."
+      },
+      {
+        "url": "https://reactnative.dev/docs/set-up-your-environment",
+        "retrieved_date": "2026-11-03",
+        "sha256": "66ee0ef013ed371e931768b58215179de612be65f62055d9c358feb26c7440ae",
+        "local_snapshot": "/workspace/feasibility-upstream/rn-setup.html",
+        "scope": "Native Android toolchain setup; actual generated project versions recorded separately."
+      },
+      {
+        "url": "https://developer.android.com/about/versions/10/behavior-changes-10",
+        "retrieved_date": "2026-11-03",
+        "sha256": "0b9bf051f453e4388c42d557baf5c11857067b78ff5c381185741407f33bb400",
+        "local_snapshot": "/workspace/feasibility-upstream/android10.html",
+        "scope": "Writable app-home execve restriction for apps targeting Android 10."
+      },
+      {
+        "url": "https://github.com/termux/termux-app/wiki/RUN_COMMAND-Intent",
+        "retrieved_date": "2026-11-03",
+        "sha256": "8181ca02d2457ed14ef32b489580d119d7ae232fe6b2fb47c525be2c53439f01",
+        "local_snapshot": "/workspace/feasibility-upstream/termux-intent.html",
+        "scope": "External intent contract documentation."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/termux/termux-app/v0.118.3/app/src/main/java/com/termux/app/RunCommandService.java",
+        "retrieved_date": "2026-11-03",
+        "sha256": "6d47e444cd4b644ef821a5888c2eb6184610ea0df21c2ca8e2c1082d64a87fc3",
+        "local_snapshot": "/workspace/feasibility-upstream/RunCommandService-v0.118.3.java",
+        "scope": "Pinned external integration service source."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/termux/termux-app/v0.118.3/termux-shared/src/main/java/com/termux/shared/termux/TermuxConstants.java",
+        "retrieved_date": "2026-11-03",
+        "sha256": "a92d94ddf8cea2695055d151fe7bb14966dc5874a93371053907dbb09e12ad83",
+        "local_snapshot": "/workspace/feasibility-upstream/TermuxConstants-v0.118.3.java",
+        "scope": "Pinned action, permission and callback constants."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/termux/termux-app/master/README.md",
+        "retrieved_date": "2026-11-03",
+        "sha256": "3a72268adae0835c31decf186f0059305cd5a45fc2425e64b1520e7ce29897f9",
+        "local_snapshot": "/workspace/feasibility-upstream/termux-readme.md",
+        "scope": "Read on 2026-11-03; signing-source and package-prefix guidance; moving reference."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/libtermux/libtermux-android/master/README.md",
+        "retrieved_date": "2026-11-03",
+        "sha256": "a2f5037df3b50e69a2ab061601fb2df2a937f2a89e2507c6a4a2ca8b1de658e4",
+        "local_snapshot": "/workspace/feasibility-upstream/libtermux-readme.md",
+        "scope": "Read on 2026-11-03; experimental/non-production warning; moving reference."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/libtermux/libtermux-android/3a7e2ae63c4824fac384769c9afb8bc579458da9/core/src/main/kotlin/com/libtermux/bootstrap/BootstrapInstaller.kt",
+        "retrieved_date": "2026-11-03",
+        "sha256": "e6c5b417ab3f7bef037c5fccd61c798b9fb8f5164c291061e43e4fd4ba076fac",
+        "local_snapshot": "/workspace/feasibility-upstream/BootstrapInstaller.kt",
+        "scope": "Pinned candidate source review only; no dependency installed."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/libtermux/libtermux-android/3a7e2ae63c4824fac384769c9afb8bc579458da9/core/src/main/kotlin/com/libtermux/bootstrap/BootstrapProvider.kt",
+        "retrieved_date": "2026-11-03",
+        "sha256": "c4cd5cf21b7310de2267e904ee0cab7c9ec4f88e7d073459c47265e92237b0dd",
+        "local_snapshot": "/workspace/feasibility-upstream/BootstrapProvider.kt",
+        "scope": "Pinned candidate source review only; no dependency installed."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/libtermux/libtermux-android/3a7e2ae63c4824fac384769c9afb8bc579458da9/build-logic/bootstrap-fetch/src/main/kotlin/com/libtermux/buildlogic/BootstrapFetchPlugin.kt",
+        "retrieved_date": "2026-11-03",
+        "sha256": "43cfb26d898e6d0c38b48b4976d4aed5f9dac6a204911cfdf148fea73be9922e",
+        "local_snapshot": "/workspace/feasibility-upstream/BootstrapFetchPlugin.kt",
+        "scope": "Pinned candidate source review only; no dependency installed."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/libtermux/libtermux-android/3a7e2ae63c4824fac384769c9afb8bc579458da9/os/src/main/kotlin/com/libtermux/os/OsEnvironment.kt",
+        "retrieved_date": "2026-11-03",
+        "sha256": "1c54c6a2d1e7980689fcc44c1bf5411533946c64d5ec9d40226118dc51ebd80c",
+        "local_snapshot": "/workspace/feasibility-upstream/OsEnvironment.kt",
+        "scope": "Pinned candidate source review only; no dependency installed."
+      },
+      {
+        "url": "https://registry.npmjs.org/lucide-react-native/latest",
+        "retrieved_date": "2026-11-03",
+        "sha256": "6719c80cfa0a06e19f6bf5d3cc2ce17a7189ca1c137e67ee527477fbb8c1dda2",
+        "local_snapshot": "/workspace/feasibility-upstream/lucide-latest.json",
+        "scope": "Registry candidate metadata observed 2026-11-03; not installed in app."
+      },
+      {
+        "url": "https://lucide.dev/guide/packages/lucide-react-native",
+        "retrieved_date": "2026-11-03",
+        "sha256": "eccc673247b9b5c1e2fabdcd75c483da41a8d989f4bfc4cc48fa394fefec881d",
+        "local_snapshot": "/workspace/feasibility-upstream/lucide-guide.html",
+        "scope": "Official React Native icon package guidance."
+      },
+      {
+        "url": "https://registry.npmjs.org/@google%2Fgenai/latest",
+        "retrieved_date": "2026-11-03",
+        "sha256": "0e8f635ab20e62c3c6aaa370510de8b730685187faaf0340a7b59bb66952e64a",
+        "local_snapshot": "/workspace/feasibility-upstream/genai-latest.json",
+        "scope": "Registry candidate metadata; not installed in app."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/googleapis/js-genai/main/README.md",
+        "retrieved_date": "2026-11-03",
+        "sha256": "0e71b157d04f34a658f820d8310a8ab456f7bbed96e3b7cfbc1aab53ee0c2b9e",
+        "local_snapshot": "/workspace/feasibility-upstream/genai-readme.md",
+        "scope": "Official SDK Node/browser setup review; moving reference, no RN runtime validation."
+      }
+    ],
+    "selected_stack": {
+      "expo": "58.0.22",
+      "react": "19.3.0",
+      "react_native": "0.88.1",
+      "kotlin_gradle_plugin": "2.2.10 (observed build plugin; catalog declares 2.2.0)",
+      "gradle": "9.4.1",
+      "agp": "9.2.1",
+      "jdk": "Temurin 21.0.13+9",
+      "android_command_line_tools": "23.0",
+      "compile_sdk": 37,
+      "target_sdk": 36,
+      "min_sdk": 29,
+      "build_tools": "37.0.0 (also 36.0.0 installed for dependent libraries)",
+      "ndk": "27.1.12297006",
+      "build_abi": "arm64-v8a",
+      "production_gemini_sdk": "Unknown / not selected",
+      "production_icon_library": "Unknown / not selected"
+    },
+    "toolchain_integrity": {
+      "jdk_sha256": "d7f5d5cf865a2902b70ff549b97586a7d3f234e016f041ab447ea740c7d66d1c",
+      "jdk_checksum_source": "https://api.adoptium.net/v3/assets/latest/21/hotspot?architecture=x64&image_type=jdk&os=linux&vendor=eclipse",
+      "android_cli_archive": "commandlinetools-linux-16111833_latest.zip",
+      "android_cli_sha1": "e025545c62a8e64c7559119566a569fb1dec5f60",
+      "android_cli_checksum_source": "https://dl.google.com/android/repository/repository2-3.xml",
+      "gradle_sha256": "2ab2958f2a1e51120c326cad6f385153bb11ee93b3c216c5fccebfdfbb7ec6cb",
+      "gradle_checksum_source": "https://services.gradle.org/distributions/gradle-9.4.1-bin.zip.sha256",
+      "tls_verification_disabled": false,
+      "session_ca_trust": "refreshed from public CA certificates using scripts/cloud-env.sh"
+    },
+    "first_build_failure": {
+      "stage": "app debug manifest merge",
+      "cause": "app and observer library shared namespace",
+      "correction": "observer namespace io.github.mohammedteir.oryn.feasibility.observer; app ID preserved",
+      "log": "/workspace/feasibility-upstream/native-build-attempt-1.log"
+    },
+    "additional_stack_candidates": {
+      "lucide_react_native": {
+        "version": "1.67.0",
+        "source": "https://registry.npmjs.org/lucide-react-native/latest",
+        "selected_for_app": false,
+        "peer_compatibility": "declares React ^19 and react-native-svg ^15 support; installed Expo map recommends SVG 15.16.0",
+        "verification": "Registry SHA-512 and semantic export names checked from package declarations; no rendering/device test"
+      },
+      "react_native_svg": {
+        "version": "15.16.0",
+        "source": "expo@58.0.22/bundledNativeModules.json",
+        "selected_for_app": false
+      },
+      "google_genai": {
+        "version": "2.32.0",
+        "source": "https://registry.npmjs.org/@google%2Fgenai/latest",
+        "selected_for_app": false,
+        "engine": "Node >=20",
+        "react_native_compatibility": "Unknown: reviewed README documents Node/browser; no React Native proof obtained. No API key or model request used."
+      }
+    },
+    "phone_build_preliminary": {
+      "outcome": "intentionally interrupted, exit 143",
+      "reason": "finalize approved icon configuration and remove unused storage/overlay permissions; optimizer was near the default 2 GiB heap",
+      "next_run": "4 GiB Gradle heap; minification disabled for the debug-only probe, not a production optimizer check",
+      "log": "/workspace/feasibility-upstream/phone-build-interrupted-template.log"
+    },
+    "native_template": {
+      "package": "expo-template-bare-minimum",
+      "version": "58.0.31",
+      "integrity": "sha512-CbGAr5lEasOZ9GqpptbTO/2HDkQwWbqAwEi9mhaH3mX9nVvFvZ3X/JzmCH4mDlFKgsf1dfMb5Le0RM0iUfiimw==",
+      "registry_selector_observed": "sdk-58",
+      "saved_script_selector": "58.0.31"
+    },
+    "cloud_checks": {
+      "frozen_install": "passed",
+      "eslint": "passed",
+      "typescript": "passed",
+      "expo_compatibility": "passed",
+      "integrity_unit_tests": {
+        "passed": 4,
+        "failed": 0
+      },
+      "android_js_bundle": "passed",
+      "debug_build_and_lint": "passed; 0 lint errors, 54 warnings",
+      "phone_build_and_lint": "passed; 0 lint errors, 49 warnings",
+      "native_unit_tests": "NO-SOURCE; zero executed",
+      "incremental_pinned_template_build": "passed; 57 seconds; 8 executed, 597 up-to-date"
+    },
+    "phone_artifact": {
+      "relative_path": "spikes/android-feasibility/artifacts/oryn-feasibility-phone.apk",
+      "size_bytes": 37036838,
+      "sha256": "1632915e380f9e9077076b161e1e46e66115dc2823294c55556a60f76d2c726b",
+      "application_id": "io.github.mohammedteir.oryn.feasibility",
+      "min_sdk": 29,
+      "target_sdk": 36,
+      "abi": "arm64-v8a",
+      "variant": "release, debug signed, bundled JS, minification disabled for probe",
+      "signature_verified": true,
+      "signer_sha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
+      "embedded_js_present": true,
+      "observer_dex_class_present": true,
+      "blocked_permissions_absent": [
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "SYSTEM_ALERT_WINDOW"
+      ],
+      "device_installation": "not verified",
+      "native_bridge_invocation": "not verified",
+      "native_authorization": "not implemented",
+      "termux_execution": "not implemented",
+      "embedded_termux_parity": "not claimed"
+    },
+    "incremental_prebuild_generated_file_changes": [],
+    "configuration_changes_by_agent": "No platform draft or publication changed; local toolchain and build configuration prepared."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "ORYN Feasibility (debug)",
+    "slug": "oryn-feasibility",
+    "version": "0.0.1",
+    "icon": "../../assets/ORYN_Brand_Assets/05_Android_App_Icons/expo/icon.png",
+    "userInterfaceStyle": "light",
+    "platforms": ["android"],
+    "android": {
+      "package": "io.github.mohammedteir.oryn.feasibility",
+      "blockedPermissions": [
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.SYSTEM_ALERT_WINDOW"
+      ],
+      "adaptiveIcon": {
+        "foregroundImage": "../../assets/ORYN_Brand_Assets/05_Android_App_Icons/expo/adaptive-icon-foreground.png",
+        "backgroundImage": "../../assets/ORYN_Brand_Assets/05_Android_App_Icons/expo/adaptive-icon-background.png",
+        "monochromeImage": "../../assets/ORYN_Brand_Assets/05_Android_App_Icons/expo/adaptive-icon-monochrome.png"
+      }
+    },
+    "plugins": [["expo-build-properties", {"android": {"minSdkVersion": 29}}]],
+    "autolinking": {"nativeModulesDir": "./modules"}
+  }
+}

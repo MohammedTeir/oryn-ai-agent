@@ -1,0 +1,226 @@
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/AndroidManifest.xml:3: Warning: READ_EXTERNAL_STORAGE is deprecated (and is not granted) when targeting Android 13+. If you need to query or interact with MediaStore or media files on the shared storage, you should instead use one or more new storage permissions: READ_MEDIA_IMAGES, READ_MEDIA_VIDEO or READ_MEDIA_AUDIO. [ScopedStorage]
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" tools:node="remove"/>
+                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/AndroidManifest.xml:6: Warning: WRITE_EXTERNAL_STORAGE is deprecated (and is not granted) when targeting Android 13+. If you need to write to shared storage, use the MediaStore.createWriteRequest intent. [ScopedStorage]
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:node="remove"/>
+                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "ScopedStorage":
+   Scoped storage is enforced on Android 10+ (or Android 11+ if using
+   requestLegacyExternalStorage). In particular, WRITE_EXTERNAL_STORAGE will
+   no longer provide write access to all files; it will provide the equivalent
+   of READ_EXTERNAL_STORAGE instead.
+
+   As of Android 13, if you need to query or interact with MediaStore or media
+   files on the shared storage, you should be using instead one or more new
+   storage permissions:
+   * android.permission.READ_MEDIA_IMAGES
+   * android.permission.READ_MEDIA_VIDEO
+   * android.permission.READ_MEDIA_AUDIO
+
+   and then add maxSdkVersion="33" to the older permission. See the developer
+   guide for how to do this:
+   https://developer.android.com/about/versions/13/behavior-changes-13#granula
+   r-media-permissions
+
+   The MANAGE_EXTERNAL_STORAGE permission can be used to manage all files, but
+   it is rarely necessary and most apps on Google Play are not allowed to use
+   it. Most apps should instead migrate to use scoped storage. To modify or
+   delete files, apps should request write access from the user as described
+   at https://goo.gle/android-mediastore-createwriterequest.
+
+   To learn more, read these resources: Play policy:
+   https://goo.gle/policy-storage-help Allowable use cases:
+   https://goo.gle/policy-storage-usecases
+
+   https://goo.gle/android-storage-usecases
+
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/AndroidManifest.xml:14: Warning: Attribute enableOnBackInvokedCallback is only used in API level 33 and higher (current min is 29) [UnusedAttribute]
+  <application android:name=".MainApplication" android:label="@string/app_name" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher_round" android:allowBackup="true" android:theme="@style/AppTheme" android:supportsRtl="true" android:enableOnBackInvokedCallback="false">
+                                                                                                                                                                                                                                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "UnusedAttribute":
+   This check finds attributes set in XML files that were introduced in a
+   version newer than the oldest version targeted by your application (with
+   the minSdkVersion attribute).
+
+   This is not an error; the application will simply ignore the attribute.
+   However, if the attribute is important to the appearance or functionality
+   of your application, you should consider finding an alternative way to
+   achieve the same result with only available attributes, and then you can
+   optionally create a copy of the layout in a layout-vNN folder which will be
+   used on API NN or higher where you can take advantage of the newer
+   attribute.
+
+   Note: This check does not only apply to attributes. For example, some tags
+   can be unused too, such as the new <tag> element in layouts introduced in
+   API 21.
+
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/gradle/wrapper/gradle-wrapper.properties:3: Warning: A newer version of Gradle than 9.4.1 is available: 9.8.2 [AndroidGradlePluginVersion]
+distributionUrl=https\://services.gradle.org/distributions/gradle-9.4.1-bin.zip
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "AndroidGradlePluginVersion":
+   This detector looks for usage of the Android Gradle Plugin where the
+   version you are using is not the current stable release. Using older
+   versions is fine, and there are cases where you deliberately want to stick
+   with an older version. However, you may simply not be aware that a more
+   recent version is available, and that is what this lint check helps find.
+
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/build.gradle:165: Warning: A newer version of com.facebook.fresco:animated-gif than 3.7.0 is available: 3.9.0 [NewerVersionAvailable]
+        implementation("com.facebook.fresco:animated-gif:${expoLibs.versions.fresco.get()}")
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/build.gradle:170: Warning: A newer version of com.facebook.fresco:webpsupport than 3.7.0 is available: 3.9.0 [NewerVersionAvailable]
+        implementation("com.facebook.fresco:webpsupport:${expoLibs.versions.fresco.get()}")
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "NewerVersionAvailable":
+   This detector checks with a central repository to see if there are newer
+   versions available for the dependencies used by this project. This is
+   similar to the GradleDependency check, which checks for newer versions
+   available in the Android SDK tools and libraries, but this works with any
+   MavenCentral dependency, and connects to the library every time, which
+   makes it more flexible but also much slower.
+
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/drawable/rn_edit_text_material.xml:17: Warning: The resource @dimen/abc_edit_text_inset_horizontal_material is marked as private in androidx.appcompat:appcompat:1.7.1 [PrivateResource]
+       android:insetLeft="@dimen/abc_edit_text_inset_horizontal_material"
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/drawable/rn_edit_text_material.xml:18: Warning: The resource @dimen/abc_edit_text_inset_horizontal_material is marked as private in androidx.appcompat:appcompat:1.7.1 [PrivateResource]
+       android:insetRight="@dimen/abc_edit_text_inset_horizontal_material"
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/drawable/rn_edit_text_material.xml:19: Warning: The resource @dimen/abc_edit_text_inset_top_material is marked as private in androidx.appcompat:appcompat:1.7.1 [PrivateResource]
+       android:insetTop="@dimen/abc_edit_text_inset_top_material"
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/drawable/rn_edit_text_material.xml:20: Warning: The resource @dimen/abc_edit_text_inset_bottom_material is marked as private in androidx.appcompat:appcompat:1.7.1 [PrivateResource]
+       android:insetBottom="@dimen/abc_edit_text_inset_bottom_material"
+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/drawable/rn_edit_text_material.xml:33: Warning: The resource @drawable/abc_textfield_default_mtrl_alpha is marked as private in androidx.appcompat:appcompat:1.7.1 [PrivateResource]
+        <item android:state_enabled="false" android:drawable="@drawable/abc_textfield_default_mtrl_alpha"/>
+                                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/drawable/rn_edit_text_material.xml:34: Warning: The resource @drawable/abc_textfield_activated_mtrl_alpha is marked as private in androidx.appcompat:appcompat:1.7.1 [PrivateResource]
+        <item android:drawable="@drawable/abc_textfield_activated_mtrl_alpha"/>
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "PrivateResource":
+   Private resources should not be referenced; the may not be present
+   everywhere, and even where they are they may disappear without notice.
+
+   To fix this, copy the resource into your own project instead.
+
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/debug/AndroidManifest.xml:6: Warning: Unnecessary; SDK_INT is always >= 28 [ObsoleteSdkInt]
+    <application android:usesCleartextTraffic="true" tools:targetApi="28" tools:ignore="GoogleAppIndexingWarning" tools:replace="android:usesCleartextTraffic" />
+                                                     ~~~~~~~~~~~~~~~~~~~~
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-anydpi-v26: Warning: This folder configuration (v26) is unnecessary; minSdkVersion is 29. Merge all the resources in this folder into mipmap-anydpi. [ObsoleteSdkInt]
+
+   Explanation for issues of type "ObsoleteSdkInt":
+   This check flags version checks that are not necessary, because the
+   minSdkVersion (or surrounding known API level) is already at least as high
+   as the version checked for.
+
+   Similarly, it also looks for resources in -vNN folders, such as values-v14
+   where the version qualifier is less than or equal to the minSdkVersion,
+   where the contents should be merged into the best folder.
+
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/build.gradle: Warning: The resource R.integer.react_native_dev_server_port appears to be unused [UnusedResources]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/build.gradle: Warning: The resource R.integer.react_native_dev_server_port appears to be unused [UnusedResources]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/build.gradle: Warning: The resource R.integer.react_native_dev_server_port appears to be unused [UnusedResources]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/build.gradle: Warning: The resource R.string.react_native_dev_server_ip appears to be unused [UnusedResources]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/build.gradle: Warning: The resource R.string.react_native_dev_server_ip appears to be unused [UnusedResources]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/build.gradle: Warning: The resource R.string.react_native_dev_server_ip appears to be unused [UnusedResources]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/values/colors.xml:2: Warning: The resource R.color.splashscreen_background appears to be unused [UnusedResources]
+  <color name="splashscreen_background">#FFFFFF</color>
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/values/colors.xml:3: Warning: The resource R.color.iconBackground appears to be unused [UnusedResources]
+  <color name="iconBackground">#ffffff</color>
+         ~~~~~~~~~~~~~~~~~~~~~
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/drawable/ic_launcher_background.xml:1: Warning: The resource R.drawable.ic_launcher_background appears to be unused [UnusedResources]
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+^
+
+   Explanation for issues of type "UnusedResources":
+   Unused resources make applications larger and slow down builds.
+
+
+   The unused resource check can ignore tests. If you want to include
+   resources that are only referenced from tests, consider packaging them in a
+   test source set instead.
+
+   You can include test sources in the unused resource check by setting the
+   system property lint.unused-resources.include-tests=true, and to exclude
+   them (usually for performance reasons), use
+   lint.unused-resources.exclude-tests=true.
+
+   Available options:
+
+   **skip-libraries** (default is true):
+   Whether the unused resource check should skip reporting unused resources in libraries.
+
+   Many libraries will declare resources that are part of the library surface; other modules depending on the library will also reference the resources. To avoid reporting all these resources as unused (in the context of a library), the unused resource check normally skips reporting unused resources in libraries. Instead, run the unused resource check on the consuming app module (along with `checkDependencies=true`).
+
+   However, there are cases where you want to check that all the resources declared in a library are used; in that case, you can disable the skip option.
+
+   To configure this option, use a `lint.xml` file with an <option> like this:
+
+   ```xml
+   <lint>
+       <issue id="UnusedResources">
+           <option name="skip-libraries" value="true" />
+       </issue>
+   </lint>
+   ```
+
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_background.webp: Warning: The following images appear both as density independent .xml files and as bitmap files: src/main/res/drawable/ic_launcher_background.xml, src/main/res/mipmap-hdpi/ic_launcher_background.webp [IconXmlAndPng]
+
+   Explanation for issues of type "IconXmlAndPng":
+   If a drawable resource appears as an .xml file in the drawable/ folder,
+   it's usually not intentional for it to also appear as a bitmap using the
+   same name; generally you expect the drawable XML file to define states and
+   each state has a corresponding drawable bitmap.
+
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-hdpi/ic_launcher.webp: Warning: Launcher icons should not fill every pixel of their square region; see the design guide for details [IconLauncherShape]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-mdpi/ic_launcher.webp: Warning: Launcher icons should not fill every pixel of their square region; see the design guide for details [IconLauncherShape]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-xhdpi/ic_launcher.webp: Warning: Launcher icons should not fill every pixel of their square region; see the design guide for details [IconLauncherShape]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp: Warning: Launcher icons should not fill every pixel of their square region; see the design guide for details [IconLauncherShape]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp: Warning: Launcher icons should not fill every pixel of their square region; see the design guide for details [IconLauncherShape]
+
+   Explanation for issues of type "IconLauncherShape":
+   According to the Android Design Guide
+   (https://d.android.com/r/studio-ui/designer/material/iconography) your
+   launcher icons should "use a distinct silhouette", a "three-dimensional,
+   front view, with a slight perspective as if viewed from above, so that
+   users perceive some depth."
+
+   The unique silhouette implies that your launcher icon should not be a
+   filled square.
+
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-hdpi/ic_launcher.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-mdpi/ic_launcher.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-xhdpi/ic_launcher.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-hdpi/ic_launcher_background.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-mdpi/ic_launcher_background.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-xhdpi/ic_launcher_background.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_background.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_background.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-hdpi/ic_launcher_monochrome.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-mdpi/ic_launcher_monochrome.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-xhdpi/ic_launcher_monochrome.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_monochrome.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_monochrome.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+/workspace/oryn-ai-agent/spikes/android-feasibility/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp: Warning: Misleading file extension; named .webp but the file format is png [IconExtension]
+
+   Explanation for issues of type "IconExtension":
+   Ensures that icons have the correct file extension (e.g. a .png file is
+   really in the PNG format and not for example a GIF file named .png).
+
+0 errors, 54 warnings

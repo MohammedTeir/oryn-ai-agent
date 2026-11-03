@@ -1,0 +1,12 @@
+plugins {
+  id 'com.android.library'
+  id 'expo-module-gradle-plugin'
+}
+
+group = 'io.github.mohammedteir.oryn.feasibility'
+version = '0.0.1'
+
+android {
+  namespace 'io.github.mohammedteir.oryn.feasibility.observer'
+  defaultConfig { minSdkVersion 29 }
+}
