@@ -1,0 +1,860 @@
+- Creating native directory (./android)
+✔ Created native directory | reusing /android
+- Updating package.json
+✔ Updated package.json | no changes
+- Running prebuild
+» android: userInterfaceStyle: Install expo-system-ui in your project to enable this feature.
+- Running prebuild
+✔ Finished prebuild
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.4.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build
+> Task :gradle-plugin:settings-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :gradle-plugin:shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:pluginDescriptors UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:processResources UP-TO-DATE
+> Task :gradle-plugin:settings-plugin:pluginDescriptors UP-TO-DATE
+> Task :gradle-plugin:settings-plugin:processResources UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:compileKotlin UP-TO-DATE
+> Task :gradle-plugin:shared:compileKotlin UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:compileJava NO-SOURCE
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:processResources NO-SOURCE
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:classes UP-TO-DATE
+> Task :gradle-plugin:shared:compileJava NO-SOURCE
+> Task :gradle-plugin:shared:processResources NO-SOURCE
+> Task :gradle-plugin:shared:classes UP-TO-DATE
+> Task :gradle-plugin:shared:jar UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:jar UP-TO-DATE
+> Task :gradle-plugin:settings-plugin:compileKotlin UP-TO-DATE
+> Task :gradle-plugin:settings-plugin:compileJava NO-SOURCE
+> Task :gradle-plugin:settings-plugin:classes UP-TO-DATE
+> Task :gradle-plugin:settings-plugin:jar UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:compileKotlin UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:compileJava NO-SOURCE
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:classes UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:jar UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-dev-launcher-gradle-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-dev-launcher-gradle-plugin:pluginDescriptors UP-TO-DATE
+> Task :expo-dev-launcher-gradle-plugin:processResources UP-TO-DATE
+> Task :gradle-plugin:react-native-gradle-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-module-gradle-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-module-gradle-plugin:pluginDescriptors UP-TO-DATE
+> Task :expo-module-gradle-plugin:processResources UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-plugin:compileKotlin UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-plugin:compileJava NO-SOURCE
+> Task :expo-gradle-plugin:expo-autolinking-plugin:pluginDescriptors UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-plugin:processResources UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-plugin:classes UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-plugin:jar UP-TO-DATE
+> Task :expo-gradle-plugin:expo-max-sdk-override-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-gradle-plugin:expo-max-sdk-override-plugin:compileKotlin UP-TO-DATE
+> Task :expo-gradle-plugin:expo-max-sdk-override-plugin:compileJava NO-SOURCE
+> Task :gradle-plugin:react-native-gradle-plugin:compileKotlin UP-TO-DATE
+> Task :expo-gradle-plugin:expo-max-sdk-override-plugin:pluginDescriptors UP-TO-DATE
+> Task :gradle-plugin:react-native-gradle-plugin:compileJava NO-SOURCE
+> Task :expo-gradle-plugin:expo-max-sdk-override-plugin:processResources UP-TO-DATE
+> Task :expo-gradle-plugin:expo-max-sdk-override-plugin:classes UP-TO-DATE
+> Task :gradle-plugin:react-native-gradle-plugin:pluginDescriptors UP-TO-DATE
+> Task :expo-gradle-plugin:expo-max-sdk-override-plugin:jar UP-TO-DATE
+> Task :gradle-plugin:react-native-gradle-plugin:processResources UP-TO-DATE
+> Task :gradle-plugin:react-native-gradle-plugin:classes UP-TO-DATE
+> Task :gradle-plugin:react-native-gradle-plugin:jar UP-TO-DATE
+> Task :expo-dev-launcher-gradle-plugin:compileKotlin UP-TO-DATE
+> Task :expo-module-gradle-plugin:compileKotlin UP-TO-DATE
+> Task :expo-dev-launcher-gradle-plugin:compileJava NO-SOURCE
+> Task :expo-dev-launcher-gradle-plugin:classes UP-TO-DATE
+> Task :expo-module-gradle-plugin:compileJava NO-SOURCE
+> Task :expo-module-gradle-plugin:classes UP-TO-DATE
+> Task :expo-dev-launcher-gradle-plugin:jar UP-TO-DATE
+> Task :expo-module-gradle-plugin:jar UP-TO-DATE
+
+> Configure project :
+[ExpoRootProject] The Kotlin Gradle plugin used by this build is 2.2.10, but the version catalog declares 2.2.0. Using the plugin version.
+[ExpoRootProject] Using the following versions:
+  - buildTools:  37.0.0
+  - minSdk:      29
+  - compileSdk:  37
+  - targetSdk:   36
+  - ndk:         27.1.12297006
+  - kotlin:      2.2.10
+  - ksp:         2.2.10-2.0.2
+
+> Configure project :app
+WARNING: The option setting 'android.builtInKotlin=false' is deprecated.
+The current default is 'true'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+WARNING: The option setting 'android.newDsl=false' is deprecated.
+The current default is 'true'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+ ℹ️  Applying gradle plugin 'expo-max-sdk-override-plugin'
+  [expo-max-sdk-override-plugin] This plugin will find all permissions declared with `android:maxSdkVersion`. If there exists a declaration with the `android:maxSdkVersion` annotation and another one without, the plugin will remove the annotation from the final merged manifest. In order to see a log with the changes run a clean build of the app.
+WARNING: API 'applicationVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding
+    android.newDsl=false
+to this project's gradle.properties file.
+For more information, see http://developer.android.com/build/r/new-dsl.
+
+To determine what is calling applicationVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+WARNING: API 'testVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding
+    android.newDsl=false
+to this project's gradle.properties file.
+For more information, see http://developer.android.com/build/r/new-dsl.
+
+To determine what is calling testVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+WARNING: API 'unitTestVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding
+    android.newDsl=false
+to this project's gradle.properties file.
+For more information, see http://developer.android.com/build/r/new-dsl.
+
+To determine what is calling unitTestVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+ ℹ️  Applying gradle plugin 'expo-dev-launcher-gradle-plugin'
+
+> Configure project :expo
+WARNING: API 'libraryVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding
+    android.newDsl=false
+to this project's gradle.properties file.
+For more information, see http://developer.android.com/build/r/new-dsl.
+
+To determine what is calling libraryVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+
+Using expo modules
+  - expo-dom-webview (58.0.2)
+  - expo-log-box (58.0.14)
+  - expo-constants (58.0.14)
+  - expo-dev-client (58.0.18)
+  - expo-dev-launcher (58.0.18)
+  - expo-dev-menu (58.0.12)
+  - expo-dev-menu-interface (58.0.1)
+  - expo-json-utils (58.0.1)
+  - expo-manifests (58.0.1)
+  - expo-modules-core (58.0.29)
+  - expo-updates-interface (58.0.1)
+  - oryn-observer (0.0.1)
+  - [📦] expo-asset (58.0.19)
+  - [📦] expo-file-system (58.0.13)
+  - [📦] expo-font (58.0.11)
+  - [📦] expo-keep-awake (58.0.3)
+
+
+> Task :expo:generateInlineModules
+> Task :expo:generatePackagesList UP-TO-DATE
+> Task :expo:preBuild
+> Task :expo-constants:preBuild UP-TO-DATE
+> Task :expo-dev-client:preBuild UP-TO-DATE
+> Task :expo-dev-launcher:preBuild UP-TO-DATE
+> Task :expo-dev-menu:preBuild UP-TO-DATE
+> Task :expo-dev-menu-interface:preBuild UP-TO-DATE
+> Task :expo-dom-webview:preBuild UP-TO-DATE
+> Task :expo-json-utils:preBuild UP-TO-DATE
+> Task :expo-log-box:preBuild UP-TO-DATE
+> Task :expo-manifests:preBuild UP-TO-DATE
+> Task :expo-modules-core:decompressPrebuiltNativeLibs UP-TO-DATE
+> Task :expo-modules-core:preBuild UP-TO-DATE
+> Task :expo-updates-interface:preBuild UP-TO-DATE
+> Task :oryn-observer:preBuild UP-TO-DATE
+> Task :expo:preDebugBuild
+> Task :expo:processDebugNavigationResources UP-TO-DATE
+> Task :app:generateAutolinkingNewArchitectureFiles UP-TO-DATE
+> Task :app:generateAutolinkingPackageList UP-TO-DATE
+> Task :app:generateCodegenSchemaFromJavaScript SKIPPED
+> Task :app:generateCodegenArtifactsFromSchema SKIPPED
+> Task :app:generateReactNativeEntryPoint UP-TO-DATE
+> Task :app:preBuild
+> Task :app:preDebugBuild
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:generateDebugBuildConfig UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :expo-constants:createDebugExpoConfig
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :expo-dev-client:preDebugBuild UP-TO-DATE
+> Task :expo-dev-client:processDebugNavigationResources UP-TO-DATE
+> Task :expo-dev-launcher:preDebugBuild UP-TO-DATE
+> Task :expo-dev-launcher:processDebugNavigationResources UP-TO-DATE
+> Task :expo-dev-menu:preDebugBuild UP-TO-DATE
+> Task :expo-dev-menu:processDebugNavigationResources UP-TO-DATE
+> Task :expo-dev-menu-interface:preDebugBuild UP-TO-DATE
+> Task :expo-dev-menu-interface:processDebugNavigationResources UP-TO-DATE
+> Task :expo-dom-webview:preDebugBuild UP-TO-DATE
+> Task :expo-dom-webview:processDebugNavigationResources UP-TO-DATE
+> Task :expo-json-utils:preDebugBuild UP-TO-DATE
+> Task :expo-json-utils:processDebugNavigationResources UP-TO-DATE
+> Task :expo-log-box:preDebugBuild UP-TO-DATE
+> Task :expo-log-box:processDebugNavigationResources UP-TO-DATE
+> Task :expo-manifests:preDebugBuild UP-TO-DATE
+> Task :expo-manifests:processDebugNavigationResources UP-TO-DATE
+> Task :expo-modules-core:preDebugBuild UP-TO-DATE
+> Task :expo-modules-core:processDebugNavigationResources UP-TO-DATE
+> Task :expo-updates-interface:preDebugBuild UP-TO-DATE
+> Task :expo-updates-interface:processDebugNavigationResources UP-TO-DATE
+> Task :oryn-observer:preDebugBuild UP-TO-DATE
+> Task :oryn-observer:processDebugNavigationResources UP-TO-DATE
+> Task :expo:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo:generateDebugResources UP-TO-DATE
+> Task :expo:packageDebugResources UP-TO-DATE
+> Task :expo:parseDebugLocalResources UP-TO-DATE
+> Task :expo:generateDebugRFile UP-TO-DATE
+> Task :expo-modules-core:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-modules-core:generateDebugBuildConfig UP-TO-DATE
+> Task :expo-modules-core:generateDebugResources UP-TO-DATE
+> Task :expo-modules-core:packageDebugResources UP-TO-DATE
+> Task :expo-modules-core:parseDebugLocalResources UP-TO-DATE
+> Task :expo-modules-core:generateDebugRFile UP-TO-DATE
+> Task :expo-modules-core:compileDebugKotlin UP-TO-DATE
+> Task :expo-modules-core:javaPreCompileDebug UP-TO-DATE
+> Task :expo-modules-core:compileDebugJavaWithJavac UP-TO-DATE
+> Task :expo-modules-core:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :expo-dev-client:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-dev-client:dataBindingMergeDependencyArtifactsDebug UP-TO-DATE
+> Task :expo-dev-client:generateDebugResources UP-TO-DATE
+> Task :expo-dev-client:packageDebugResources UP-TO-DATE
+> Task :expo-dev-client:parseDebugLocalResources UP-TO-DATE
+> Task :expo-dev-client:dataBindingGenBaseClassesDebug UP-TO-DATE
+> Task :expo-dev-client:generateDebugBuildConfig UP-TO-DATE
+> Task :expo-dev-client:generateDebugRFile UP-TO-DATE
+> Task :expo-dev-client:compileDebugKotlin NO-SOURCE
+> Task :expo-dev-client:javaPreCompileDebug UP-TO-DATE
+> Task :expo-dev-client:compileDebugJavaWithJavac UP-TO-DATE
+> Task :expo-dev-client:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :expo-dev-launcher:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-dev-launcher:dataBindingMergeDependencyArtifactsDebug UP-TO-DATE
+> Task :expo-dev-launcher:generateDebugResources UP-TO-DATE
+> Task :expo-dev-launcher:packageDebugResources UP-TO-DATE
+> Task :expo-dev-launcher:parseDebugLocalResources UP-TO-DATE
+> Task :expo-dev-menu:generateDebugResources UP-TO-DATE
+> Task :expo-dev-menu:packageDebugResources UP-TO-DATE
+> Task :expo-dev-menu:parseDebugLocalResources UP-TO-DATE
+> Task :expo-dev-menu:generateDebugRFile UP-TO-DATE
+> Task :expo-dev-menu-interface:generateDebugResources UP-TO-DATE
+> Task :expo-dev-menu-interface:packageDebugResources UP-TO-DATE
+> Task :expo-dev-menu-interface:parseDebugLocalResources UP-TO-DATE
+> Task :expo-dev-menu-interface:generateDebugRFile UP-TO-DATE
+> Task :expo-json-utils:generateDebugResources UP-TO-DATE
+> Task :expo-json-utils:packageDebugResources UP-TO-DATE
+> Task :expo-json-utils:parseDebugLocalResources UP-TO-DATE
+> Task :expo-json-utils:generateDebugRFile UP-TO-DATE
+> Task :expo-manifests:generateDebugResources UP-TO-DATE
+> Task :expo-manifests:packageDebugResources UP-TO-DATE
+> Task :expo-manifests:parseDebugLocalResources UP-TO-DATE
+> Task :expo-manifests:generateDebugRFile UP-TO-DATE
+> Task :expo-updates-interface:generateDebugResources UP-TO-DATE
+> Task :expo-updates-interface:packageDebugResources UP-TO-DATE
+> Task :expo-updates-interface:parseDebugLocalResources UP-TO-DATE
+> Task :expo-updates-interface:generateDebugRFile UP-TO-DATE
+> Task :expo-constants:createExpoFingerprint
+> Task :expo-constants:preDebugBuild
+> Task :expo-constants:processDebugNavigationResources UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:generateDebugRFile UP-TO-DATE
+> Task :expo-constants:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-constants:generateDebugResources UP-TO-DATE
+> Task :expo-constants:packageDebugResources UP-TO-DATE
+> Task :expo-constants:parseDebugLocalResources UP-TO-DATE
+> Task :expo-constants:generateDebugRFile UP-TO-DATE
+> Task :expo-dev-launcher:dataBindingGenBaseClassesDebug UP-TO-DATE
+> Task :expo-dev-launcher:generateDebugBuildConfig UP-TO-DATE
+> Task :expo-dev-launcher:generateDebugRFile UP-TO-DATE
+> Task :expo-dev-menu:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-dev-menu:generateDebugBuildConfig UP-TO-DATE
+> Task :expo-dev-menu-interface:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-dev-menu-interface:compileDebugKotlin NO-SOURCE
+> Task :expo-dev-menu-interface:javaPreCompileDebug UP-TO-DATE
+> Task :expo-dev-menu-interface:compileDebugJavaWithJavac NO-SOURCE
+> Task :expo-dev-menu-interface:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :expo-json-utils:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-constants:compileDebugKotlin UP-TO-DATE
+> Task :expo-constants:javaPreCompileDebug UP-TO-DATE
+> Task :expo-constants:compileDebugJavaWithJavac NO-SOURCE
+> Task :expo-constants:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :expo-manifests:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-manifests:javaPreCompileDebug UP-TO-DATE
+> Task :expo-dev-menu:javaPreCompileDebug UP-TO-DATE
+> Task :expo-updates-interface:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-json-utils:compileDebugKotlin UP-TO-DATE
+> Task :expo-json-utils:javaPreCompileDebug UP-TO-DATE
+> Task :expo-json-utils:compileDebugJavaWithJavac NO-SOURCE
+> Task :expo-json-utils:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :expo-updates-interface:compileDebugKotlin UP-TO-DATE
+> Task :expo-updates-interface:javaPreCompileDebug UP-TO-DATE
+> Task :expo-updates-interface:compileDebugJavaWithJavac NO-SOURCE
+> Task :expo-updates-interface:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :expo-dev-launcher:javaPreCompileDebug UP-TO-DATE
+> Task :expo-dom-webview:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-dom-webview:generateDebugResources UP-TO-DATE
+> Task :expo-dom-webview:packageDebugResources UP-TO-DATE
+> Task :expo-dom-webview:parseDebugLocalResources UP-TO-DATE
+> Task :expo-dom-webview:generateDebugRFile UP-TO-DATE
+> Task :expo-manifests:compileDebugKotlin UP-TO-DATE
+> Task :expo-manifests:compileDebugJavaWithJavac NO-SOURCE
+> Task :expo-manifests:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :expo-dom-webview:compileDebugKotlin UP-TO-DATE
+> Task :expo-dom-webview:javaPreCompileDebug UP-TO-DATE
+> Task :expo-dom-webview:compileDebugJavaWithJavac NO-SOURCE
+> Task :expo-dom-webview:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :expo-log-box:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-log-box:generateDebugBuildConfig UP-TO-DATE
+> Task :expo-log-box:generateDebugResources UP-TO-DATE
+> Task :expo-log-box:packageDebugResources UP-TO-DATE
+> Task :expo-log-box:parseDebugLocalResources UP-TO-DATE
+> Task :expo-log-box:generateDebugRFile UP-TO-DATE
+> Task :expo-log-box:compileDebugKotlin UP-TO-DATE
+> Task :expo-log-box:javaPreCompileDebug UP-TO-DATE
+> Task :expo-log-box:compileDebugJavaWithJavac UP-TO-DATE
+> Task :expo-log-box:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :oryn-observer:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :oryn-observer:generateDebugResources UP-TO-DATE
+> Task :oryn-observer:packageDebugResources UP-TO-DATE
+> Task :oryn-observer:parseDebugLocalResources UP-TO-DATE
+> Task :oryn-observer:generateDebugRFile UP-TO-DATE
+> Task :oryn-observer:compileDebugKotlin UP-TO-DATE
+> Task :oryn-observer:javaPreCompileDebug UP-TO-DATE
+> Task :oryn-observer:compileDebugJavaWithJavac NO-SOURCE
+> Task :oryn-observer:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :expo-dev-menu:compileDebugKotlin UP-TO-DATE
+> Task :expo:javaPreCompileDebug UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :expo:generateDebugAssets UP-TO-DATE
+> Task :expo:mergeDebugAssets UP-TO-DATE
+> Task :expo-constants:generateDebugAssets UP-TO-DATE
+> Task :expo-constants:mergeDebugAssets UP-TO-DATE
+> Task :expo-dev-client:generateDebugAssets UP-TO-DATE
+> Task :expo-dev-client:mergeDebugAssets UP-TO-DATE
+> Task :expo-dev-launcher:generateDebugAssets UP-TO-DATE
+> Task :expo-dev-launcher:mergeDebugAssets UP-TO-DATE
+> Task :expo-dev-menu-interface:generateDebugAssets UP-TO-DATE
+> Task :expo-dev-menu-interface:mergeDebugAssets UP-TO-DATE
+> Task :expo-dom-webview:generateDebugAssets UP-TO-DATE
+> Task :expo-dev-menu:compileDebugJavaWithJavac UP-TO-DATE
+> Task :expo-dom-webview:mergeDebugAssets UP-TO-DATE
+> Task :expo-json-utils:generateDebugAssets UP-TO-DATE
+> Task :expo-dev-menu:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :expo-json-utils:mergeDebugAssets UP-TO-DATE
+> Task :expo-dev-menu:generateDebugAssets UP-TO-DATE
+> Task :expo-dev-menu:mergeDebugAssets UP-TO-DATE
+> Task :expo-log-box:generateDebugAssets UP-TO-DATE
+> Task :expo-log-box:mergeDebugAssets UP-TO-DATE
+> Task :expo-manifests:generateDebugAssets UP-TO-DATE
+> Task :expo-manifests:mergeDebugAssets UP-TO-DATE
+> Task :expo-modules-core:generateDebugAssets UP-TO-DATE
+> Task :expo-modules-core:mergeDebugAssets UP-TO-DATE
+> Task :expo-updates-interface:generateDebugAssets UP-TO-DATE
+> Task :expo-updates-interface:mergeDebugAssets UP-TO-DATE
+> Task :oryn-observer:generateDebugAssets UP-TO-DATE
+> Task :oryn-observer:mergeDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets UP-TO-DATE
+> Task :app:compressDebugAssets UP-TO-DATE
+> Task :app:generateDebugGlobalSynthetics UP-TO-DATE
+> Task :expo-constants:processDebugJavaRes UP-TO-DATE
+> Task :expo-dev-client:processDebugJavaRes NO-SOURCE
+> Task :expo-dev-menu:processDebugJavaRes UP-TO-DATE
+> Task :expo-dev-menu-interface:processDebugJavaRes NO-SOURCE
+> Task :expo-dom-webview:processDebugJavaRes UP-TO-DATE
+> Task :expo-json-utils:processDebugJavaRes UP-TO-DATE
+> Task :expo-log-box:processDebugJavaRes UP-TO-DATE
+> Task :expo-manifests:processDebugJavaRes UP-TO-DATE
+> Task :expo-modules-core:processDebugJavaRes UP-TO-DATE
+> Task :expo-updates-interface:processDebugJavaRes UP-TO-DATE
+> Task :oryn-observer:processDebugJavaRes UP-TO-DATE
+> Task :expo-dev-launcher:compileDebugKotlin UP-TO-DATE
+> Task :expo-dev-launcher:compileDebugJavaWithJavac UP-TO-DATE
+> Task :expo-dev-launcher:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :app:checkDebugDuplicateClasses UP-TO-DATE
+> Task :expo-dev-launcher:processDebugJavaRes UP-TO-DATE
+> Task :app:desugarDebugFileDependencies UP-TO-DATE
+> Task :app:mergeExtDexDebug UP-TO-DATE
+> Task :expo-constants:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :expo:compileDebugKotlin UP-TO-DATE
+> Task :expo-dev-client:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :expo-dev-launcher:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :expo:compileDebugJavaWithJavac NO-SOURCE
+> Task :expo-dev-menu:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :expo:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :expo-dev-menu-interface:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :expo:processDebugJavaRes UP-TO-DATE
+> Task :expo:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :expo-dom-webview:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :expo-json-utils:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :expo-log-box:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :expo-manifests:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :expo-modules-core:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :expo-updates-interface:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :oryn-observer:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :app:compileDebugKotlin UP-TO-DATE
+> Task :app:compileDebugJavaWithJavac UP-TO-DATE
+> Task :app:processDebugJavaRes UP-TO-DATE
+> Task :expo:writeDebugAarMetadata UP-TO-DATE
+> Task :expo-constants:writeDebugAarMetadata UP-TO-DATE
+> Task :expo-dev-client:writeDebugAarMetadata UP-TO-DATE
+> Task :expo-dev-launcher:writeDebugAarMetadata UP-TO-DATE
+> Task :expo-dev-menu:writeDebugAarMetadata UP-TO-DATE
+> Task :expo-dev-menu-interface:writeDebugAarMetadata UP-TO-DATE
+> Task :expo-dom-webview:writeDebugAarMetadata UP-TO-DATE
+> Task :expo-json-utils:writeDebugAarMetadata UP-TO-DATE
+> Task :expo-log-box:writeDebugAarMetadata UP-TO-DATE
+> Task :expo-manifests:writeDebugAarMetadata UP-TO-DATE
+> Task :expo-modules-core:writeDebugAarMetadata UP-TO-DATE
+> Task :expo-updates-interface:writeDebugAarMetadata UP-TO-DATE
+> Task :oryn-observer:writeDebugAarMetadata UP-TO-DATE
+> Task :expo:extractDeepLinksDebug UP-TO-DATE
+> Task :expo:processDebugManifest UP-TO-DATE
+> Task :expo-constants:extractDeepLinksDebug UP-TO-DATE
+> Task :expo-constants:processDebugManifest UP-TO-DATE
+> Task :expo-dev-client:extractDeepLinksDebug UP-TO-DATE
+> Task :expo-dev-client:processDebugManifest UP-TO-DATE
+> Task :expo-dev-launcher:extractDeepLinksDebug UP-TO-DATE
+> Task :expo-dev-launcher:processDebugManifest UP-TO-DATE
+> Task :expo-dev-menu:extractDeepLinksDebug UP-TO-DATE
+> Task :expo-dev-menu:processDebugManifest UP-TO-DATE
+> Task :expo-dev-menu-interface:extractDeepLinksDebug UP-TO-DATE
+> Task :expo-dev-menu-interface:processDebugManifest UP-TO-DATE
+> Task :expo-dom-webview:extractDeepLinksDebug UP-TO-DATE
+> Task :expo-dom-webview:processDebugManifest UP-TO-DATE
+> Task :expo-json-utils:extractDeepLinksDebug UP-TO-DATE
+> Task :expo-json-utils:processDebugManifest UP-TO-DATE
+> Task :expo-log-box:extractDeepLinksDebug UP-TO-DATE
+> Task :expo-log-box:processDebugManifest UP-TO-DATE
+> Task :expo-manifests:extractDeepLinksDebug UP-TO-DATE
+> Task :expo-manifests:processDebugManifest UP-TO-DATE
+> Task :expo-modules-core:extractDeepLinksDebug UP-TO-DATE
+> Task :expo-modules-core:processDebugManifest UP-TO-DATE
+> Task :expo-updates-interface:extractDeepLinksDebug UP-TO-DATE
+> Task :expo-updates-interface:processDebugManifest UP-TO-DATE
+> Task :oryn-observer:extractDeepLinksDebug UP-TO-DATE
+> Task :oryn-observer:processDebugManifest UP-TO-DATE
+> Task :expo:mapDebugSourceSetPaths UP-TO-DATE
+> Task :expo:compileDebugLibraryResources UP-TO-DATE
+> Task :expo-constants:mapDebugSourceSetPaths UP-TO-DATE
+> Task :expo-constants:compileDebugLibraryResources UP-TO-DATE
+> Task :expo-dev-client:mapDebugSourceSetPaths UP-TO-DATE
+> Task :expo-dev-client:compileDebugLibraryResources UP-TO-DATE
+> Task :expo-dev-launcher:mapDebugSourceSetPaths UP-TO-DATE
+> Task :expo-dev-launcher:compileDebugLibraryResources UP-TO-DATE
+> Task :expo-dev-menu:mapDebugSourceSetPaths UP-TO-DATE
+> Task :expo-dev-menu:compileDebugLibraryResources UP-TO-DATE
+> Task :expo-dev-menu-interface:mapDebugSourceSetPaths UP-TO-DATE
+> Task :expo-dev-menu-interface:compileDebugLibraryResources UP-TO-DATE
+> Task :expo-dom-webview:mapDebugSourceSetPaths UP-TO-DATE
+> Task :expo-dom-webview:compileDebugLibraryResources UP-TO-DATE
+> Task :expo-json-utils:mapDebugSourceSetPaths UP-TO-DATE
+> Task :expo-json-utils:compileDebugLibraryResources UP-TO-DATE
+> Task :expo-log-box:mapDebugSourceSetPaths UP-TO-DATE
+> Task :expo-log-box:compileDebugLibraryResources UP-TO-DATE
+> Task :expo-manifests:mapDebugSourceSetPaths UP-TO-DATE
+> Task :expo-manifests:compileDebugLibraryResources UP-TO-DATE
+> Task :expo-modules-core:mapDebugSourceSetPaths UP-TO-DATE
+> Task :expo-modules-core:compileDebugLibraryResources UP-TO-DATE
+> Task :expo-updates-interface:mapDebugSourceSetPaths UP-TO-DATE
+> Task :expo-updates-interface:compileDebugLibraryResources UP-TO-DATE
+> Task :app:mergeDebugJavaResource UP-TO-DATE
+> Task :oryn-observer:mapDebugSourceSetPaths UP-TO-DATE
+> Task :oryn-observer:compileDebugLibraryResources UP-TO-DATE
+> Task :expo:mergeDebugJniLibFolders UP-TO-DATE
+> Task :app:mergeLibDexDebug UP-TO-DATE
+> Task :expo:mergeDebugNativeLibs NO-SOURCE
+> Task :expo:copyDebugJniLibsProjectOnly UP-TO-DATE
+> Task :expo-constants:mergeDebugJniLibFolders UP-TO-DATE
+> Task :expo-constants:mergeDebugNativeLibs NO-SOURCE
+> Task :expo-constants:copyDebugJniLibsProjectOnly UP-TO-DATE
+> Task :expo-dev-client:mergeDebugJniLibFolders UP-TO-DATE
+> Task :expo-dev-client:mergeDebugNativeLibs NO-SOURCE
+> Task :expo-dev-client:copyDebugJniLibsProjectOnly UP-TO-DATE
+> Task :expo-dev-launcher:mergeDebugJniLibFolders UP-TO-DATE
+> Task :expo-dev-launcher:mergeDebugNativeLibs NO-SOURCE
+> Task :expo-dev-launcher:copyDebugJniLibsProjectOnly UP-TO-DATE
+> Task :expo-dev-menu:mergeDebugJniLibFolders UP-TO-DATE
+> Task :expo-dev-menu:mergeDebugNativeLibs NO-SOURCE
+> Task :expo-dev-menu:copyDebugJniLibsProjectOnly UP-TO-DATE
+> Task :expo-dev-menu-interface:mergeDebugJniLibFolders UP-TO-DATE
+> Task :expo-dev-menu-interface:mergeDebugNativeLibs NO-SOURCE
+> Task :expo-dev-menu-interface:copyDebugJniLibsProjectOnly UP-TO-DATE
+> Task :expo-dom-webview:mergeDebugJniLibFolders UP-TO-DATE
+> Task :expo-dom-webview:mergeDebugNativeLibs NO-SOURCE
+> Task :expo-dom-webview:copyDebugJniLibsProjectOnly UP-TO-DATE
+> Task :expo-json-utils:mergeDebugJniLibFolders UP-TO-DATE
+> Task :expo-json-utils:mergeDebugNativeLibs NO-SOURCE
+> Task :expo-json-utils:copyDebugJniLibsProjectOnly UP-TO-DATE
+> Task :expo-log-box:mergeDebugJniLibFolders UP-TO-DATE
+> Task :expo-log-box:mergeDebugNativeLibs NO-SOURCE
+> Task :expo-log-box:copyDebugJniLibsProjectOnly UP-TO-DATE
+> Task :expo-manifests:mergeDebugJniLibFolders UP-TO-DATE
+> Task :expo-manifests:mergeDebugNativeLibs NO-SOURCE
+> Task :expo-manifests:copyDebugJniLibsProjectOnly UP-TO-DATE
+> Task :expo-modules-core:unpackExpoModulesV2Cpp UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:compileDebugNavigationResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:expoDebugOverrideMaxSdkConflicts UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:transformDebugClassesWithAsm UP-TO-DATE
+> Task :app:dexBuilderDebug UP-TO-DATE
+> Task :app:mergeProjectDexDebug UP-TO-DATE
+> Task :expo-modules-core:configureCMakeDebug[arm64-v8a]
+> Task :app:configureCMakeDebug[arm64-v8a]
+> Task :expo-modules-core:buildCMakeDebug[arm64-v8a]
+> Task :app:buildCMakeDebug[arm64-v8a]
+> Task :app:mergeDebugJniLibFolders UP-TO-DATE
+> Task :expo-modules-core:mergeDebugJniLibFolders UP-TO-DATE
+> Task :expo-updates-interface:mergeDebugJniLibFolders UP-TO-DATE
+> Task :expo-updates-interface:mergeDebugNativeLibs NO-SOURCE
+> Task :expo-modules-core:mergeDebugNativeLibs UP-TO-DATE
+> Task :expo-updates-interface:copyDebugJniLibsProjectOnly UP-TO-DATE
+> Task :expo-modules-core:copyDebugJniLibsProjectOnly UP-TO-DATE
+> Task :oryn-observer:mergeDebugJniLibFolders UP-TO-DATE
+> Task :app:validateSigningDebug UP-TO-DATE
+> Task :oryn-observer:mergeDebugNativeLibs NO-SOURCE
+> Task :oryn-observer:copyDebugJniLibsProjectOnly UP-TO-DATE
+> Task :expo:checkDebugAarMetadata UP-TO-DATE
+> Task :expo:stripDebugDebugSymbols NO-SOURCE
+> Task :expo:copyDebugJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :app:mergeDebugNativeLibs UP-TO-DATE
+> Task :expo:extractDebugAnnotations UP-TO-DATE
+> Task :expo:extractDeepLinksForAarDebug UP-TO-DATE
+> Task :expo:mergeDebugGeneratedProguardFiles UP-TO-DATE
+> Task :app:stripDebugDebugSymbols UP-TO-DATE
+> Task :expo:mergeDebugConsumerProguardFiles UP-TO-DATE
+> Task :app:writeDebugAppMetadata UP-TO-DATE
+> Task :expo:prepareDebugArtProfile UP-TO-DATE
+> Task :expo:prepareLintJarForPublish UP-TO-DATE
+> Task :app:writeDebugSigningConfigVersions UP-TO-DATE
+> Task :expo:mergeDebugJavaResource UP-TO-DATE
+> Task :expo:syncDebugLibJars UP-TO-DATE
+> Task :expo:bundleDebugLocalLintAar UP-TO-DATE
+> Task :expo-dev-client:checkDebugAarMetadata UP-TO-DATE
+> Task :expo-dev-client:stripDebugDebugSymbols NO-SOURCE
+> Task :expo-dev-client:copyDebugJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :app:packageDebug UP-TO-DATE
+> Task :app:createDebugApkListingFileRedirect UP-TO-DATE
+> Task :app:assembleDebug UP-TO-DATE
+> Task :expo-dev-client:extractDebugAnnotations UP-TO-DATE
+> Task :expo-dev-client:extractDeepLinksForAarDebug UP-TO-DATE
+> Task :expo-dev-client:mergeDebugGeneratedProguardFiles UP-TO-DATE
+> Task :expo-dev-client:mergeDebugConsumerProguardFiles UP-TO-DATE
+> Task :expo-dev-client:prepareDebugArtProfile UP-TO-DATE
+> Task :expo-dev-client:prepareLintJarForPublish UP-TO-DATE
+> Task :expo-dev-client:mergeDebugJavaResource UP-TO-DATE
+> Task :expo-dev-client:syncDebugLibJars UP-TO-DATE
+> Task :expo-dev-launcher:checkDebugAarMetadata UP-TO-DATE
+> Task :expo-dev-launcher:stripDebugDebugSymbols NO-SOURCE
+> Task :expo-dev-launcher:copyDebugJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :expo-dev-client:bundleDebugLocalLintAar UP-TO-DATE
+> Task :expo-dev-launcher:extractDebugAnnotations UP-TO-DATE
+> Task :expo-dev-launcher:extractDeepLinksForAarDebug UP-TO-DATE
+> Task :expo-dev-launcher:mergeDebugGeneratedProguardFiles UP-TO-DATE
+> Task :expo-dev-launcher:mergeDebugConsumerProguardFiles UP-TO-DATE
+> Task :expo-dev-launcher:prepareDebugArtProfile UP-TO-DATE
+> Task :expo-dev-launcher:prepareLintJarForPublish UP-TO-DATE
+> Task :expo-dev-launcher:mergeDebugJavaResource UP-TO-DATE
+> Task :expo-dev-launcher:syncDebugLibJars UP-TO-DATE
+> Task :expo-dev-launcher:bundleDebugLocalLintAar UP-TO-DATE
+> Task :expo-modules-core:checkDebugAarMetadata UP-TO-DATE
+> Task :expo-modules-core:stripDebugDebugSymbols UP-TO-DATE
+> Task :expo-modules-core:copyDebugJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :expo-modules-core:extractDebugAnnotations UP-TO-DATE
+> Task :expo-modules-core:extractDeepLinksForAarDebug UP-TO-DATE
+> Task :expo-modules-core:mergeDebugGeneratedProguardFiles UP-TO-DATE
+> Task :expo-modules-core:mergeDebugConsumerProguardFiles UP-TO-DATE
+> Task :expo-modules-core:prepareDebugArtProfile UP-TO-DATE
+> Task :expo-modules-core:prepareLintJarForPublish UP-TO-DATE
+> Task :expo-modules-core:mergeDebugJavaResource UP-TO-DATE
+> Task :expo-modules-core:syncDebugLibJars UP-TO-DATE
+> Task :expo-modules-core:bundleDebugLocalLintAar UP-TO-DATE
+> Task :expo-dom-webview:checkDebugAarMetadata UP-TO-DATE
+> Task :expo-dom-webview:stripDebugDebugSymbols NO-SOURCE
+> Task :expo-dom-webview:copyDebugJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :expo-dev-menu:checkDebugAarMetadata UP-TO-DATE
+> Task :expo-dev-menu:stripDebugDebugSymbols NO-SOURCE
+> Task :expo-dev-menu:copyDebugJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :expo-dom-webview:extractDebugAnnotations UP-TO-DATE
+> Task :expo-dom-webview:extractDeepLinksForAarDebug UP-TO-DATE
+> Task :expo-dom-webview:mergeDebugGeneratedProguardFiles UP-TO-DATE
+> Task :expo-dev-menu:extractDebugAnnotations UP-TO-DATE
+> Task :expo-dom-webview:mergeDebugConsumerProguardFiles UP-TO-DATE
+> Task :expo-dev-menu:extractDeepLinksForAarDebug UP-TO-DATE
+> Task :expo-dev-menu:mergeDebugGeneratedProguardFiles UP-TO-DATE
+> Task :expo-dev-menu:mergeDebugConsumerProguardFiles UP-TO-DATE
+> Task :expo-dev-menu:prepareDebugArtProfile UP-TO-DATE
+> Task :expo-dev-menu:prepareLintJarForPublish UP-TO-DATE
+> Task :expo-dom-webview:prepareDebugArtProfile UP-TO-DATE
+> Task :expo-dev-menu:mergeDebugJavaResource UP-TO-DATE
+> Task :expo-dev-menu:syncDebugLibJars UP-TO-DATE
+> Task :expo-dom-webview:prepareLintJarForPublish UP-TO-DATE
+> Task :expo-dom-webview:mergeDebugJavaResource UP-TO-DATE
+> Task :expo-dev-menu:bundleDebugLocalLintAar UP-TO-DATE
+> Task :expo-dom-webview:syncDebugLibJars UP-TO-DATE
+> Task :expo-dom-webview:bundleDebugLocalLintAar UP-TO-DATE
+> Task :expo-constants:checkDebugAarMetadata UP-TO-DATE
+> Task :expo-constants:stripDebugDebugSymbols NO-SOURCE
+> Task :expo-constants:copyDebugJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :expo-constants:extractDebugAnnotations UP-TO-DATE
+> Task :expo-constants:extractDeepLinksForAarDebug UP-TO-DATE
+> Task :expo-constants:mergeDebugGeneratedProguardFiles UP-TO-DATE
+> Task :expo-constants:mergeDebugConsumerProguardFiles UP-TO-DATE
+> Task :expo-constants:prepareDebugArtProfile UP-TO-DATE
+> Task :expo-constants:prepareLintJarForPublish UP-TO-DATE
+> Task :expo-constants:mergeDebugJavaResource UP-TO-DATE
+> Task :expo-constants:syncDebugLibJars UP-TO-DATE
+> Task :expo-constants:bundleDebugLocalLintAar UP-TO-DATE
+> Task :expo-dev-menu-interface:checkDebugAarMetadata UP-TO-DATE
+> Task :expo-log-box:checkDebugAarMetadata UP-TO-DATE
+> Task :expo-dev-menu-interface:stripDebugDebugSymbols NO-SOURCE
+> Task :expo-log-box:stripDebugDebugSymbols NO-SOURCE
+> Task :expo-dev-menu-interface:copyDebugJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :expo-log-box:copyDebugJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :expo-log-box:extractDebugAnnotations UP-TO-DATE
+> Task :expo-log-box:extractDeepLinksForAarDebug UP-TO-DATE
+> Task :expo-dev-menu-interface:extractDebugAnnotations UP-TO-DATE
+> Task :expo-log-box:mergeDebugGeneratedProguardFiles UP-TO-DATE
+> Task :expo-dev-menu-interface:extractDeepLinksForAarDebug UP-TO-DATE
+> Task :expo-log-box:mergeDebugConsumerProguardFiles UP-TO-DATE
+> Task :expo-log-box:prepareDebugArtProfile UP-TO-DATE
+> Task :expo-dev-menu-interface:mergeDebugGeneratedProguardFiles UP-TO-DATE
+> Task :expo-log-box:prepareLintJarForPublish UP-TO-DATE
+> Task :expo-dev-menu-interface:mergeDebugConsumerProguardFiles UP-TO-DATE
+> Task :expo-log-box:mergeDebugJavaResource UP-TO-DATE
+> Task :expo-dev-menu-interface:prepareDebugArtProfile UP-TO-DATE
+> Task :expo-log-box:syncDebugLibJars UP-TO-DATE
+> Task :expo-dev-menu-interface:prepareLintJarForPublish UP-TO-DATE
+> Task :expo-log-box:bundleDebugLocalLintAar UP-TO-DATE
+> Task :expo-dev-menu-interface:mergeDebugJavaResource UP-TO-DATE
+> Task :expo-json-utils:checkDebugAarMetadata UP-TO-DATE
+> Task :expo-dev-menu-interface:syncDebugLibJars UP-TO-DATE
+> Task :expo-json-utils:stripDebugDebugSymbols NO-SOURCE
+> Task :expo-json-utils:copyDebugJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :expo-dev-menu-interface:bundleDebugLocalLintAar UP-TO-DATE
+> Task :expo-json-utils:extractDebugAnnotations UP-TO-DATE
+> Task :expo-json-utils:extractDeepLinksForAarDebug UP-TO-DATE
+> Task :expo-manifests:checkDebugAarMetadata UP-TO-DATE
+> Task :expo-manifests:stripDebugDebugSymbols NO-SOURCE
+> Task :expo-json-utils:mergeDebugGeneratedProguardFiles UP-TO-DATE
+> Task :expo-manifests:copyDebugJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :expo-json-utils:mergeDebugConsumerProguardFiles UP-TO-DATE
+> Task :expo-manifests:extractDebugAnnotations UP-TO-DATE
+> Task :expo-json-utils:prepareDebugArtProfile UP-TO-DATE
+> Task :expo-manifests:extractDeepLinksForAarDebug UP-TO-DATE
+> Task :expo-json-utils:prepareLintJarForPublish UP-TO-DATE
+> Task :expo-manifests:mergeDebugGeneratedProguardFiles UP-TO-DATE
+> Task :expo-json-utils:mergeDebugJavaResource UP-TO-DATE
+> Task :expo-manifests:mergeDebugConsumerProguardFiles UP-TO-DATE
+> Task :expo-json-utils:syncDebugLibJars UP-TO-DATE
+> Task :expo-manifests:prepareDebugArtProfile UP-TO-DATE
+> Task :expo-manifests:prepareLintJarForPublish UP-TO-DATE
+> Task :expo-json-utils:bundleDebugLocalLintAar UP-TO-DATE
+> Task :expo-manifests:mergeDebugJavaResource UP-TO-DATE
+> Task :expo-updates-interface:checkDebugAarMetadata UP-TO-DATE
+> Task :expo-manifests:syncDebugLibJars UP-TO-DATE
+> Task :expo-updates-interface:stripDebugDebugSymbols NO-SOURCE
+> Task :expo-manifests:bundleDebugLocalLintAar UP-TO-DATE
+> Task :expo-updates-interface:copyDebugJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :oryn-observer:checkDebugAarMetadata UP-TO-DATE
+> Task :oryn-observer:stripDebugDebugSymbols NO-SOURCE
+> Task :oryn-observer:copyDebugJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :expo-updates-interface:extractDebugAnnotations UP-TO-DATE
+> Task :oryn-observer:extractDebugAnnotations UP-TO-DATE
+> Task :expo-updates-interface:extractDeepLinksForAarDebug UP-TO-DATE
+> Task :oryn-observer:extractDeepLinksForAarDebug UP-TO-DATE
+> Task :oryn-observer:mergeDebugGeneratedProguardFiles UP-TO-DATE
+> Task :expo-updates-interface:mergeDebugGeneratedProguardFiles UP-TO-DATE
+> Task :oryn-observer:mergeDebugConsumerProguardFiles UP-TO-DATE
+> Task :expo-updates-interface:mergeDebugConsumerProguardFiles UP-TO-DATE
+> Task :oryn-observer:prepareDebugArtProfile UP-TO-DATE
+> Task :oryn-observer:prepareLintJarForPublish UP-TO-DATE
+> Task :expo-updates-interface:prepareDebugArtProfile UP-TO-DATE
+> Task :oryn-observer:mergeDebugJavaResource UP-TO-DATE
+> Task :expo-updates-interface:prepareLintJarForPublish UP-TO-DATE
+> Task :oryn-observer:syncDebugLibJars UP-TO-DATE
+> Task :expo-updates-interface:mergeDebugJavaResource UP-TO-DATE
+> Task :oryn-observer:bundleDebugLocalLintAar UP-TO-DATE
+> Task :expo-updates-interface:syncDebugLibJars UP-TO-DATE
+> Task :expo-updates-interface:bundleDebugLocalLintAar UP-TO-DATE
+> Task :app:bundleDebugClassesToCompileJar UP-TO-DATE
+> Task :app:preDebugAndroidTestBuild SKIPPED
+> Task :expo:createFullJarDebug UP-TO-DATE
+> Task :expo:writeDebugLintModelMetadata UP-TO-DATE
+> Task :app:generateDebugAndroidTestResValues UP-TO-DATE
+> Task :expo-constants:createFullJarDebug UP-TO-DATE
+> Task :expo-dev-client:createFullJarDebug UP-TO-DATE
+> Task :expo-constants:writeDebugLintModelMetadata UP-TO-DATE
+> Task :expo-dev-client:writeDebugLintModelMetadata UP-TO-DATE
+> Task :expo-dev-menu:createFullJarDebug UP-TO-DATE
+> Task :expo-dev-launcher:createFullJarDebug UP-TO-DATE
+> Task :expo-dev-menu:writeDebugLintModelMetadata UP-TO-DATE
+> Task :expo-dev-launcher:writeDebugLintModelMetadata UP-TO-DATE
+> Task :expo-dev-menu-interface:createFullJarDebug UP-TO-DATE
+> Task :expo-dom-webview:createFullJarDebug UP-TO-DATE
+> Task :expo-dom-webview:writeDebugLintModelMetadata UP-TO-DATE
+> Task :expo-dev-menu-interface:writeDebugLintModelMetadata UP-TO-DATE
+> Task :expo-json-utils:createFullJarDebug UP-TO-DATE
+> Task :expo-json-utils:writeDebugLintModelMetadata UP-TO-DATE
+> Task :expo-log-box:createFullJarDebug UP-TO-DATE
+> Task :expo-manifests:createFullJarDebug UP-TO-DATE
+> Task :expo-log-box:writeDebugLintModelMetadata UP-TO-DATE
+> Task :expo-manifests:writeDebugLintModelMetadata UP-TO-DATE
+> Task :expo-modules-core:createFullJarDebug UP-TO-DATE
+> Task :expo-updates-interface:createFullJarDebug UP-TO-DATE
+> Task :expo-modules-core:writeDebugLintModelMetadata UP-TO-DATE
+> Task :expo-updates-interface:writeDebugLintModelMetadata UP-TO-DATE
+> Task :oryn-observer:createFullJarDebug UP-TO-DATE
+> Task :app:extractProguardFiles UP-TO-DATE
+> Task :oryn-observer:writeDebugLintModelMetadata UP-TO-DATE
+> Task :expo:extractProguardFiles UP-TO-DATE
+> Task :expo-constants:extractProguardFiles UP-TO-DATE
+> Task :expo-modules-core:extractProguardFiles UP-TO-DATE
+> Task :app:generateDebugAndroidTestLintModel UP-TO-DATE
+> Task :expo-dev-client:extractProguardFiles UP-TO-DATE
+> Task :expo-dev-launcher:extractProguardFiles UP-TO-DATE
+> Task :expo-dev-menu:extractProguardFiles UP-TO-DATE
+> Task :expo-dev-menu-interface:extractProguardFiles UP-TO-DATE
+> Task :expo-json-utils:extractProguardFiles UP-TO-DATE
+> Task :expo-manifests:extractProguardFiles UP-TO-DATE
+> Task :expo-updates-interface:extractProguardFiles UP-TO-DATE
+> Task :expo-dom-webview:extractProguardFiles UP-TO-DATE
+> Task :expo-log-box:extractProguardFiles UP-TO-DATE
+> Task :oryn-observer:extractProguardFiles UP-TO-DATE
+> Task :app:preDebugUnitTestBuild
+> Task :expo-modules-core:generateDebugLintModel UP-TO-DATE
+> Task :app:generateDebugUnitTestLintModel UP-TO-DATE
+> Task :expo-dev-client:generateDebugLintModel UP-TO-DATE
+> Task :expo-constants:generateDebugLintModel UP-TO-DATE
+> Task :expo-json-utils:generateDebugLintModel UP-TO-DATE
+> Task :expo-manifests:generateDebugLintModel UP-TO-DATE
+> Task :expo-updates-interface:generateDebugLintModel UP-TO-DATE
+> Task :expo-dom-webview:generateDebugLintModel UP-TO-DATE
+> Task :expo-dev-menu-interface:generateDebugLintModel UP-TO-DATE
+> Task :expo-log-box:generateDebugLintModel UP-TO-DATE
+> Task :oryn-observer:generateDebugLintModel UP-TO-DATE
+> Task :expo-modules-core:lintAnalyzeDebug UP-TO-DATE
+> Task :expo-constants:lintAnalyzeDebug UP-TO-DATE
+> Task :expo-dev-client:lintAnalyzeDebug UP-TO-DATE
+> Task :expo-dev-menu-interface:lintAnalyzeDebug UP-TO-DATE
+> Task :expo-dev-menu:generateDebugLintModel UP-TO-DATE
+> Task :expo-json-utils:lintAnalyzeDebug UP-TO-DATE
+> Task :expo-manifests:lintAnalyzeDebug UP-TO-DATE
+> Task :expo-dev-menu:lintAnalyzeDebug UP-TO-DATE
+> Task :expo-dev-launcher:generateDebugLintModel UP-TO-DATE
+> Task :expo-updates-interface:lintAnalyzeDebug UP-TO-DATE
+> Task :expo-dev-launcher:lintAnalyzeDebug UP-TO-DATE
+> Task :expo-dom-webview:lintAnalyzeDebug UP-TO-DATE
+> Task :expo-log-box:lintAnalyzeDebug UP-TO-DATE
+> Task :expo:generateDebugLintModel UP-TO-DATE
+> Task :oryn-observer:lintAnalyzeDebug UP-TO-DATE
+> Task :app:generateDebugLintReportModel UP-TO-DATE
+> Task :expo:lintAnalyzeDebug UP-TO-DATE
+> Task :expo:preDebugAndroidTestBuild
+> Task :expo:generateDebugAndroidTestLintModel UP-TO-DATE
+> Task :expo:preDebugUnitTestBuild
+> Task :app:lintAnalyzeDebug UP-TO-DATE
+> Task :app:lintAnalyzeDebugAndroidTest UP-TO-DATE
+> Task :expo:generateDebugUnitTestLintModel UP-TO-DATE
+> Task :app:lintAnalyzeDebugUnitTest UP-TO-DATE
+> Task :expo-constants:preDebugAndroidTestBuild UP-TO-DATE
+> Task :expo:lintAnalyzeDebugAndroidTest UP-TO-DATE
+> Task :expo:lintAnalyzeDebugUnitTest UP-TO-DATE
+> Task :expo-dev-client:preDebugAndroidTestBuild UP-TO-DATE
+> Task :expo-constants:generateDebugAndroidTestLintModel UP-TO-DATE
+> Task :expo-constants:preDebugUnitTestBuild UP-TO-DATE
+> Task :expo-constants:generateDebugUnitTestLintModel UP-TO-DATE
+> Task :expo-constants:lintAnalyzeDebugAndroidTest UP-TO-DATE
+> Task :expo-constants:lintAnalyzeDebugUnitTest UP-TO-DATE
+> Task :expo-dev-launcher:preDebugAndroidTestBuild UP-TO-DATE
+> Task :expo-dev-launcher:generateDebugAndroidTestLintModel UP-TO-DATE
+> Task :expo-dev-launcher:preDebugUnitTestBuild UP-TO-DATE
+> Task :expo-dev-launcher:generateDebugUnitTestLintModel UP-TO-DATE
+> Task :expo-dev-client:generateDebugAndroidTestLintModel UP-TO-DATE
+> Task :expo-dev-client:preDebugUnitTestBuild UP-TO-DATE
+> Task :expo-dev-client:generateDebugUnitTestLintModel UP-TO-DATE
+> Task :expo-dev-launcher:lintAnalyzeDebugAndroidTest UP-TO-DATE
+> Task :expo-dev-client:lintAnalyzeDebugAndroidTest UP-TO-DATE
+> Task :expo-dev-client:lintAnalyzeDebugUnitTest UP-TO-DATE
+> Task :expo-dev-menu:preDebugAndroidTestBuild UP-TO-DATE
+> Task :expo-dev-launcher:lintAnalyzeDebugUnitTest UP-TO-DATE
+> Task :expo-dev-menu-interface:preDebugAndroidTestBuild UP-TO-DATE
+> Task :expo-dev-menu-interface:generateDebugAndroidTestLintModel UP-TO-DATE
+> Task :expo-dev-menu-interface:preDebugUnitTestBuild UP-TO-DATE
+> Task :expo-dev-menu:generateDebugAndroidTestLintModel UP-TO-DATE
+> Task :expo-dev-menu:preDebugUnitTestBuild UP-TO-DATE
+> Task :expo-dev-menu-interface:generateDebugUnitTestLintModel UP-TO-DATE
+> Task :expo-dev-menu:generateDebugUnitTestLintModel UP-TO-DATE
+> Task :expo-dev-menu-interface:lintAnalyzeDebugAndroidTest UP-TO-DATE
+> Task :expo-dev-menu-interface:lintAnalyzeDebugUnitTest UP-TO-DATE
+> Task :expo-dom-webview:preDebugAndroidTestBuild UP-TO-DATE
+> Task :expo-dev-menu:lintAnalyzeDebugAndroidTest UP-TO-DATE
+> Task :expo-dom-webview:generateDebugAndroidTestLintModel UP-TO-DATE
+> Task :expo-dom-webview:preDebugUnitTestBuild UP-TO-DATE
+> Task :expo-dev-menu:lintAnalyzeDebugUnitTest UP-TO-DATE
+> Task :expo-json-utils:preDebugAndroidTestBuild UP-TO-DATE
+> Task :expo-dom-webview:generateDebugUnitTestLintModel UP-TO-DATE
+> Task :expo-dom-webview:lintAnalyzeDebugAndroidTest UP-TO-DATE
+> Task :expo-dom-webview:lintAnalyzeDebugUnitTest UP-TO-DATE
+> Task :expo-log-box:preDebugAndroidTestBuild UP-TO-DATE
+> Task :expo-json-utils:generateDebugAndroidTestLintModel UP-TO-DATE
+> Task :expo-json-utils:preDebugUnitTestBuild UP-TO-DATE
+> Task :expo-log-box:generateDebugAndroidTestLintModel UP-TO-DATE
+> Task :expo-log-box:preDebugUnitTestBuild UP-TO-DATE
+> Task :expo-json-utils:generateDebugUnitTestLintModel UP-TO-DATE
+> Task :expo-log-box:generateDebugUnitTestLintModel UP-TO-DATE
+> Task :expo-json-utils:lintAnalyzeDebugAndroidTest UP-TO-DATE
+> Task :expo-log-box:lintAnalyzeDebugAndroidTest UP-TO-DATE
+> Task :expo-json-utils:lintAnalyzeDebugUnitTest UP-TO-DATE
+> Task :expo-manifests:preDebugAndroidTestBuild UP-TO-DATE
+> Task :expo-log-box:lintAnalyzeDebugUnitTest UP-TO-DATE
+> Task :expo-modules-core:preDebugAndroidTestBuild UP-TO-DATE
+> Task :expo-manifests:generateDebugAndroidTestLintModel UP-TO-DATE
+> Task :expo-manifests:preDebugUnitTestBuild UP-TO-DATE
+> Task :expo-modules-core:generateDebugAndroidTestLintModel UP-TO-DATE
+> Task :expo-modules-core:preDebugUnitTestBuild UP-TO-DATE
+> Task :expo-manifests:generateDebugUnitTestLintModel UP-TO-DATE
+> Task :expo-manifests:lintAnalyzeDebugAndroidTest UP-TO-DATE
+> Task :expo-modules-core:generateDebugUnitTestLintModel UP-TO-DATE
+> Task :expo-modules-core:lintAnalyzeDebugAndroidTest UP-TO-DATE
+> Task :expo-manifests:lintAnalyzeDebugUnitTest UP-TO-DATE
+> Task :expo-updates-interface:preDebugAndroidTestBuild UP-TO-DATE
+> Task :expo-modules-core:lintAnalyzeDebugUnitTest UP-TO-DATE
+> Task :oryn-observer:preDebugAndroidTestBuild UP-TO-DATE
+> Task :expo-updates-interface:generateDebugAndroidTestLintModel UP-TO-DATE
+> Task :expo-updates-interface:preDebugUnitTestBuild UP-TO-DATE
+> Task :expo-updates-interface:generateDebugUnitTestLintModel UP-TO-DATE
+> Task :oryn-observer:generateDebugAndroidTestLintModel UP-TO-DATE
+> Task :oryn-observer:preDebugUnitTestBuild UP-TO-DATE
+> Task :expo-updates-interface:lintAnalyzeDebugAndroidTest UP-TO-DATE
+> Task :expo-updates-interface:lintAnalyzeDebugUnitTest UP-TO-DATE
+> Task :oryn-observer:generateDebugUnitTestLintModel UP-TO-DATE
+> Task :oryn-observer:lintAnalyzeDebugAndroidTest UP-TO-DATE
+> Task :oryn-observer:lintAnalyzeDebugUnitTest UP-TO-DATE
+> Task :app:lintReportDebug UP-TO-DATE
+> Task :app:lintDebug
+> Task :oryn-observer:generateDebugUnitTestStubRFile UP-TO-DATE
+> Task :oryn-observer:compileDebugUnitTestKotlin NO-SOURCE
+> Task :oryn-observer:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :oryn-observer:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :oryn-observer:processDebugUnitTestJavaRes NO-SOURCE
+> Task :oryn-observer:testDebugUnitTest NO-SOURCE
+
+[Incubating] Problems report is available at: file:///workspace/oryn-ai-agent/spikes/android-feasibility/android/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.4.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 57s
+605 actionable tasks: 8 executed, 597 up-to-date
+Build and APK signature verification completed. Device checks are still required.

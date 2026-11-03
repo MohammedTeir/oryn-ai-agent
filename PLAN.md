@@ -57,15 +57,15 @@ Approval is not an optional UI feature. **All shell execution must be authorized
 
 **Goal:** Find Android/Termux blockers before committing to production architecture. **This milestone is not the v1 product.**
 
-- [ ] Inventory actual tracked source files, existing configs and assets; do not infer functionality from README or QA self-reports.
+- [x] Inventory actual tracked source files, existing configs and assets; do not infer functionality from README or QA self-reports. Evidence: [published-snapshot inventory and new harness lineage](docs/milestone-0-inventory.md).
 - [ ] Record exact compatible Expo SDK, React Native, Kotlin, Gradle, Android SDK, `lucide-react-native`, Gemini SDK and Termux versions **after reviewing current upstream documentation**. Record Android minimum, target SDK, ABI/architecture and device test matrix.
-- [ ] Check app ID ownership/namespace before choosing it.
+- [x] Check app ID ownership/namespace before choosing it. Owner confirmed MohammedTeir account ownership and authorized `io.github.mohammedteir.oryn.feasibility` for this debug-only spike; production/release namespace clearance remains open.
 - [ ] Prove minimal Expo custom development build and callable Kotlin Expo Module on a physical Android device. Expo Go cannot satisfy the custom native integration.
 - [ ] External Termux spike: supported integration contract, installed/ready/permission states, real command results, cancellation/timeout, background/process-death behavior and missing Termux handling.
 - [ ] Embedded runtime spike **in parallel in scope**: investigate Termux-compatible packaging, linker/binaries, filesystem layout, package manager, executable restrictions, ABIs, app identity/permissions, update/rollback, licenses and redistribution.
 - [ ] Prototype one benign, explicitly approved command through each feasible backend, collecting genuine stdout, stderr, exit code and timestamps.
 - [ ] Test installation of one compatible benign tool in the embedded environment *if supported*, with verified post-install invocation; record what fails.
-- [ ] Draft backend capability matrix: unsupported / unknown / requires setup / verified working by Android/device/ABI/runtime/tool.
+- [x] Draft backend capability matrix: unsupported / unknown / requires setup / verified working by Android/device/ABI/runtime/tool. Evidence: [current cloud/device capability matrix](docs/milestone-0-feasibility.md); device and execution capabilities remain Unknown until tested.
 - [ ] Prove a native approval gate cannot be bypassed by calling the backend directly from React Native or an invalid token.
 - [ ] Record a go/no-go decision and fallback for each runtime capability; incomplete embedded Termux parity is not grounds for false claims.
 

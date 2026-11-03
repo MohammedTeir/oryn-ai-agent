@@ -1,0 +1,16 @@
+
+> oryn-android-feasibility@0.0.1 test
+> node --test --test-isolation=none tests/*.test.cjs
+
+✔ accepts a file matching the published SHA-256 known vector (61.655721ms)
+✔ rejects a corrupted artifact (12.036439ms)
+✔ rejects malformed or abbreviated checksums (6.739089ms)
+✔ missing artifacts cannot pass integrity validation (7.752445ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 173.179209
