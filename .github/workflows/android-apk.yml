@@ -55,13 +55,23 @@ jobs:
           log-accepted-android-sdk-licenses: false
       - name: Install the tested Android SDK packages
         run: |
-          sdkmanager --install \
-            'platform-tools' \
-            'platforms;android-37.0' \
-            'build-tools;37.0.0' \
-            'build-tools;36.0.0' \
-            'ndk;27.1.12297006' \
-            'cmake;3.22.1'
+          for attempt in 1 2 3; do
+            if sdkmanager --install \
+              'platform-tools' \
+              'platforms;android-37.0' \
+              'build-tools;37.0.0' \
+              'build-tools;36.0.0' \
+              'ndk;27.1.12297006' \
+              'cmake;3.22.1'; then
+              break
+            fi
+            if [[ "$attempt" == 3 ]]; then
+              echo '::error::Android SDK installation failed after three attempts.'
+              exit 1
+            fi
+            printf 'SDK download attempt %s failed; retrying with verification enabled.\n' "$attempt"
+            sleep "$((attempt * 5))"
+          done
       - name: Cache Gradle dependencies and build outputs
         uses: gradle/actions/setup-gradle@0723195856401067f7a2779048b490ace7a47d7c # v5
         with:

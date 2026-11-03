@@ -15,6 +15,10 @@ branch. Newer updates cancel older in-progress runs on the same branch/PR.
 Pull requests use read-only Gradle caches. All jobs have read-only repository
 permissions, and checkout credentials are not retained in the workspace.
 Actions are pinned to verified commit SHAs. No signing secrets are required.
+SDK installation retries up to three times with short backoff for interrupted
+downloads. It uses the same official SDK manager and integrity checks each time;
+persistent failures still fail the build. A branch with an open PR can show four
+checks because the two workflows run for both the push and the PR event.
 
 ## Download on your phone
 
