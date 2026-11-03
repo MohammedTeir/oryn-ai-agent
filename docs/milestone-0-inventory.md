@@ -50,3 +50,13 @@ The native prebuild template is pinned to `expo-template-bare-minimum@58.0.31`;
 its published SHA-512 is retained in the evidence. Standard debug and phone
 variants use identical observer source; only the bundled phone artifact is
 intended for the current phone-only check.
+
+## Owner device observation — 2026-11-03
+
+The owner reported the APK works and supplied [native observation JSON](feasibility/device-observation-2026-11-03.json).
+It reports Xiaomi Redmi Note 8 Pro, **Android 11 / API 30**, supported ABIs
+arm64-v8a / armeabi-v7a / armeabi, and Termux **0.118.3 detected**. This replaces
+the earlier Android 10 memory-based report. MIUI 12.5.10 is still only the
+earlier owner report. Exact installed APK hash/variant and offline network state
+were not supplied. The Kotlin bridge probe is owner verified; authorization and
+all command/runtime execution checks remain unimplemented or unverified.

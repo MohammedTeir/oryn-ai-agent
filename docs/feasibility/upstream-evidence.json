@@ -260,13 +260,32 @@
         "WRITE_EXTERNAL_STORAGE",
         "SYSTEM_ALERT_WINDOW"
       ],
-      "device_installation": "not verified",
-      "native_bridge_invocation": "not verified",
+      "device_installation": "Owner verified a probe installation; exact installed APK hash/variant not confirmed",
+      "native_bridge_invocation": "Owner-provided native observation JSON recorded separately; exact installed APK hash unconfirmed",
       "native_authorization": "not implemented",
       "termux_execution": "not implemented",
       "embedded_termux_parity": "not claimed"
     },
     "incremental_prebuild_generated_file_changes": [],
-    "configuration_changes_by_agent": "No platform draft or publication changed; local toolchain and build configuration prepared."
-  }
+    "configuration_changes_by_agent": "No platform draft or publication changed; local toolchain and build configuration prepared.",
+    "device_current": {
+      "evidence": "device-observation-2026-11-03.json",
+      "provenance": "Owner-provided on-device native probe JSON",
+      "model": "Redmi Note 8 Pro",
+      "android": "11",
+      "api_level": 30,
+      "supported_abis": [
+        "arm64-v8a",
+        "armeabi-v7a",
+        "armeabi"
+      ],
+      "termux_version": "0.118.3",
+      "termux_state": "detected",
+      "termux_source": "Unknown",
+      "miui": "12.5.10 (earlier owner report; not observed by probe)",
+      "native_bridge": "Owner verified",
+      "execution_capability": "not_implemented"
+    }
+  },
+  "latest_device_evidence": "device-observation-2026-11-03.json"
 }

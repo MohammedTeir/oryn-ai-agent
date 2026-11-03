@@ -1,12 +1,12 @@
 # Milestone 0 device evidence protocol
 
-Status: proposed protocol, no device checks performed. Target supplied by owner: Redmi Note 8 Pro. Android version, MIUI version, security patch, installed ABI/runtime and available permissions remain **Unknown**.
+Status: the owner reported a successful probe installation/launch and supplied [native observation JSON](feasibility/device-observation-2026-11-03.json) from Redmi Note 8 Pro. It reports Android 11/API 30, supported ABIs arm64-v8a/armeabi-v7a/armeabi, and Termux 0.118.3 detected. The earlier Android 10 report is superseded. MIUI 12.5.10 remains an earlier owner report; security patch, runtime permissions and exact installed APK hash/variant remain Unknown. Authorization and runtime execution checks below are still pending.
 
 ## Phone-only preparation
 
 Record Android and MIUI versions from Settings → About phone (labels may differ). Do not infer installed OS or ABI from the phone model. Avoid collecting serial numbers, account identifiers, API keys or unrelated personal data. ABI must eventually come from an actual platform observation in the debug harness; a model specification is not evidence of the installed process architecture.
 
-Only distribute a debug APK after cloud build, signature and hash verification. Record APK hash, signer digest, debug application ID and source/evidence identity. Installation requires the owner's deliberate Android consent. Do not assume USB adb, a second device, wireless debugging support, or a reachable phone from the cloud. A phone-only install/observation workflow must be tested before claiming it works. Artifact delivery remains unresolved until a verified APK exists; no release upload is authorized by this protocol.
+Only distribute a debug APK after cloud build, signature and hash verification. Record APK hash, signer digest, debug application ID and source/evidence identity. Installation requires the owner's deliberate Android consent. Do not assume USB adb, a second device, wireless debugging support, or a reachable phone from the cloud. Verified test APKs are available through the [GitHub Actions download workflow](ci.md). Offline launch was not explicitly reported by the owner; keep that separate from the successful bridge observation. This protocol does not authorize a production release.
 
 ## Observation-only harness gate
 

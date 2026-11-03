@@ -38,14 +38,19 @@ chronology and pinned toolchain metadata.
 
 ## Current capability matrix and remaining exit gates
 
-Target device: Redmi Note 8 Pro / MIUI 12.5.10 / Android 10 / arm64-v8a,
-**user reported**, not yet observed by APK. Termux version/source: **Unknown**.
+Target device: Redmi Note 8 Pro. The owner supplied [native probe output](feasibility/device-observation-2026-11-03.json)
+reporting **Android 11 / API 30**, supported ABIs **arm64-v8a, armeabi-v7a, armeabi**,
+and **Termux 0.118.3 detected**. This supersedes the earlier Android 10 report.
+MIUI 12.5.10 remains an earlier owner report; the probe does not observe MIUI.
+The exact installed APK hash/variant, Termux installation source and execution
+readiness are unconfirmed. CI still builds only arm64-v8a.
 
 | Capability on that device | Status | Reason / next evidence |
 | --- | --- | --- |
-| APK installation and offline launch | Unknown | Owner must install and open the verified phone APK |
-| JavaScript to Kotlin observation | Unknown | Tap Observe Android through Kotlin; capture actual JSON |
-| Termux package detection/version | Unknown | Probe uses PackageManager, not shell commands |
+| APK installation and launch | Owner verified | Owner reports that the installed probe works; exact installed APK hash unconfirmed |
+| Offline launch | Unknown | Network state during launch was not reported |
+| JavaScript to Kotlin observation | Owner verified | Supplied JSON matches the native observer fields and authorized app ID |
+| Termux package detection/version | Detected: 0.118.3 | PackageManager observation; shell readiness and permissions remain untested |
 | Native authorization enforcement | Unknown / not implemented | Separate native security prototype, negative tests and human review required |
 | External Termux command/results | Unknown / not implemented | Native grant gate and version/permission/configuration evidence required first |
 | Timeout/cancellation/background/process death | Unknown | No executable backend in this observation-only probe |
@@ -58,9 +63,9 @@ that a native authorization gateway has been implemented.
 
 [Runtime review and conditional go/no-go decisions](feasibility/runtime-review.md)
 and [device protocol](milestone-0-device-protocol.md) remain the next evidence
-requirements. Milestone 0 is **not complete**. Inventory, provisional namespace
-confirmation and the draft capability matrix are marked complete in PLAN.md. No platform draft,
-publication, GitHub push or release was performed.
+requirements. Milestone 0 is **not complete**. Inventory, provisional namespace,
+the custom-native-build/bridge probe and draft capability matrix are checked in
+PLAN.md. Source and automatic workflows are on GitHub; see [CI instructions](ci.md).
 
 ---
 

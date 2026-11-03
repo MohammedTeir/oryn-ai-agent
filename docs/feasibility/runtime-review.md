@@ -75,8 +75,11 @@ test would not prove a package manager or complete Termux parity.
 
 | Device | Android | MIUI | ABI | Provenance | Bridge / execution |
 | --- | --- | --- | --- | --- | --- |
-| Redmi Note 8 Pro | 10 | 12.5.10 | arm64-v8a | Owner reported in chat; not yet observed by APK | Not verified on device |
+| Redmi Note 8 Pro | 11 / API 30 | 12.5.10 (earlier owner report only) | Probe reports arm64-v8a, armeabi-v7a, armeabi | Owner-provided native observation JSON | Bridge observed by owner; execution not implemented |
 
-Installed Termux version/source, root state, installed package readiness and
-actual process ABI remain unobserved. No root probe is authorized by this review.
-No Milestone 0 exit gate is closed by the review alone.
+The owner's [probe output](device-observation-2026-11-03.json) detects Termux
+0.118.3. Its installation source, root state, execution readiness and actual
+process ABI remain unobserved. The APK build target is arm64-v8a; the wider
+device ABI list does not verify additional APK architectures. No root probe is
+authorized by this review. Milestone 0's authorization and runtime exit gates
+remain open.

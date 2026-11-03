@@ -14,6 +14,7 @@ concurrency:
 
 jobs:
   build:
+    if: ${{ github.event.deleted != true }}
     name: Build and verify signed arm64 test APK
     runs-on: ubuntu-24.04
     timeout-minutes: 45

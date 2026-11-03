@@ -1,6 +1,7 @@
 # Automatic checks and signed test APKs
 
-Two independent GitHub Actions workflows run on every push and pull request:
+Two independent GitHub Actions workflows run on every commit push and pull request.
+Branch-deletion events skip the jobs because there is no new source to build:
 
 - **Feasibility CI** (`.github/workflows/ci.yml`) installs the frozen lockfile,
   checks Expo dependency compatibility, runs ESLint, TypeScript and the four
