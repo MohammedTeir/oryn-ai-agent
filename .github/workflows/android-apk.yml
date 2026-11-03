@@ -90,17 +90,27 @@ jobs:
             sha256sum --check SHA256SUMS
           )
           python3 - <<'PY'
-          import hashlib, json, os, pathlib
+          import hashlib, json, os, pathlib, re
           artifacts = pathlib.Path('artifacts')
           apk = artifacts / 'oryn-feasibility-phone.apk'
+          badging = (artifacts / 'phone-apk-badging.txt').read_text()
+          signature = (artifacts / 'phone-apk-signature.txt').read_text()
+          def field(pattern, text):
+              match = re.search(pattern, text, re.MULTILINE)
+              if match is None:
+                  raise SystemExit(f'Missing APK metadata: {pattern}')
+              return match.group(1)
           info = {
               'source_commit': (artifacts / 'source-commit.txt').read_text().strip(),
               'run_url': f"{os.environ['GITHUB_SERVER_URL']}/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}",
               'run_attempt': os.environ['GITHUB_RUN_ATTEMPT'],
               'apk_sha256': hashlib.sha256(apk.read_bytes()).hexdigest(),
               'signing': 'Android debug signer; test-only feasibility app',
-              'application_id': 'io.github.mohammedteir.oryn.feasibility',
-              'abi': 'arm64-v8a',
+              'application_id': field(r"^package: name='([^']+)'", badging),
+              'abis': re.findall(r"'([^']+)'", field(r'^native-code: (.+)$', badging)),
+              'min_sdk': int(field(r"^sdkVersion:'([^']+)'", badging)),
+              'target_sdk': int(field(r"^targetSdkVersion:'([^']+)'", badging)),
+              'signer_sha256': field(r'certificate SHA-256 digest: ([a-f0-9]{64})', signature),
               'minification': False,
               'device_checks': 'Not performed by CI',
           }
