@@ -60,6 +60,16 @@ separate from redistributing GPLv3 Termux application code. A fork also needs
 prefix rebuilds, signing/release ownership, security updates and package upkeep.
 These maintenance obligations are not settled by a successful smoke test.
 
+## Owner device follow-up: timeout incident
+
+The owner supplied screenshots showing rejected missing/forged-grant calls, and
+an unresolved local `native_timeout` execution after recovery. This is partial
+native denial evidence, not a completed authorization proof or timeout success.
+See [the transcribed incident](device-timeout-incident-2026-11-04.json) and the
+[isolated native recovery fix/review](native-recovery-review.md). The exact
+installed APK hash and cause of process restart remain Unknown. Further starts
+are correctly blocked while the saved local outcome is uncertain.
+
 ## Remaining exit evidence
 
 Cloud validation of the device-harness task passed Expo compatibility, ESLint,

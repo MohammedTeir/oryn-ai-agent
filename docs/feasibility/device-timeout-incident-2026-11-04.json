@@ -1,0 +1,45 @@
+{
+  "record_date": "2026-11-04",
+  "provenance": "Owner-provided phone screenshots; visible fields transcribed, not cloud execution",
+  "screenshots": [
+    {
+      "name": "1-Screenshot_2026-11-04-16-13-08-981_io.github.mohammedteir.oryn.feasibility.jpg",
+      "sha256": "ae6c613aa7c48516a8f8a7ecbda81639edbcdaf2ede961b09e7f2d6dd380964b"
+    },
+    {
+      "name": "1-Screenshot_2026-11-04-16-14-27-982_io.github.mohammedteir.oryn.feasibility.jpg",
+      "sha256": "ac8c02f5a545ea5773005774846ea926aeaef8161ec2b37a47065f6a6701d11d"
+    }
+  ],
+  "observed_pending": {
+    "state": "unknown_recovered_pending",
+    "executionId": "211a8981-c887-4d7e-9a4d-424e6f3dbe0d",
+    "probe": "native_timeout",
+    "backend": "apk_native_probe",
+    "dispatchedAtEpochMs": 1793801046402,
+    "timeoutMs": 2000,
+    "executionBusy": true,
+    "nativeBinaryIsTermuxRuntime": false,
+    "externalCancellation": "not_supported",
+    "nativeCancellation": "this_process_only"
+  },
+  "visible_negative_probe_results": [
+    {
+      "capturedAtEpochMs": 1793801654462,
+      "rejected": true,
+      "dispatchSinkEntered": false,
+      "backendExecutionAttempted": false
+    },
+    {
+      "capturedAtEpochMs": 1793801654463,
+      "rejected": true,
+      "dispatchSinkEntered": false,
+      "backendExecutionAttempted": false
+    }
+  ],
+  "exit_code": "Unknown",
+  "exact_installed_apk_hash": "Unknown",
+  "cause_of_app_restart": "Unknown",
+  "milestone_complete": false,
+  "timeout_termination_result": "Unknown; no final exit or termination confirmation in the screenshots"
+}
