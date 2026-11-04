@@ -74,6 +74,25 @@ class NativeProbeObserverTest {
     assertTrue(r.timeoutTerminationRequested);assertNull(r.exitCode)
     assertEquals("SecurityException",r.supervisionErrorClass)
   }
+  @Test fun cancellationRequestIsRecordedBeforeSynchronousExit() {
+    var recorded=false
+    val p=object: FakeProcess() {
+      override fun destroyForcibly(): Process {
+        assertTrue(recorded)
+        return super.destroyForcibly()
+      }
+    }
+    NativeProbeObserver.requestCancellation(p) { recorded=true }
+    assertTrue(p.killed);assertEquals(137,p.exitValue())
+  }
+  @Test fun failedRequestPersistenceDoesNotInvokeCancellation() {
+    val p=FakeProcess()
+    try {
+      NativeProbeObserver.requestCancellation(p) { throw IllegalStateException("fixture persistence failure") }
+      fail("Expected persistence refusal")
+    } catch (_: IllegalStateException) {}
+    assertFalse(p.killed)
+  }
   @Test fun recoveryCannotReconcileAnUnrelatedOrMissingExecutionId() {
     assertFalse(NativeProbeRecovery.canReconcile("apk_native_probe","native_timeout",10,11,"one","other"))
     assertFalse(NativeProbeRecovery.canReconcile("apk_native_probe","native_timeout",10,11,"",""))

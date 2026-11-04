@@ -35,7 +35,9 @@ The new observer establishes `exitValue()` independently of wait/kill/read
 errors. A confirmed exit clears only the matching pending operation even when
 output is unavailable. Each output stream has separate completion, truncation
 and error-class fields. Unavailable output is null, not fabricated empty output.
-Captured bytes are bounded and native redaction still applies. Unknown exit
+Captured bytes are bounded and native redaction still applies. Cancellation request
+intent is persisted before termination can wake the result worker, avoiding a race
+that could omit the request from the terminal record. This is not termination proof. Unknown exit
 never clears the execution gate or claims termination. The observer serves only
 the compiled-in C probes with tiny output; it is not streaming support for an
 arbitrary shell or package manager.
@@ -62,11 +64,12 @@ native catalog, never external Termux or unclassified actions.
 ## Phone verification after review
 
 Cloud validation on 2026-11-04 passed Expo compatibility, ESLint, TypeScript,
-seven JavaScript tests, and 30 native tests (16 gateway, five redaction, nine
+seven JavaScript tests, and 32 native tests (16 gateway, five redaction, eleven
 observer/recovery; zero failures/errors/skips). Both debug and phone APK builds,
 Android lint, signature checks and phone APK JS/native-byte verification passed.
 The new tests cover closed pipes with confirmed exit, unknown exit, interrupted
-wait, failed termination, bounded output, and same/missing/regressed boot counts,
+wait, failed termination, bounded output, cancellation persistence ordering, and
+same/missing/regressed boot counts,
 unrelated execution IDs and remote/unclassified recovery refusal. Persisted
 Android recovery and the actual MIUI behavior are **not verified on device**.
 

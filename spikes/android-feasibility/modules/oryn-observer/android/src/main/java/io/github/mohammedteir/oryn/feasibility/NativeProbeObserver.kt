@@ -14,6 +14,13 @@ internal data class NativeProbeResult(
 
 /** Only the fixed, tiny-output ORYN C probes use this observer; not a general shell runner. */
 internal object NativeProbeObserver {
+  // Persist the authorized request before termination can wake the result worker.
+  // A recorded request is not proof that termination succeeded.
+  fun requestCancellation(process: Process,recordRequest: ()->Unit) {
+    recordRequest()
+    process.destroyForcibly()
+  }
+
   fun observe(process: Process, timeoutMs: Long): NativeProbeResult {
     var timedOut=false
     var error: String?=null

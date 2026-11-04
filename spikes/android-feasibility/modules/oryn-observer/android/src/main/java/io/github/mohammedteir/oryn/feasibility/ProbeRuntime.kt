@@ -235,8 +235,11 @@ internal object ProbeRuntime {
   fun cancelNative(c: Context,a: ExactProbe) {
     if(nativeId!=a.controlOf || ProbeStore.pending(c)!=a.controlOf) throw GrantDenied()
     val process=nativeProcess ?: throw GrantDenied()
-    process.destroyForcibly()
-    ProbeStore.update(c,a.controlOf) { it.put("cancellationRequested",true) }
+    NativeProbeObserver.requestCancellation(process) {
+      ProbeStore.update(c,a.controlOf) {
+        it.put("cancellationRequested",true).put("cancellationRequestRecordedAtEpochMs",System.currentTimeMillis())
+      }
+    }
   }
   fun receive(c: Context,id: String,intent: Intent) {
     if(ProbeStore.pending(c)!=id) return
