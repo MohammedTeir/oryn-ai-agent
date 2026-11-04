@@ -1,3 +1,5 @@
+> Historical scope of PR #2 (now merged). The [device harness follow-up](milestone-0-status.md) adds UI controls/reporting without changing this native security code. Its physical tests remain pending.
+
 # Native security spike — review branch
 
 This is the draft recovered from the published workspace after its disconnection.

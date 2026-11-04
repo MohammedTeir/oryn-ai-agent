@@ -3,11 +3,14 @@
 This harness was created after the previous uncommitted harness was found missing.
 It has a separate evidence lineage; previous test passes do not apply to it.
 
-The original observation UI reads Android Build metadata and package visibility
-for Termux. Detection does not establish Termux execution readiness. The recovered
-draft adds a separate experimental Strict-only native API for fixed probes; its
-test controls are not wired into the observation UI. See the
-[native spike review](../../docs/feasibility/native-spike-review.md).
+The harness reads Android Build metadata and Termux package visibility, and now
+provides controls for the merged Strict-only native fixed-probe API. Detection
+does not establish execution readiness. Every execution requires a fresh native
+confirmation; background polling only reads state. Follow the
+[phone runbook](../../docs/feasibility/device-test-runbook.md) and share actual
+results, including denials and unknown states. The native gateway/policy is
+unchanged by this UI task. See the [native spike review](../../docs/feasibility/native-spike-review.md)
+for the underlying research scope.
 This is a labeled debug spike, not the production two-tab interface.
 
 Expo 58.0.22 was initially selected after reading current Expo SDK documentation.

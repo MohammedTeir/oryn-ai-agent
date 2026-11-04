@@ -1,3 +1,5 @@
+> New fixed-probe controls: use the [device harness runbook](feasibility/device-test-runbook.md). The historical observation-only instructions below do not test execution.
+
 # Milestone 0 device evidence protocol
 
 Status: the owner reported a successful probe installation/launch and supplied [native observation JSON](feasibility/device-observation-2026-11-03.json) from Redmi Note 8 Pro. It reports Android 11/API 30, supported ABIs arm64-v8a/armeabi-v7a/armeabi, and Termux 0.118.3 detected. The earlier Android 10 report is superseded. MIUI 12.5.10 remains an earlier owner report; security patch, runtime permissions and exact installed APK hash/variant remain Unknown. Authorization and runtime execution checks below are still pending.

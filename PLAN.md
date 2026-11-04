@@ -71,6 +71,8 @@ Approval is not an optional UI feature. **All shell execution must be authorized
 
 **Exit gate:** Real-device test evidence for Kotlin bridge, native grant enforcement, external integration and an honest embedded-runtime feasibility decision. No app code is claimed production-ready at this stage.
 
+Current follow-up: [capability decisions and exact stack record](docs/feasibility/milestone-0-status.md), [fixed-probe phone runbook](docs/feasibility/device-test-runbook.md). Execution controls and reports are a debug test harness; their existence does not close the device exit gate.
+
 ## 4. Milestone 1 — UI, onboarding and local foundation
 
 - [ ] Build the native-enabled Expo/React Native/TypeScript app structure and exactly two primary routes with secondary Settings, without adding a third tab.
