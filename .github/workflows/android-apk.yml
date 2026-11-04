@@ -158,5 +158,7 @@ jobs:
             spikes/android-feasibility/artifacts/*signature.txt
             spikes/android-feasibility/artifacts/*badging.txt
             spikes/android-feasibility/android/app/build/reports/lint-results-*
+            spikes/android-feasibility/modules/oryn-observer/android/build/test-results/testDebugUnitTest/*.xml
+            spikes/android-feasibility/modules/oryn-observer/android/build/reports/tests/testDebugUnitTest/**
           if-no-files-found: ignore
           retention-days: 7

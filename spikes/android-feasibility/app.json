@@ -19,7 +19,11 @@
         "monochromeImage": "../../assets/ORYN_Brand_Assets/05_Android_App_Icons/expo/adaptive-icon-monochrome.png"
       }
     },
-    "plugins": [["expo-build-properties", {"android": {"minSdkVersion": 29}}]],
+    "plugins": [["expo-build-properties", {"android": {
+      "minSdkVersion": 29,
+      "useLegacyPackaging": true,
+      "packagingOptions": {"doNotStrip": ["**/liboryn_feasibility_probe.so"]}
+    }}]],
     "autolinking": {"nativeModulesDir": "./modules"}
   }
 }
