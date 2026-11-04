@@ -8,6 +8,10 @@ Use only the signed phone artifact from the matching successful GitHub Actions
 run. Save its source commit, SHA256SUMS, signer digest and APK metadata alongside
 results. Do not assume an older installed APK is this build.
 
+If the app is already stuck on `unknown_recovered_pending` for a local native
+probe, stop normal tests and follow the [native recovery review/runbook](native-recovery-review.md).
+An app restart alone is not evidence that the old process ended.
+
 ## Install and capture
 
 Download the signed phone artifact ZIP from the branch's successful **Signed

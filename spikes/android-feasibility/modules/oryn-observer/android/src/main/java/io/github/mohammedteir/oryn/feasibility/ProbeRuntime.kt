@@ -9,12 +9,12 @@ import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.os.SystemClock
+import android.provider.Settings
 import org.json.JSONObject
 import java.io.File
 import java.security.MessageDigest
 import java.util.UUID
 import java.util.concurrent.Executors
-import java.util.concurrent.TimeUnit
 
 internal object ProbeCatalog {
   fun action(context: Context, id: String): ExactProbe {
@@ -57,16 +57,56 @@ internal object ProbeOutput {
     .take(4096)
 }
 
+internal object AndroidBootObservation {
+  fun count(c: Context): Int? = try {
+    Settings.Global.getInt(c.contentResolver,Settings.Global.BOOT_COUNT).takeIf { it>=0 }
+  } catch (_: Exception) { null }
+}
+
 internal object ProbeStore {
   private fun prefs(c: Context)=c.getSharedPreferences("oryn-native-spike",Context.MODE_PRIVATE)
   @Synchronized fun pending(c: Context): String?=prefs(c).getString("pending",null)
   @Synchronized fun state(c: Context): JSONObject = JSONObject(prefs(c).getString("state","{\"state\":\"not_started\"}")!!)
+  @Synchronized fun lastRecovery(c: Context): JSONObject? = prefs(c).getString("lastRecovery",null)?.let { JSONObject(it) }
   @Synchronized fun begin(c: Context,id: String,action: ExactProbe) {
     if(pending(c)!=null) throw GrantDenied()
     val state=JSONObject().put("state","dispatching").put("executionId",id)
       .put("probe",action.id).put("backend",action.backend).put("dispatchedAtEpochMs",System.currentTimeMillis())
       .put("externalCancellation","not_supported").put("timeoutMs",action.timeoutMs)
+    if(action.backend=="apk_native_probe") AndroidBootObservation.count(c)?.let { state.put("nativeBootCount",it) }
     if(!prefs(c).edit().putString("pending",id).putString("state",state.toString()).commit()) throw GrantDenied()
+  }
+  @Synchronized fun recoverPending(c: Context,currentBoot: Int?): String? {
+    val id=pending(c) ?: return null
+    val value=state(c)
+    if(value.optString("executionId")!=id) {
+      value.put("state","unknown_recovery_record_mismatch").put("processTerminationVerified",false)
+        .put("recoveryRequirement","record_identity_mismatch_keep_blocked")
+      check(prefs(c).edit().putString("state",value.toString()).commit())
+      return id
+    }
+    val backend=value.optString("backend")
+    val probe=value.optString("probe")
+    val previousBoot=value.optInt("nativeBootCount",-1).takeIf { it>=0 }
+    if(!value.has("stateBeforeRecovery")) value.put("stateBeforeRecovery",value.optString("state"))
+    if(NativeProbeRecovery.canReconcile(backend,probe,previousBoot,currentBoot,id,value.optString("executionId"))) {
+      value.put("state","interrupted_by_device_restart").put("commandOutcome","unknown")
+        .put("exitCode",JSONObject.NULL).put("processTerminationVerified",true)
+        .put("reconciliationEvidence","android_boot_count_advanced").put("recoveredBootCount",currentBoot)
+        .put("resultObservedAtEpochMs",System.currentTimeMillis()).put("newAuthorizationRequired",true)
+      check(prefs(c).edit().remove("pending").putString("state",value.toString())
+        .putString("lastRecovery",value.toString()).commit())
+      return null
+    }
+    value.put("state","unknown_recovered_pending").put("processTerminationVerified",false)
+    if(backend=="apk_native_probe" && probe in setOf("native_echo","native_timeout","native_cancel")) {
+      // Legacy records have no boot stamp. Establish a baseline now, never infer
+      // an earlier restart from wall-clock time, app relaunch or an APK update.
+      if(previousBoot==null && currentBoot!=null) value.put("nativeBootCount",currentBoot)
+      value.put("recoveryRequirement",if(currentBoot!=null) "device_restart_then_reopen" else "boot_observation_unavailable_keep_blocked")
+    } else value.put("recoveryRequirement","matching_provider_result_required")
+    check(prefs(c).edit().putString("state",value.toString()).commit())
+    return id
   }
   @Synchronized fun update(c: Context,id: String,modify: (JSONObject)->Unit) {
     if(pending(c)!=id) return
@@ -87,8 +127,7 @@ internal object ProbeRuntime {
   @Volatile private var nativeProcess: Process?=null
   @Volatile private var nativeId: String?=null
   @Synchronized fun gate(c: Context): StrictGate = instance ?: run {
-    val recovered=ProbeStore.pending(c)
-    if(recovered!=null) ProbeStore.update(c,recovered) { it.put("state","unknown_recovered_pending") }
+    val recovered=ProbeStore.recoverPending(c,AndroidBootObservation.count(c))
     StrictGate({ SystemClock.elapsedRealtime() },{ UUID.randomUUID().toString() },recovered).also { instance=it }
   }
   // Do not hold the runtime monitor while acquiring the gate: dispatch may finish
@@ -96,7 +135,8 @@ internal object ProbeRuntime {
   fun state(c: Context): String {
     val currentGate=gate(c)
     return ProbeStore.state(c).put("executionBusy",currentGate.busy())
-      .put("nativeBinaryIsTermuxRuntime",false).toString()
+      .put("nativeBinaryIsTermuxRuntime",false)
+      .put("lastRecovery",ProbeStore.lastRecovery(c) ?: JSONObject.NULL).toString()
   }
 
   // Called only inside StrictGate.dispatch's validated synchronous sink on the UI thread.
@@ -146,20 +186,32 @@ internal object ProbeRuntime {
       ProbeStore.update(c,id) { it.put("state","running").put("nativeCancellation","this_process_only") }
       worker.execute {
         try {
-          val timedOut=!process.waitFor(a.timeoutMs,TimeUnit.MILLISECONDS)
-          if(timedOut) process.destroyForcibly()
-          if(!process.waitFor(3,TimeUnit.SECONDS)) {
-            ProbeStore.update(c,id) { it.put("state","unknown_termination").put("processTerminationVerified",false) }
+          val observed=NativeProbeObserver.observe(process,a.timeoutMs)
+          if(observed.exitCode==null) {
+            ProbeStore.update(c,id) {
+              it.put("state","unknown_termination").put("processTerminationVerified",false)
+                .put("timeoutTerminationRequested",observed.timeoutTerminationRequested)
+                .put("supervisionErrorClass",observed.supervisionErrorClass ?: JSONObject.NULL)
+            }
           } else {
-            val stdout=process.inputStream.bufferedReader().use { it.readText() }
-            val stderr=process.errorStream.bufferedReader().use { it.readText() }
             finish(c,id) {
-              it.put("state","exited").put("exitCode",process.exitValue())
-                .put("stdout",ProbeOutput.clean(stdout)).put("stderr",ProbeOutput.clean(stderr))
-                .put("outputRedacted",ProbeOutput.clean(stdout)!=stdout || ProbeOutput.clean(stderr)!=stderr)
-                .put("timeoutTerminationRequested",timedOut).put("processTerminationVerified",true)
+              it.put("state","exited").put("exitCode",observed.exitCode)
+                .put("timeoutTerminationRequested",observed.timeoutTerminationRequested)
+                .put("processTerminationVerified",true)
+                .put("supervisionErrorClass",observed.supervisionErrorClass ?: JSONObject.NULL)
                 .put("elapsedSinceStartMs",SystemClock.elapsedRealtime()-start)
-                .put("expectedProbeMatched",a.id=="native_echo" && process.exitValue()==7 && stdout=="ORYN native stdout\n" && stderr=="ORYN native stderr\n")
+              for((name,capture) in listOf("stdout" to observed.stdout,"stderr" to observed.stderr)) {
+                val raw=capture?.text
+                it.put(name,raw?.let { text -> ProbeOutput.clean(text) } ?: JSONObject.NULL)
+                  .put(name+"CaptureComplete",capture?.complete==true && (raw?.length ?: 0)<=4096)
+                  .put(name+"CaptureTruncated",capture?.truncated==true || (raw?.length ?: 0)>4096)
+                  .put(name+"ErrorClass",capture?.errorClass ?: JSONObject.NULL)
+              }
+              it.put("outputRedacted",listOf(observed.stdout,observed.stderr).any { capture ->
+                capture?.text?.let { text -> ProbeOutput.clean(text)!=text } == true
+              }).put("expectedProbeMatched",a.id=="native_echo" && observed.exitCode==7 &&
+                observed.stdout?.complete==true && observed.stderr?.complete==true &&
+                observed.stdout.text=="ORYN native stdout\n" && observed.stderr.text=="ORYN native stderr\n")
             }
           }
         } catch (_: Exception) {
@@ -183,8 +235,11 @@ internal object ProbeRuntime {
   fun cancelNative(c: Context,a: ExactProbe) {
     if(nativeId!=a.controlOf || ProbeStore.pending(c)!=a.controlOf) throw GrantDenied()
     val process=nativeProcess ?: throw GrantDenied()
-    process.destroyForcibly()
-    ProbeStore.update(c,a.controlOf) { it.put("cancellationRequested",true) }
+    NativeProbeObserver.requestCancellation(process) {
+      ProbeStore.update(c,a.controlOf) {
+        it.put("cancellationRequested",true).put("cancellationRequestRecordedAtEpochMs",System.currentTimeMillis())
+      }
+    }
   }
   fun receive(c: Context,id: String,intent: Intent) {
     if(ProbeStore.pending(c)!=id) return
