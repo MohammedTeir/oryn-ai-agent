@@ -1,3 +1,5 @@
+> Current follow-up: [2026-11-04 capability decisions and remaining gates](feasibility/milestone-0-status.md). The older build tables below describe their original observation-only artifact.
+
 # Current follow-up — new native feasibility harness
 
 The original uncommitted harness was not recovered. A new harness was created

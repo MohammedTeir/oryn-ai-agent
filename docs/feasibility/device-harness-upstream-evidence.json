@@ -1,0 +1,61 @@
+{
+  "record_date": "2026-11-04",
+  "kind": "device_harness_upstream_follow_up",
+  "source_base_commit": "7f89079",
+  "installed": {
+    "expo": "58.0.23",
+    "expo-build-properties": "58.0.12",
+    "expo-dev-client": "58.0.18",
+    "expo-modules-core": "58.0.30",
+    "react": "19.3.0",
+    "react-native": "0.88.1"
+  },
+  "candidates_not_installed": {
+    "lucide-react-native": {
+      "version": "1.68.0",
+      "license": "ISC",
+      "engines": null,
+      "peerDependencies": {
+        "react": "^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+        "@types/react": "*",
+        "react-native": "*",
+        "react-native-svg": "^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0"
+      },
+      "metadata_sha256": "aabb2313b68b8196740570035e68002311763cb2d69bd7828325e407b5b32331",
+      "app_device_compatibility": "Unknown"
+    },
+    "@google/genai": {
+      "version": "2.32.0",
+      "license": "Apache-2.0",
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "peerDependencies": {
+        "@modelcontextprotocol/sdk": "^1.25.2"
+      },
+      "metadata_sha256": "0e8f635ab20e62c3c6aaa370510de8b730685187faaf0340a7b59bb66952e64a",
+      "app_device_compatibility": "Unknown"
+    }
+  },
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/googleapis/js-genai/main/README.md",
+      "sha256": "0e71b157d04f34a658f820d8310a8ab456f7bbed96e3b7cfbc1aab53ee0c2b9e"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/termux/termux-app/v0.118.3/README.md",
+      "sha256": "6282f3166ce34a24e734a0cfb9610255475ca74a5d81ac444eb0d6b819ecbad7"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/libtermux/libtermux-android/main/README.md",
+      "sha256": "a2f5037df3b50e69a2ab061601fb2df2a937f2a89e2507c6a4a2ca8b1de658e4"
+    }
+  ],
+  "embedded_candidate": {
+    "repo": "libtermux/libtermux-android",
+    "main_commit": "bcf9f7c341c2bc086c86da810d7f36a45dce2242",
+    "readme_still_warns_experimental_non_production": true,
+    "scope": "README revalidated; earlier implementation review was at 3a7e2ae63c4824fac384769c9afb8bc579458da9. New commit implementation not audited; no adoption or device proof."
+  },
+  "device_tests_performed_in_cloud": false
+}
