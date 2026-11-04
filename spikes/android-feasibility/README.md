@@ -10,7 +10,9 @@ test controls are not wired into the observation UI. See the
 [native spike review](../../docs/feasibility/native-spike-review.md).
 This is a labeled debug spike, not the production two-tab interface.
 
-Expo 58.0.22 was selected after reading current Expo SDK documentation. React
+Expo 58.0.22 was initially selected after reading current Expo SDK documentation.
+The current pins are Expo 58.0.23 and modules-core 58.0.30, updated together to
+match Expo's compatibility check on 2026-11-04. React
 19.3.0 and React Native 0.88.1 come from that installed Expo package's
 bundledNativeModules.json. Expo-selected dev-client, build-properties and
 modules-core provide the custom development build, Android minimum API override
