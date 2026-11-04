@@ -7,6 +7,7 @@ test -x "$ANDROID_HOME/build-tools/37.0.0/apksigner"
 npx --no-install expo prebuild --platform android --no-install --no-clean \
   --template expo-template-bare-minimum@58.0.31
 mkdir -p artifacts
+bash scripts/build-native-probe.sh
 # Verify the upstream Gradle distribution using its published checksum.
 wrapper=android/gradle/wrapper/gradle-wrapper.properties
 checksum=$(curl -fsSL https://services.gradle.org/distributions/gradle-9.4.1-bin.zip.sha256)

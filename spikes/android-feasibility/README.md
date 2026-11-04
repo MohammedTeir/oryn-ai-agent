@@ -3,12 +3,16 @@
 This harness was created after the previous uncommitted harness was found missing.
 It has a separate evidence lineage; previous test passes do not apply to it.
 
-The only Kotlin API observes Android Build metadata and package visibility for
-Termux. It cannot issue grants, dispatch intents, start processes, install tools,
-or execute commands. Detection does not establish Termux execution readiness.
+The original observation UI reads Android Build metadata and package visibility
+for Termux. Detection does not establish Termux execution readiness. The recovered
+draft adds a separate experimental Strict-only native API for fixed probes; its
+test controls are not wired into the observation UI. See the
+[native spike review](../../docs/feasibility/native-spike-review.md).
 This is a labeled debug spike, not the production two-tab interface.
 
-Expo 58.0.22 was selected after reading current Expo SDK documentation. React
+Expo 58.0.22 was initially selected after reading current Expo SDK documentation.
+The current pins are Expo 58.0.23 and modules-core 58.0.30, updated together to
+match Expo's compatibility check on 2026-11-04. React
 19.3.0 and React Native 0.88.1 come from that installed Expo package's
 bundledNativeModules.json. Expo-selected dev-client, build-properties and
 modules-core provide the custom development build, Android minimum API override
@@ -43,6 +47,13 @@ verified against the official distribution SHA-256. The build reports Kotlin
 plugin 2.2.10, compile SDK 37, target SDK 36 and min SDK 29. The current cloud
 allocation is 4 CPU / 32 GiB; the scripts bound Gradle workers to 2 and 4.
 Toolchain download/checksum provenance is in the upstream evidence JSON.
+The native policy suite uses `junit:junit:4.13.2` (test-only), matching Expo
+Modules Core's pinned test dependency. `build-native-probe.sh` compiles the
+ORYN-owned C test executable with the installed NDK; generated binaries and the
+generated digest class are ignored. The APK packaging check verifies unchanged
+binary bytes. This is a minimal native executable, not a Termux-compatible shell
+or package manager. Native security code requires human review before merging.
+
 Source `scripts/cloud-env.sh` to activate retained tools and refresh session
 proxy/CA trust; do not disable verification. No live processes are prerequisites.
 Use the existing checkout in each isolated cloud task; do not create worktrees

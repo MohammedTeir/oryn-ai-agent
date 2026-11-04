@@ -7,3 +7,5 @@ artifacts/
 *.keystore
 .env*
 **/build/
+modules/oryn-observer/android/src/main/jniLibs/
+modules/oryn-observer/android/src/main/java/io/github/mohammedteir/oryn/feasibility/GeneratedProbeDigest.kt

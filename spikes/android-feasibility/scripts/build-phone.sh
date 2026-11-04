@@ -21,9 +21,12 @@ node scripts/integrity.cjs "$apk" > artifacts/phone-apk.sha256
 cp "$apk" artifacts/oryn-feasibility-phone.apk
 "$ANDROID_HOME/build-tools/37.0.0/aapt" dump badging "$apk" > artifacts/phone-apk-badging.txt
 python3 - <<'PY'
-import pathlib, zipfile
+import hashlib, pathlib, zipfile
 apk = pathlib.Path('artifacts/oryn-feasibility-phone.apk')
 with zipfile.ZipFile(apk) as archive:
     assert 'assets/index.android.bundle' in archive.namelist(), 'Offline JS bundle missing'
+    packaged = archive.read('lib/arm64-v8a/liboryn_feasibility_probe.so')
+    built = pathlib.Path('modules/oryn-observer/android/src/main/jniLibs/arm64-v8a/liboryn_feasibility_probe.so').read_bytes()
+    assert hashlib.sha256(packaged).digest() == hashlib.sha256(built).digest(), 'Native probe changed during packaging'
 print('Verified signed APK contains its JS bundle. Installation/bridge remain untested.')
 PY

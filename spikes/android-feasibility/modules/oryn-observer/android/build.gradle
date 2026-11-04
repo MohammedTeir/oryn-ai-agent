@@ -10,3 +10,6 @@ android {
   namespace 'io.github.mohammedteir.oryn.feasibility.observer'
   defaultConfig { minSdkVersion 29 }
 }
+
+// Pinned native-only test dependency, also used by Expo Modules Core.
+dependencies { testImplementation 'junit:junit:4.13.2' }
