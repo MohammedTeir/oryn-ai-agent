@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-05",
+  "scope": "Limited version-pinned source review, six injected JVM preflight tests, and an actual native fixed-probe catalog extension. New phone checks pending.",
+  "sources": [
+    {
+      "url": "https://android.googlesource.com/platform/frameworks/base/+/refs/tags/android-11.0.0_r1/services/core/java/com/android/server/am/ActivityManagerService.java",
+      "decoded_source_sha256": "b311f2a293f3c845960b852c36989ca04af851b7533d4f9719823dd8ed13eecd"
+    },
+    {
+      "url": "https://android.googlesource.com/platform/frameworks/base/+/refs/tags/android-11.0.0_r1/services/core/java/com/android/server/am/PendingIntentRecord.java",
+      "decoded_source_sha256": "bdfd5cb1c2ad36be6342a8974ecc5c5a95ba0967e68af7623488eedb6ec6c313"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/termux/termux-app/v0.118.3/termux-shared/src/main/java/com/termux/shared/shell/ResultSender.java",
+      "decoded_source_sha256": "01cf604db740beb1c5652705ef43b868e89481a021ba8a528e7e869989e30b14"
+    }
+  ],
+  "missing_provider_coverage": "JVM injected case plus actual PackageManager exception handling; not device uninstall",
+  "permission_refusal_phone_verified": false,
+  "external_caller_force_stop_phone_verified": false,
+  "include_stopped_override_added": false,
+  "external_cancellation": "unsupported",
+  "milestone_complete": false
+}
