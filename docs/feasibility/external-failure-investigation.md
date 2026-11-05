@@ -71,7 +71,8 @@ requested copy/save export feature so the full JSON can be returned.
    ORYN via its App info, immediately reopen ORYN (aim within 20 seconds), and
    keep it open until after the 45-second result. Copy JSON. The same execution
    should move from recovered Unknown/busy to a genuine matching provider result
-   with both recovery messages, exit 0 and busy=false. A fast callback might omit
+   with both recovery messages, exit 0 and busy=false. The existing
+   expectedProbeMatched flag matches echo probes only, not this recovery script. A fast callback might omit
    an intermediate poll; retain whatever was actually captured.
 
 Do not leave ORYN force-stopped through callback time, force-stop Termux, clear

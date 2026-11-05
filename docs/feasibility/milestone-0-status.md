@@ -46,7 +46,7 @@ key, SDK client or network request was used by this probe.
 | External Termux fixed echo/delay | Verified by owner after setup | Correct provider output and exits 7/0. Property rejection and permission-request-without-dispatch also recorded |
 | External background completion | Verified with latency limitation | Matching successful callback arrived after 17332 ms against 12000 ms deadline; resultAfterTimeout=true; no proof of precise background UI transition time |
 | External timeout / cancellation | Deadline only / remote cancellation unsupported | Do not infer process kill. Provider exit is separate from local processTerminationVerified=false |
-| External force-stop / missing provider / permission refusal | Unknown | These paths lack device evidence; local C recovery does not establish external behavior |
+| External force-stop / missing provider / permission refusal | Investigation extended; phone cases pending | [Source review and JVM preflight tests](external-failure-investigation.md) cover failure contracts. Missing-provider physical absence is not claimed; permission denial/caller restart still need owner observations |
 | APK-owned binary packaging | Narrow Go | Device execution plus NDK/ELF/linker/hash/build checks; signed APK updates only; not an embedded Termux shell |
 | Embedded Termux shell/package manager | No-go for adoption on current evidence | Experimental candidate and prefix/linker/writable-exec/provenance/maintenance issues documented; no compatibility claim |
 | Embedded package tool installation | Not applicable to current prototype | No supported package manager or install API; no installation test attempted or claimed passed |
@@ -63,9 +63,7 @@ all package redistribution requirements.
 
 ## Remaining acceptance work
 
-- **External failure/lifecycle coverage:** external process death, missing
-  Termux and explicit permission refusal still need isolated investigation/tests
-  and safe remote reconciliation. Do not uninstall the owner's working Termux or
+- **External failure/lifecycle coverage:** [native preflight/source investigation](external-failure-investigation.md) is implemented. Permission-refusal and caller-restart phone results remain pending; missing-provider handling is isolated JVM/source coverage. Do not uninstall the owner's working Termux or
   clear runtime data to obtain a passing result.
 
 The [reconciliation](device-results-review-2026-11-05.md) closes the supported

@@ -17,7 +17,7 @@ export function observe(): Promise<Observation> {
   return requireNativeModule<{ observe(): Promise<Observation> }>('OrynObserver').observe();
 }
 
-export type ProbeId = 'native_echo' | 'native_timeout' | 'native_cancel' | 'termux_echo' | 'termux_delay';
+export type ProbeId = 'native_echo' | 'native_timeout' | 'native_cancel' | 'termux_echo' | 'termux_delay' | 'termux_recovery';
 type ExecutionSpike = {
   getState(): Promise<string>;
   requestProbe(id: ProbeId): Promise<string>;

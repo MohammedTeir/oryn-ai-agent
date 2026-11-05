@@ -5,7 +5,7 @@ import { checkMissingAndForgedGrant, copyEvidence, getExecutionState, observe, r
 import { appendEvidence, createReport, parseExportStatus, parseNativeRecord, type ExportStatus, type EvidenceEntry, type NativeRecord } from './report';
 import { strings } from './strings';
 
-const probeIds: ProbeId[] = ['native_echo', 'native_timeout', 'native_cancel', 'termux_echo', 'termux_delay'];
+const probeIds: ProbeId[] = ['native_echo', 'native_timeout', 'native_cancel', 'termux_echo', 'termux_delay', 'termux_recovery'];
 
 function ProbeButton({ label, onPress, disabled }: { label: string; onPress: () => void; disabled: boolean }) {
   return <Pressable accessibilityRole="button" accessibilityLabel={label} accessibilityState={{ disabled }}
