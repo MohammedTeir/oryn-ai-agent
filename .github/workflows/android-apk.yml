@@ -85,6 +85,7 @@ jobs:
           npm run lint
           npm run typecheck
           npm test
+          npm run bundle:compatibility
       - name: Build and lint the development APK
         run: |
           mkdir -p artifacts

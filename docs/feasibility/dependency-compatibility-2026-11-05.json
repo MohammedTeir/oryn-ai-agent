@@ -1,0 +1,72 @@
+{
+  "date": "2026-11-05",
+  "scope": "Pinned build/import compatibility; not live Gemini API, secure-key storage, SVG rendering or device SDK runtime validation.",
+  "selected": {
+    "@google/genai": {
+      "version": "2.32.0",
+      "license": "Apache-2.0",
+      "peerDependencies": {
+        "@modelcontextprotocol/sdk": "^1.25.2"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "installed_metadata_sha256": "e6c2e84e48a9ee7ade1876292032ec4e516678f225154f33f43ee79ff0f3b12f",
+      "import": "@google/genai/web"
+    },
+    "lucide-react-native": {
+      "version": "1.68.0",
+      "license": "ISC",
+      "peerDependencies": {
+        "@types/react": "*",
+        "react": "^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+        "react-native": "*",
+        "react-native-svg": "^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0"
+      },
+      "engines": null,
+      "installed_metadata_sha256": "d9568fc50ca89d7726ccdc6631407180f041dc62f16efac831b35e6bc82c7406"
+    },
+    "react-native-svg": {
+      "version": "15.16.0",
+      "license": "MIT",
+      "peerDependencies": {
+        "react": "*",
+        "react-native": "*"
+      },
+      "engines": null,
+      "installed_metadata_sha256": "13deee84e58f022cd7f7325214a870a3976270a804fbf2fcce06236d3738394f"
+    }
+  },
+  "sources": [
+    {
+      "url": "https://registry.npmjs.org/@google%2Fgenai/2.32.0",
+      "sha256": "0e8f635ab20e62c3c6aaa370510de8b730685187faaf0340a7b59bb66952e64a"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/googleapis/js-genai/main/README.md",
+      "sha256": "a1074c63e80734b3f9478e3d22819725279bf80a01a9b97dcbc95b572fa82d78"
+    },
+    {
+      "url": "https://lucide.dev/guide/packages/lucide-react-native",
+      "sha256": "3ed0ef9e0c4e9b8e34664a6e06653c482480acd4241580896287294a08165785"
+    },
+    {
+      "source": "installed @google/genai@2.32.0 README from npm tarball; lockfile integrity pinned",
+      "sha256": "dcbe62b458fa3c9286299d53e59604dd244b5a764cb4b4319ab39bfb7e3dc63d"
+    }
+  ],
+  "checks": {
+    "frozen_install": true,
+    "expo_install_check": true,
+    "typecheck": true,
+    "android_metro_real_imports": true,
+    "live_api_requests": false,
+    "device_tests": false,
+    "native_svg_debug_build": true,
+    "phone_release_variant_build": true,
+    "android_lint": true,
+    "apk_signatures": true,
+    "phone_bundle_and_native_probe_bytes": true,
+    "android_fixture_bundle_sha256_local": "4e4af0c1c60ba0387f4d47d3ece43c1b34b4f9618cbe34fea49feb4c9fda45da"
+  }
+}

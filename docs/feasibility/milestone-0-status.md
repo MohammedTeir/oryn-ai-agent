@@ -1,6 +1,6 @@
 # Milestone 0 evidence status — 2026-11-05
 
-**Open: two checklist requirements remain.** The owner has now supplied physical
+**Open: external failure/lifecycle investigation remains.** The owner has now supplied physical
 execution and lifecycle evidence. See the [complete reconciliation](device-results-review-2026-11-05.md),
 [selected result entries](device-results-2026-11-05.json), and [final background
 report](device-background-report-2026-11-05.json). These are owner-reported phone
@@ -23,12 +23,14 @@ what was unverified in those older records.
 | Java / Node | Temurin 21.0.13+9 / Node 24.22.1 |
 | Termux | 0.118.3 observed by owner on Redmi Note 8 Pro; installation source Unknown; fixed commands observed working |
 | Device | Owner's native observation: Android 11/API 30, arm64-v8a/armeabi-v7a/armeabi supported; MIUI 12.5.10 earlier owner report only |
-| lucide-react-native | 1.68.0 registry candidate reviewed 2026-11-04, ISC; peer metadata accepts React 19 and react-native-svg 12–15. Not installed or app/device-validated; no production compatibility claim |
-| Gemini SDK | @google/genai 2.32.0 registry candidate reviewed 2026-11-04, Apache-2.0; Node >=20 and browser guidance. React Native compatibility Unknown, not selected/installed; no API key or request used |
+| lucide-react-native / SVG | 1.68.0 / 15.16.0 pinned; real exports typechecked and Android-bundled; SVG native module built; no device rendering claim |
+| Gemini SDK | @google/genai 2.32.0 pinned; public web entry typechecked and Android-bundled. Live API behavior/secure key integration not tested or claimed |
 
-The dependency checklist remains open because candidate metadata does not prove
-app/device compatibility for icons or Gemini. No new production dependency was
-added merely to close a checkbox. Historical records retain their original pins.
+The [dependency build/import investigation](dependency-compatibility.md) records
+reviewed exact pins, a frozen installation, actual Android Metro resolution and
+native SVG integration. That closes version selection for the feasibility build;
+SDK HTTP/streaming and device rendering remain later feature validation. No API
+key, SDK client or network request was used by this probe.
 
 ## Capability matrix and decisions
 
@@ -61,12 +63,10 @@ all package redistribution requirements.
 
 ## Remaining acceptance work
 
-1. **Dependency compatibility/selection:** lucide/Gemini candidate metadata does
-   not yet establish the required compatible app selections.
-2. **External failure/lifecycle coverage:** external process death, missing
-   Termux and explicit permission refusal need isolated investigation/tests and
-   safe remote reconciliation. Do not uninstall the owner's working Termux or
-   clear runtime data to obtain a passing result.
+- **External failure/lifecycle coverage:** external process death, missing
+  Termux and explicit permission refusal still need isolated investigation/tests
+  and safe remote reconciliation. Do not uninstall the owner's working Termux or
+  clear runtime data to obtain a passing result.
 
 The [reconciliation](device-results-review-2026-11-05.md) closes the supported
 prototype/research items and records conditional embedded installation as not

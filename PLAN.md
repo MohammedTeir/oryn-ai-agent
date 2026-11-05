@@ -58,7 +58,7 @@ Approval is not an optional UI feature. **All shell execution must be authorized
 **Goal:** Find Android/Termux blockers before committing to production architecture. **This milestone is not the v1 product.**
 
 - [x] Inventory actual tracked source files, existing configs and assets; do not infer functionality from README or QA self-reports. Evidence: [published-snapshot inventory and new harness lineage](docs/milestone-0-inventory.md).
-- [ ] Record exact compatible Expo SDK, React Native, Kotlin, Gradle, Android SDK, `lucide-react-native`, Gemini SDK and Termux versions **after reviewing current upstream documentation**. Record Android minimum, target SDK, ABI/architecture and device test matrix. Core pins/device are recorded; compatible icon/Gemini selections remain open in the [reconciliation](docs/feasibility/device-results-review-2026-11-05.md).
+- [x] Record exact compatible Expo SDK, React Native, Kotlin, Gradle, Android SDK, `lucide-react-native`, Gemini SDK and Termux versions **after reviewing current upstream documentation**. Record Android minimum, target SDK, ABI/architecture and device test matrix. [Pinned build/import compatibility](docs/feasibility/dependency-compatibility.md) now typechecks and Android-bundles the real Lucide/SVG and public Gemini web exports, and builds native SVG. Live Gemini API/key storage and device rendering are later feature checks, not claimed here.
 - [x] Check app ID ownership/namespace before choosing it. Owner confirmed MohammedTeir account ownership and authorized `io.github.mohammedteir.oryn.feasibility` for this debug-only spike; production/release namespace clearance remains open.
 - [x] Prove minimal Expo custom development build and callable Kotlin Expo Module on a physical Android device. Expo Go cannot satisfy the custom native integration. Native builds are recorded in cloud/CI evidence; the owner reported a working probe on Redmi Note 8 Pro and supplied [native observation JSON](docs/feasibility/device-observation-2026-11-03.json). Exact installed APK hash/variant is unconfirmed; execution and authorization are not covered by this check.
 - [ ] External Termux spike: supported integration contract, installed/ready/permission states, real command results, cancellation/timeout, background/process-death behavior and missing Termux handling. Owner command and late-background results are saved; external process-death, missing-provider and explicit permission-refusal coverage remain open. Remote cancellation is unsupported, not claimed verified.
@@ -71,7 +71,7 @@ Approval is not an optional UI feature. **All shell execution must be authorized
 
 **Exit gate:** Real-device test evidence for Kotlin bridge, native grant enforcement, external integration and an honest embedded-runtime feasibility decision. No app code is claimed production-ready at this stage.
 
-**Status: OPEN.** The compatible icon/Gemini dependency selection and remaining external failure/lifecycle coverage above are not waived.
+**Status: OPEN.** Dependency build/import selection is recorded; remaining external failure/lifecycle coverage above is not waived.
 
 Current follow-up: [capability decisions and exact stack record](docs/feasibility/milestone-0-status.md), [fixed-probe phone runbook](docs/feasibility/device-test-runbook.md). The [2026-11-05 owner evidence reconciliation](docs/feasibility/device-results-review-2026-11-05.md) distinguishes completed phone experiments, conditional N/A and remaining acceptance gaps. No production-ready claim is made.
 
