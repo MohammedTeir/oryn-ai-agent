@@ -33,3 +33,11 @@ export const requestCancel = () => execution().requestCancel();
 export async function checkMissingAndForgedGrant(): Promise<string[]> {
   return [await execution().negativeProbe(null), await execution().negativeProbe('deliberately-invalid-device-test-token')];
 }
+
+type EvidenceExporter = {
+  copyEvidence(text: string): Promise<unknown>;
+  saveEvidence(text: string): Promise<unknown>;
+};
+const exporter = () => requireNativeModule<EvidenceExporter>('OrynEvidenceExport');
+export const copyEvidence = (text: string) => exporter().copyEvidence(text);
+export const saveEvidence = (text: string) => exporter().saveEvidence(text);
