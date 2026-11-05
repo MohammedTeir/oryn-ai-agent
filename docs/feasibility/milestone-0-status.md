@@ -1,15 +1,16 @@
-# Milestone 0 evidence status — 2026-11-04
+# Milestone 0 evidence status — 2026-11-05
 
-Milestone 0 remains **open**. This is the current follow-up to the historical
-observation-only build and [runtime review](runtime-review.md). The native
-Strict-only security spike was merged in PR #2; merge is not device execution
-evidence. The device-harness task adds TypeScript controls/reporting without
-changing the native gateway, grant ledger or policy.
+**Open: two checklist requirements remain.** The owner has now supplied physical
+execution and lifecycle evidence. See the [complete reconciliation](device-results-review-2026-11-05.md),
+[selected result entries](device-results-2026-11-05.json), and [final background
+report](device-background-report-2026-11-05.json). These are owner-reported phone
+observations, separate from cloud build/signature tests. Exact installed APK hash
+and Termux installation source remain Unknown.
 
-Upstream metadata and source hashes are recorded in
-[the follow-up evidence JSON](device-harness-upstream-evidence.json). The embedded
-candidate's current README still warns against production use; only that warning
-was revalidated at its new main commit, not the complete changed implementation.
+Upstream metadata/source hashes remain in
+[the 2026-11-04 follow-up](device-harness-upstream-evidence.json). Historical source
+and build records retain their original dates/pins; the new results do not change
+what was unverified in those older records.
 
 ## Stack and device record
 
@@ -20,77 +21,54 @@ was revalidated at its new main commit, not the complete changed implementation.
 | Kotlin / Gradle | Build plugin 2.2.10 / wrapper 9.4.1; wrapper SHA-256 pinned; Kotlin catalog's 2.2.0 is not the observed plugin |
 | Android | min API 29; compile 37; target 36; NDK 27.1.12297006; arm64-v8a APK only |
 | Java / Node | Temurin 21.0.13+9 / Node 24.22.1 |
-| Termux | 0.118.3 observed by owner on Redmi Note 8 Pro; installation source and command readiness Unknown |
+| Termux | 0.118.3 observed by owner on Redmi Note 8 Pro; installation source Unknown; fixed commands observed working |
 | Device | Owner's native observation: Android 11/API 30, arm64-v8a/armeabi-v7a/armeabi supported; MIUI 12.5.10 earlier owner report only |
-| lucide-react-native | 1.68.0 current registry candidate, ISC; peer metadata accepts React 19 and react-native-svg 12–15. Not installed or app/device-validated; no production compatibility claim |
-| Gemini SDK | @google/genai 2.32.0 current registry candidate, Apache-2.0; Node >=20 and browser guidance. React Native compatibility Unknown, not selected/installed; no API key or request used |
+| lucide-react-native | 1.68.0 registry candidate reviewed 2026-11-04, ISC; peer metadata accepts React 19 and react-native-svg 12–15. Not installed or app/device-validated; no production compatibility claim |
+| Gemini SDK | @google/genai 2.32.0 registry candidate reviewed 2026-11-04, Apache-2.0; Node >=20 and browser guidance. React Native compatibility Unknown, not selected/installed; no API key or request used |
 
 The dependency checklist remains open because candidate metadata does not prove
 app/device compatibility for icons or Gemini. No new production dependency was
 added merely to close a checkbox. Historical records retain their original pins.
 
-## Capability decisions
+## Capability matrix and decisions
 
-| Capability | Current decision | Evidence still needed / fallback |
+| Capability on the owner's Redmi Note 8 Pro | Decision / status | Evidence and limits |
 | --- | --- | --- |
-| Build and metadata bridge | Go for debug feasibility | Signed APK/CI checks; earlier owner bridge output. Match fresh device evidence to the new artifact identity |
-| Native Strict fixed-probe gate | Go for restricted device testing; no general-purpose production approval | 21 native unit tests. Physical denial, Android lifecycle/IPC and security review evidence remain required |
-| External Termux | Conditional go for fixed native-approved probes | Device permission/setup, actual callback/stdout/stderr/exit, interruption and missing-provider behavior. Until then execution readiness Unknown |
-| External timeout | Observation deadline only | Missing callback stays Unknown and blocks new work; do not label remote process killed |
-| External cancellation | Unsupported in this spike | No stop-service or guessed process-tree kill. Offer only explicit unsupported state; future contract needs separate proof |
-| APK-owned C binary | Conditional go for arm64/API 29+ probe | NDK compile, ELF/linker and packaged hash checks passed. Device execution/timeout/cancel unverified. Not a shell or Termux runtime |
-| Embedded Termux-compatible shell | No-go for adoption with current evidence; research remains open | libtermux candidate warns experimental/non-production. Android writable-executable restrictions, prefix/linking, provenance and device proof unresolved. Explicit external fallback only after that backend passes |
-| Embedded package manager / tool install | Unsupported by the current prototype; no install attempted | No authenticated package/ABI/prefix/update/rollback design. Conditional benign installation test deferred until a supported design exists |
-| Wider ABIs / Android versions | Unknown | One arm64 APK and one owner-observed device do not establish coverage |
-| Root / Batch / Session | Not implemented or exercised by this spike | Outside fixed non-root Strict probe scope; no inferred grants |
+| Custom native build and metadata bridge | Verified by owner for debug feasibility | Android 11/API 30 and Termux 0.118.3 observed; delivered APK builds only arm64-v8a |
+| Strict fixed-catalog native gateway | Prototype gate evidence recorded | Source entry-point review, 32 native unit tests, owner missing/forged-grant denial and background review revocation; not a general-purpose security proof |
+| Local native echo | Verified by owner | Exact stdout/stderr, exit 7; expectedProbeMatched=true |
+| Local manual cancellation | Verified by owner | Approved request retained, observed exit 143, termination verified; no remote/process-tree claim |
+| Local automatic timeout | Verified by owner | Termination requested after about 2.1 seconds; exit preserved despite unavailable output/IOException; busy released |
+| Local force-stop / restart | Verified by owner for new incident | Unknown/busy after force-stop; boot 295→296 reconciled same execution as interrupted with null exit/Unknown outcome; no restored grant |
+| Legacy 211a... migration | Unknown | New successful recovery involved f629...; original record's disposition was not supplied |
+| External Termux fixed echo/delay | Verified by owner after setup | Correct provider output and exits 7/0. Property rejection and permission-request-without-dispatch also recorded |
+| External background completion | Verified with latency limitation | Matching successful callback arrived after 17332 ms against 12000 ms deadline; resultAfterTimeout=true; no proof of precise background UI transition time |
+| External timeout / cancellation | Deadline only / remote cancellation unsupported | Do not infer process kill. Provider exit is separate from local processTerminationVerified=false |
+| External force-stop / missing provider / permission refusal | Unknown | These paths lack device evidence; local C recovery does not establish external behavior |
+| APK-owned binary packaging | Narrow Go | Device execution plus NDK/ELF/linker/hash/build checks; signed APK updates only; not an embedded Termux shell |
+| Embedded Termux shell/package manager | No-go for adoption on current evidence | Experimental candidate and prefix/linker/writable-exec/provenance/maintenance issues documented; no compatibility claim |
+| Embedded package tool installation | Not applicable to current prototype | No supported package manager or install API; no installation test attempted or claimed passed |
+| Root, other ABIs/devices, broader tools | Unknown / not exercised | Wider device ABI list is not broader APK coverage; no root, Batch or Session API in this spike |
 
-For embedded packaging, `useLegacyPackaging` extracts an NDK-built PIE binary
-with `/system/bin/linker64` into Android's installed native-library directory.
-The APK packaging check retains exact compiled bytes, and native code rejects a
-missing, writable or hash-mismatched installed file. This deliberately avoids
-claiming downloaded executables in writable app home are supported. No target
-SDK reduction or Android execution restriction bypass is used.
+The packaged C probe executes from Android's installed native-library directory,
+with min API 29, target 36, bionic linker /system/bin/linker64 and exact binary
+hash checks. No target lowering or writable-app-home execution bypass was used.
+The ORYN-owned C source is not copied Termux code. Its signed-APK update identity
+is not an authenticated runtime package updater or independent rollback design.
+The [runtime source review](runtime-review.md) records licenses, prefix rebuilds,
+bootstrap trust and maintenance issues. A library license alone does not settle
+all package redistribution requirements.
 
-The ORYN-owned C source needs no copied Termux binary or bootstrap license grant.
-Its identity updates with the signed APK and generated hash. That is not a
-runtime package updater: no independent tool install, upgrade or rollback is
-implemented. Adopting libtermux's Apache-2.0 library would still require a license
-inventory for every bootstrap/package; integrating external Termux intents is
-separate from redistributing GPLv3 Termux application code. A fork also needs
-prefix rebuilds, signing/release ownership, security updates and package upkeep.
-These maintenance obligations are not settled by a successful smoke test.
+## Remaining acceptance work
 
-## Owner device follow-up: timeout incident
+1. **Dependency compatibility/selection:** lucide/Gemini candidate metadata does
+   not yet establish the required compatible app selections.
+2. **External failure/lifecycle coverage:** external process death, missing
+   Termux and explicit permission refusal need isolated investigation/tests and
+   safe remote reconciliation. Do not uninstall the owner's working Termux or
+   clear runtime data to obtain a passing result.
 
-The owner supplied screenshots showing rejected missing/forged-grant calls, and
-an unresolved local `native_timeout` execution after recovery. This is partial
-native denial evidence, not a completed authorization proof or timeout success.
-See [the transcribed incident](device-timeout-incident-2026-11-04.json) and the
-[isolated native recovery fix/review](native-recovery-review.md). The exact
-installed APK hash and cause of process restart remain Unknown. Further starts
-are correctly blocked while the saved local outcome is uncertain.
-
-## Remaining exit evidence
-
-Cloud validation of the device-harness task passed Expo compatibility, ESLint,
-TypeScript, seven JavaScript tests, Android JS bundling, both APK builds and
-Android lint. The unchanged native unit suite has 21 passing tests; its Gradle
-target was up-to-date in this UI-only build. Both APK signatures verified and
-the phone APK retained its JS bundle and exact compiled native probe bytes.
-These checks do not invoke the bridge or runtime on Android.
-
-Follow [the phone runbook](device-test-runbook.md), capture matching source/APK
-identity and genuine results, then reconcile PLAN.md section 3. In particular:
-
-- Native denial/review and real external command results on the owner's device.
-- Native binary execution, timeout/cancellation and lifecycle/process-death results.
-- Honest per-capability embedded go/no-go based on the measured device outcome;
-  no embedded package installation claim where unsupported.
-- Record coverage gaps such as missing Termux and direct Android IPC tests rather
-  than treating unit tests or UI button disabling as proof of backend isolation.
-- Resolve remaining dependency selections/compatibility before completing that
-  checklist; record Termux installation source as Unknown until observed.
-
-No execution/authorization/embedded checklist was checked by this document.
-Cloud build checks, source review, owner observation and new device results must
-stay distinct. Native pending states must not be cleared to manufacture success.
+The [reconciliation](device-results-review-2026-11-05.md) closes the supported
+prototype/research items and records conditional embedded installation as not
+applicable, not successful. Milestone 0 is not complete. There is no claim of
+standalone Termux parity, production safety, or cloud-operated device testing.

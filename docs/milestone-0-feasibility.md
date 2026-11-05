@@ -1,4 +1,6 @@
-> Current follow-up: [2026-11-04 capability decisions and remaining gates](feasibility/milestone-0-status.md). The older build tables below describe their original observation-only artifact.
+> Owner device execution/lifecycle results are now preserved in the [2026-11-05 reconciliation](feasibility/device-results-review-2026-11-05.md). The observation-only artifact tables below remain historical.
+
+> Current follow-up: [2026-11-05 capability decisions and remaining gates](feasibility/milestone-0-status.md). The older build tables below describe their original observation-only artifact.
 
 # Current follow-up — new native feasibility harness
 

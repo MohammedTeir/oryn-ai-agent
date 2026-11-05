@@ -1,3 +1,5 @@
+> Historical upstream/source review. For subsequent phone measurements and current per-capability decisions, see the [2026-11-05 reconciliation](device-results-review-2026-11-05.md). No shell/package-manager adoption or embedded Termux parity is inferred from the packaged C probe.
+
 # Runtime feasibility review — 2026-11-03
 
 This is cloud source/documentation review, not device verification. Requirements:
