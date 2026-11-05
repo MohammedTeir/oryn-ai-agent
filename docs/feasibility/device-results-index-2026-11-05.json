@@ -9,6 +9,18 @@
     {
       "path": "device-background-report-2026-11-05.json",
       "sha256": "786e05641bd4d0aeacecf37ba2304c5c3639adb7a83831d31fd441184fa1fc9a"
+    },
+    {
+      "path": "device-permission-refusal-report-2026-11-05.json",
+      "sha256": "debe92dda841b032778be97e72b57deb8bea0328000aef88340a320938319079"
+    },
+    {
+      "path": "device-external-restart-report-2026-11-05.json",
+      "sha256": "17c37430ffdc1b68debb8c95a13f571e48ac6ceaf6e8550d8b6633e9946d8d9e"
+    },
+    {
+      "path": "device-final-evidence-notes-2026-11-05.json",
+      "sha256": "710fadc21b450f8b1807336d84ba1e051e1f9edaa7873f2e5b371e4d920608a1"
     }
   ]
 }

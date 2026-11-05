@@ -1,3 +1,5 @@
+> Final owner results are now recorded in the [Milestone 0 exit record](milestone-0-closure.md), including permission/procedure limits and same-ID caller-restart completion. The source review and preparation instructions below retain their original scope.
+
 # External Termux failure/lifecycle investigation
 
 This is a separate native security/test task after the dependency compatibility
@@ -89,7 +91,9 @@ unsupported. If the result stays Unknown after 90 seconds, share that JSON and
 stop; do not retry or infer success. This is a real failure outcome requiring
 investigation, not a reset opportunity.
 
-The native task needs human review under AGENTS.md. Passing JVM tests, reading
-Android sources and adding the test button do not complete the remaining phone
-checks. Milestone 0 remains open until the results and per-capability decisions
-are reconciled. No live test has yet verified these new cases on the phone.
+The native task was submitted separately and PR #8 was merged by the owner.
+The subsequent [permission report](device-permission-refusal-report-2026-11-05.json),
+[external restart report](device-external-restart-report-2026-11-05.json) and
+[evidence notes](device-final-evidence-notes-2026-11-05.json) now reconcile the
+phone cases. They do not turn JVM tests into device-uninstalled-provider testing
+or establish behavior while the caller stays stopped through callback time.

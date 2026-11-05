@@ -1,3 +1,5 @@
+> Milestone 0 observations are reconciled in the [final exit record](feasibility/milestone-0-closure.md). This protocol is retained for reproduction; no additional phone test is requested for the completed feasibility scope.
+
 > New fixed-probe controls: use the [device harness runbook](feasibility/device-test-runbook.md). The historical observation-only instructions below do not test execution.
 
 # Milestone 0 device evidence protocol

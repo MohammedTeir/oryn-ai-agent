@@ -1,0 +1,68 @@
+{
+  "schema": "oryn-milestone-0-device-evidence/v1",
+  "exportedAtEpochMs": 1793896754826,
+  "scope": "Debug feasibility evidence only; capture times are not command start times.",
+  "observation": null,
+  "historyLimit": 40,
+  "entries": [
+    {
+      "capturedAtEpochMs": 1793896693201,
+      "source": "native.getState",
+      "value": {
+        "state": "exited",
+        "executionId": "4330d07b-e0eb-4312-bb32-45293cd6e9f9",
+        "probe": "termux_echo",
+        "backend": "external_termux",
+        "dispatchedAtEpochMs": 1793896625609,
+        "externalCancellation": "not_supported",
+        "timeoutMs": 10000,
+        "exitCode": 7,
+        "providerError": -1,
+        "stdout": "ORYN termux stdout\n",
+        "stderr": "ORYN termux stderr\n",
+        "outputRedacted": false,
+        "stdoutOriginalLength": "19",
+        "stderrOriginalLength": "19",
+        "elapsedSinceDispatchMs": 263,
+        "processStartTime": "not_reported_by_provider",
+        "resultAfterTimeout": false,
+        "expectedProbeMatched": true,
+        "resultObservedAtEpochMs": 1793896625873,
+        "executionBusy": false,
+        "nativeBinaryIsTermuxRuntime": false,
+        "lastRecovery": {
+          "state": "interrupted_by_device_restart",
+          "executionId": "f6292030-4348-4633-92fc-ce2965b8ad70",
+          "probe": "native_cancel",
+          "backend": "apk_native_probe",
+          "dispatchedAtEpochMs": 1793889504653,
+          "externalCancellation": "not_supported",
+          "timeoutMs": 15000,
+          "nativeBootCount": 295,
+          "nativeCancellation": "this_process_only",
+          "stateBeforeRecovery": "running",
+          "processTerminationVerified": true,
+          "recoveryRequirement": "device_restart_then_reopen",
+          "commandOutcome": "unknown",
+          "exitCode": null,
+          "reconciliationEvidence": "android_boot_count_advanced",
+          "recoveredBootCount": 296,
+          "resultObservedAtEpochMs": 1793889628585,
+          "newAuthorizationRequired": true
+        },
+        "externalPrerequisites": {
+          "packageState": "detected",
+          "runCommandPermission": "denied",
+          "providerConfiguration": "not_observed"
+        }
+      }
+    },
+    {
+      "capturedAtEpochMs": 1793896697199,
+      "source": "native.requestProbe.termux_echo",
+      "value": {
+        "requestState": "android_permission_requested_no_command_dispatched"
+      }
+    }
+  ]
+}
