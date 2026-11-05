@@ -3,7 +3,6 @@ package io.github.mohammedteir.oryn.feasibility
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
-import android.content.pm.PackageManager
 import android.view.ContextThemeWrapper
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
@@ -23,6 +22,7 @@ private object NativeProbeText {
     "risk" to "Fixed non-root probe. No Batch or Session authorization. Changed or repeated actions need new native approval. Bounded status/output is saved in this app's private preferences.",
     "termux_echo" to "Print fixed stdout/stderr and return 7 in external Termux. No requested root, network or command file writes. The provider environment is unverified. Remote cancellation is unsupported.",
     "termux_delay" to "Print messages and sleep eight seconds in external Termux. Existing work may finish in background. No requested root, network or command file writes. Remote cancellation is unsupported.",
+    "termux_recovery" to "Print messages and sleep 45 seconds in external Termux so the caller can be force-stopped and reopened before result delivery. No requested root, network or command file writes. External cancellation is unsupported.",
     "native_echo" to "Run only the verified APK-packaged test binary, print stdout/stderr and return 7. No shell, children, root, network or command file writes. This is not a Termux runtime.",
     "native_timeout" to "Run the verified native binary with an eight-second wait; request termination after two seconds. No shell, children, root, network or command file writes.",
     "native_cancel" to "Run the verified native binary with an eight-second wait. A separate native approval can stop only this process. No shell, children, root, network or command file writes.",
@@ -35,6 +35,7 @@ private object NativeProbeText {
     "risk" to "اختبار محدد دون صلاحيات الجذر. لا يوجد تفويض دفعة أو جلسة. كل تغيير أو إعادة يتطلب موافقة أصلية جديدة. تُحفظ حالة ونتائج محدودة في تفضيلات التطبيق الخاصة.",
     "termux_echo" to "طباعة خرج ثابت وإرجاع 7 في Termux الخارجي. لا يُطلب جذر أو شبكة أو كتابة ملفات بالأمر. بيئة المصدر غير متحقق منها. الإلغاء الخارجي غير مدعوم.",
     "termux_delay" to "طباعة رسائل والانتظار ثماني ثوانٍ في Termux الخارجي. قد ينتهي العمل في الخلفية. لا يُطلب جذر أو شبكة أو كتابة ملفات بالأمر. الإلغاء الخارجي غير مدعوم.",
+    "termux_recovery" to "طباعة رسائل والانتظار 45 ثانية في Termux الخارجي لإيقاف تطبيق ORYN وإعادة فتحه قبل وصول النتيجة. لا يُطلب جذر أو شبكة أو كتابة ملفات بالأمر. الإلغاء الخارجي غير مدعوم.",
     "native_echo" to "تشغيل ملف الاختبار المتحقق منه داخل APK لطباعة الخرج وإرجاع 7. دون صدفة أو عمليات فرعية أو جذر أو شبكة أو كتابة ملفات بالأمر. ليس بيئة Termux.",
     "native_timeout" to "تشغيل الملف الأصلي المتحقق منه مع انتظار ثماني ثوانٍ وطلب إنهائه بعد ثانيتين. دون صدفة أو عمليات فرعية أو جذر أو شبكة أو كتابة ملفات بالأمر.",
     "native_cancel" to "تشغيل الملف الأصلي المتحقق منه مع انتظار ثماني ثوانٍ. موافقة أصلية منفصلة توقف هذه العملية وحدها. دون صدفة أو عمليات فرعية أو جذر أو شبكة أو كتابة ملفات بالأمر.",
@@ -63,11 +64,11 @@ class ExecutionModule : Module() {
         }
         val action=ProbeCatalog.action(c,id)
         if(action.backend=="external_termux") {
-          @Suppress("DEPRECATION")
-          try { c.packageManager.getPackageInfo("com.termux",0) } catch (_: PackageManager.NameNotFoundException) {
+          try {
+            TermuxPreflight.requireForReview({TermuxPlatform.installed(c)},{TermuxPlatform.permissionGranted(c)})
+          } catch (_: TermuxNotInstalled) {
             promise.resolve(result("termux_not_detected"));return@AsyncFunction
-          }
-          if(c.checkSelfPermission("com.termux.permission.RUN_COMMAND")!=PackageManager.PERMISSION_GRANTED) {
+          } catch (_: TermuxPermissionRequired) {
             activity.requestPermissions(arrayOf("com.termux.permission.RUN_COMMAND"),7401)
             promise.resolve(result("android_permission_requested_no_command_dispatched"));return@AsyncFunction
           }

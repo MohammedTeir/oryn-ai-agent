@@ -1,4 +1,12 @@
 {
-  "platforms": ["android"],
-  "android": {"modules": ["io.github.mohammedteir.oryn.feasibility.ObserverModule", "io.github.mohammedteir.oryn.feasibility.ExecutionModule"]}
+  "platforms": [
+    "android"
+  ],
+  "android": {
+    "modules": [
+      "io.github.mohammedteir.oryn.feasibility.ObserverModule",
+      "io.github.mohammedteir.oryn.feasibility.ExecutionModule",
+      "io.github.mohammedteir.oryn.feasibility.EvidenceExportModule"
+    ]
+  }
 }

@@ -28,6 +28,10 @@ internal object ProbeCatalog {
         "printf 'ORYN termux started\\n'; sleep 8; printf 'ORYN termux finished\\n'",
         "/data/data/com.termux/files/home",environment,"installed Termux provider; executable digest unknown",12_000,
         "Run the displayed shell and eight-second sleep. No requested network, root or file writes. Existing work may finish in background; no follow-up command is scheduled. External cancellation is unsupported.")
+      "termux_recovery" -> ExactProbe(id,"external_termux","/data/data/com.termux/files/usr/bin/sh",
+        "printf 'ORYN termux recovery started\\n'; sleep 45; printf 'ORYN termux recovery finished\\n'",
+        "/data/data/com.termux/files/home",environment,"installed Termux provider; executable digest unknown",60_000,
+        "Run the displayed shell and 45-second sleep to observe caller restart. No requested root, network or command file writes. Reopen ORYN before the callback; external cancellation is unsupported. A missing result remains Unknown and blocks new work.")
       "native_echo", "native_timeout", "native_cancel" -> ExactProbe(id,"apk_native_probe",
         File(context.applicationInfo.nativeLibraryDir,"liboryn_feasibility_probe.so").absolutePath,
         if(id=="native_echo") "normal" else "delay",context.filesDir.absolutePath,
@@ -136,7 +140,8 @@ internal object ProbeRuntime {
     val currentGate=gate(c)
     return ProbeStore.state(c).put("executionBusy",currentGate.busy())
       .put("nativeBinaryIsTermuxRuntime",false)
-      .put("lastRecovery",ProbeStore.lastRecovery(c) ?: JSONObject.NULL).toString()
+      .put("lastRecovery",ProbeStore.lastRecovery(c) ?: JSONObject.NULL)
+      .put("externalPrerequisites",JSONObject(TermuxPlatform.snapshot(c))).toString()
   }
 
   // Called only inside StrictGate.dispatch's validated synchronous sink on the UI thread.

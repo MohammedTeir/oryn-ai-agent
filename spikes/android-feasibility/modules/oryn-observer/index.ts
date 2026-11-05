@@ -17,7 +17,7 @@ export function observe(): Promise<Observation> {
   return requireNativeModule<{ observe(): Promise<Observation> }>('OrynObserver').observe();
 }
 
-export type ProbeId = 'native_echo' | 'native_timeout' | 'native_cancel' | 'termux_echo' | 'termux_delay';
+export type ProbeId = 'native_echo' | 'native_timeout' | 'native_cancel' | 'termux_echo' | 'termux_delay' | 'termux_recovery';
 type ExecutionSpike = {
   getState(): Promise<string>;
   requestProbe(id: ProbeId): Promise<string>;
@@ -33,3 +33,11 @@ export const requestCancel = () => execution().requestCancel();
 export async function checkMissingAndForgedGrant(): Promise<string[]> {
   return [await execution().negativeProbe(null), await execution().negativeProbe('deliberately-invalid-device-test-token')];
 }
+
+type EvidenceExporter = {
+  copyEvidence(text: string): Promise<unknown>;
+  saveEvidence(text: string): Promise<unknown>;
+};
+const exporter = () => requireNativeModule<EvidenceExporter>('OrynEvidenceExport');
+export const copyEvidence = (text: string) => exporter().copyEvidence(text);
+export const saveEvidence = (text: string) => exporter().saveEvidence(text);

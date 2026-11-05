@@ -29,6 +29,10 @@ legacy `executionCapability: not_implemented` describes the observation protocol
 separate `OrynExecutionSpike` records describe the experimental execution API.
 The UI makes no runtime-ready claim based on package detection.
 
+Use **Copy evidence JSON** to paste the full report into the chat, or **Save
+evidence as a JSON file** to choose Downloads/a document location and attach the
+`.json` file. Success/cancellation/error is shown separately. See [export behavior](evidence-export.md).
+
 The share sheet is user-initiated and does not send anything automatically. Reports
 contain device metadata and bounded, native-redacted fixed-probe output. Review
 before sharing. Capture timestamps are UI observations, not process start times.
