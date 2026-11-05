@@ -53,6 +53,14 @@ provider/environment caveats as the earlier probes. Native EN/AR confirmation
 shows the exact shell/argument/directory/effects and requires fresh authorization.
 No generic command input or delayed background dispatch is introduced.
 
+## Cloud validation
+
+Expo compatibility, lint, typecheck, eight JavaScript tests, 38 native tests
+(including six preflight cases), both Android JS bundles, debug/phone native
+builds, Android lint, signatures and bundled JS/native-byte checks passed locally.
+The build inherits the dependency task and the already requested PR #5 export
+controls so the owner can return full evidence. No new phone result is claimed.
+
 ## Required owner checks after native review
 
 Keep app/Termux data and the allow-external-apps setting. Save existing evidence.

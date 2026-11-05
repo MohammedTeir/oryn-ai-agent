@@ -20,5 +20,18 @@
   "external_caller_force_stop_phone_verified": false,
   "include_stopped_override_added": false,
   "external_cancellation": "unsupported",
-  "milestone_complete": false
+  "milestone_complete": false,
+  "cloud_validation": {
+    "native_unit_tests": 38,
+    "new_preflight_tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "javascript_tests": 8,
+    "expo_compatibility": true,
+    "lint_and_typecheck": true,
+    "android_app_and_dependency_bundles": true,
+    "debug_and_phone_builds": true,
+    "android_lint": true,
+    "apk_signatures_and_contents": true
+  }
 }
