@@ -8,15 +8,19 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "test": "node --test --test-isolation=none tests/*.test.cjs",
-    "bundle:android": "EXPO_NO_TELEMETRY=1 expo export --platform android --output-dir dist"
+    "bundle:android": "EXPO_NO_TELEMETRY=1 expo export --platform android --output-dir dist",
+    "bundle:compatibility": "EXPO_NO_TELEMETRY=1 node scripts/check-dependency-bundle.cjs"
   },
   "dependencies": {
+    "@google/genai": "2.32.0",
     "expo": "58.0.23",
     "expo-build-properties": "58.0.12",
     "expo-dev-client": "58.0.18",
     "expo-modules-core": "58.0.30",
+    "lucide-react-native": "1.68.0",
     "react": "19.3.0",
-    "react-native": "0.88.1"
+    "react-native": "0.88.1",
+    "react-native-svg": "15.16.0"
   },
   "devDependencies": {
     "@types/react": "19.3.0",

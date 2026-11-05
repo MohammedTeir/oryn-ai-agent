@@ -48,5 +48,7 @@ jobs:
         run: npm test
       - name: Bundle Android JavaScript
         run: npm run bundle:android
+      - name: Bundle the real icon and Gemini web imports
+        run: npm run bundle:compatibility
       - name: Ensure dependency declarations were preserved
         run: git diff --exit-code -- package.json package-lock.json
