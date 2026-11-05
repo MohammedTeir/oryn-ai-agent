@@ -25,3 +25,14 @@ export function createReport(observation: NativeRecord | null, entries: Evidence
     entries,
   };
 }
+
+export type ExportStatus = 'copied' | 'saved' | 'cancelled' | 'error' | 'busy';
+export function parseExportStatus(result: unknown, operation: 'copy' | 'save'): ExportStatus {
+  if (result === null || typeof result !== 'object' || !('status' in result)) return 'error';
+  const status = result.status;
+  if (status === 'error') return status;
+  if (operation === 'save' && (status === 'busy' || status === 'cancelled')) return status;
+  if (operation === 'copy' && status === 'copied') return status;
+  if (operation === 'save' && status === 'saved') return status;
+  return 'error';
+}

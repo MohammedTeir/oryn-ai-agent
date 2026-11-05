@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AppState, I18nManager, Pressable, ScrollView, Share, StyleSheet, Text, View } from 'react-native';
 import tokens from '../../docs/design/tokens.json';
-import { checkMissingAndForgedGrant, getExecutionState, observe, requestCancel, requestProbe, type ProbeId } from './modules/oryn-observer';
-import { appendEvidence, createReport, parseNativeRecord, type EvidenceEntry, type NativeRecord } from './report';
+import { checkMissingAndForgedGrant, copyEvidence, getExecutionState, observe, requestCancel, requestProbe, saveEvidence, type ProbeId } from './modules/oryn-observer';
+import { appendEvidence, createReport, parseExportStatus, parseNativeRecord, type ExportStatus, type EvidenceEntry, type NativeRecord } from './report';
 import { strings } from './strings';
 
 const probeIds: ProbeId[] = ['native_echo', 'native_timeout', 'native_cancel', 'termux_echo', 'termux_delay'];
@@ -21,6 +21,7 @@ export default function App() {
   const [entries, setEntries] = useState<EvidenceEntry[]>([]);
   const [pending, setPending] = useState(false);
   const [failed, setFailed] = useState(false);
+  const [exportStatus, setExportStatus] = useState<ExportStatus | null>(null);
   const [busy, setBusy] = useState<boolean | null>(null);
   const requestPending = useRef(false);
   const reading = useRef(false);
@@ -78,6 +79,23 @@ export default function App() {
   return <ScrollView contentContainerStyle={styles.page}>
     <Text style={styles.title}>{t.title}</Text>
     <Text style={styles.text}>{t.scope}</Text>
+    <ProbeButton label={t.copy} disabled={pending} onPress={() => {
+      setExportStatus(null);
+      void run('copy', async () => { setExportStatus(parseExportStatus(await copyEvidence(report), 'copy')); });
+    }} />
+    <ProbeButton label={t.save} disabled={pending} onPress={() => {
+      setExportStatus(null);
+      void run('save', async () => { setExportStatus(parseExportStatus(await saveEvidence(report), 'save')); });
+    }} />
+    <ProbeButton label={t.share} disabled={pending} onPress={() => {
+      setExportStatus(null);
+      void run('share', async () => { await Share.share({ message: report }); });
+    }} />
+    <Text style={styles.text}>{t.exportHint}</Text>
+    <View accessibilityLiveRegion="polite">
+      {exportStatus !== null && <Text style={styles.text}>{t.exportStatus[exportStatus]}</Text>}
+    </View>
+
     <ProbeButton label={t.observe} disabled={pending} onPress={() => void run('native.observe', async () => {
       const value = { ...await observe() };
       setObservation(value); capture('native.observe', value);
@@ -101,7 +119,7 @@ export default function App() {
       <Text style={styles.text}>{pending ? t.checking : failed ? t.error : t.execution}</Text>
     </View>
     <Text selectable style={styles.code}>{nativeState ? JSON.stringify(nativeState, null, 2) : t.unknown}</Text>
-    <ProbeButton label={t.share} disabled={pending} onPress={() => void run('share', async () => { await Share.share({ message: report }); })} />
+
     <Text style={styles.text}>{t.report}</Text>
     <Text selectable style={styles.code}>{report}</Text>
   </ScrollView>;

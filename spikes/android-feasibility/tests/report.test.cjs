@@ -26,3 +26,17 @@ test('export preserves missing observation and denied or uncertain results hones
   assert.equal(report.schema, 'oryn-milestone-0-device-evidence/v1');
   assert.ok(Number.isFinite(report.exportedAtEpochMs));
 });
+
+test('export receipt cannot confuse cancellation, malformed data or the wrong operation with success', () => {
+  const { parseExportStatus } = require('../report.ts');
+  assert.equal(parseExportStatus({ status: 'copied' }, 'copy'), 'copied');
+  assert.equal(parseExportStatus({ status: 'saved' }, 'save'), 'saved');
+  assert.equal(parseExportStatus({ status: 'cancelled' }, 'save'), 'cancelled');
+  assert.equal(parseExportStatus({ status: 'busy' }, 'save'), 'busy');
+  for (const value of [null, {}, true, 'saved', { status: 'success' }, { status: 'copied' }]) {
+    assert.equal(parseExportStatus(value, 'save'), 'error');
+  }
+  assert.equal(parseExportStatus({ status: 'saved' }, 'copy'), 'error');
+  assert.equal(parseExportStatus({ status: 'cancelled' }, 'copy'), 'error');
+  assert.equal(parseExportStatus({ status: 'busy' }, 'copy'), 'error');
+});
