@@ -1,0 +1,14 @@
+{
+  "recordDate": "2026-11-05",
+  "scope": "Repository preservation hashes, not hashes/attestations of source messages or installed APKs.",
+  "files": [
+    {
+      "path": "device-results-2026-11-05.json",
+      "sha256": "cf2ecd014356ce1f708a05da1a94c771820933809076459985db49b16ae7aea4"
+    },
+    {
+      "path": "device-background-report-2026-11-05.json",
+      "sha256": "786e05641bd4d0aeacecf37ba2304c5c3639adb7a83831d31fd441184fa1fc9a"
+    }
+  ]
+}

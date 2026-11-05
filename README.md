@@ -4,7 +4,7 @@
 
 ORYN is a planned autonomous AI agent for Android that combines a conversational interface with terminal-based task execution, tool discovery, diagnostics, and human approval before every command.
 
-> **Status:** Milestone 0 feasibility. An observation-only Android harness and automatic build workflows are available; the production application and required device/runtime checks are not complete.
+> **Status:** Milestone 0 feasibility remains open. The fixed-probe Android harness has owner-reported native/Termux execution, timeout, cancellation and lifecycle evidence. [Recorded results and remaining requirements](docs/feasibility/device-results-review-2026-11-05.md) distinguish that prototype evidence from production readiness; dependency compatibility and external failure/lifecycle coverage remain open.
 
 ## Development checks and test APKs
 

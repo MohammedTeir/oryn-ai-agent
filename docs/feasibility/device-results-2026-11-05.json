@@ -1,0 +1,381 @@
+{
+  "collectionSchema": "oryn-owner-device-evidence-collection/v1",
+  "recordedDate": "2026-11-05",
+  "provenance": "Selected JSON entries transcribed from owner-pasted reports in this chat. Not full raw reports, not cloud device execution, not cryptographic device attestation. Values and nulls are retained; key ordering/formatting normalized.",
+  "exactInstalledApkSha256": "Unknown; export contains no APK/source attestation",
+  "termuxInstallationSource": "Unknown",
+  "miuiVersion": {
+    "value": "12.5.10",
+    "source": "earlier owner report; not observed by harness"
+  },
+  "reports": [
+    {
+      "sourceReportExportedAtEpochMs": 1793889182822,
+      "selection": "Selected observations/results from the owner report; intervening and repeated entries omitted.",
+      "observation": {
+        "observedAtEpochMs": 1793888892227,
+        "androidRelease": "11",
+        "apiLevel": 30,
+        "supportedAbis": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "armeabi"
+        ],
+        "manufacturer": "Xiaomi",
+        "model": "Redmi Note 8 Pro",
+        "applicationId": "io.github.mohammedteir.oryn.feasibility",
+        "termux": {
+          "state": "detected",
+          "version": "0.118.3"
+        },
+        "executionCapability": "not_implemented"
+      },
+      "entries": [
+        {
+          "capturedAtEpochMs": 1793888892505,
+          "source": "native.negativeProbe",
+          "value": {
+            "test": "missing_or_forged_native_grant",
+            "rejected": true,
+            "dispatchSinkEntered": false,
+            "backendExecutionAttempted": false
+          }
+        },
+        {
+          "capturedAtEpochMs": 1793888892505,
+          "source": "native.negativeProbe",
+          "value": {
+            "test": "missing_or_forged_native_grant",
+            "rejected": true,
+            "dispatchSinkEntered": false,
+            "backendExecutionAttempted": false
+          }
+        },
+        {
+          "capturedAtEpochMs": 1793888896828,
+          "source": "native.getState",
+          "value": {
+            "state": "exited",
+            "executionId": "7fa49a7b-9b94-4e65-8fc1-61fe89f1dc9d",
+            "probe": "native_echo",
+            "backend": "apk_native_probe",
+            "dispatchedAtEpochMs": 1793888896663,
+            "externalCancellation": "not_supported",
+            "timeoutMs": 15000,
+            "nativeBootCount": 295,
+            "nativeCancellation": "this_process_only",
+            "executionBusy": false,
+            "nativeBinaryIsTermuxRuntime": false,
+            "lastRecovery": null,
+            "exitCode": 7,
+            "timeoutTerminationRequested": false,
+            "processTerminationVerified": true,
+            "supervisionErrorClass": null,
+            "elapsedSinceStartMs": 106,
+            "stdout": "ORYN native stdout\n",
+            "stdoutCaptureComplete": true,
+            "stdoutCaptureTruncated": false,
+            "stdoutErrorClass": null,
+            "stderr": "ORYN native stderr\n",
+            "stderrCaptureComplete": true,
+            "stderrCaptureTruncated": false,
+            "stderrErrorClass": null,
+            "outputRedacted": false,
+            "expectedProbeMatched": true,
+            "resultObservedAtEpochMs": 1793888896775
+          }
+        },
+        {
+          "capturedAtEpochMs": 1793888900896,
+          "source": "native.getState",
+          "value": {
+            "state": "exited",
+            "executionId": "6955d180-4181-4ccf-b153-08a4600e1859",
+            "probe": "native_timeout",
+            "backend": "apk_native_probe",
+            "dispatchedAtEpochMs": 1793888898012,
+            "externalCancellation": "not_supported",
+            "timeoutMs": 2000,
+            "nativeBootCount": 295,
+            "nativeCancellation": "this_process_only",
+            "executionBusy": false,
+            "nativeBinaryIsTermuxRuntime": false,
+            "lastRecovery": null,
+            "cancellationRequested": true,
+            "cancellationRequestRecordedAtEpochMs": 1793888899829,
+            "exitCode": 143,
+            "timeoutTerminationRequested": false,
+            "processTerminationVerified": true,
+            "supervisionErrorClass": null,
+            "elapsedSinceStartMs": 1909,
+            "stdout": null,
+            "stdoutCaptureComplete": false,
+            "stdoutCaptureTruncated": false,
+            "stdoutErrorClass": "IOException",
+            "stderr": null,
+            "stderrCaptureComplete": false,
+            "stderrCaptureTruncated": false,
+            "stderrErrorClass": "IOException",
+            "outputRedacted": false,
+            "expectedProbeMatched": false,
+            "resultObservedAtEpochMs": 1793888899924
+          }
+        },
+        {
+          "capturedAtEpochMs": 1793888901290,
+          "source": "native.requestProbe.termux_delay",
+          "value": {
+            "requestState": "android_permission_requested_no_command_dispatched"
+          }
+        },
+        {
+          "capturedAtEpochMs": 1793888910930,
+          "source": "native.getState",
+          "value": {
+            "state": "provider_rejected",
+            "executionId": "2b2d88c5-bf7d-4f38-959a-800a769ae3b4",
+            "probe": "termux_delay",
+            "backend": "external_termux",
+            "dispatchedAtEpochMs": 1793888904512,
+            "externalCancellation": "not_supported",
+            "timeoutMs": 12000,
+            "executionBusy": false,
+            "nativeBinaryIsTermuxRuntime": false,
+            "lastRecovery": null,
+            "exitCode": null,
+            "providerError": 2,
+            "stdout": "",
+            "stderr": "",
+            "outputRedacted": false,
+            "stdoutOriginalLength": "0",
+            "stderrOriginalLength": "0",
+            "elapsedSinceDispatchMs": 5683,
+            "processStartTime": "not_reported_by_provider",
+            "resultAfterTimeout": false,
+            "expectedProbeMatched": false,
+            "resultObservedAtEpochMs": 1793888910196
+          }
+        },
+        {
+          "capturedAtEpochMs": 1793889091924,
+          "source": "native.getState",
+          "value": {
+            "state": "exited",
+            "executionId": "73b0f675-b3ba-4297-8c6d-53cb1638151d",
+            "probe": "termux_echo",
+            "backend": "external_termux",
+            "dispatchedAtEpochMs": 1793889090922,
+            "externalCancellation": "not_supported",
+            "timeoutMs": 10000,
+            "executionBusy": false,
+            "nativeBinaryIsTermuxRuntime": false,
+            "lastRecovery": null,
+            "exitCode": 7,
+            "providerError": -1,
+            "stdout": "ORYN termux stdout\n",
+            "stderr": "ORYN termux stderr\n",
+            "outputRedacted": false,
+            "stdoutOriginalLength": "19",
+            "stderrOriginalLength": "19",
+            "elapsedSinceDispatchMs": 244,
+            "processStartTime": "not_reported_by_provider",
+            "resultAfterTimeout": false,
+            "expectedProbeMatched": true,
+            "resultObservedAtEpochMs": 1793889091166
+          }
+        },
+        {
+          "capturedAtEpochMs": 1793889103107,
+          "source": "native.getState",
+          "value": {
+            "state": "exited",
+            "executionId": "9e05786f-6f4e-4e59-8b19-9e0e8ffa2dc7",
+            "probe": "termux_delay",
+            "backend": "external_termux",
+            "dispatchedAtEpochMs": 1793889094739,
+            "externalCancellation": "not_supported",
+            "timeoutMs": 12000,
+            "executionBusy": false,
+            "nativeBinaryIsTermuxRuntime": false,
+            "lastRecovery": null,
+            "exitCode": 0,
+            "providerError": -1,
+            "stdout": "ORYN termux started\nORYN termux finished\n",
+            "stderr": "",
+            "outputRedacted": false,
+            "stdoutOriginalLength": "41",
+            "stderrOriginalLength": "0",
+            "elapsedSinceDispatchMs": 8093,
+            "processStartTime": "not_reported_by_provider",
+            "resultAfterTimeout": false,
+            "expectedProbeMatched": false,
+            "resultObservedAtEpochMs": 1793889102832
+          }
+        },
+        {
+          "capturedAtEpochMs": 1793889170855,
+          "source": "native.getState",
+          "value": {
+            "state": "exited",
+            "executionId": "e3683491-91ee-4d01-b921-06739d3a15e9",
+            "probe": "native_timeout",
+            "backend": "apk_native_probe",
+            "dispatchedAtEpochMs": 1793889167766,
+            "externalCancellation": "not_supported",
+            "timeoutMs": 2000,
+            "nativeBootCount": 295,
+            "nativeCancellation": "this_process_only",
+            "executionBusy": false,
+            "nativeBinaryIsTermuxRuntime": false,
+            "lastRecovery": null,
+            "exitCode": 143,
+            "timeoutTerminationRequested": true,
+            "processTerminationVerified": true,
+            "supervisionErrorClass": null,
+            "elapsedSinceStartMs": 2103,
+            "stdout": null,
+            "stdoutCaptureComplete": false,
+            "stdoutCaptureTruncated": false,
+            "stdoutErrorClass": "IOException",
+            "stderr": null,
+            "stderrCaptureComplete": false,
+            "stderrCaptureTruncated": false,
+            "stderrErrorClass": "IOException",
+            "outputRedacted": false,
+            "expectedProbeMatched": false,
+            "resultObservedAtEpochMs": 1793889169875
+          }
+        }
+      ]
+    },
+    {
+      "sourceReportExportedAtEpochMs": 1793889430603,
+      "selection": "All entries from the owner report; observation was null.",
+      "observation": null,
+      "entries": [
+        {
+          "capturedAtEpochMs": 1793889385158,
+          "source": "native.getState",
+          "value": {
+            "state": "exited",
+            "executionId": "e3683491-91ee-4d01-b921-06739d3a15e9",
+            "probe": "native_timeout",
+            "backend": "apk_native_probe",
+            "dispatchedAtEpochMs": 1793889167766,
+            "externalCancellation": "not_supported",
+            "timeoutMs": 2000,
+            "nativeBootCount": 295,
+            "nativeCancellation": "this_process_only",
+            "executionBusy": false,
+            "nativeBinaryIsTermuxRuntime": false,
+            "lastRecovery": null,
+            "exitCode": 143,
+            "timeoutTerminationRequested": true,
+            "processTerminationVerified": true,
+            "supervisionErrorClass": null,
+            "elapsedSinceStartMs": 2103,
+            "stdout": null,
+            "stdoutCaptureComplete": false,
+            "stdoutCaptureTruncated": false,
+            "stdoutErrorClass": "IOException",
+            "stderr": null,
+            "stderrCaptureComplete": false,
+            "stderrCaptureTruncated": false,
+            "stderrErrorClass": "IOException",
+            "outputRedacted": false,
+            "expectedProbeMatched": false,
+            "resultObservedAtEpochMs": 1793889169875
+          }
+        },
+        {
+          "capturedAtEpochMs": 1793889427228,
+          "source": "native.requestProbe.native_echo",
+          "value": {
+            "requestState": "review_revoked_on_background"
+          }
+        }
+      ]
+    },
+    {
+      "sourceReportExportedAtEpochMs": 1793889515007,
+      "selection": "All entries from the owner report; observation was null.",
+      "observation": null,
+      "entries": [
+        {
+          "capturedAtEpochMs": 1793889514970,
+          "source": "native.getState",
+          "value": {
+            "state": "unknown_recovered_pending",
+            "executionId": "f6292030-4348-4633-92fc-ce2965b8ad70",
+            "probe": "native_cancel",
+            "backend": "apk_native_probe",
+            "dispatchedAtEpochMs": 1793889504653,
+            "externalCancellation": "not_supported",
+            "timeoutMs": 15000,
+            "nativeBootCount": 295,
+            "nativeCancellation": "this_process_only",
+            "executionBusy": true,
+            "nativeBinaryIsTermuxRuntime": false,
+            "lastRecovery": null,
+            "stateBeforeRecovery": "running",
+            "processTerminationVerified": false,
+            "recoveryRequirement": "device_restart_then_reopen"
+          }
+        }
+      ]
+    },
+    {
+      "sourceReportExportedAtEpochMs": 1793889631589,
+      "selection": "All entries from the owner report; observation was null.",
+      "observation": null,
+      "entries": [
+        {
+          "capturedAtEpochMs": 1793889628589,
+          "source": "native.getState",
+          "value": {
+            "state": "interrupted_by_device_restart",
+            "executionId": "f6292030-4348-4633-92fc-ce2965b8ad70",
+            "probe": "native_cancel",
+            "backend": "apk_native_probe",
+            "dispatchedAtEpochMs": 1793889504653,
+            "externalCancellation": "not_supported",
+            "timeoutMs": 15000,
+            "nativeBootCount": 295,
+            "nativeCancellation": "this_process_only",
+            "stateBeforeRecovery": "running",
+            "processTerminationVerified": true,
+            "recoveryRequirement": "device_restart_then_reopen",
+            "commandOutcome": "unknown",
+            "exitCode": null,
+            "reconciliationEvidence": "android_boot_count_advanced",
+            "recoveredBootCount": 296,
+            "resultObservedAtEpochMs": 1793889628585,
+            "newAuthorizationRequired": true,
+            "executionBusy": false,
+            "nativeBinaryIsTermuxRuntime": false,
+            "lastRecovery": {
+              "state": "interrupted_by_device_restart",
+              "executionId": "f6292030-4348-4633-92fc-ce2965b8ad70",
+              "probe": "native_cancel",
+              "backend": "apk_native_probe",
+              "dispatchedAtEpochMs": 1793889504653,
+              "externalCancellation": "not_supported",
+              "timeoutMs": 15000,
+              "nativeBootCount": 295,
+              "nativeCancellation": "this_process_only",
+              "stateBeforeRecovery": "running",
+              "processTerminationVerified": true,
+              "recoveryRequirement": "device_restart_then_reopen",
+              "commandOutcome": "unknown",
+              "exitCode": null,
+              "reconciliationEvidence": "android_boot_count_advanced",
+              "recoveredBootCount": 296,
+              "resultObservedAtEpochMs": 1793889628585,
+              "newAuthorizationRequired": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

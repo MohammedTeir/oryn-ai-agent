@@ -287,5 +287,18 @@
       "execution_capability": "not_implemented"
     }
   },
-  "latest_device_evidence": "device-observation-2026-11-03.json"
+  "latest_device_evidence": "device-observation-2026-11-03.json",
+  "owner_device_results_follow_up": {
+    "date": "2026-11-05",
+    "provenance": "owner-pasted phone reports, preserved separately from cloud checks",
+    "review": "docs/feasibility/device-results-review-2026-11-05.md",
+    "selected_entries": "docs/feasibility/device-results-2026-11-05.json",
+    "final_background_report": "docs/feasibility/device-background-report-2026-11-05.json",
+    "preservation_hashes": "docs/feasibility/device-results-index-2026-11-05.json",
+    "exact_installed_apk_hash": "Unknown",
+    "external_background_callback_ms": 17332,
+    "external_background_deadline_ms": 12000,
+    "external_background_result_after_timeout": true,
+    "milestone_complete": false
+  }
 }
