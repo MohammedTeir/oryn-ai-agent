@@ -2,6 +2,7 @@ import { useReducer } from 'react';
 import { Alert, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import tokens from '../../../docs/design/tokens.json';
 import { AppIcon } from './AppIcon';
+import { ApprovalExample } from './ApprovalExample';
 import { initialNavigation, navigate, type Segment } from './navigation';
 import { strings } from './strings';
 import { useAppLanguage } from '../useAppLanguage';
@@ -36,6 +37,7 @@ export default function MilestoneOneApp() {
         {segments.map(item => <Pressable key={item} accessibilityRole="tab" accessibilityState={{ selected: state.segment === item }} onPress={() => dispatch({ type: 'segment', segment: item })} style={[styles.segment, state.segment === item && styles.selected]}><Text style={styles.text}>{t[item]}</Text></Pressable>)}
       </View>}
       <Text style={styles.text}>{t.unavailable}</Text>
+      {!state.settings && state.tab === 'agent' && <ApprovalExample />}
     </ScrollView>
     <View style={styles.navigation} accessibilityRole="tablist">
       <Pressable accessibilityRole="tab" accessibilityState={{ selected: !state.settings && state.tab === 'agent' }} onPress={() => dispatch({ type: 'tab', tab: 'agent' })} style={[styles.tab, !state.settings && state.tab === 'agent' && styles.selected]}>
