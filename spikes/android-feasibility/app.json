@@ -47,7 +47,8 @@
       ],
       "expo-localization",
       "expo-sqlite",
-      "expo-asset"
+      "expo-asset",
+      "expo-secure-store"
     ],
     "autolinking": {
       "nativeModulesDir": "./modules"
