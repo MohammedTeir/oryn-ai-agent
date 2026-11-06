@@ -1,10 +1,11 @@
 import { useReducer } from 'react';
-import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import tokens from '../../../docs/design/tokens.json';
 import { AppIcon } from './AppIcon';
 import { initialNavigation, navigate, type Segment } from './navigation';
 import { strings } from './strings';
 import { useAppLanguage } from '../useAppLanguage';
+import { useConnectionStatus } from './useConnectionStatus';
 
 const symbol = require('../../../assets/ORYN_Brand_Assets/03_Icon_Only/oryn-icon-only-transparent.png');
 const symbolInactive = require('../../../assets/ORYN_Brand_Assets/04_Monochrome/oryn-icon-only-mono-navy.png');
@@ -14,16 +15,18 @@ export default function MilestoneOneApp() {
   const language = useAppLanguage();
   const t = strings[language];
   const [state, dispatch] = useReducer(navigate, initialNavigation);
+  const { status, refresh } = useConnectionStatus();
+  const connection = t.connection[status];
   return <View style={[styles.root, { direction: language === 'ar' ? 'rtl' : 'ltr' }]}>
     <View style={styles.header}>
       <View style={styles.brand} accessibilityLabel={t.brand} accessible>
         <Image source={symbol} style={styles.brandSymbol} resizeMode="contain" />
         <Text style={styles.brandText}>{t.brand}</Text>
       </View>
-      <View style={styles.connection} accessible accessibilityLabel={t.connectionUnknown}>
+      <Pressable style={styles.connection} accessibilityRole="button" accessibilityLabel={connection.label} accessibilityLiveRegion="polite" onPress={() => Alert.alert(t.connectionTitle, connection.detail, [{ text: t.close, style: 'cancel' }, { text: t.refresh, onPress: () => void refresh() }])}>
         <AppIcon name="connection" color={tokens.color.textSecondary} />
-        <Text style={styles.caption} numberOfLines={1}>{t.unknown}</Text>
-      </View>
+        <Text style={styles.caption} numberOfLines={1}>{connection.short}</Text>
+      </Pressable>
       <Pressable accessibilityRole="button" accessibilityLabel={t.history} onPress={() => dispatch({ type: 'history' })} style={styles.iconButton}><AppIcon name="history" color={tokens.color.textPrimary} /></Pressable>
       <Pressable accessibilityRole="button" accessibilityLabel={state.settings ? t.back : t.settings} onPress={() => dispatch({ type: state.settings ? 'back' : 'settings' })} style={styles.iconButton}><AppIcon name={state.settings ? (language === 'ar' ? 'backRtl' : 'back') : 'settings'} color={tokens.color.textPrimary} /></Pressable>
     </View>
@@ -50,7 +53,7 @@ const styles = StyleSheet.create({
   brand: { flex: 1, flexDirection: 'row', alignItems: 'center', minWidth: 0 },
   brandSymbol: { width: tokens.spacing_dp.xxl, height: tokens.spacing_dp.xxl },
   brandText: { color: tokens.brand.wordmarkNavy, fontSize: tokens.typography_sp.H4.size, fontWeight: '700' },
-  connection: { flexDirection: 'row', alignItems: 'center', gap: tokens.spacing_dp.xs, flexShrink: 1 },
+  connection: { minHeight: tokens.touch.minTarget_dp, flexDirection: 'row', alignItems: 'center', gap: tokens.spacing_dp.xs, flexShrink: 1 },
   caption: { color: tokens.color.textSecondary, fontSize: tokens.typography_sp.caption.size, flexShrink: 1 },
   iconButton: { minWidth: tokens.touch.minTarget_dp, minHeight: tokens.touch.minTarget_dp, alignItems: 'center', justifyContent: 'center' },
   content: { flexGrow: 1, padding: tokens.spacing_dp.xl, gap: tokens.spacing_dp.lg },
