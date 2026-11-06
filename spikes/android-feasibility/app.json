@@ -5,7 +5,9 @@
     "version": "0.0.1",
     "icon": "../../assets/ORYN_Brand_Assets/05_Android_App_Icons/expo/icon.png",
     "userInterfaceStyle": "light",
-    "platforms": ["android"],
+    "platforms": [
+      "android"
+    ],
     "android": {
       "package": "io.github.mohammedteir.oryn.feasibility",
       "blockedPermissions": [
@@ -19,11 +21,33 @@
         "monochromeImage": "../../assets/ORYN_Brand_Assets/05_Android_App_Icons/expo/adaptive-icon-monochrome.png"
       }
     },
-    "plugins": [["expo-build-properties", {"android": {
-      "minSdkVersion": 29,
-      "useLegacyPackaging": true,
-      "packagingOptions": {"doNotStrip": ["**/liboryn_feasibility_probe.so"]}
-    }}]],
-    "autolinking": {"nativeModulesDir": "./modules"}
+    "plugins": [
+      "./plugins/withCompatibleSplash.cjs",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "minSdkVersion": 29,
+            "useLegacyPackaging": true,
+            "packagingOptions": {
+              "doNotStrip": [
+                "**/liboryn_feasibility_probe.so"
+              ]
+            }
+          }
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "image": "../../assets/ORYN_Brand_Assets/01_Primary_Logo/oryn-primary-logo-transparent.png",
+          "resizeMode": "contain",
+          "backgroundColor": "#FFFFFF"
+        }
+      ]
+    ],
+    "autolinking": {
+      "nativeModulesDir": "./modules"
+    }
   }
 }
