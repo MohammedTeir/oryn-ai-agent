@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { I18nManager, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import tokens from '../../docs/design/tokens.json';
 import FeasibilityApp from './App';
 import NavigationPreview from './milestone1/App';
+import { useAppLanguage } from './useAppLanguage';
 
 const labels = {
   en: { open: 'Open Milestone 1 navigation preview', close: 'Return to feasibility tests', notice: 'Navigation preview: features are not yet available.' },
@@ -11,8 +12,9 @@ const labels = {
 
 export default function PreviewRoot() {
   const [preview, setPreview] = useState(false);
-  const t = labels[I18nManager.isRTL ? 'ar' : 'en'];
-  return <View style={styles.root}>
+  const language = useAppLanguage();
+  const t = labels[language];
+  return <View style={[styles.root, { direction: language === 'ar' ? 'rtl' : 'ltr' }]}>
     <View style={preview ? styles.hidden : styles.root} accessibilityElementsHidden={preview} importantForAccessibility={preview ? 'no-hide-descendants' : 'auto'}>
       <Pressable accessibilityRole="button" onPress={() => setPreview(true)} style={styles.button}><Text style={styles.text}>{t.open}</Text></Pressable>
       <FeasibilityApp />

@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { AppState, I18nManager, Pressable, ScrollView, Share, StyleSheet, Text, View } from 'react-native';
+import { AppState, Pressable, ScrollView, Share, StyleSheet, Text, View } from 'react-native';
 import tokens from '../../docs/design/tokens.json';
 import { checkMissingAndForgedGrant, copyEvidence, getExecutionState, observe, requestCancel, requestProbe, saveEvidence, type ProbeId } from './modules/oryn-observer';
 import { appendEvidence, createReport, parseExportStatus, parseNativeRecord, type ExportStatus, type EvidenceEntry, type NativeRecord } from './report';
 import { strings } from './strings';
+import { useAppLanguage } from './useAppLanguage';
 
 const probeIds: ProbeId[] = ['native_echo', 'native_timeout', 'native_cancel', 'termux_echo', 'termux_delay', 'termux_recovery'];
 
@@ -15,7 +16,7 @@ function ProbeButton({ label, onPress, disabled }: { label: string; onPress: () 
 }
 
 export default function App() {
-  const t = strings[I18nManager.isRTL ? 'ar' : 'en'];
+  const t = strings[useAppLanguage()];
   const [observation, setObservation] = useState<NativeRecord | null>(null);
   const [nativeState, setNativeState] = useState<NativeRecord | null>(null);
   const [entries, setEntries] = useState<EvidenceEntry[]>([]);
