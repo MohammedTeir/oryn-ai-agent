@@ -163,3 +163,28 @@ jobs:
             spikes/android-feasibility/modules/oryn-observer/android/build/reports/tests/testDebugUnitTest/**
           if-no-files-found: ignore
           retention-days: 7
+
+  release:
+    name: Publish test APK prerelease
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && github.event.deleted != true }}
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - name: Check out the built commit
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Download the verified build artifact
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          name: oryn-feasibility-phone-${{ github.run_number }}-${{ github.sha }}
+          path: release-artifact
+      - name: Validate provenance and publish prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: bash spikes/android-feasibility/scripts/publish-test-release.sh release-artifact
