@@ -45,7 +45,9 @@
           "backgroundColor": "#FFFFFF"
         }
       ],
-      "expo-localization"
+      "expo-localization",
+      "expo-sqlite",
+      "expo-asset"
     ],
     "autolinking": {
       "nativeModulesDir": "./modules"
