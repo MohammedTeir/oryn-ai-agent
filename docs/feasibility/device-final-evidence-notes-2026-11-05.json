@@ -1,0 +1,28 @@
+{
+  "recordDate": "2026-11-05",
+  "provenance": "Normalized transcription of complete owner-pasted final reports, not device attestation or cloud operation of the phone.",
+  "permission_refusal": {
+    "source_report_exported_at": 1793896754826,
+    "source_baseline_captured_at": 1793896693201,
+    "source_request_captured_at": 1793896697199,
+    "owner_reported_procedure": "Deny Termux command permission; refuse request; refresh without granting or running another probe.",
+    "observed_permission": "denied",
+    "request_result": "android_permission_requested_no_command_dispatched",
+    "new_execution_recorded": false,
+    "deduplication_limit": "Repeated export after reported refresh is unchanged. Unchanged native.getState JSON is not re-added; no separate post-prompt permission callback or timestamped state read is in the export. Accepted as procedure-plus-state/guard evidence, not standalone Android dialog attestation.",
+    "earlier_mixed_attempt": "Earlier report 1793896653879 changed permission to granted and ran echo; not used as proof of continued refusal."
+  },
+  "external_caller_restart": {
+    "execution_id": "ec962736-3bf3-464f-84c8-b1014d989fdd",
+    "owner_reported_procedure": "Approve fixed 45-second Termux probe, force-stop ORYN, reopen before callback, keep open and export.",
+    "first_recovered_capture_ms_since_dispatch": 40573,
+    "provider_elapsed_since_dispatch_ms": 45143,
+    "provider_exit_code": 0,
+    "observed_transition": "unknown_recovered_pending/busy -> matching provider result/exited/not busy",
+    "process_termination_independently_verified": false,
+    "limit": "Does not test leaving ORYN force-stopped through callback time, killing Termux, automatic remote retry, reboot recovery of external work or wider Android versions."
+  },
+  "exact_installed_apk_sha256": "Unknown; distributed review APK is linked in PR #8 but these reports do not attest its installed hash.",
+  "missing_provider": "Six injected JVM tests plus platform/source path; actual Termux absence on this phone was not tested.",
+  "feasibility_exit_assessment": "Required prototype investigations satisfied in the recorded limited scope; no v1 or production readiness claim."
+}

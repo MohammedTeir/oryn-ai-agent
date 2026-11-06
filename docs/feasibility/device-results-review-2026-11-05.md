@@ -1,3 +1,5 @@
+> Historical open-state reconciliation, superseded by the [final Milestone 0 exit record](milestone-0-closure.md). Original owner data and the earlier review limits are preserved.
+
 > Follow-up: [dependency build/import compatibility](dependency-compatibility.md) now records tested exact selections. The external failure/lifecycle requirement below remains open. The original owner reports are unchanged.
 
 # Owner device results and Milestone 0 reconciliation — 2026-11-05

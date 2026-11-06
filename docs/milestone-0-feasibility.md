@@ -1,3 +1,5 @@
+> **Current status: Milestone 0 feasibility complete in the [bounded exit record](feasibility/milestone-0-closure.md).** The earlier open-state records below remain historical; they are not claims of production or embedded Termux readiness.
+
 > Owner device execution/lifecycle results are now preserved in the [2026-11-05 reconciliation](feasibility/device-results-review-2026-11-05.md). The observation-only artifact tables below remain historical.
 
 > Current follow-up: [2026-11-05 capability decisions and remaining gates](feasibility/milestone-0-status.md). The older build tables below describe their original observation-only artifact.

@@ -1,3 +1,5 @@
+> Historical fix/preparation record. Subsequent owner observations and the [final feasibility exit](milestone-0-closure.md) now record local timeout/restart and external lifecycle results. The original legacy 211a... record remains unverified; its migration is not inferred from the newer f629... test.
+
 # Native timeout and recovery fix — security review task
 
 This task follows the owner's 2026-11-04 screenshots after the phone harness in

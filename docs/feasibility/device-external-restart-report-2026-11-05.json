@@ -1,0 +1,107 @@
+{
+  "schema": "oryn-milestone-0-device-evidence/v1",
+  "exportedAtEpochMs": 1793896983961,
+  "scope": "Debug feasibility evidence only; capture times are not command start times.",
+  "observation": null,
+  "historyLimit": 40,
+  "entries": [
+    {
+      "capturedAtEpochMs": 1793896933272,
+      "source": "native.getState",
+      "value": {
+        "state": "unknown_recovered_pending",
+        "executionId": "ec962736-3bf3-464f-84c8-b1014d989fdd",
+        "probe": "termux_recovery",
+        "backend": "external_termux",
+        "dispatchedAtEpochMs": 1793896892699,
+        "externalCancellation": "not_supported",
+        "timeoutMs": 60000,
+        "stateBeforeRecovery": "awaiting_result",
+        "processTerminationVerified": false,
+        "recoveryRequirement": "matching_provider_result_required",
+        "executionBusy": true,
+        "nativeBinaryIsTermuxRuntime": false,
+        "lastRecovery": {
+          "state": "interrupted_by_device_restart",
+          "executionId": "f6292030-4348-4633-92fc-ce2965b8ad70",
+          "probe": "native_cancel",
+          "backend": "apk_native_probe",
+          "dispatchedAtEpochMs": 1793889504653,
+          "externalCancellation": "not_supported",
+          "timeoutMs": 15000,
+          "nativeBootCount": 295,
+          "nativeCancellation": "this_process_only",
+          "stateBeforeRecovery": "running",
+          "processTerminationVerified": true,
+          "recoveryRequirement": "device_restart_then_reopen",
+          "commandOutcome": "unknown",
+          "exitCode": null,
+          "reconciliationEvidence": "android_boot_count_advanced",
+          "recoveredBootCount": 296,
+          "resultObservedAtEpochMs": 1793889628585,
+          "newAuthorizationRequired": true
+        },
+        "externalPrerequisites": {
+          "packageState": "detected",
+          "runCommandPermission": "granted",
+          "providerConfiguration": "not_observed"
+        }
+      }
+    },
+    {
+      "capturedAtEpochMs": 1793896938302,
+      "source": "native.getState",
+      "value": {
+        "state": "exited",
+        "executionId": "ec962736-3bf3-464f-84c8-b1014d989fdd",
+        "probe": "termux_recovery",
+        "backend": "external_termux",
+        "dispatchedAtEpochMs": 1793896892699,
+        "externalCancellation": "not_supported",
+        "timeoutMs": 60000,
+        "stateBeforeRecovery": "awaiting_result",
+        "processTerminationVerified": false,
+        "recoveryRequirement": "matching_provider_result_required",
+        "executionBusy": false,
+        "nativeBinaryIsTermuxRuntime": false,
+        "lastRecovery": {
+          "state": "interrupted_by_device_restart",
+          "executionId": "f6292030-4348-4633-92fc-ce2965b8ad70",
+          "probe": "native_cancel",
+          "backend": "apk_native_probe",
+          "dispatchedAtEpochMs": 1793889504653,
+          "externalCancellation": "not_supported",
+          "timeoutMs": 15000,
+          "nativeBootCount": 295,
+          "nativeCancellation": "this_process_only",
+          "stateBeforeRecovery": "running",
+          "processTerminationVerified": true,
+          "recoveryRequirement": "device_restart_then_reopen",
+          "commandOutcome": "unknown",
+          "exitCode": null,
+          "reconciliationEvidence": "android_boot_count_advanced",
+          "recoveredBootCount": 296,
+          "resultObservedAtEpochMs": 1793889628585,
+          "newAuthorizationRequired": true
+        },
+        "externalPrerequisites": {
+          "packageState": "detected",
+          "runCommandPermission": "granted",
+          "providerConfiguration": "not_observed"
+        },
+        "exitCode": 0,
+        "providerError": -1,
+        "stdout": "ORYN termux recovery started\nORYN termux recovery finished\n",
+        "stderr": "",
+        "outputRedacted": false,
+        "stdoutOriginalLength": "59",
+        "stderrOriginalLength": "0",
+        "elapsedSinceDispatchMs": 45143,
+        "processStartTime": "not_reported_by_provider",
+        "resultAfterTimeout": false,
+        "expectedProbeMatched": false,
+        "resultObservedAtEpochMs": 1793896937845
+      }
+    }
+  ]
+}

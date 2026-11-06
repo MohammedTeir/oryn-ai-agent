@@ -1,6 +1,5 @@
 {
   "date": "2026-11-05",
-  "scope": "Limited version-pinned source review, six injected JVM preflight tests, and an actual native fixed-probe catalog extension. New phone checks pending.",
   "sources": [
     {
       "url": "https://android.googlesource.com/platform/frameworks/base/+/refs/tags/android-11.0.0_r1/services/core/java/com/android/server/am/ActivityManagerService.java",
@@ -16,11 +15,8 @@
     }
   ],
   "missing_provider_coverage": "JVM injected case plus actual PackageManager exception handling; not device uninstall",
-  "permission_refusal_phone_verified": false,
-  "external_caller_force_stop_phone_verified": false,
   "include_stopped_override_added": false,
   "external_cancellation": "unsupported",
-  "milestone_complete": false,
   "cloud_validation": {
     "native_unit_tests": 38,
     "new_preflight_tests": 6,
@@ -33,5 +29,23 @@
     "debug_and_phone_builds": true,
     "android_lint": true,
     "apk_signatures_and_contents": true
+  },
+  "preparation_scope": "Limited version-pinned source review, six injected JVM preflight tests, and an actual native fixed-probe catalog extension. New phone checks pending.",
+  "scope": "Version-pinned source/JVM investigation followed by owner phone result reconciliation; see final notes for evidence limits.",
+  "at_preparation_permission_refusal_phone_verified": false,
+  "at_preparation_external_caller_force_stop_phone_verified": false,
+  "at_preparation_milestone_complete": false,
+  "owner_follow_up": {
+    "reports": [
+      "device-permission-refusal-report-2026-11-05.json",
+      "device-external-restart-report-2026-11-05.json"
+    ],
+    "notes": "device-final-evidence-notes-2026-11-05.json",
+    "permission_assessment": "accepted reported Deny/refresh plus denied state and no-dispatch; unchanged reads deduplicated, no new post-prompt timestamp claimed",
+    "caller_restart_result": "matching ec962736-3bf3-464f-84c8-b1014d989fdd callback, exit 0, busy released, provider-reported latency 45143 ms",
+    "remote_termination_independently_verified": false,
+    "missing_provider_physical_test": false,
+    "feasibility_complete": true,
+    "production_complete": false
   }
 }

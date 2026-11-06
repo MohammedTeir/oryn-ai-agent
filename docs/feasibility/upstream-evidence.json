@@ -300,5 +300,20 @@
     "external_background_deadline_ms": 12000,
     "external_background_result_after_timeout": true,
     "milestone_complete": false
+  },
+  "feasibility_exit": {
+    "date": "2026-11-05",
+    "complete": true,
+    "scope": "bounded Milestone 0 feasibility, not v1 or standalone Termux",
+    "record": "docs/feasibility/milestone-0-closure.md",
+    "final_permission_report": "docs/feasibility/device-permission-refusal-report-2026-11-05.json",
+    "final_external_restart_report": "docs/feasibility/device-external-restart-report-2026-11-05.json",
+    "limits": "docs/feasibility/device-final-evidence-notes-2026-11-05.json",
+    "external_restart_provider_ms": 45143,
+    "external_cancellation": "unsupported",
+    "embedded_shell_package_manager_adoption": "no-go on current evidence",
+    "embedded_tool_install": "conditional N/A; not performed",
+    "exact_installed_apk_hash": "Unknown",
+    "historical_fields": "Earlier milestone_complete=false values retain the dated snapshot scope, not the final exit assessment."
   }
 }

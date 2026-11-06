@@ -1,6 +1,6 @@
 # Milestone 0 evidence status — 2026-11-05
 
-**Open: external failure/lifecycle investigation remains.** The owner has now supplied physical
+**Complete for bounded feasibility:** [final exit record](milestone-0-closure.md). The owner has now supplied physical
 execution and lifecycle evidence. See the [complete reconciliation](device-results-review-2026-11-05.md),
 [selected result entries](device-results-2026-11-05.json), and [final background
 report](device-background-report-2026-11-05.json). These are owner-reported phone
@@ -46,7 +46,8 @@ key, SDK client or network request was used by this probe.
 | External Termux fixed echo/delay | Verified by owner after setup | Correct provider output and exits 7/0. Property rejection and permission-request-without-dispatch also recorded |
 | External background completion | Verified with latency limitation | Matching successful callback arrived after 17332 ms against 12000 ms deadline; resultAfterTimeout=true; no proof of precise background UI transition time |
 | External timeout / cancellation | Deadline only / remote cancellation unsupported | Do not infer process kill. Provider exit is separate from local processTerminationVerified=false |
-| External force-stop / missing provider / permission refusal | Investigation extended; phone cases pending | [Source review and JVM preflight tests](external-failure-investigation.md) cover failure contracts. Missing-provider physical absence is not claimed; permission denial/caller restart still need owner observations |
+| External caller restart / denied permission | Owner evidence accepted | [Final reports and evidence limits](milestone-0-closure.md): denied/no-dispatch procedure; same external ID recovered Unknown/busy then exit 0 at 45143 ms, busy released |
+| Missing provider | Unit/source contract covered | Six injected JVM cases and actual platform guard. Physical Termux absence on this phone is not claimed |
 | APK-owned binary packaging | Narrow Go | Device execution plus NDK/ELF/linker/hash/build checks; signed APK updates only; not an embedded Termux shell |
 | Embedded Termux shell/package manager | No-go for adoption on current evidence | Experimental candidate and prefix/linker/writable-exec/provenance/maintenance issues documented; no compatibility claim |
 | Embedded package tool installation | Not applicable to current prototype | No supported package manager or install API; no installation test attempted or claimed passed |
@@ -61,12 +62,21 @@ The [runtime source review](runtime-review.md) records licenses, prefix rebuilds
 bootstrap trust and maintenance issues. A library license alone does not settle
 all package redistribution requirements.
 
-## Remaining acceptance work
+## Feasibility exit and carry-forward limits
 
-- **External failure/lifecycle coverage:** [native preflight/source investigation](external-failure-investigation.md) is implemented. Permission-refusal and caller-restart phone results remain pending; missing-provider handling is isolated JVM/source coverage. Do not uninstall the owner's working Termux or
-  clear runtime data to obtain a passing result.
+The [final exit record](milestone-0-closure.md) reconciles the two final owner
+reports with the earlier device evidence, native/source tests and dependency
+build checks. All Milestone 0 prototype investigations are recorded complete;
+conditional embedded tool installation is N/A, not successful.
 
-The [reconciliation](device-results-review-2026-11-05.md) closes the supported
-prototype/research items and records conditional embedded installation as not
-applicable, not successful. Milestone 0 is not complete. There is no claim of
-standalone Termux parity, production safety, or cloud-operated device testing.
+The permission result retains a deduplication/procedure limit: no new independent
+post-prompt timestamp is fabricated. The external restart result is a provider
+exit after caller reopen, not proof of remote kill or completion while the caller
+stays stopped. Exact installed APK hash, Termux install source, legacy 211a...
+incident disposition and broader device/tool/OS behavior remain Unknown.
+
+Production integration, Gemini API/Keystore behavior, SVG rendering, root,
+Batch/Session, broader failure-case physical testing and any future embedded
+package strategy remain later work. There is no standalone Termux parity,
+production safety or cloud-operated device-test claim. Native authorization is
+not bypassed or weakened to close this milestone.
