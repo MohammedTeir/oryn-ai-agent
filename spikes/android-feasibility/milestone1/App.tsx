@@ -1,18 +1,20 @@
 import { useReducer } from 'react';
-import { I18nManager, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import tokens from '../../../docs/design/tokens.json';
 import { AppIcon } from './AppIcon';
 import { initialNavigation, navigate, type Segment } from './navigation';
 import { strings } from './strings';
+import { useAppLanguage } from '../useAppLanguage';
 
 const symbol = require('../../../assets/ORYN_Brand_Assets/03_Icon_Only/oryn-icon-only-transparent.png');
 const symbolInactive = require('../../../assets/ORYN_Brand_Assets/04_Monochrome/oryn-icon-only-mono-navy.png');
 const segments: Segment[] = ['terminal', 'tools', 'history'];
 
 export default function MilestoneOneApp() {
-  const t = strings[I18nManager.isRTL ? 'ar' : 'en'];
+  const language = useAppLanguage();
+  const t = strings[language];
   const [state, dispatch] = useReducer(navigate, initialNavigation);
-  return <View style={styles.root}>
+  return <View style={[styles.root, { direction: language === 'ar' ? 'rtl' : 'ltr' }]}>
     <View style={styles.header}>
       <View style={styles.brand} accessibilityLabel={t.brand} accessible>
         <Image source={symbol} style={styles.brandSymbol} resizeMode="contain" />
@@ -23,7 +25,7 @@ export default function MilestoneOneApp() {
         <Text style={styles.caption} numberOfLines={1}>{t.unknown}</Text>
       </View>
       <Pressable accessibilityRole="button" accessibilityLabel={t.history} onPress={() => dispatch({ type: 'history' })} style={styles.iconButton}><AppIcon name="history" color={tokens.color.textPrimary} /></Pressable>
-      <Pressable accessibilityRole="button" accessibilityLabel={state.settings ? t.back : t.settings} onPress={() => dispatch({ type: state.settings ? 'back' : 'settings' })} style={styles.iconButton}><AppIcon name={state.settings ? (I18nManager.isRTL ? 'backRtl' : 'back') : 'settings'} color={tokens.color.textPrimary} /></Pressable>
+      <Pressable accessibilityRole="button" accessibilityLabel={state.settings ? t.back : t.settings} onPress={() => dispatch({ type: state.settings ? 'back' : 'settings' })} style={styles.iconButton}><AppIcon name={state.settings ? (language === 'ar' ? 'backRtl' : 'back') : 'settings'} color={tokens.color.textPrimary} /></Pressable>
     </View>
     <ScrollView contentContainerStyle={styles.content}>
       <Text accessibilityRole="header" style={styles.title}>{state.settings ? t.settings : state.tab === 'agent' ? t.agent : t.terminalTab}</Text>
