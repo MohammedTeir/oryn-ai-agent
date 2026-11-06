@@ -4,8 +4,8 @@ Two independent GitHub Actions workflows run on every commit push and pull reque
 Branch-deletion events skip the jobs because there is no new source to build:
 
 - **Feasibility CI** (`.github/workflows/ci.yml`) installs the frozen lockfile,
-  checks Expo dependency compatibility, runs ESLint, TypeScript and the four
-  integrity tests, and bundles Android JavaScript.
+  checks Expo dependency compatibility, runs ESLint, TypeScript and the test suite,
+  and bundles Android JavaScript.
 - **Signed feasibility APK** (`.github/workflows/android-apk.yml`) checks the
   source, builds and lints the development and bundled phone variants, verifies
   APK signatures, and uploads the signed phone APK with its SHA-256, signer
@@ -13,8 +13,9 @@ Branch-deletion events skip the jobs because there is no new source to build:
 
 Both also support manual runs once the workflow is on the repository's default
 branch. Newer updates cancel older in-progress runs on the same branch/PR.
-Pull requests use read-only Gradle caches. All jobs have read-only repository
-permissions, and checkout credentials are not retained in the workspace.
+Pull requests use read-only Gradle caches. Build jobs have read-only repository
+permissions; a separate release job has write permission only on successful pushes
+to `main`. Checkout credentials are not retained in the workspace.
 Actions are pinned to verified commit SHAs. No signing secrets are required.
 SDK installation retries up to three times with short backoff for interrupted
 downloads. It uses the same official SDK manager and integrity checks each time;
@@ -23,18 +24,23 @@ checks because the two workflows run for both the push and the PR event.
 
 ## Download on your phone
 
-1. Open the repository's **Actions** tab and select **Signed feasibility APK**.
-2. Open a successful run for the desired commit.
-3. Under **Artifacts**, download `oryn-feasibility-phone-…` while signed in to
+1. Open the repository’s **Releases** page. A successful push to `main` creates a
+   test-only prerelease named `feasibility-test-…` with the APK, checksums, build
+   information and signing certificate details. Download the APK directly there.
+2. For a pull request or branch build, open the **Actions** tab and select **Signed feasibility APK**.
+3. Open a successful run for the desired commit.
+4. Under **Artifacts**, download `oryn-feasibility-phone-…` while signed in to
    GitHub. The artifact ZIP contains `oryn-feasibility-phone.apk`, `SHA256SUMS`,
    `build-info.json`, source commit, signature output and APK metadata.
-4. Extract the ZIP and install the APK. For the current observation probe, tap
+5. Extract the ZIP and install the APK. For the current observation probe, tap
    **Observe Android through Kotlin** and record the real output.
 
 Successful APK artifacts are retained for **14 days**. Build/lint diagnostics are
 retained for **7 days**, including failed runs where reports exist. Each later
-push generates a fresh run and artifact; the APK is not committed to Git or
-published as a GitHub Release.
+push generates a fresh run and artifact. Only successful `main` push builds
+create a GitHub prerelease; pull requests and manual runs do not publish releases.
+The APK is not committed to Git. Release tags include the run ID and attempt, and
+prereleases do not become the repository’s latest stable release.
 
 ## Signing scope and validation limits
 
@@ -44,7 +50,9 @@ build variant with the pinned Expo template's **Android debug signer**, not a
 production signing identity. The variant includes JavaScript so it can be
 tested without Metro; minification is disabled for this probe. TLS, Gradle
 distribution checksum, npm integrity and APK signature verification stay enabled.
-No private keystore or password is stored in the repository or artifacts.
+No private keystore or password is stored in the repository or artifacts. Debug
+signers may differ between builds. Android can reject an update with a different
+signer; export any evidence before uninstalling an existing test app.
 
 Production APK signing requires a separately approved app identity and secure
 signing-key configuration. These workflows do not claim production release
