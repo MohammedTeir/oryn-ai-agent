@@ -1,38 +1,63 @@
-import { useState } from 'react';
-import { I18nManager, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useReducer } from 'react';
+import { I18nManager, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import tokens from '../../../docs/design/tokens.json';
+import { AppIcon } from './AppIcon';
+import { initialNavigation, navigate, type Segment } from './navigation';
+import { strings } from './strings';
 
-type Tab = 'agent' | 'terminal';
-type Segment = 'terminal' | 'tools' | 'history';
-const copy = {
-  en: { agent: 'AI Agent', terminal: 'Terminal & Tools', tools: 'Tools', history: 'History', settings: 'Settings', back: 'Back', unavailable: 'Not available yet', unknown: 'Connection: Unknown' },
-  ar: { agent: 'المساعد الذكي', terminal: 'الطرفية والأدوات', tools: 'الأدوات', history: 'السجل', settings: 'الإعدادات', back: 'رجوع', unavailable: 'غير متاح بعد', unknown: 'الاتصال: غير معروف' },
-} as const;
+const symbol = require('../../../assets/ORYN_Brand_Assets/03_Icon_Only/oryn-icon-only-transparent.png');
+const symbolInactive = require('../../../assets/ORYN_Brand_Assets/04_Monochrome/oryn-icon-only-mono-navy.png');
+const segments: Segment[] = ['terminal', 'tools', 'history'];
 
 export default function MilestoneOneApp() {
-  const t = copy[I18nManager.isRTL ? 'ar' : 'en'];
-  const [tab, setTab] = useState<Tab>('agent');
-  const [segment, setSegment] = useState<Segment>('terminal');
-  const [settings, setSettings] = useState(false);
-  const button = (label: string, onPress: () => void, selected = false) => <Pressable accessibilityRole="button" accessibilityLabel={label} accessibilityState={{ selected }} onPress={onPress} style={styles.button}><Text style={styles.text}>{label}</Text></Pressable>;
+  const t = strings[I18nManager.isRTL ? 'ar' : 'en'];
+  const [state, dispatch] = useReducer(navigate, initialNavigation);
   return <View style={styles.root}>
-    <View style={styles.header}><Text style={styles.title}>ORYN</Text><Text style={styles.text}>{t.unknown}</Text>{button(settings ? t.back : t.settings, () => setSettings(!settings))}</View>
+    <View style={styles.header}>
+      <View style={styles.brand} accessibilityLabel={t.brand} accessible>
+        <Image source={symbol} style={styles.brandSymbol} resizeMode="contain" />
+        <Text style={styles.brandText}>{t.brand}</Text>
+      </View>
+      <View style={styles.connection} accessible accessibilityLabel={t.connectionUnknown}>
+        <AppIcon name="connection" color={tokens.color.textSecondary} />
+        <Text style={styles.caption} numberOfLines={1}>{t.unknown}</Text>
+      </View>
+      <Pressable accessibilityRole="button" accessibilityLabel={t.history} onPress={() => dispatch({ type: 'history' })} style={styles.iconButton}><AppIcon name="history" color={tokens.color.textPrimary} /></Pressable>
+      <Pressable accessibilityRole="button" accessibilityLabel={state.settings ? t.back : t.settings} onPress={() => dispatch({ type: state.settings ? 'back' : 'settings' })} style={styles.iconButton}><AppIcon name={state.settings ? (I18nManager.isRTL ? 'backRtl' : 'back') : 'settings'} color={tokens.color.textPrimary} /></Pressable>
+    </View>
     <ScrollView contentContainerStyle={styles.content}>
-      {settings ? <Text style={styles.title}>{t.settings}</Text> : <>
-        <Text style={styles.title}>{tab === 'agent' ? t.agent : t.terminal}</Text>
-        {tab === 'terminal' && <View style={styles.row}>{(['terminal', 'tools', 'history'] as Segment[]).map(item => <View key={item}>{button(item === 'terminal' ? t.terminal : t[item], () => setSegment(item), item === segment)}</View>)}</View>}
-      </>}
+      <Text accessibilityRole="header" style={styles.title}>{state.settings ? t.settings : state.tab === 'agent' ? t.agent : t.terminalTab}</Text>
+      {!state.settings && state.tab === 'terminal' && <View style={styles.segments} accessibilityRole="tablist">
+        {segments.map(item => <Pressable key={item} accessibilityRole="tab" accessibilityState={{ selected: state.segment === item }} onPress={() => dispatch({ type: 'segment', segment: item })} style={[styles.segment, state.segment === item && styles.selected]}><Text style={styles.text}>{t[item]}</Text></Pressable>)}
+      </View>}
       <Text style={styles.text}>{t.unavailable}</Text>
     </ScrollView>
-    <View style={styles.row}>{button(t.agent, () => { setSettings(false); setTab('agent'); }, !settings && tab === 'agent')}{button(t.terminal, () => { setSettings(false); setTab('terminal'); }, !settings && tab === 'terminal')}</View>
+    <View style={styles.navigation} accessibilityRole="tablist">
+      <Pressable accessibilityRole="tab" accessibilityState={{ selected: !state.settings && state.tab === 'agent' }} onPress={() => dispatch({ type: 'tab', tab: 'agent' })} style={[styles.tab, !state.settings && state.tab === 'agent' && styles.selected]}>
+        <Image source={!state.settings && state.tab === 'agent' ? symbol : symbolInactive} style={styles.tabSymbol} resizeMode="contain" /><Text style={styles.text}>{t.agent}</Text>
+      </Pressable>
+      <Pressable accessibilityRole="tab" accessibilityState={{ selected: !state.settings && state.tab === 'terminal' }} onPress={() => dispatch({ type: 'tab', tab: 'terminal' })} style={[styles.tab, !state.settings && state.tab === 'terminal' && styles.selected]}>
+        <AppIcon name="terminal" color={tokens.color.textPrimary} /><Text style={styles.text}>{t.terminalTab}</Text>
+      </Pressable>
+    </View>
   </View>;
 }
 const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: tokens.color.background },
-  header: { padding: tokens.spacing_dp.lg, gap: tokens.spacing_dp.sm },
+  header: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: tokens.spacing_dp.sm, borderBottomWidth: tokens.elevation_dp.subtle, borderColor: tokens.color.border },
+  brand: { flex: 1, flexDirection: 'row', alignItems: 'center', minWidth: 0 },
+  brandSymbol: { width: tokens.spacing_dp.xxl, height: tokens.spacing_dp.xxl },
+  brandText: { color: tokens.brand.wordmarkNavy, fontSize: tokens.typography_sp.H4.size, fontWeight: '700' },
+  connection: { flexDirection: 'row', alignItems: 'center', gap: tokens.spacing_dp.xs, flexShrink: 1 },
+  caption: { color: tokens.color.textSecondary, fontSize: tokens.typography_sp.caption.size, flexShrink: 1 },
+  iconButton: { minWidth: tokens.touch.minTarget_dp, minHeight: tokens.touch.minTarget_dp, alignItems: 'center', justifyContent: 'center' },
   content: { flexGrow: 1, padding: tokens.spacing_dp.xl, gap: tokens.spacing_dp.lg },
-  row: { flexDirection: 'row', flexWrap: 'wrap', gap: tokens.spacing_dp.sm },
-  button: { minHeight: tokens.touch.minTarget_dp, padding: tokens.spacing_dp.md, justifyContent: 'center' },
+  segments: { flexDirection: 'row', gap: tokens.spacing_dp.xs },
+  segment: { flex: 1, minHeight: tokens.touch.minTarget_dp, alignItems: 'center', justifyContent: 'center', borderRadius: tokens.radius_dp.md },
+  selected: { backgroundColor: tokens.color.primaryLight },
+  navigation: { flexDirection: 'row', borderTopWidth: tokens.elevation_dp.subtle, borderColor: tokens.color.border },
+  tab: { flex: 1, minHeight: tokens.touch.minTarget_dp, alignItems: 'center', justifyContent: 'center', padding: tokens.spacing_dp.sm },
+  tabSymbol: { width: tokens.spacing_dp.xl, height: tokens.spacing_dp.xl },
   title: { fontSize: tokens.typography_sp.H3.size, color: tokens.color.textPrimary },
-  text: { fontSize: tokens.typography_sp.body.size, color: tokens.color.textPrimary },
+  text: { fontSize: tokens.typography_sp.bodySmall.size, color: tokens.color.textPrimary, textAlign: 'center' },
 });
