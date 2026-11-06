@@ -48,6 +48,8 @@ jobs:
         run: npm test
       - name: Bundle Android JavaScript
         run: npm run bundle:android
+      - name: Bundle Milestone 1 navigation entry
+        run: node scripts/bundle-milestone1.cjs
       - name: Bundle the real icon and Gemini web imports
         run: npm run bundle:compatibility
       - name: Ensure dependency declarations were preserved
