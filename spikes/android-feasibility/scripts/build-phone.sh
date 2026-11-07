@@ -20,6 +20,7 @@ apk=android/app/build/outputs/apk/release/app-release.apk
 node scripts/integrity.cjs "$apk" > artifacts/phone-apk.sha256
 cp "$apk" artifacts/oryn-feasibility-phone.apk
 "$ANDROID_HOME/build-tools/37.0.0/aapt" dump badging "$apk" > artifacts/phone-apk-badging.txt
+python3 scripts/verify-secure-store-backup.py "$ANDROID_HOME/build-tools/37.0.0/aapt" "$apk"
 python3 - <<'PY'
 import hashlib, pathlib, zipfile
 apk = pathlib.Path('artifacts/oryn-feasibility-phone.apk')
