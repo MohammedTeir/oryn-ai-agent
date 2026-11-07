@@ -1,0 +1,33 @@
+{
+  "schema": "oryn-milestone-0-device-evidence/v1",
+  "exportedAtEpochMs": 1794039603587,
+  "scope": "Debug feasibility evidence only; capture times are not command start times.",
+  "observation": null,
+  "historyLimit": 40,
+  "entries": [
+    {
+      "capturedAtEpochMs": 1794039550913,
+      "source": "native.getState",
+      "value": {
+        "state": "not_started",
+        "executionBusy": false,
+        "nativeBinaryIsTermuxRuntime": false,
+        "lastRecovery": null,
+        "externalPrerequisites": {
+          "packageState": "detected",
+          "runCommandPermission": "denied",
+          "providerConfiguration": "not_observed"
+        }
+      }
+    },
+    {
+      "capturedAtEpochMs": 1794039593700,
+      "source": "storage.schemaCheck",
+      "value": {
+        "state": "tables_present",
+        "schemaVersion": 1,
+        "foreignKeysEnabled": true
+      }
+    }
+  ]
+}
