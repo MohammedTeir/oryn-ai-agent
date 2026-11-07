@@ -23,3 +23,7 @@ After installing the test APK once:
 3. Tap **2. Check the test record**, then tap **Copy evidence JSON** and share the second report separately.
 
 The second report must contain the same marker and writer-session token as the first. `javascriptSessionChanged: true` means the JavaScript runtime used a new session token; it is not proof that Android killed a process. If it remains false, the app was resumed in the same JavaScript session, so the report does not establish a new-session check. This tests the isolated debug database and does not establish durability of application records, recovery from a verified process death, database corruption handling, backup/restore, or Android Keystore behavior.
+
+## Preview language preference
+
+The AI Agent navigation preview reads and writes one non-secret `language_preference` setting: device language, English, or Arabic. The SQLite upsert is parameterized and atomic, accepts only those three values, and serializes saves and later loads. A failed read or write is shown as unconfirmed; no secret or arbitrary setting can be written through this API. The preference controls the navigation preview and its approval example; the surrounding debug feasibility harness continues to use the device language. This is not a production Settings redesign, and Arabic/RTL appearance and preference persistence remain to be checked on a device.

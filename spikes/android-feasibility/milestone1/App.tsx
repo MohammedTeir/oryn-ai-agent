@@ -5,15 +5,17 @@ import { AppIcon } from './AppIcon';
 import { ApprovalExample } from './ApprovalExample';
 import { initialNavigation, navigate, type Segment } from './navigation';
 import { strings } from './strings';
-import { useAppLanguage } from '../useAppLanguage';
+import { usePreviewLanguage } from './PreviewLanguage';
+import type { LanguagePreference } from '../storage/languagePreference';
 import { useConnectionStatus } from './useConnectionStatus';
 
 const symbol = require('../../../assets/ORYN_Brand_Assets/03_Icon_Only/oryn-icon-only-transparent.png');
 const symbolInactive = require('../../../assets/ORYN_Brand_Assets/04_Monochrome/oryn-icon-only-mono-navy.png');
 const segments: Segment[] = ['terminal', 'tools', 'history'];
+const languageChoices: LanguagePreference[] = ['system', 'en', 'ar'];
 
 export default function MilestoneOneApp() {
-  const language = useAppLanguage();
+  const { language, preference, status: languageStatus, select } = usePreviewLanguage();
   const t = strings[language];
   const [state, dispatch] = useReducer(navigate, initialNavigation);
   const { status, refresh } = useConnectionStatus();
@@ -37,6 +39,11 @@ export default function MilestoneOneApp() {
         {segments.map(item => <Pressable key={item} accessibilityRole="tab" accessibilityState={{ selected: state.segment === item }} onPress={() => dispatch({ type: 'segment', segment: item })} style={[styles.segment, state.segment === item && styles.selected]}><Text style={styles.text}>{t[item]}</Text></Pressable>)}
       </View>}
       <Text style={styles.text}>{t.unavailable}</Text>
+      {!state.settings && state.tab === 'agent' && <View style={styles.languageGroup}>
+        <Text accessibilityRole="header" style={styles.text}>{t.languageTitle}</Text>
+        {languageChoices.map(choice => <Pressable key={choice} accessibilityRole="radio" accessibilityState={{ checked: languageStatus === 'ready' && preference === choice, disabled: languageStatus === 'loading' || languageStatus === 'saving' }} disabled={languageStatus === 'loading' || languageStatus === 'saving'} onPress={() => void select(choice)} style={[styles.languageChoice, languageStatus === 'ready' && preference === choice && styles.selected]}><Text style={styles.text}>{t.languages[choice]}{languageStatus === 'ready' && preference === choice ? ` · ${t.selected}` : ''}</Text></Pressable>)}
+        <View accessibilityLiveRegion="polite"><Text style={styles.text}>{languageStatus === 'loading' ? t.languageLoading : languageStatus === 'saving' ? t.languageSaving : languageStatus === 'error' ? t.languageError : t.languageSaved}</Text></View>
+      </View>}
       {!state.settings && state.tab === 'agent' && <ApprovalExample />}
     </ScrollView>
     <View style={styles.navigation} accessibilityRole="tablist">
@@ -62,6 +69,8 @@ const styles = StyleSheet.create({
   segments: { flexDirection: 'row', gap: tokens.spacing_dp.xs },
   segment: { flex: 1, minHeight: tokens.touch.minTarget_dp, alignItems: 'center', justifyContent: 'center', borderRadius: tokens.radius_dp.md },
   selected: { backgroundColor: tokens.color.primaryLight },
+  languageGroup: { gap: tokens.spacing_dp.sm },
+  languageChoice: { minHeight: tokens.touch.minTarget_dp, justifyContent: 'center', padding: tokens.spacing_dp.md, borderWidth: tokens.elevation_dp.subtle, borderColor: tokens.color.border, borderRadius: tokens.radius_dp.md },
   navigation: { flexDirection: 'row', borderTopWidth: tokens.elevation_dp.subtle, borderColor: tokens.color.border },
   tab: { flex: 1, minHeight: tokens.touch.minTarget_dp, alignItems: 'center', justifyContent: 'center', padding: tokens.spacing_dp.sm },
   tabSymbol: { width: tokens.spacing_dp.xl, height: tokens.spacing_dp.xl },
