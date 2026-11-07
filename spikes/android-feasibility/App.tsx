@@ -8,6 +8,8 @@ import { useAppLanguage } from './useAppLanguage';
 import { openLocalDatabase } from './storage/database';
 import { inspectStorageSchema, type SchemaCheck } from './storage/schemaCheck';
 import { SCHEMA_VERSION } from './storage/migrations';
+import { persistenceProbe } from './storage/androidPersistenceProbe';
+import type { ReadObservation, WriteObservation } from './storage/persistenceProbe';
 
 const probeIds: ProbeId[] = ['native_echo', 'native_timeout', 'native_cancel', 'termux_echo', 'termux_delay', 'termux_recovery'];
 
@@ -28,6 +30,7 @@ export default function App() {
   const [exportStatus, setExportStatus] = useState<ExportStatus | null>(null);
   const [busy, setBusy] = useState<boolean | null>(null);
   const [storageCheck, setStorageCheck] = useState<SchemaCheck | null>(null);
+  const [persistenceStatus, setPersistenceStatus] = useState<WriteObservation | ReadObservation | null>(null);
   const requestPending = useRef(false);
   const reading = useRef(false);
   const lastState = useRef<string | null>(null);
@@ -111,6 +114,24 @@ export default function App() {
     }} />
     <Text style={styles.text}>{t.storageHint}</Text>
     {storageCheck && <View accessibilityLiveRegion="polite"><Text style={styles.text}>{storageCheck.state === 'tables_present' ? t.storagePresent : t.storageFailed}</Text></View>}
+
+    <Text style={styles.text}>{t.persistenceHint}</Text>
+    <ProbeButton label={t.persistenceWrite} disabled={pending} onPress={() => void run('storage.persistenceWrite', async () => {
+      const result = await persistenceProbe.write();
+      setPersistenceStatus(result);
+      capture('storage.persistenceWrite', result);
+    })} />
+    <ProbeButton label={t.persistenceRead} disabled={pending} onPress={() => void run('storage.persistenceRead', async () => {
+      const result = await persistenceProbe.read();
+      setPersistenceStatus(result);
+      capture('storage.persistenceRead', result);
+    })} />
+
+    {persistenceStatus && <View accessibilityLiveRegion="polite"><Text style={styles.text}>{
+      persistenceStatus.state === 'test_record_written' ? t.persistenceWritten :
+      persistenceStatus.state === 'test_record_absent' ? t.persistenceAbsent :
+      persistenceStatus.state === 'test_record_found' ? (persistenceStatus.javascriptSessionChanged ? t.persistenceDifferentSession : t.persistenceSameSession) : t.persistenceFailed
+    }</Text></View>}
 
     <ProbeButton label={t.observe} disabled={pending} onPress={() => void run('native.observe', async () => {
       const value = { ...await observe() };

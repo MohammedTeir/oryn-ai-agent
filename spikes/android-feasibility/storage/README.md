@@ -11,3 +11,15 @@ Cloud tests use Node's SQLite implementation to exercise creation, idempotence, 
 ## Phone schema check
 
 In the debug feasibility app, tap **Check local database tables**. It initializes the app database if needed, then checks the schema version, expected table names, and the foreign-key setting on that connection. Tap **Copy evidence JSON** and share the result; the entry source is `storage.schemaCheck`. After closing and reopening the app, repeat the check and share the new result separately. This shows whether the schema can be opened again, but it does not verify persisted user records, process-death recovery, encrypted credentials, or data integrity. The exported check contains no database rows, file paths or native exception text.
+
+## Phone test-record persistence check
+
+This explicit debug-only test uses a dedicated database, separate from `oryn-local.db`, credentials and the native authorization ledger. Each write appends a randomly generated, non-sensitive marker; it does not modify prior test records or application data. The exported evidence contains the random marker and random JavaScript-session tokens, but no database rows beyond that test marker, paths, credentials or exception messages.
+
+After installing the test APK once:
+
+1. Tap **1. Write a test record**. When the app says the test record was written, tap **Copy evidence JSON** and share that first report.
+2. Close the app and open it again; do not uninstall it or clear its data.
+3. Tap **2. Check the test record**, then tap **Copy evidence JSON** and share the second report separately.
+
+The second report must contain the same marker and writer-session token as the first. `javascriptSessionChanged: true` means the JavaScript runtime used a new session token; it is not proof that Android killed a process. If it remains false, the app was resumed in the same JavaScript session, so the report does not establish a new-session check. This tests the isolated debug database and does not establish durability of application records, recovery from a verified process death, database corruption handling, backup/restore, or Android Keystore behavior.
