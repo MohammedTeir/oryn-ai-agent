@@ -5,6 +5,9 @@ import { checkMissingAndForgedGrant, copyEvidence, getExecutionState, observe, r
 import { appendEvidence, createReport, parseExportStatus, parseNativeRecord, type ExportStatus, type EvidenceEntry, type NativeRecord } from './report';
 import { strings } from './strings';
 import { useAppLanguage } from './useAppLanguage';
+import { openLocalDatabase } from './storage/database';
+import { inspectStorageSchema, type SchemaCheck } from './storage/schemaCheck';
+import { SCHEMA_VERSION } from './storage/migrations';
 
 const probeIds: ProbeId[] = ['native_echo', 'native_timeout', 'native_cancel', 'termux_echo', 'termux_delay', 'termux_recovery'];
 
@@ -24,6 +27,7 @@ export default function App() {
   const [failed, setFailed] = useState(false);
   const [exportStatus, setExportStatus] = useState<ExportStatus | null>(null);
   const [busy, setBusy] = useState<boolean | null>(null);
+  const [storageCheck, setStorageCheck] = useState<SchemaCheck | null>(null);
   const requestPending = useRef(false);
   const reading = useRef(false);
   const lastState = useRef<string | null>(null);
@@ -96,6 +100,17 @@ export default function App() {
     <View accessibilityLiveRegion="polite">
       {exportStatus !== null && <Text style={styles.text}>{t.exportStatus[exportStatus]}</Text>}
     </View>
+
+    <ProbeButton label={t.storageCheck} disabled={pending} onPress={() => {
+      setStorageCheck(null);
+      void run('storage.schemaCheck', async () => {
+        const result = await inspectStorageSchema(openLocalDatabase, SCHEMA_VERSION);
+        setStorageCheck(result);
+        capture('storage.schemaCheck', result);
+      });
+    }} />
+    <Text style={styles.text}>{t.storageHint}</Text>
+    {storageCheck && <View accessibilityLiveRegion="polite"><Text style={styles.text}>{storageCheck.state === 'tables_present' ? t.storagePresent : t.storageFailed}</Text></View>}
 
     <ProbeButton label={t.observe} disabled={pending} onPress={() => void run('native.observe', async () => {
       const value = { ...await observe() };
