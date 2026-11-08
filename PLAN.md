@@ -77,6 +77,8 @@ Current follow-up: [capability decisions and exact stack record](docs/feasibilit
 
 ## 4. Milestone 1 — UI, onboarding and local foundation
 
+**Evidence-backed progress audit (through merged PR #24, 2026-11-08):** [Milestone 1 implementation audit](docs/milestone-1-audit.md). **Execution backlog:** [Ordered Milestone 1 tasks M1-01–M1-19](docs/milestone-1-tasks.md). These tracking documents distinguish implemented prototypes, pending production behavior and unverified device acceptance; they do not close any checklist item or change the v1.10 requirements. The next proposed evidence task is **M1-01: Android verification of PR #24**.
+
 **Current progress:** A separate navigation preview provides the two primary tabs, secondary Settings and Terminal/Tools/History segments. The feasibility APK can open that preview; it also contains a light launch screen, a preview language choice saved locally, a prerequisite-based Termux status and a disabled approval-card example. These are partial foundations, not completed checklist items. The screens, approval flow, onboarding and storage remain incomplete. Device, RTL and accessibility acceptance are still required.
 
 - [ ] Build the native-enabled Expo/React Native/TypeScript app structure and exactly two primary routes with secondary Settings, without adding a third tab.
