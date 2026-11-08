@@ -23,6 +23,8 @@ This is a **proposed implementation sequence**, not a reduction or change of any
 ### M1-01 — Android verification of PR #24
 **Priority:** P0 | **Depends on:** merged PR #24 | **Current status:** OPEN (automated tests passed; device test unverified)
 
+**Device acceptance procedure and pending results:** [M1-01 Android language verification](feasibility/milestone-1-language-device-verification.md). The procedure is prepared; phone evidence is still outstanding.
+
 - Test switching between System, English and Arabic in the installed navigation preview, leaving/reentering preview, and closing/reopening the app.
 - Inspect loading/saving/error presentations, strings, RTL direction and approval-example language behavior. Capture screenshots on the actual device; note font size and OS version.
 - Record the installed APK SHA-256/source commit/build origin if verifiable, and distinguish app reopening, new JS session and *verified Android process termination*.
