@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
+command -v grep >/dev/null || { echo 'Required tool grep is unavailable' >&2; exit 1; }
 cd "$(dirname "$0")/.."
 source scripts/cloud-env.sh
 source_root=$(pwd)
@@ -39,10 +40,10 @@ npx --no-install expo prebuild --platform android --no-install --no-clean --temp
 checksum=$(curl -fsSL https://services.gradle.org/distributions/gradle-9.4.1-bin.zip.sha256)
 [[ "$checksum" =~ ^[a-f0-9]{64}$ ]]
 wrapper=android/gradle/wrapper/gradle-wrapper.properties
-if ! rg -q '^distributionSha256Sum=' "$wrapper"; then
+if ! grep -q '^distributionSha256Sum=' "$wrapper"; then
   printf '\ndistributionSha256Sum=%s\n' "$checksum" >> "$wrapper"
 else
-  rg -q "^distributionSha256Sum=$checksum$" "$wrapper"
+  grep -q "^distributionSha256Sum=$checksum$" "$wrapper"
 fi
 (
   cd android
@@ -55,10 +56,10 @@ apk=android/app/build/outputs/apk/release/app-release.apk
 mkdir -p "$source_root/artifacts"
 "$ANDROID_HOME/build-tools/37.0.0/apksigner" verify --verbose --print-certs "$apk" > "$source_root/artifacts/shell-apk-signature.txt"
 "$ANDROID_HOME/build-tools/37.0.0/aapt" dump badging "$apk" > "$source_root/artifacts/shell-apk-badging.txt"
-rg -q "^package: name='io[.]github[.]mohammedteir[.]oryn[.]feasibility'" "$source_root/artifacts/shell-apk-badging.txt"
-rg -q "certificate DN: CN=Android Debug" "$source_root/artifacts/shell-apk-signature.txt"
+grep -q "^package: name='io[.]github[.]mohammedteir[.]oryn[.]feasibility'" "$source_root/artifacts/shell-apk-badging.txt"
+grep -q "certificate DN: CN=Android Debug" "$source_root/artifacts/shell-apk-signature.txt"
 "$ANDROID_HOME/build-tools/37.0.0/aapt" dump permissions "$apk" > "$source_root/artifacts/shell-apk-permissions.txt"
-if rg -q 'com\.termux\.permission\.RUN_COMMAND' "$source_root/artifacts/shell-apk-permissions.txt"; then
+if grep -q 'com\.termux\.permission\.RUN_COMMAND' "$source_root/artifacts/shell-apk-permissions.txt"; then
   echo 'Unexpected Termux execution permission in shell APK' >&2; exit 1
 fi
 python3 scripts/verify-shell-apk.py "$apk"
