@@ -23,7 +23,7 @@ This is a **proposed implementation sequence**, not a reduction or change of any
 ### M1-01 — Android verification of PR #24
 **Priority:** P0 | **Depends on:** merged PR #24 | **Current status:** OPEN (owner reported basic language selection working on 2026-11-09; detailed device/provenance, full RTL/accessibility checks pending)
 
-**Device acceptance procedure and pending results:** [M1-01 Android language verification](feasibility/milestone-1-language-device-verification.md). The procedure is prepared; phone evidence is still outstanding.
+**Device acceptance procedure and pending results:** [M1-01 Android language verification](feasibility/milestone-1-language-device-verification.md). The owner reported basic language selection working; detailed phone evidence remains outstanding.
 
 - Test switching between System, English and Arabic in the installed navigation preview, leaving/reentering preview, and closing/reopening the app.
 - Inspect loading/saving/error presentations, strings, RTL direction and approval-example language behavior. Capture screenshots on the actual device; note font size and OS version.

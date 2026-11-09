@@ -23,13 +23,25 @@ Existing [brand asset package](../../assets/ORYN_Brand_Assets/README.md) says th
 
 ## Typography candidate — pending explicit approval
 
-**Recommendation to review:** **IBM Plex Sans Arabic** for Arabic-first interface copy, paired with the officially matching IBM Plex Sans Latin face if the selected Arabic font artifact does not contain all needed Latin glyphs. This is a **family-level typography proposal**; it is **not** recorded as the approved single Arabic+Latin family until glyph coverage, exact files, licenses and on-device text samples are validated.
+**Recommendation to review:** **IBM Plex Sans Arabic** as one family for Arabic and English. The exact candidate files examined below contain the characters in the proposed sample copy; this is not a claim of complete coverage for every language, arbitrary command, or future interface string. The family remains **unapproved** and Android rendering remains unverified.
 
-Source/rights evidence: [IBM's official Plex repository](https://github.com/IBM/plex) states the family is distributed under the **SIL Open Font License 1.1**, covers Arabic and extended Latin across its related faces, and is designed for interfaces. IBM publishes separate Arabic and Latin packages. Review the *exact distributable font files* and their embedded glyph coverage before adding anything to the Android app; retain the corresponding license/notice and avoid unsupported weight simulation.
+Source/rights evidence: the exact Google Fonts files at commit [`702964cf46bd1bf33d0745d24bbaac33edf8b8af`](https://github.com/google/fonts/tree/702964cf46bd1bf33d0745d24bbaac33edf8b8af/ofl/ibmplexsansarabic) include an [SIL Open Font License 1.1](https://github.com/google/fonts/blob/702964cf46bd1bf33d0745d24bbaac33edf8b8af/ofl/ibmplexsansarabic/OFL.txt), copyright IBM Corp., with the reserved font name “Plex”. The license permits use and redistribution under its conditions; any distribution must include the applicable copyright and license notice, and modified versions must respect the reserved-name conditions. Review the license itself before distribution. The pinned upstream [investigation](https://github.com/google/fonts/blob/702964cf46bd1bf33d0745d24bbaac33edf8b8af/ofl/ibmplexsansarabic/upstream_info.md) identifies these as precompiled Google Fonts files, with no buildable sources at its referenced source commit.
 
-**No font files are included in this proposal PR** and no font family is inserted into `tokens.json` yet. Do not assume Latin glyph completeness for a particular Arabic variant, font rendering on Android 10/11+, or licensed redistributability of any alternative font without inspection.
+| Exact candidate file, version 1.101 | SHA-256 |
+| --- | --- |
+| `IBMPlexSansArabic-Regular.ttf` | `6f611412270a132bbac838da9259d4c68569b4175f3b3b8fa3fa36a30b56dab9` |
+| `IBMPlexSansArabic-SemiBold.ttf` | `597bd5502e5997be4414e4c9c88834b30ff3784250c84f20bce2b20e53ebd467` |
+| `IBMPlexSansArabic-Bold.ttf` | `691e0c891a38637ae6bbdb69700f8042cb0724a137bee615068ffdb92244f61f` |
+
+On 2026-11-09, fontTools `TTFont.getBestCmap()` found every non-whitespace character in the 28 English and Arabic sample strings below in each of these three files. Each also contains `arab` and `latn` GSUB script entries. This is a character-map inspection, **not** proof of Arabic shaping, visual quality, accessibility or complete Unicode coverage on Android; test actual strings, mixed-direction text, fallback, selected weights and device rendering before approval. Do not assume other files or versions have identical coverage.
+
+**No font files are included in this proposal PR** and no font family is inserted into `tokens.json` yet. Do not assume font rendering on Android 10/11+ or licensed redistributability of any alternative font without inspection.
 
 ### Typography review samples
+
+![Static English and Arabic typography sample using IBM Plex Sans Arabic](review-assets/ibm-plex-sans-arabic-candidate.png)
+
+This sample was rendered from the pinned Regular and Bold files above using Pillow with RAQM. It is a typography sample only, not an Android screenshot or an approved screen design.
 
 | Purpose | English | Arabic |
 | --- | --- | --- |
@@ -58,6 +70,7 @@ These strings are **design-copy proposals**. Actual screen strings must use the 
 - End edge: one compact runtime/connection chip (state is native-observed), History and Settings; **History and Settings tap areas each at least 48 dp**.
 - No third primary tab; no tagline. Never shrink required tap targets, hide state text or clip the wordmark in order to fit.
 - Responsive overflow may contain **secondary** actions; must **not** silently remove the required History, Settings or connection affordance. Use explicit measurement/screenshots to resolve width conflicts. The 360 dp/200% combination is an **acceptance test, not something the current preview has passed**.
+- Current preview inspection: History and Settings declare the tokenized minimum touch target, but the connection caption uses `numberOfLines={1}` with shrinking. At large text sizes it may truncate; measure the actual UI on the target phone before deciding the layout. The code declarations alone do not prove the visible targets or text pass device acceptance.
 
 ### AI Agent content — empty
 
