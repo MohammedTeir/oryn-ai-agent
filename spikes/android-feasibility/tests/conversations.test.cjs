@@ -38,3 +38,33 @@ test('rejects invalid inputs and connections without foreign keys', async t => {
   assert.deepEqual(await unsafe.createWithMessage('c', 'm', 'text', 1), { ok: false });
   assert.deepEqual((await repo.listConversations(10)).value, []);
 });
+
+test('paginates tied timestamps with deterministic cursors and excludes other conversations', async t => {
+  const env = setup(t); await env.init(); const repo = createConversationRepository(env.open);
+  assert.equal((await repo.createWithMessage('a', 'm1', 'one', 10)).ok, true);
+  assert.equal((await repo.appendMessage('a', 'm2', 'two', 10)).ok, true);
+  assert.equal((await repo.appendMessage('a', 'm3', 'three', 11)).ok, true);
+  assert.equal((await repo.createWithMessage('b', 'other', 'other', 11)).ok, true);
+  const first = (await repo.listMessages('a', 1)).value;
+  const second = (await repo.listMessagesAfter('a', { createdAt: first[0].createdAt, id: first[0].id }, 1)).value;
+  const third = (await repo.listMessagesAfter('a', { createdAt: second[0].createdAt, id: second[0].id }, 5)).value;
+  assert.deepEqual([...first, ...second, ...third].map(m => m.id), ['m1', 'm2', 'm3']);
+  const conversations = (await repo.listConversations(1)).value;
+  const following = (await repo.listConversationsAfter({ updatedAt: conversations[0].updatedAt, id: conversations[0].id }, 5)).value;
+  assert.deepEqual([...conversations, ...following].map(c => c.id), ['a', 'b']);
+  assert.deepEqual(await repo.listMessagesAfter('a', { createdAt: -1, id: 'm1' }, 1), { ok: false });
+  assert.deepEqual(await repo.listConversationsAfter({ updatedAt: 11, id: "a' OR 1=1" }, 1), { ok: false });
+});
+
+test('deletion is atomic and does not remove records referenced by tasks', async t => {
+  const env = setup(t); await env.init(); const repo = createConversationRepository(env.open);
+  assert.equal((await repo.createWithMessage('a', 'm1', 'keep', 1)).ok, true);
+  assert.equal((await repo.createWithMessage('b', 'm2', 'delete', 2)).ok, true);
+  const db = new DatabaseSync(env.file); db.exec('PRAGMA foreign_keys = ON');
+  db.prepare('INSERT INTO tasks (id, conversation_id, state, created_at, updated_at) VALUES (?, ?, ?, ?, ?)').run('t', 'a', 'queued', 1, 1); db.close();
+  assert.deepEqual(await repo.deleteConversation('a'), { ok: false });
+  assert.equal((await repo.listMessages('a', 10)).value[0].content, 'keep');
+  assert.deepEqual(await repo.deleteConversation('b'), { ok: true, value: null });
+  assert.deepEqual((await repo.listMessages('b', 10)).value, []);
+  assert.deepEqual(await repo.deleteConversation('b'), { ok: false });
+});
