@@ -76,6 +76,22 @@ export function createConversationRepository(open: OpenDatabase) {
       if (!pageValid(limit)) return Promise.resolve(fail);
       return withDatabase(db => db.getAllAsync<Conversation>('SELECT id, created_at AS createdAt, updated_at AS updatedAt FROM conversations ORDER BY updated_at DESC, id ASC LIMIT ?', limit));
     },
+    getConversation(conversationId: unknown): Promise<Result<Conversation | null>> {
+      if (!idValid(conversationId)) return Promise.resolve(fail);
+      return withDatabase(async db => {
+        const row = await db.getFirstAsync<Conversation>('SELECT id, created_at AS createdAt, updated_at AS updatedAt FROM conversations WHERE id = ?', conversationId);
+        if (row !== null && (row.id !== conversationId || !timeValid(row.createdAt) || !timeValid(row.updatedAt) || row.updatedAt < row.createdAt)) throw new Error('Invalid conversation record');
+        return row;
+      });
+    },
+    getUserMessage(conversationId: unknown, messageId: unknown): Promise<Result<UserMessage | null>> {
+      if (!idValid(conversationId) || !idValid(messageId)) return Promise.resolve(fail);
+      return withDatabase(async db => {
+        const row = await db.getFirstAsync<UserMessage>("SELECT id, conversation_id AS conversationId, role, content, created_at AS createdAt FROM agent_messages WHERE conversation_id = ? AND id = ? AND role = 'user'", conversationId, messageId);
+        if (row !== null && (row.id !== messageId || row.conversationId !== conversationId || row.role !== 'user' || !contentValid(row.content) || !timeValid(row.createdAt))) throw new Error('Invalid message record');
+        return row;
+      });
+    },
     listMessages(conversationId: unknown, limit: unknown): Promise<Result<UserMessage[]>> {
       if (!idValid(conversationId) || !pageValid(limit)) return Promise.resolve(fail);
       return withDatabase(db => db.getAllAsync<UserMessage>("SELECT id, conversation_id AS conversationId, role, content, created_at AS createdAt FROM agent_messages WHERE conversation_id = ? AND role = 'user' ORDER BY created_at ASC, id ASC LIMIT ?", conversationId, limit));
