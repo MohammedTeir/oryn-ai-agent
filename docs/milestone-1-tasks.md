@@ -58,7 +58,7 @@ Physical-device acceptance is grouped at the end of Milestone 1 at the owner’s
 ## Phase B — Production shell and AI Agent UI (AI Agent before secondary redesigns)
 
 ### M1-04 — Production application shell and routing
-**Priority:** P0 | **Depends on:** M1-02 foundation | **Status:** PARTIAL — cloud implementation and local checks complete; production identity/signing and device acceptance remain open
+**Priority:** P0 | **Depends on:** M1-02 foundation | **Status:** PARTIAL — cloud implementation and local checks complete; owner-selected production identity is recorded; release-key setup, design and device acceptance remain open
 
 - Separate production root/navigation from `PreviewRoot.tsx` and the debug test harness without losing feasibility evidence/testing.
 - Implement exactly two bottom tabs and Settings as a secondary destination; preserve navigation/back behavior and Terminal/Tools/History segment model.
@@ -66,7 +66,7 @@ Physical-device acceptance is grouped at the end of Milestone 1 at the owner’s
 
 **Acceptance:** Production entry bundles/builds; navigation and state tests pass; no third primary tab; no test-only execution entry in production.
 
-**Evidence and remaining gates:** [Application shell verification](feasibility/milestone-1-shell-verification.md). Cloud checks do not substitute for device acceptance or a production signing/identity decision.
+**Evidence and remaining gates:** [Application shell verification](feasibility/milestone-1-shell-verification.md). Cloud checks do not substitute for device acceptance or verified production signing.
 
 ### M1-05 — Shared UI components, i18n, accessibility and icons
 **Priority:** P0 | **Depends on:** M1-02, M1-04 | **Status:** OPEN

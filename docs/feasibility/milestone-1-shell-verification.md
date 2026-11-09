@@ -1,6 +1,6 @@
 # M1-04 — Application shell verification
 
-**Status:** Cloud implementation and local checks complete; GitHub checks for the current change, physical-device acceptance and production identity/signing remain open. This record is not a milestone closure.
+**Status:** Cloud implementation and local checks complete; GitHub checks for the current change, physical-device acceptance and production signing remain open. This record is not a milestone closure.
 
 ## Scope and evidence
 
@@ -19,7 +19,7 @@ On 2026-11-09, local lint, typecheck, 71 tests, both Android JS bundles and the 
 | Separate shell entry, two primary tabs, secondary Settings and terminal segments | Implemented; automated source, routing and bundle checks exist |
 | Standalone Android APK and known feasibility-module exclusion | Debug test build and package checks; see PR #41 and current PR validation |
 | Loading, unavailable and error fallback | Implemented; automated fallback test and bundles; native/UI behavior not device-verified |
-| Production application ID and signing | Unknown; do not promote the provisional debug identity to production |
+| Production application ID and signing | Owner selected `io.github.mohammedteir.oryn`; release key setup and real-key verification remain open. See [production signing setup](production-signing-setup.md). |
 | AI Agent design and Arabic font approval | M1-02 remains open; existing temporary presentation is not final design approval |
 | Phone navigation, startup, error display, 360 dp/200% text, RTL and accessibility | Open; collect during the milestone-end device acceptance pass requested by the owner |
 

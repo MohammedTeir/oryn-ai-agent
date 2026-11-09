@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
+command -v grep >/dev/null || { echo 'Required tool grep is unavailable' >&2; exit 1; }
 cd "$(dirname "$0")/.."
 source scripts/cloud-env.sh
 test -x "$JAVA_HOME/bin/javac"
@@ -12,10 +13,10 @@ bash scripts/build-native-probe.sh
 wrapper=android/gradle/wrapper/gradle-wrapper.properties
 checksum=$(curl -fsSL https://services.gradle.org/distributions/gradle-9.4.1-bin.zip.sha256)
 [[ "$checksum" =~ ^[a-f0-9]{64}$ ]]
-if ! rg -q '^distributionSha256Sum=' "$wrapper"; then
+if ! grep -q '^distributionSha256Sum=' "$wrapper"; then
   printf '\ndistributionSha256Sum=%s\n' "$checksum" >> "$wrapper"
 else
-  rg -q "^distributionSha256Sum=$checksum$" "$wrapper"
+  grep -q "^distributionSha256Sum=$checksum$" "$wrapper"
 fi
 # Only one device ABI is in the initial evidence matrix. Never infer device tests.
 (
