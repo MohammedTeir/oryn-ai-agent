@@ -4,7 +4,7 @@ export interface ConversationReader {
   listConversations(limit: number): Promise<Result<Conversation[]>>;
   listMessages(conversationId: string, limit: number): Promise<Result<UserMessage[]>>;
 }
-export type LatestConversation = { kind: 'empty' } | { kind: 'loaded'; messages: UserMessage[]; mayHaveMore: boolean } | { kind: 'error' };
+export type LatestConversation = { kind: 'empty' } | { kind: 'loaded'; conversationId: string; messages: UserMessage[]; mayHaveMore: boolean } | { kind: 'error' };
 const messageLimit = 100;
 
 export async function loadLatestConversation(repository: ConversationReader): Promise<LatestConversation> {
@@ -16,7 +16,7 @@ export async function loadLatestConversation(repository: ConversationReader): Pr
     const messages = await repository.listMessages(conversations.value[0].id, messageLimit);
     if (!messages.ok) return { kind: 'error' };
     if (!Array.isArray(messages.value) || messages.value.length > messageLimit || messages.value.some(message => !message || typeof message.id !== 'string' || message.conversationId !== conversations.value[0].id || message.role !== 'user' || typeof message.content !== 'string' || !message.content.trim() || message.content.length > 20000 || !Number.isSafeInteger(message.createdAt) || message.createdAt < 0)) return { kind: 'error' };
-    return { kind: 'loaded', messages: messages.value, mayHaveMore: messages.value.length === messageLimit };
+    return { kind: 'loaded', conversationId: conversations.value[0].id, messages: messages.value, mayHaveMore: messages.value.length === messageLimit };
   } catch {
     return { kind: 'error' };
   }

@@ -48,7 +48,8 @@ export default function ProductionApp() {
         <Text accessibilityRole="header" style={styles.text}>{t.shellLanguageTitle}</Text>
         {languageChoices.map(choice => <Pressable key={choice} accessibilityRole="radio" accessibilityState={{ checked: languageStatus === 'ready' && preference === choice, disabled: languageStatus === 'loading' || languageStatus === 'saving' }} disabled={languageStatus === 'loading' || languageStatus === 'saving'} onPress={() => void select(choice)} style={[styles.languageChoice, languageStatus === 'ready' && preference === choice && styles.selected]}><Text style={styles.text}>{t.languages[choice]}{languageStatus === 'ready' && preference === choice ? ` · ${t.selected}` : ''}</Text></Pressable>)}
         <View accessibilityLiveRegion="polite"><Text style={styles.text}>{languageStatus === 'loading' ? t.languageLoading : languageStatus === 'saving' ? t.languageSaving : languageStatus === 'error' ? t.languageError : t.languageSaved}</Text></View>
-      </View> : state.tab === 'agent' ? <LatestConversation language={language} /> : <Text style={styles.text}>{t.unavailable}</Text>}
+      </View> : state.tab === 'terminal' ? <Text style={styles.text}>{t.unavailable}</Text> : null}
+      <View style={state.settings || state.tab !== 'agent' ? styles.hidden : undefined} accessibilityElementsHidden={state.settings || state.tab !== 'agent'} importantForAccessibility={state.settings || state.tab !== 'agent' ? 'no-hide-descendants' : 'auto'}><LatestConversation language={language} /></View>
     </ScrollView></ScreenBoundary>
     <View style={styles.navigation} accessibilityRole="tablist">
       <Pressable accessibilityRole="tab" accessibilityState={{ selected: !state.settings && state.tab === 'agent' }} onPress={() => dispatch({ type: 'tab', tab: 'agent' })} style={[styles.tab, !state.settings && state.tab === 'agent' && styles.selected]}><Image source={!state.settings && state.tab === 'agent' ? symbol : inactive} style={styles.tabSymbol} resizeMode="contain" /><Text style={styles.text}>{t.agent}</Text></Pressable>
@@ -57,6 +58,7 @@ export default function ProductionApp() {
   </View>;
 }
 const styles = StyleSheet.create({
+  hidden: { display: 'none' },
   root: { flex: 1, backgroundColor: tokens.color.background },
   header: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: tokens.spacing_dp.sm, borderBottomWidth: tokens.elevation_dp.subtle, borderColor: tokens.color.border },
   brand: { flex: 1, flexDirection: 'row', alignItems: 'center', minWidth: 0 },
