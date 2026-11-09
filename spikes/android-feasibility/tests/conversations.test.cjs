@@ -113,3 +113,20 @@ test('pending message survives reopening and cannot be overwritten or cleared wi
   assert.deepEqual(await pending.clearIfSaved(record), { ok: true, value: null });
   assert.deepEqual(await pending.read(), { ok: true, value: null });
 });
+
+test('explicit discard only removes an unchanged pending record with no saved message ID', async t => {
+  const { createPendingMessageStore } = require('../storage/pendingMessage.ts');
+  const env = setup(t); await env.init();
+  const store = createPendingMessageStore(env.open); const repo = createConversationRepository(env.open);
+  const record = { conversationId: 'c', messageId: 'm', content: 'draft', createdAt: 10, newConversation: true };
+  assert.equal((await store.stage(record)).ok, true);
+  assert.deepEqual(await store.discardIfUnwritten({ ...record, content: 'other' }), { ok: false });
+  assert.equal((await repo.createWithMessage('c', 'm', 'draft', 10)).ok, true);
+  assert.deepEqual(await store.discardIfUnwritten(record), { ok: false });
+  assert.deepEqual((await store.read()).value, record);
+  assert.equal((await store.clearIfSaved(record)).ok, true);
+  const unsaved = { ...record, messageId: 'n' };
+  assert.equal((await store.stage(unsaved)).ok, true);
+  assert.equal((await store.discardIfUnwritten(unsaved)).ok, true);
+  assert.deepEqual(await store.read(), { ok: true, value: null });
+});

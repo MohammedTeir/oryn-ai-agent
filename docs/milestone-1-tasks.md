@@ -76,7 +76,7 @@ Physical-device acceptance is grouped at the end of Milestone 1 at the owner’s
 **Acceptance:** Component tests; Arabic/English and accessibility review; device screenshots at challenging widths/scales; no generic House/Wi-Fi connection/fingerprint-root icons.
 
 ### M1-06 — Real AI Agent UI and local conversations
-**Priority:** P0 | **Depends on:** M1-04, M1-05, M1-14 for durable record writes | **Status:** PARTIAL — local user conversations, selection and local-only composer; assistant responses, durable uncertainty recovery and device acceptance remain open
+**Priority:** P0 | **Depends on:** M1-04, M1-05, M1-14 for durable record writes | **Status:** PARTIAL — local user conversations, selection and local-only composer; assistant responses and device validation of durable recovery remain open
 
 - AI Agent empty state, natural-language composer, user messages, history access and a structured conversation representation.
 - Distinguish no Gemini configuration, offline, unavailable, loading and error; never pretend to have an LLM response or verified terminal result.
@@ -151,7 +151,7 @@ Physical-device acceptance is grouped at the end of Milestone 1 at the owner’s
 **Acceptance:** Tests for no Termux, denied permissions, provider errors and installed-but-unconfigured environments; real-device evidence where feasible.
 
 ### M1-14 — Production SQLite repositories and transactional transitions
-**Priority:** P0 | **Depends on:** schema v1 from PR #18 | **Status:** PARTIAL — user conversation/message repository and pending-save storage foundation; recovery integration, other repositories, retention and device acceptance remain open
+**Priority:** P0 | **Depends on:** schema v1 from PR #18 | **Status:** PARTIAL — user conversation/message repository and pending-save storage foundation; other repositories, retention and device acceptance remain open
 
 - Define typed, validated/parameterized CRUD for conversations, messages, task/plan records, proposals, executions and event history; apply bounded retention.
 - Check foreign-key enforcement per connection, handle transactional state transitions, migration upgrades and corrupt/newer schemas safely.
