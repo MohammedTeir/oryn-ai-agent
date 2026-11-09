@@ -9,12 +9,12 @@ This is **a review specification and content wireframe**, not a finished graphic
 
 ## Approved references / do not redraw
 
-Existing [brand asset package](../../assets/ORYN_Brand_Assets/README.md) says the owner approved the v3 asset family on 2026-11-01. Its approved source design images include:
+Existing [brand asset package](../../assets/ORYN_Brand_Assets/README.md) says the owner approved the asset family on 2026-11-01, but its README lists `v3.0` original-design filenames **not present** in the actual `00_Original_Approved_Designs/Approved_Designs/` directory. That directory currently contains the **`v1.0`-named** AI Agent, Settings, Terminal and Tools images plus the `v1.2` design-system and `v1.3` execution-flow sheets. The references below were verified against the actual directory listing. Do not infer the design revision from a filename or silently claim the missing `v3.0` assets exist.
 
-- `assets/ORYN_Brand_Assets/00_Original_Approved_Designs/Approved_Designs/oryn-ai-agent-v3.0-approved.png` — AI Agent layout **first**.
+- `assets/ORYN_Brand_Assets/00_Original_Approved_Designs/Approved_Designs/oryn-ai-agent-v1.0-approved.png` — AI Agent layout **first**.
 - `.../Approved_Designs/oryn-design-system-components-v1.2-approved.png` — original Light Mode design system.
 - `.../Approved_Designs/oryn-ui-states-execution-flow-v1.3-approved.png` — component reference only; never display mutually exclusive states simultaneously.
-- Later, individually review original approved `oryn-settings-v3.0-approved.png`, `oryn-terminal-tools-v3.0-approved.png` and `oryn-tools-tab-v3.0-approved.png`. Do not redesign those screens before review.
+- Later, individually review original approved `oryn-settings-v1.0-approved.png`, `oryn-terminal-tools-v1.0-approved.png` and `oryn-tools-tab-v1.0-approved.png`. Do not redesign those screens before review.
 - Canonical implementation assets: `03_Icon_Only/oryn-icon-only-transparent.png` and `04_Monochrome/oryn-icon-only-mono-navy.png`; PNG master lineage wins over approximate traced SVGs. Do not edit `00_Original_Approved_Designs/`.
 
 **Brand metadata issue:** package README calls an earlier source icon a technical “candidate” while later QA entries and opening statement describe owner approval of the v3 family. Do not silently resolve any remaining approval ambiguity by inventing new artwork. Existing app preview already uses the icon-only master; verify its clarity at **24 dp** on the phone.
@@ -102,6 +102,6 @@ These strings are **design-copy proposals**. Actual screen strings must use the 
 
 ## Next decision
 
-For **M1-02**, request the owner's explicit approval/rejection of IBM Plex Sans Arabic as the preferred typography family (subject to real glyph/Android QA), and confirmation that the existing v3 AI Agent screen remains the layout reference. If a tagged/approved tagline-free wordmark does not exist, prepare a **separate owner-approved brand deliverable**, not an unauthorized crop or trace.
+For **M1-02**, request the owner's explicit approval/rejection of IBM Plex Sans Arabic as the preferred typography family (subject to real glyph/Android QA), and confirmation that the existing source AI Agent screen remains the layout reference. If a tagged/approved tagline-free wordmark does not exist, prepare a **separate owner-approved brand deliverable**, not an unauthorized crop or trace.
 
 M1-01 language-selection smoke evidence is recorded separately in [the device verification register](../feasibility/milestone-1-language-device-verification.md). **Do not infer M1-01 full closure from that limited report.**
