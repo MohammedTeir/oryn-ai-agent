@@ -1,16 +1,22 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import tokens from '../../../docs/design/tokens.json';
 import type { AppLanguage } from '../language';
 import { strings } from '../milestone1/strings';
 import { createAppConversationRepository } from '../storage/appConversations';
 import { loadLatestConversation, type LatestConversation as Result } from './latestConversation';
+import { newMessageIds } from './messageIds';
+import { reconcileMessage, saveLocalMessage, type PendingMessage, type SaveState } from './localMessage';
 
 const repository = createAppConversationRepository();
 export function LatestConversation({ language }: { language: AppLanguage }) {
   const t = strings[language];
   const [result, setResult] = useState<Result | { kind: 'loading' }>({ kind: 'loading' });
   const generation = useRef(0);
+  const busy = useRef(false);
+  const pending = useRef<PendingMessage | null>(null);
+  const [draft, setDraft] = useState('');
+  const [saveState, setSaveState] = useState<SaveState | 'idle' | 'saving'>('idle');
   const reload = useCallback(() => {
     const current = ++generation.current;
     setResult({ kind: 'loading' });
@@ -22,6 +28,26 @@ export function LatestConversation({ language }: { language: AppLanguage }) {
     void loadLatestConversation(repository).then(value => { if (current === ref.current) setResult(value); });
     return () => { ref.current++; };
   }, []);
+  const finish = (state: SaveState) => {
+    setSaveState(state);
+    if (state === 'saved') { pending.current = null; setDraft(''); reload(); }
+    if (state === 'not_saved') pending.current = null;
+    busy.current = false;
+  };
+  const save = async () => {
+    if (busy.current || pending.current || !draft.trim() || draft.length > 20000 || (result.kind !== 'empty' && result.kind !== 'loaded')) return;
+    busy.current = true; setSaveState('saving');
+    const ids = await newMessageIds();
+    if (!ids) { busy.current = false; setSaveState('not_saved'); return; }
+    const record = { conversationId: result.kind === 'loaded' ? result.conversationId : ids.conversationId, messageId: ids.messageId, content: draft, timestamp: Date.now(), newConversation: result.kind === 'empty' };
+    pending.current = record;
+    finish(await saveLocalMessage(repository, record));
+  };
+  const check = async () => {
+    if (busy.current || !pending.current) return;
+    busy.current = true; setSaveState('saving');
+    finish(await reconcileMessage(repository, pending.current));
+  };
   return <View style={styles.container}>
     <Text style={styles.text}>{t.localOnlyNotice}</Text>
     <View accessibilityLiveRegion="polite">
@@ -32,6 +58,10 @@ export function LatestConversation({ language }: { language: AppLanguage }) {
       {result.kind === 'loaded' && result.messages.length === 0 && <Text style={styles.text}>{t.messagesEmpty}</Text>}
       {result.kind === 'loaded' && result.mayHaveMore && <Text style={styles.text}>{t.messagesLimited}</Text>}
     </View>
+    <TextInput accessibilityLabel={t.messageInput} placeholder={t.messageInput} placeholderTextColor={tokens.color.textSecondary} multiline value={draft} onChangeText={setDraft} maxLength={20000} editable={saveState !== 'saving' && saveState !== 'unknown' && saveState !== 'conflict'} style={styles.input} />
+    <Pressable accessibilityRole="button" accessibilityState={{ disabled: !draft.trim() || saveState === 'saving' || saveState === 'unknown' || saveState === 'conflict' || (result.kind !== 'empty' && result.kind !== 'loaded') }} disabled={!draft.trim() || saveState === 'saving' || saveState === 'unknown' || saveState === 'conflict' || (result.kind !== 'empty' && result.kind !== 'loaded')} onPress={() => void save()} style={styles.button}><Text style={styles.text}>{t.messageSave}</Text></Pressable>
+    <View accessibilityLiveRegion="polite"><Text style={styles.text}>{saveState === 'saving' ? t.messageSaving : saveState === 'saved' ? t.messageSaved : saveState === 'not_saved' ? t.messageNotSaved : saveState === 'unknown' ? t.messageUnknown : saveState === 'conflict' ? t.messageConflict : ''}</Text></View>
+    {(saveState === 'unknown' || saveState === 'conflict') && <Pressable accessibilityRole="button" onPress={() => void check()} style={styles.button}><Text style={styles.text}>{t.messageCheck}</Text></Pressable>}
     <Pressable accessibilityRole="button" onPress={reload} style={styles.button}><Text style={styles.text}>{t.conversationsRefresh}</Text></Pressable>
   </View>;
 }
@@ -39,5 +69,6 @@ const styles = StyleSheet.create({
   container: { gap: tokens.spacing_dp.md },
   message: { padding: tokens.spacing_dp.md, marginVertical: tokens.spacing_dp.xs, backgroundColor: tokens.color.surface, borderRadius: tokens.radius_dp.md },
   text: { color: tokens.color.textPrimary, fontSize: tokens.typography_sp.bodySmall.size },
+  input: { minHeight: tokens.touch.minTarget_dp, padding: tokens.spacing_dp.md, color: tokens.color.textPrimary, fontSize: tokens.typography_sp.body.size, borderColor: tokens.color.border, borderWidth: tokens.elevation_dp.subtle, borderRadius: tokens.radius_dp.md },
   button: { minHeight: tokens.touch.minTarget_dp, alignItems: 'center', justifyContent: 'center', backgroundColor: tokens.color.primaryLight, borderRadius: tokens.radius_dp.md },
 });
