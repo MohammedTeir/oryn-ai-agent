@@ -1,29 +1,33 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import tokens from '../../docs/design/tokens.json';
 import FeasibilityApp from './App';
 import NavigationPreview from './milestone1/App';
+import ShellPreview from './production/App';
+import { previewDestination } from './previewNavigation';
 import { useAppLanguage } from './useAppLanguage';
 import { AppLanguageProvider } from './milestone1/AppLanguage';
 
 const labels = {
-  en: { open: 'Open Milestone 1 navigation preview', close: 'Return to feasibility tests', notice: 'Navigation preview: features are not yet available.' },
-  ar: { open: 'فتح معاينة التنقل للمرحلة الأولى', close: 'العودة إلى اختبارات الجدوى', notice: 'معاينة التنقل: الميزات غير متاحة بعد.' },
+  en: { open: 'Open Milestone 1 navigation preview', openShell: 'Open local app shell preview', close: 'Return to feasibility tests', notice: 'Navigation preview: features are not yet available.', shellNotice: 'Test-only shell preview. AI and execution are not available in this screen.' },
+  ar: { open: 'فتح معاينة التنقل للمرحلة الأولى', openShell: 'فتح معاينة واجهة التطبيق المحلية', close: 'العودة إلى اختبارات الجدوى', notice: 'معاينة التنقل: الميزات غير متاحة بعد.', shellNotice: 'معاينة تجريبية للواجهة. الذكاء الاصطناعي والتنفيذ غير متاحين في هذه الشاشة.' },
 } as const;
 
 export default function PreviewRoot() {
-  const [preview, setPreview] = useState(false);
+  const [destination, dispatch] = useReducer(previewDestination, 'feasibility');
+  const preview = destination !== 'feasibility';
   const language = useAppLanguage();
   const t = labels[language];
   return <View style={[styles.root, { direction: language === 'ar' ? 'rtl' : 'ltr' }]}>
     <View style={preview ? styles.hidden : styles.root} accessibilityElementsHidden={preview} importantForAccessibility={preview ? 'no-hide-descendants' : 'auto'}>
-      <Pressable accessibilityRole="button" onPress={() => setPreview(true)} style={styles.button}><Text style={styles.text}>{t.open}</Text></Pressable>
+      <Pressable accessibilityRole="button" onPress={() => dispatch('open-navigation')} style={styles.button}><Text style={styles.text}>{t.open}</Text></Pressable>
+      <Pressable accessibilityRole="button" onPress={() => dispatch('open-shell')} style={styles.button}><Text style={styles.text}>{t.openShell}</Text></Pressable>
       <FeasibilityApp />
     </View>
     {preview && <View style={styles.root}>
-      <Text style={styles.notice}>{t.notice}</Text>
-      <Pressable accessibilityRole="button" onPress={() => setPreview(false)} style={styles.button}><Text style={styles.text}>{t.close}</Text></Pressable>
-      <AppLanguageProvider><NavigationPreview /></AppLanguageProvider>
+      <Text style={styles.notice}>{destination === 'shell' ? t.shellNotice : t.notice}</Text>
+      <Pressable accessibilityRole="button" onPress={() => dispatch('close')} style={styles.button}><Text style={styles.text}>{t.close}</Text></Pressable>
+      <AppLanguageProvider>{destination === 'shell' ? <ShellPreview /> : <NavigationPreview />}</AppLanguageProvider>
     </View>}
   </View>;
 }
