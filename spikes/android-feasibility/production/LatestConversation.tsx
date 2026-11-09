@@ -4,7 +4,8 @@ import tokens from '../../../docs/design/tokens.json';
 import type { AppLanguage } from '../language';
 import { strings } from '../milestone1/strings';
 import { createAppConversationRepository } from '../storage/appConversations';
-import { loadLatestConversation, type LatestConversation as Result } from './latestConversation';
+import { loadLatestConversation, loadMessagePage, type LatestConversation as Result } from './latestConversation';
+import type { MessageCursor } from '../storage/conversations';
 import { newMessageIds } from './messageIds';
 import { reconcileMessage, saveLocalMessage, type PendingMessage, type SaveState } from './localMessage';
 
@@ -13,12 +14,16 @@ export function LatestConversation({ language }: { language: AppLanguage }) {
   const t = strings[language];
   const [result, setResult] = useState<Result | { kind: 'loading' }>({ kind: 'loading' });
   const generation = useRef(0);
+  const [pages, setPages] = useState<(MessageCursor | null)[]>([null]);
+  const [pageLoading, setPageLoading] = useState(false);
+  const [pageError, setPageError] = useState(false);
   const busy = useRef(false);
   const pending = useRef<PendingMessage | null>(null);
   const [draft, setDraft] = useState('');
   const [saveState, setSaveState] = useState<SaveState | 'idle' | 'saving'>('idle');
   const reload = useCallback(() => {
     const current = ++generation.current;
+    setPages([null]); setPageLoading(false); setPageError(false);
     setResult({ kind: 'loading' });
     void loadLatestConversation(repository).then(value => { if (current === generation.current) setResult(value); });
   }, []);
@@ -28,6 +33,21 @@ export function LatestConversation({ language }: { language: AppLanguage }) {
     void loadLatestConversation(repository).then(value => { if (current === ref.current) setResult(value); });
     return () => { ref.current++; };
   }, []);
+  const showPage = async (cursors: (MessageCursor | null)[]) => {
+    if (result.kind !== 'loaded' || pageLoading) return;
+    const current = ++generation.current;
+    setPageLoading(true); setPageError(false);
+    const page = await loadMessagePage(repository, result.conversationId, cursors[cursors.length - 1]);
+    if (current !== generation.current) return;
+    setPageLoading(false);
+    if (page.kind === 'error') { setPageError(true); return; }
+    setPages(cursors); setResult(page);
+  };
+  const nextPage = () => {
+    if (result.kind !== 'loaded' || !result.mayHaveMore || !result.messages.length) return;
+    const last = result.messages[result.messages.length - 1];
+    void showPage([...pages, { createdAt: last.createdAt, id: last.id }]);
+  };
   const finish = (state: SaveState) => {
     setSaveState(state);
     if (state === 'saved') { pending.current = null; setDraft(''); reload(); }
@@ -55,9 +75,13 @@ export function LatestConversation({ language }: { language: AppLanguage }) {
       {result.kind === 'error' && <Text style={styles.text}>{t.conversationsError}</Text>}
       {result.kind === 'empty' && <Text style={styles.text}>{t.conversationsEmpty}</Text>}
       {result.kind === 'loaded' && result.messages.map(message => <View key={message.id} style={styles.message}><Text selectable style={styles.text}>{message.content}</Text></View>)}
-      {result.kind === 'loaded' && result.messages.length === 0 && <Text style={styles.text}>{t.messagesEmpty}</Text>}
+      {result.kind === 'loaded' && result.messages.length === 0 && <Text style={styles.text}>{pages.length > 1 ? t.messagesPageEmpty : t.messagesEmpty}</Text>}
       {result.kind === 'loaded' && result.mayHaveMore && <Text style={styles.text}>{t.messagesLimited}</Text>}
+      {pageLoading && <Text style={styles.text}>{t.conversationsLoading}</Text>}
+      {pageError && <Text style={styles.text}>{t.conversationsError}</Text>}
     </View>
+    {result.kind === 'loaded' && pages.length > 1 && <Pressable accessibilityRole="button" disabled={pageLoading} accessibilityState={{ disabled: pageLoading }} onPress={() => void showPage(pages.slice(0, -1))} style={styles.button}><Text style={styles.text}>{t.messagesPrevious}</Text></Pressable>}
+    {result.kind === 'loaded' && result.mayHaveMore && <Pressable accessibilityRole="button" disabled={pageLoading} accessibilityState={{ disabled: pageLoading }} onPress={nextPage} style={styles.button}><Text style={styles.text}>{t.messagesNext}</Text></Pressable>}
     <TextInput accessibilityLabel={t.messageInput} placeholder={t.messageInput} placeholderTextColor={tokens.color.textSecondary} multiline value={draft} onChangeText={setDraft} maxLength={20000} editable={saveState !== 'saving' && saveState !== 'unknown' && saveState !== 'conflict'} style={styles.input} />
     <Pressable accessibilityRole="button" accessibilityState={{ disabled: !draft.trim() || saveState === 'saving' || saveState === 'unknown' || saveState === 'conflict' || (result.kind !== 'empty' && result.kind !== 'loaded') }} disabled={!draft.trim() || saveState === 'saving' || saveState === 'unknown' || saveState === 'conflict' || (result.kind !== 'empty' && result.kind !== 'loaded')} onPress={() => void save()} style={styles.button}><Text style={styles.text}>{t.messageSave}</Text></Pressable>
     <View accessibilityLiveRegion="polite"><Text style={styles.text}>{saveState === 'saving' ? t.messageSaving : saveState === 'saved' ? t.messageSaved : saveState === 'not_saved' ? t.messageNotSaved : saveState === 'unknown' ? t.messageUnknown : saveState === 'conflict' ? t.messageConflict : ''}</Text></View>
