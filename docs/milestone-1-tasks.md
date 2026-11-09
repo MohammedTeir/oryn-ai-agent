@@ -5,7 +5,7 @@
 **Related evidence:** [Milestone 1 audit](milestone-1-audit.md)  
 **Requirements:** [Master specification v1.10](../ORYN_Master_Project_Specification.md) and [PLAN.md](../PLAN.md)
 
-This is a **proposed implementation sequence**, not a reduction or change of any approved v1 requirement. The audit documents existing partial foundations; **every task below is open** until its own evidence and acceptance criteria are met. P0 = blocking/critical-path; P1 = subsequent work. Use small, reviewable PRs (ideally one scoped task per PR), record current source and APK provenance, and never mark a feature complete from mocked UI or cloud builds alone. IDs do not encode PR numbers.
+This is a **proposed implementation sequence**, not a reduction or change of any approved v1 requirement. The audit documents existing partial foundations; **each task remains open** until its own evidence and acceptance criteria are met; individual task status is recorded below. P0 = blocking/critical-path; P1 = subsequent work. Use small, reviewable PRs (ideally one scoped task per PR), record current source and APK provenance, and never mark a feature complete from mocked UI or cloud builds alone. IDs do not encode PR numbers.
 
 ## Milestone 1 invariants
 
@@ -17,6 +17,8 @@ This is a **proposed implementation sequence**, not a reduction or change of any
 - Keystore-backed credentials only; do not save API keys in SQLite, exports, diagnostics, prompts, output, or tools.
 - No accounts, telemetry, cloud backend or unverified embedded Termux parity. Retain feasibility harness independently until a production replacement passes its gates.
 - No modification to native gateway, grant ledger or policy as part of ordinary UI tasks. Native security changes require their own tests and human review; reconcile the master-spec Phase 1 / PLAN Milestone 2 boundary before enabling real dispatch.
+
+Physical-device acceptance is grouped at the end of Milestone 1 at the owner’s request. Device-dependent tasks and the milestone exit gate remain open until their evidence is collected; this does not defer native authorization for any executable product path.
 
 ## Phase A — Verify evidence and unblock design
 
@@ -44,7 +46,7 @@ This is a **proposed implementation sequence**, not a reduction or change of any
 **Acceptance:** Explicit design approvals, font/license record and documented responsive/RTL rules; uncertain details remain Unknown. Do not regenerate or modify the canonical brand artwork.
 
 ### M1-03 — Documentation and milestone-boundary reconciliation
-**Priority:** P1 | **Depends on:** audit | **Status:** OPEN
+**Priority:** P1 | **Depends on:** audit | **Status:** COMPLETE (documentation reconciliation; no product feature or device acceptance implied)
 
 - Fix outdated README spec-version text and PLAN “Planning only” wording without implying v1 completion.
 - Make the canonical root specification and mirrored copy/link semantics explicit; preserve approved v1.10 requirements.

@@ -4,7 +4,7 @@
 
 ORYN is a planned autonomous AI agent for Android that combines a conversational interface with terminal-based task execution, tool discovery, diagnostics, and human approval before every command.
 
-> **Status:** [Milestone 0 feasibility complete](docs/feasibility/milestone-0-closure.md) for the recorded prototype scope. Owner phone reports establish native/external fixed-probe execution, denial, timeout/cancellation and lifecycle behavior. Embedded Termux shell/package adoption remains no-go; this is not standalone parity or v1/product completion. Next: Milestone 1 UI, onboarding and local foundation.
+> **Status:** [Milestone 0 feasibility complete](docs/feasibility/milestone-0-closure.md) for the recorded prototype scope. Owner phone reports establish native/external fixed-probe execution, denial, timeout/cancellation and lifecycle behavior. Embedded Termux shell/package adoption remains no-go; this is not standalone parity or v1/product completion. Milestone 1 UI, onboarding and local foundation are in progress; see the [task register](docs/milestone-1-tasks.md).
 
 ## Development checks and test APKs
 
@@ -64,7 +64,9 @@ Prove that the Android app can detect external Termux, propose a safe command, r
 
 ## Specification
 
-Read the full [ORYN Master Project Specification v1.3](docs/ORYN_Master_Project_Specification.md) for requirements, architecture, migration strategy, security, roadmap, and acceptance criteria.
+Read the canonical root [ORYN Master Project Specification v1.10](ORYN_Master_Project_Specification.md) for requirements, architecture, migration strategy, security, roadmap, and acceptance criteria.
+
+The copy at [docs/ORYN_Master_Project_Specification.md](docs/ORYN_Master_Project_Specification.md) is a documentation mirror; its relative PLAN link differs for its location. If the copies diverge, the root specification is authoritative and the mirror should be reconciled without changing approved requirements.
 
 ## License
 

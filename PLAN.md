@@ -1,6 +1,6 @@
 # ORYN — Implementation Plan
 
-**Status:** Planning only — no app implementation verified by this document  
+**Status:** Milestone 0 bounded feasibility complete; Milestone 1 in progress. See linked evidence for verified scope.
 **Last requirements reconciliation:** 2026-11-01 (eight interview batches)  
 **Specification:** [ORYN Master Project Specification v1.10](ORYN_Master_Project_Specification.md)  
 **Approved assets:** [ORYN Brand Assets](assets/ORYN_Brand_Assets/)  
@@ -77,7 +77,7 @@ Current follow-up: [capability decisions and exact stack record](docs/feasibilit
 
 ## 4. Milestone 1 — UI, onboarding and local foundation
 
-**Evidence-backed progress audit (through merged PR #24, 2026-11-08):** [Milestone 1 implementation audit](docs/milestone-1-audit.md). **Execution backlog:** [Ordered Milestone 1 tasks M1-01–M1-19](docs/milestone-1-tasks.md). These tracking documents distinguish implemented prototypes, pending production behavior and unverified device acceptance; they do not close any checklist item or change the v1.10 requirements. The next proposed evidence task is **M1-01: Android verification of PR #24**.
+**Evidence-backed progress audit (through merged PR #24, 2026-11-08):** [Milestone 1 implementation audit](docs/milestone-1-audit.md). **Execution backlog:** [Ordered Milestone 1 tasks M1-01–M1-19](docs/milestone-1-tasks.md). These tracking documents distinguish implemented prototypes, pending production behavior and unverified device acceptance; they do not close any checklist item or change the v1.10 requirements. The owner requested that remaining physical-device evidence be collected together at the end of Milestone 1. M1-01 and M1-02 remain open until their device and approval gates are met; continue dependency-ready work without claiming those gates passed.
 
 **Current progress:** A separate navigation preview provides the two primary tabs, secondary Settings and Terminal/Tools/History segments. The feasibility APK can open that preview; it also contains a light launch screen, a preview language choice saved locally, a prerequisite-based Termux status and a disabled approval-card example. These are partial foundations, not completed checklist items. The screens, approval flow, onboarding and storage remain incomplete. Device, RTL and accessibility acceptance are still required.
 
@@ -98,6 +98,10 @@ Current follow-up: [capability decisions and exact stack record](docs/feasibilit
 - [ ] Provide no-account local operation; isolate future sync interfaces without shipping a cloud backend.
 
 **Exit gate:** Device screenshots match approved designs, navigation and onboarding work, accessible RTL flows are tested (Arabic mockups approved, font recorded), the tab symbol is verified at 24 dp, the UI Acceptance Tests (v1.10) in the specification pass, and no mock connection or command result is presented as real.
+
+### Authorization across milestone boundaries
+
+The master specification places native Strict, fixed Batch and scoped Session enforcement in Phase 1, while this delivery plan lists runtime integration in Milestone 2. This ordering does not relax the specification: **no product shell execution may be enabled in any milestone without the required native authorization, policy checks and separate root/high-risk approval.** The existing fixed-probe feasibility gateway is not production authorization. Non-executable UI and local foundations may proceed; production dispatch stays unavailable until the applicable native security requirements are implemented and verified.
 
 ## 5. Milestone 2 — Secure terminal and dual-runtime integration
 
@@ -178,14 +182,14 @@ The embedded runtime is **within v1 scope**, but **its individual features are c
 | Category | Status / action |
 |---|---|
 | Default Strict approval mode | **ASSUMPTION** until explicitly confirmed |
-| App package identifier | Unknown; check naming and ownership |
+| Production app package identifier | Unknown; the owner authorized `io.github.mohammedteir.oryn.feasibility` for the debug-only spike, not production |
 | Android minimum 10 | **CONFIRMED**; full ABI/device matrix unknown |
-| Exact Expo/React Native/Kotlin/SDK versions | Unknown; verify currently supported combinations before pinning |
-| Embedded Termux compatibility | **High-risk feasibility UNKNOWN**; prototype and publish capability matrix |
-| External Termux API version/permissions | Unknown until current docs and real-device test |
+| Toolchain versions | Spike pins and compatibility evidence are recorded in [dependency compatibility](docs/feasibility/dependency-compatibility.md); production choices need their own verification |
+| Embedded Termux compatibility | Embedded shell/package-manager adoption is **no-go on current evidence**; see [feasibility decisions](docs/feasibility/device-results-review-2026-11-05.md) |
+| External Termux API version/permissions | Fixed-probe observations are documented in [Milestone 0 closure](docs/feasibility/milestone-0-closure.md); production support remains unverified |
 | Prohibited-operation list | **OPEN PRODUCT DECISION**; draft for user approval, do not invent as approved |
 | Session containment technology | **High-risk UNKNOWN**; require enforceable scope or strict fallback |
-| Storage database/library | Proposed only; choose after scope/compatibility review |
+| Storage database/library | SQLite schema and preference prototype exist; production repositories and integration remain open |
 | Gemini cost/quota availability | Provider-dependent; do not assert billing accuracy |
 | Android file access beyond selected folders | Platform-dependent; permission check required |
 | Root manager, hardware compatibility | Device-dependent; cannot presume access |
@@ -196,18 +200,18 @@ The embedded runtime is **within v1 scope**, but **its individual features are c
 
 Before implementing **any** task, the assigned agent/developer MUST:
 
-1. Read the **v1.9 master specification**, this plan, approved designs and **actual source code/config/tests**; treat README and screenshots as secondary context.
+1. Read the **v1.10 master specification**, this plan, approved designs and **actual source code/config/tests**; treat README and screenshots as secondary context.
 2. Produce a short **Scope & Stack Inventory**: target product, v1 in/out features, user journeys, Android/Expo/Kotlin/Termux/Gemini boundaries, security grants and exact confirmed dependencies. Link each requirement to a spec section or code path.
 3. Classify claims as **CONFIRMED** (user/spec), **VERIFIED** (inspected code + repeatable tests), **PROPOSED** (not approved) or **UNKNOWN** (research needed). Never blur these states.
 4. Never invent SDK versions, Gemini model availability, terminal capabilities, APIs, Android permissions, root status, installation success, CI passing, package support, user-visible runtime data, storage constraints or acceptance evidence.
 5. Check current official upstream docs whenever versions, Android restrictions, Termux APIs or Gemini capabilities matter. Pin exact chosen versions in implementation records; avoid copying unverified historical snippets.
-6. Flag contradictions between old docs and the eight-batch interview. The **master specification v1.9** and explicit user decisions are source of truth; ask for a decision rather than silently changing tech stack or scope.
+6. Flag contradictions between old docs and the eight-batch interview. The **master specification v1.10** and explicit user decisions are source of truth; ask for a decision rather than silently changing tech stack or scope.
 7. Before scope change, show reason, trade-offs, security/privacy impact, files involved and acceptance criteria, and obtain explicit approval.
 8. Give test evidence for every completed checkbox: exact code path/commit, tests run and output, target device/Android/ABI, verified runtime behavior, blockers and known limits.
 9. Do not mark an item done solely because design assets or a QA-report claim exist. No manual or automatic code execution is authorized by the existence of this plan.
 
 **Pre-implementation gate:** Unknown requirements, runtime claims or policy rules stay Unknown until researched or explicitly approved. Fail closed for unresolved execution/security policy.
 
-## 13. Immediate next engineering task (after separate implementation approval)
+## 13. Current engineering direction
 
-Start Milestone 0: verify source and tooling baseline, inspect current upstream technical documentation, establish a real-device matrix, and prototype native authorization with Termux external and embedded feasibility. **Do not begin implementing until the user explicitly initiates implementation.**
+Continue the [Milestone 1 task register](docs/milestone-1-tasks.md) from the current merged baseline. The owner requested grouping physical-device acceptance at the end of the milestone; retain each unmet device gate and collect its evidence before milestone closure. Design decisions requiring explicit approval remain pending. Continue safe, dependency-ready implementation and never enable an executable product path without the native authorization gate above.
