@@ -1,4 +1,4 @@
-import { Component, useEffect, useReducer, type ReactNode } from 'react';
+import { useEffect, useReducer } from 'react';
 import { BackHandler, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import tokens from '../../../docs/design/tokens.json';
 import { useStoredLanguage } from '../milestone1/AppLanguage';
@@ -7,19 +7,12 @@ import { AppIcon } from '../milestone1/AppIcon';
 import { initialNavigation, navigate, type Segment } from '../milestone1/navigation';
 import { strings } from '../milestone1/strings';
 import { LatestConversation } from './LatestConversation';
+import { RecoveryBoundary } from './RecoveryBoundary';
 
 const symbol = require('../../../assets/ORYN_Brand_Assets/03_Icon_Only/oryn-icon-only-transparent.png');
 const inactive = require('../../../assets/ORYN_Brand_Assets/04_Monochrome/oryn-icon-only-mono-navy.png');
 const segments: Segment[] = ['terminal', 'tools', 'history'];
 const languageChoices: LanguagePreference[] = ['system', 'en', 'ar'];
-
-class ScreenBoundary extends Component<{ children: ReactNode; message: string }, { failed: boolean }> {
-  state = { failed: false };
-  static getDerivedStateFromError() { return { failed: true }; }
-  render() {
-    return this.state.failed ? <View style={styles.content}><Text accessibilityRole="alert" style={styles.text}>{this.props.message}</Text></View> : this.props.children;
-  }
-}
 
 export default function ProductionApp() {
   const { language, preference, status: languageStatus, select } = useStoredLanguage();
@@ -41,7 +34,7 @@ export default function ProductionApp() {
       <Pressable accessibilityRole="button" accessibilityLabel={state.settings ? t.back : t.settings} onPress={() => dispatch({ type: state.settings ? 'back' : 'settings' })} style={styles.iconButton}><AppIcon name={state.settings ? (language === 'ar' ? 'backRtl' : 'back') : 'settings'} color={tokens.color.textPrimary} /></Pressable>
     </View>
     {!state.settings && (languageStatus === 'loading' || languageStatus === 'error') && <View accessibilityLiveRegion="polite"><Text style={styles.text}>{languageStatus === 'loading' ? t.languageLoading : t.languageError}</Text></View>}
-    <ScreenBoundary message={t.shellError}><ScrollView contentContainerStyle={styles.content}>
+    <RecoveryBoundary message={t.shellError} retryLabel={t.shellRetry}><ScrollView contentContainerStyle={styles.content}>
       <Text accessibilityRole="header" style={styles.title}>{state.settings ? t.settings : state.tab === 'agent' ? t.agent : t.terminalTab}</Text>
       {!state.settings && state.tab === 'terminal' && <View style={styles.segments} accessibilityRole="tablist">{segments.map(item => <Pressable key={item} accessibilityRole="tab" accessibilityState={{ selected: state.segment === item }} onPress={() => dispatch({ type: 'segment', segment: item })} style={[styles.segment, state.segment === item && styles.selected]}><Text style={styles.text}>{t[item]}</Text></Pressable>)}</View>}
       {state.settings ? <View style={styles.languageGroup}>
@@ -50,7 +43,7 @@ export default function ProductionApp() {
         <View accessibilityLiveRegion="polite"><Text style={styles.text}>{languageStatus === 'loading' ? t.languageLoading : languageStatus === 'saving' ? t.languageSaving : languageStatus === 'error' ? t.languageError : t.languageSaved}</Text></View>
       </View> : state.tab === 'terminal' ? <Text style={styles.text}>{t.unavailable}</Text> : null}
       <View style={state.settings || state.tab !== 'agent' ? styles.hidden : undefined} accessibilityElementsHidden={state.settings || state.tab !== 'agent'} importantForAccessibility={state.settings || state.tab !== 'agent' ? 'no-hide-descendants' : 'auto'}><LatestConversation language={language} /></View>
-    </ScrollView></ScreenBoundary>
+    </ScrollView></RecoveryBoundary>
     <View style={styles.navigation} accessibilityRole="tablist">
       <Pressable accessibilityRole="tab" accessibilityState={{ selected: !state.settings && state.tab === 'agent' }} onPress={() => dispatch({ type: 'tab', tab: 'agent' })} style={[styles.tab, !state.settings && state.tab === 'agent' && styles.selected]}><Image source={!state.settings && state.tab === 'agent' ? symbol : inactive} style={styles.tabSymbol} resizeMode="contain" /><Text style={styles.text}>{t.agent}</Text></Pressable>
       <Pressable accessibilityRole="tab" accessibilityState={{ selected: !state.settings && state.tab === 'terminal' }} onPress={() => dispatch({ type: 'tab', tab: 'terminal' })} style={[styles.tab, !state.settings && state.tab === 'terminal' && styles.selected]}><AppIcon name="terminal" color={tokens.color.textPrimary} /><Text style={styles.text}>{t.terminalTab}</Text></Pressable>
