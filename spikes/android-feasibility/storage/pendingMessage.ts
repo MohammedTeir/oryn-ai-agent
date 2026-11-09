@@ -42,5 +42,13 @@ export function createPendingMessageStore(open: () => Promise<ConversationDataba
         return null;
       });
     },
+    discardIfUnwritten(record: PendingMessageRecord): Promise<Result<null>> {
+      if (!valid(record)) return Promise.resolve({ ok: false });
+      return withDb(async db => {
+        const deleted = await db.runAsync("DELETE FROM pending_local_message WHERE slot = 1 AND conversation_id = ? AND message_id = ? AND content = ? AND created_at = ? AND new_conversation = ? AND NOT EXISTS (SELECT 1 FROM agent_messages WHERE id = ?)", record.conversationId, record.messageId, record.content, record.createdAt, record.newConversation ? 1 : 0, record.messageId);
+        if (deleted.changes !== 1) throw new Error('Pending record cannot be discarded');
+        return null;
+      });
+    },
   };
 }
