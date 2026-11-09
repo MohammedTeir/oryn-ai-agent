@@ -58,7 +58,7 @@ Physical-device acceptance is grouped at the end of Milestone 1 at the owner’s
 ## Phase B — Production shell and AI Agent UI (AI Agent before secondary redesigns)
 
 ### M1-04 — Production application shell and routing
-**Priority:** P0 | **Depends on:** M1-02 foundation | **Status:** PARTIAL — separate non-executing shell entry, test-APK preview, routing scaffold and shared stored-language settings; production integration and device acceptance remain open
+**Priority:** P0 | **Depends on:** M1-02 foundation | **Status:** PARTIAL — separate non-executing shell entry, isolated debug-signed APK build, routing and startup boundary; production identity/signing and device acceptance remain open
 
 - Separate production root/navigation from `PreviewRoot.tsx` and the debug test harness without losing feasibility evidence/testing.
 - Implement exactly two bottom tabs and Settings as a secondary destination; preserve navigation/back behavior and Terminal/Tools/History segment model.
