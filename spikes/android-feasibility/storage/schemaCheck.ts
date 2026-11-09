@@ -1,6 +1,6 @@
 const requiredTables = [
   'conversations', 'agent_messages', 'tasks', 'plan_steps', 'action_proposals', 'approval_audit',
-  'executions', 'execution_events', 'tool_inventory', 'runtime_profiles', 'artifacts', 'settings',
+  'executions', 'execution_events', 'tool_inventory', 'runtime_profiles', 'artifacts', 'settings', 'pending_local_message',
 ] as const;
 
 export interface SchemaConnection {

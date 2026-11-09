@@ -151,7 +151,7 @@ Physical-device acceptance is grouped at the end of Milestone 1 at the owner’s
 **Acceptance:** Tests for no Termux, denied permissions, provider errors and installed-but-unconfigured environments; real-device evidence where feasible.
 
 ### M1-14 — Production SQLite repositories and transactional transitions
-**Priority:** P0 | **Depends on:** schema v1 from PR #18 | **Status:** PARTIAL — user conversation/message repository foundation; other repositories, production UI integration, retention and device acceptance remain open
+**Priority:** P0 | **Depends on:** schema v1 from PR #18 | **Status:** PARTIAL — user conversation/message repository and pending-save storage foundation; recovery integration, other repositories, retention and device acceptance remain open
 
 - Define typed, validated/parameterized CRUD for conversations, messages, task/plan records, proposals, executions and event history; apply bounded retention.
 - Check foreign-key enforcement per connection, handle transactional state transitions, migration upgrades and corrupt/newer schemas safely.

@@ -95,3 +95,21 @@ test('reconciliation refuses invalid IDs and malformed stored records', async t 
   assert.deepEqual(await repo.getUserMessage('c', 'm'), { ok: false });
   assert.deepEqual(await repo.getConversation('c'), { ok: false });
 });
+
+test('pending message survives reopening and cannot be overwritten or cleared without an exact saved message', async t => {
+  const { createPendingMessageStore } = require('../storage/pendingMessage.ts');
+  const env = setup(t); await env.init();
+  const pending = createPendingMessageStore(env.open); const repo = createConversationRepository(env.open);
+  const record = { conversationId: 'c', messageId: 'm', content: 'draft', createdAt: 10, newConversation: true };
+  assert.deepEqual(await pending.read(), { ok: true, value: null });
+  assert.deepEqual(await pending.stage(record), { ok: true, value: null });
+  assert.deepEqual(await createPendingMessageStore(env.open).read(), { ok: true, value: record });
+  assert.deepEqual(await pending.stage({ ...record, messageId: 'other' }), { ok: false });
+  assert.deepEqual(await pending.clearIfSaved(record), { ok: false });
+  assert.equal((await repo.createWithMessage('c', 'm', 'different', 10)).ok, true);
+  assert.deepEqual(await pending.clearIfSaved(record), { ok: false });
+  assert.deepEqual(await pending.read(), { ok: true, value: record });
+  const db = new DatabaseSync(env.file); db.prepare('UPDATE agent_messages SET content = ? WHERE id = ?').run('draft', 'm'); db.close();
+  assert.deepEqual(await pending.clearIfSaved(record), { ok: true, value: null });
+  assert.deepEqual(await pending.read(), { ok: true, value: null });
+});
