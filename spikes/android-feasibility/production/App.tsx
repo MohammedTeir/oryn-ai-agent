@@ -6,6 +6,7 @@ import type { LanguagePreference } from '../storage/languagePreference';
 import { AppIcon } from '../milestone1/AppIcon';
 import { initialNavigation, navigate, type Segment } from '../milestone1/navigation';
 import { strings } from '../milestone1/strings';
+import { LatestConversation } from './LatestConversation';
 
 const symbol = require('../../../assets/ORYN_Brand_Assets/03_Icon_Only/oryn-icon-only-transparent.png');
 const inactive = require('../../../assets/ORYN_Brand_Assets/04_Monochrome/oryn-icon-only-mono-navy.png');
@@ -47,7 +48,7 @@ export default function ProductionApp() {
         <Text accessibilityRole="header" style={styles.text}>{t.shellLanguageTitle}</Text>
         {languageChoices.map(choice => <Pressable key={choice} accessibilityRole="radio" accessibilityState={{ checked: languageStatus === 'ready' && preference === choice, disabled: languageStatus === 'loading' || languageStatus === 'saving' }} disabled={languageStatus === 'loading' || languageStatus === 'saving'} onPress={() => void select(choice)} style={[styles.languageChoice, languageStatus === 'ready' && preference === choice && styles.selected]}><Text style={styles.text}>{t.languages[choice]}{languageStatus === 'ready' && preference === choice ? ` · ${t.selected}` : ''}</Text></Pressable>)}
         <View accessibilityLiveRegion="polite"><Text style={styles.text}>{languageStatus === 'loading' ? t.languageLoading : languageStatus === 'saving' ? t.languageSaving : languageStatus === 'error' ? t.languageError : t.languageSaved}</Text></View>
-      </View> : <Text style={styles.text}>{t.unavailable}</Text>}
+      </View> : state.tab === 'agent' ? <LatestConversation language={language} /> : <Text style={styles.text}>{t.unavailable}</Text>}
     </ScrollView></ScreenBoundary>
     <View style={styles.navigation} accessibilityRole="tablist">
       <Pressable accessibilityRole="tab" accessibilityState={{ selected: !state.settings && state.tab === 'agent' }} onPress={() => dispatch({ type: 'tab', tab: 'agent' })} style={[styles.tab, !state.settings && state.tab === 'agent' && styles.selected]}><Image source={!state.settings && state.tab === 'agent' ? symbol : inactive} style={styles.tabSymbol} resizeMode="contain" /><Text style={styles.text}>{t.agent}</Text></Pressable>
