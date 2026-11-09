@@ -7,7 +7,7 @@ const { join } = require('node:path');
 const { migrateLocalDatabase } = require('../storage/migrations.ts');
 const { createConversationRepository } = require('../storage/conversations.ts');
 function wrap(db) {
-  return { async execAsync(sql) { db.exec(sql); }, async runAsync(sql, ...args) { return db.prepare(sql).run(...args); }, async getFirstAsync(sql, ...args) { return db.prepare(sql).get(...args) ?? null; }, async getAllAsync(sql, ...args) { return db.prepare(sql).all(...args).map(row => ({ ...row })); }, async closeAsync() { db.close(); } };
+  return { async execAsync(sql) { db.exec(sql); }, async runAsync(sql, ...args) { return db.prepare(sql).run(...args); }, async getFirstAsync(sql, ...args) { const row = db.prepare(sql).get(...args); return row ? { ...row } : null; }, async getAllAsync(sql, ...args) { return db.prepare(sql).all(...args).map(row => ({ ...row })); }, async closeAsync() { db.close(); } };
 }
 function setup(t) {
   const dir = mkdtempSync(join(tmpdir(), 'oryn-conversation-')); t.after(() => rmSync(dir, { recursive: true, force: true }));
@@ -67,4 +67,31 @@ test('deletion is atomic and does not remove records referenced by tasks', async
   assert.deepEqual(await repo.deleteConversation('b'), { ok: true, value: null });
   assert.deepEqual((await repo.listMessages('b', 10)).value, []);
   assert.deepEqual(await repo.deleteConversation('b'), { ok: false });
+});
+
+test('reconciles a committed write when closing the connection reports failure', async t => {
+  const env = setup(t); await env.init();
+  const uncertain = createConversationRepository(async () => {
+    const db = await env.open();
+    const close = db.closeAsync;
+    db.closeAsync = async () => { await close(); throw new Error('private failure details'); };
+    return db;
+  });
+  assert.deepEqual(await uncertain.createWithMessage('c', 'm', 'saved text', 10), { ok: false });
+  const repo = createConversationRepository(env.open);
+  assert.deepEqual(await repo.getConversation('c'), { ok: true, value: { id: 'c', createdAt: 10, updatedAt: 10 } });
+  assert.deepEqual(await repo.getUserMessage('c', 'm'), { ok: true, value: { id: 'm', conversationId: 'c', role: 'user', content: 'saved text', createdAt: 10 } });
+  assert.deepEqual(await repo.getUserMessage('other', 'm'), { ok: true, value: null });
+  assert.deepEqual(await repo.getConversation('missing'), { ok: true, value: null });
+});
+
+test('reconciliation refuses invalid IDs and malformed stored records', async t => {
+  const env = setup(t); await env.init(); const repo = createConversationRepository(env.open);
+  assert.deepEqual(await repo.getUserMessage('c', 'invalid id'), { ok: false });
+  assert.equal((await repo.createWithMessage('c', 'm', 'text', 10)).ok, true);
+  const db = new DatabaseSync(env.file);
+  db.prepare('UPDATE agent_messages SET content = ? WHERE id = ?').run('  ', 'm');
+  db.prepare('UPDATE conversations SET updated_at = ? WHERE id = ?').run(1, 'c'); db.close();
+  assert.deepEqual(await repo.getUserMessage('c', 'm'), { ok: false });
+  assert.deepEqual(await repo.getConversation('c'), { ok: false });
 });
