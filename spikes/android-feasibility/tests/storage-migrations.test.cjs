@@ -42,9 +42,9 @@ test('interruption rolls back schema and version and allows a retry', async t =>
 });
 
 test('refuses to downgrade a database with a newer schema', async t => {
-  const db = new DatabaseSync(':memory:'); t.after(() => db.close()); db.exec('PRAGMA user_version = 2');
+  const db = new DatabaseSync(':memory:'); t.after(() => db.close()); db.exec(`PRAGMA user_version = ${SCHEMA_VERSION + 1}`);
   await assert.rejects(migrateLocalDatabase(adapter(db)), /Unsupported local database version/);
-  assert.equal(db.prepare('PRAGMA user_version').get().user_version, 2);
+  assert.equal(db.prepare('PRAGMA user_version').get().user_version, SCHEMA_VERSION + 1);
 });
 
 test('enforced relationships reject orphan rows and duplicate plan positions', async t => {
@@ -54,4 +54,17 @@ test('enforced relationships reject orphan rows and duplicate plan positions', a
   db.prepare('INSERT INTO tasks VALUES (?, ?, ?, ?, ?)').run('t1', null, 'queued', 1, 1);
   db.prepare('INSERT INTO plan_steps VALUES (?, ?, ?, ?)').run('s1', 't1', 0, 'queued');
   assert.throws(() => db.prepare('INSERT INTO plan_steps VALUES (?, ?, ?, ?)').run('s2', 't1', 0, 'queued'));
+});
+
+test('upgrades version 1 without losing conversations, and rolls back interruption', async t => {
+  const db = new DatabaseSync(':memory:'); t.after(() => db.close());
+  await migrateLocalDatabase(adapter(db));
+  db.exec('DROP TABLE pending_local_message'); db.exec('PRAGMA user_version = 1');
+  db.prepare('INSERT INTO conversations VALUES (?, ?, ?)').run('preserved', 1, 1);
+  await assert.rejects(migrateLocalDatabase(adapter(db, true)), /simulated interruption/);
+  assert.equal(db.prepare('PRAGMA user_version').get().user_version, 1);
+  assert.equal(db.prepare("SELECT count(*) AS n FROM sqlite_master WHERE name = 'pending_local_message'").get().n, 0);
+  await migrateLocalDatabase(adapter(db));
+  assert.equal(db.prepare('PRAGMA user_version').get().user_version, SCHEMA_VERSION);
+  assert.equal(db.prepare('SELECT count(*) AS n FROM conversations WHERE id = ?').get('preserved').n, 1);
 });

@@ -7,7 +7,7 @@ export interface MigrationTransaction {
 export interface MigrationDatabase {
   withExclusiveTransactionAsync(task: (transaction: MigrationTransaction) => Promise<void>): Promise<void>;
 }
-export const SCHEMA_VERSION = 1;
+export const SCHEMA_VERSION = 2;
 
 // Fixed SQL only: no user data is interpolated into migration statements.
 const SCHEMA_V1 = `
@@ -37,7 +37,17 @@ export async function migrateLocalDatabase(db: MigrationDatabase): Promise<void>
     }
     if (version === 0) {
       await tx.execAsync(SCHEMA_V1);
-      await tx.execAsync('PRAGMA user_version = 1');
+    }
+    if (version <= 1) {
+      await tx.execAsync(`CREATE TABLE pending_local_message (
+        slot INTEGER PRIMARY KEY CHECK(slot = 1),
+        conversation_id TEXT NOT NULL,
+        message_id TEXT NOT NULL,
+        content TEXT NOT NULL,
+        created_at INTEGER NOT NULL,
+        new_conversation INTEGER NOT NULL CHECK(new_conversation IN (0, 1))
+      )`);
+      await tx.execAsync('PRAGMA user_version = 2');
     }
   });
 }
