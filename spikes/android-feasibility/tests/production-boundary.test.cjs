@@ -19,6 +19,8 @@ test('production entry does not import feasibility execution or preview modules'
   visit(path.join(root, 'production/index.ts'));
   const files = [...seen].map(f => path.relative(root, f));
   assert.ok(files.includes('production/App.tsx'));
+  assert.ok(files.includes('milestone1/AppLanguage.tsx'), 'Shell uses the shared stored-language provider');
+  assert.ok(files.includes('storage/languagePreference.ts'), 'Shell uses the validated language preference store');
   for (const file of files) assert.doesNotMatch(file, /(^|\/)(PreviewRoot|ApprovalExample|PreviewLanguage|oryn-observer)(\.|\/|$)/, `Unsafe production import: ${file}`);
   assert.ok(!files.includes('App.tsx'), 'Feasibility app must not enter the production graph');
 });

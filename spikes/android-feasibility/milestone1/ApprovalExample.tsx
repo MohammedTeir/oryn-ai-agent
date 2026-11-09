@@ -1,7 +1,7 @@
 import { useReducer } from 'react';
 import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import tokens from '../../../docs/design/tokens.json';
-import { usePreviewLanguage } from './PreviewLanguage';
+import { useStoredLanguage } from './AppLanguage';
 import { exampleNavigation, initialExampleState } from './approvalExampleState';
 
 // This is an illustrative fixture, not a proposal or an authorization surface.
@@ -31,7 +31,7 @@ const copy = {
 } as const;
 
 export function ApprovalExample() {
-  const { language } = usePreviewLanguage();
+  const { language } = useStoredLanguage();
   const t = copy[language];
   const [{ visible, details, more }, dispatch] = useReducer(exampleNavigation, initialExampleState);
   function close() { dispatch('close'); }
