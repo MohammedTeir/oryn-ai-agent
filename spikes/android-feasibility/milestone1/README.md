@@ -1,5 +1,7 @@
 # Milestone 1 navigation scaffold
 
+An independent, non-executing application shell entry now exists at `../production/index.ts`. Run `node scripts/bundle-production.cjs` from the spike directory to bundle it. It does not import the feasibility app, preview approval example or native probe module. The normal feasibility APK still starts the harness; this separate entry is not yet a production APK. The shell currently uses device language only, shows unavailable placeholders and an unknown connection, and does not load the preview's saved language preference. Branding approval, production startup/integration, full accessibility and device testing remain open.
+
 This separate entry provides the two primary destinations, secondary Settings, and the Terminal / Tools / History segments. Screens contain unavailable placeholders; they do not execute commands or report simulated connection state. The existing feasibility entry and native gateway are unchanged.
 
 `node scripts/bundle-milestone1.cjs` checks that Metro can bundle this entry. The feasibility APK opens the test harness and includes an explicitly labeled navigation preview, with a return button. The harness remains mounted while the preview is open so its captured in-memory evidence is retained. This does not establish device behavior; phone verification is outstanding.
