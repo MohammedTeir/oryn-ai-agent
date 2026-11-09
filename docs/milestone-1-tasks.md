@@ -76,7 +76,7 @@ Physical-device acceptance is grouped at the end of Milestone 1 at the owner’s
 **Acceptance:** Component tests; Arabic/English and accessibility review; device screenshots at challenging widths/scales; no generic House/Wi-Fi connection/fingerprint-root icons.
 
 ### M1-06 — Real AI Agent UI and local conversations
-**Priority:** P0 | **Depends on:** M1-04, M1-05, M1-14 for durable record writes | **Status:** OPEN
+**Priority:** P0 | **Depends on:** M1-04, M1-05, M1-14 for durable record writes | **Status:** PARTIAL — read-only latest local user conversation; composer, history navigation, assistant responses and device acceptance remain open
 
 - AI Agent empty state, natural-language composer, user messages, history access and a structured conversation representation.
 - Distinguish no Gemini configuration, offline, unavailable, loading and error; never pretend to have an LLM response or verified terminal result.
