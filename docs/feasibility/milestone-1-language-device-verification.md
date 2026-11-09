@@ -1,6 +1,6 @@
 # M1-01 — Android language preference device verification
 
-**Status: OPEN — device observations pending.**  
+**Status: OPEN — owner-reported selection smoke test successful; detailed device acceptance pending.**  
 **Prepared:** 2026-11-08  
 **Requirements:** [M1-01 in the ordered backlog](../milestone-1-tasks.md#m1-01--android-verification-of-pr-24), [Milestone 1 audit](../milestone-1-audit.md), [specification v1.10](../../ORYN_Master_Project_Specification.md).  
 **Feature under test:** merged [PR #24](https://github.com/MohammedTeir/oryn-ai-agent/pull/24), SQLite-backed System / English / Arabic selection in the explicitly labeled Milestone 1 **navigation preview**.
@@ -49,6 +49,14 @@ Fill every **Observed** field after actual device interaction. `Not tested` is a
 
 **Test boundaries:** Error-state handling (read/write/close failure) is covered by PR #24's automated tests, but cannot be claimed physically validated without an actual reproducible failure case. Device language changed while the preview is already open, 360 dp/200% typography, installed APK integrity, Android process termination, and wider OEM/Android coverage are **Unknown** unless independently observed.
 
+## Owner-reported selection smoke test — 2026-11-09
+
+In the conversation, after PR #26 was merged and the M1-01 device procedure was provided, the owner reported: **“Yes language selection works fine continue.”** This is direct, owner-reported positive evidence that basic language-selection behavior appeared to work on the phone. The report did **not** identify a particular APK SHA/source commit, precise L01–L12 cases, screenshots, English-versus-Arabic re-entry details, a verified Android force-stop, 200% font scaling or TalkBack observations.
+
+**Evidence classification:** `owner-reported basic selector smoke success`; no independently reproduced device test. Do not write “Pass” against an individual case that was not explicitly described. Do not infer zero unexpected command dispatch, complete RTL/accessibility compliance, or proven force-stop persistence from a generic confirmation.
+
+**Disposition:** language selector's basic behavior is reported working, so proceed with the **non-dependent M1-02 design review in parallel**. M1-01's full exit gate remains open until detailed device/provenance results are recorded and reviewed. This distinction prevents a positive smoke test from being silently promoted into complete acceptance.
+
 ## Evidence packet to provide for review
 
 Please supply the observed result for each manual case (Pass / Fail / Not tested), and at least the following material if feasible:
@@ -62,14 +70,14 @@ Please supply the observed result for each manual case (Pass / Fail / Not tested
 ### Reviewer-only result summary (do not complete from expectations)
 
 - **Code/CI baseline:** PR #24 automated test/build reports already verified; they do **not** establish device acceptance.
-- **Device:** Pending.
+- **Device:** Owner-reported basic selector smoke success, detailed evidence pending.
 - **Installed APK/source hash:** Unknown.
-- **L01–L12 results:** Pending.
+- **L01–L12 results:** Individual cases not confirmed; leave Not tested until verified.
 - **Language persistence after app reopen:** Unknown.
 - **Language persistence after verified force-stop:** Unknown.
 - **RTL/legibility accessibility:** Unknown.
 - **Unexpected command/approval/secret exposure:** Not tested on device.
-- **M1-01 closure decision:** **OPEN / awaiting device evidence**.
+- **M1-01 closure decision:** **OPEN / partial owner report; remaining acceptance pending**.
 
 ## Completion / PR handling
 
