@@ -5,7 +5,7 @@ import { AppIcon } from './AppIcon';
 import { ApprovalExample } from './ApprovalExample';
 import { initialNavigation, navigate, type Segment } from './navigation';
 import { strings } from './strings';
-import { usePreviewLanguage } from './PreviewLanguage';
+import { useStoredLanguage } from './AppLanguage';
 import type { LanguagePreference } from '../storage/languagePreference';
 import { useConnectionStatus } from './useConnectionStatus';
 
@@ -15,7 +15,7 @@ const segments: Segment[] = ['terminal', 'tools', 'history'];
 const languageChoices: LanguagePreference[] = ['system', 'en', 'ar'];
 
 export default function MilestoneOneApp() {
-  const { language, preference, status: languageStatus, select } = usePreviewLanguage();
+  const { language, preference, status: languageStatus, select } = useStoredLanguage();
   const t = strings[language];
   const [state, dispatch] = useReducer(navigate, initialNavigation);
   const { status, refresh } = useConnectionStatus();

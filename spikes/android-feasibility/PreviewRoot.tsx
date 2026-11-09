@@ -4,7 +4,7 @@ import tokens from '../../docs/design/tokens.json';
 import FeasibilityApp from './App';
 import NavigationPreview from './milestone1/App';
 import { useAppLanguage } from './useAppLanguage';
-import { PreviewLanguageProvider } from './milestone1/PreviewLanguage';
+import { AppLanguageProvider } from './milestone1/AppLanguage';
 
 const labels = {
   en: { open: 'Open Milestone 1 navigation preview', close: 'Return to feasibility tests', notice: 'Navigation preview: features are not yet available.' },
@@ -23,7 +23,7 @@ export default function PreviewRoot() {
     {preview && <View style={styles.root}>
       <Text style={styles.notice}>{t.notice}</Text>
       <Pressable accessibilityRole="button" onPress={() => setPreview(false)} style={styles.button}><Text style={styles.text}>{t.close}</Text></Pressable>
-      <PreviewLanguageProvider><NavigationPreview /></PreviewLanguageProvider>
+      <AppLanguageProvider><NavigationPreview /></AppLanguageProvider>
     </View>}
   </View>;
 }

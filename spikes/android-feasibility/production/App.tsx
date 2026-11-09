@@ -1,7 +1,8 @@
 import { Component, useEffect, useReducer, type ReactNode } from 'react';
 import { BackHandler, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import tokens from '../../../docs/design/tokens.json';
-import { useAppLanguage } from '../useAppLanguage';
+import { useStoredLanguage } from '../milestone1/AppLanguage';
+import type { LanguagePreference } from '../storage/languagePreference';
 import { AppIcon } from '../milestone1/AppIcon';
 import { initialNavigation, navigate, type Segment } from '../milestone1/navigation';
 import { strings } from '../milestone1/strings';
@@ -9,6 +10,7 @@ import { strings } from '../milestone1/strings';
 const symbol = require('../../../assets/ORYN_Brand_Assets/03_Icon_Only/oryn-icon-only-transparent.png');
 const inactive = require('../../../assets/ORYN_Brand_Assets/04_Monochrome/oryn-icon-only-mono-navy.png');
 const segments: Segment[] = ['terminal', 'tools', 'history'];
+const languageChoices: LanguagePreference[] = ['system', 'en', 'ar'];
 
 class ScreenBoundary extends Component<{ children: ReactNode; message: string }, { failed: boolean }> {
   state = { failed: false };
@@ -19,7 +21,7 @@ class ScreenBoundary extends Component<{ children: ReactNode; message: string },
 }
 
 export default function ProductionApp() {
-  const language = useAppLanguage();
+  const { language, preference, status: languageStatus, select } = useStoredLanguage();
   const t = strings[language];
   const [state, dispatch] = useReducer(navigate, initialNavigation);
   useEffect(() => {
@@ -37,10 +39,15 @@ export default function ProductionApp() {
       <Pressable accessibilityRole="button" accessibilityLabel={t.history} onPress={() => dispatch({ type: 'history' })} style={styles.iconButton}><AppIcon name="history" color={tokens.color.textPrimary} /></Pressable>
       <Pressable accessibilityRole="button" accessibilityLabel={state.settings ? t.back : t.settings} onPress={() => dispatch({ type: state.settings ? 'back' : 'settings' })} style={styles.iconButton}><AppIcon name={state.settings ? (language === 'ar' ? 'backRtl' : 'back') : 'settings'} color={tokens.color.textPrimary} /></Pressable>
     </View>
+    {!state.settings && (languageStatus === 'loading' || languageStatus === 'error') && <View accessibilityLiveRegion="polite"><Text style={styles.text}>{languageStatus === 'loading' ? t.languageLoading : t.languageError}</Text></View>}
     <ScreenBoundary message={t.shellError}><ScrollView contentContainerStyle={styles.content}>
       <Text accessibilityRole="header" style={styles.title}>{state.settings ? t.settings : state.tab === 'agent' ? t.agent : t.terminalTab}</Text>
       {!state.settings && state.tab === 'terminal' && <View style={styles.segments} accessibilityRole="tablist">{segments.map(item => <Pressable key={item} accessibilityRole="tab" accessibilityState={{ selected: state.segment === item }} onPress={() => dispatch({ type: 'segment', segment: item })} style={[styles.segment, state.segment === item && styles.selected]}><Text style={styles.text}>{t[item]}</Text></Pressable>)}</View>}
-      <Text style={styles.text}>{t.unavailable}</Text>
+      {state.settings ? <View style={styles.languageGroup}>
+        <Text accessibilityRole="header" style={styles.text}>{t.shellLanguageTitle}</Text>
+        {languageChoices.map(choice => <Pressable key={choice} accessibilityRole="radio" accessibilityState={{ checked: languageStatus === 'ready' && preference === choice, disabled: languageStatus === 'loading' || languageStatus === 'saving' }} disabled={languageStatus === 'loading' || languageStatus === 'saving'} onPress={() => void select(choice)} style={[styles.languageChoice, languageStatus === 'ready' && preference === choice && styles.selected]}><Text style={styles.text}>{t.languages[choice]}{languageStatus === 'ready' && preference === choice ? ` · ${t.selected}` : ''}</Text></Pressable>)}
+        <View accessibilityLiveRegion="polite"><Text style={styles.text}>{languageStatus === 'loading' ? t.languageLoading : languageStatus === 'saving' ? t.languageSaving : languageStatus === 'error' ? t.languageError : t.languageSaved}</Text></View>
+      </View> : <Text style={styles.text}>{t.unavailable}</Text>}
     </ScrollView></ScreenBoundary>
     <View style={styles.navigation} accessibilityRole="tablist">
       <Pressable accessibilityRole="tab" accessibilityState={{ selected: !state.settings && state.tab === 'agent' }} onPress={() => dispatch({ type: 'tab', tab: 'agent' })} style={[styles.tab, !state.settings && state.tab === 'agent' && styles.selected]}><Image source={!state.settings && state.tab === 'agent' ? symbol : inactive} style={styles.tabSymbol} resizeMode="contain" /><Text style={styles.text}>{t.agent}</Text></Pressable>
@@ -60,6 +67,8 @@ const styles = StyleSheet.create({
   segments: { flexDirection: 'row', gap: tokens.spacing_dp.xs },
   segment: { flex: 1, minHeight: tokens.touch.minTarget_dp, alignItems: 'center', justifyContent: 'center', borderRadius: tokens.radius_dp.md },
   selected: { backgroundColor: tokens.color.primaryLight },
+  languageGroup: { gap: tokens.spacing_dp.sm },
+  languageChoice: { minHeight: tokens.touch.minTarget_dp, justifyContent: 'center', padding: tokens.spacing_dp.md, borderWidth: tokens.elevation_dp.subtle, borderColor: tokens.color.border, borderRadius: tokens.radius_dp.md },
   navigation: { flexDirection: 'row', borderTopWidth: tokens.elevation_dp.subtle, borderColor: tokens.color.border },
   tab: { flex: 1, minHeight: tokens.touch.minTarget_dp, alignItems: 'center', justifyContent: 'center', padding: tokens.spacing_dp.sm },
   tabSymbol: { width: tokens.spacing_dp.xl, height: tokens.spacing_dp.xl },

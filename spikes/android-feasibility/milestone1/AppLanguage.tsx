@@ -9,7 +9,7 @@ type Status = 'loading' | 'ready' | 'saving' | 'error';
 type LanguageContext = { language: AppLanguage; preference: LanguagePreference; status: Status; select: (value: LanguagePreference) => Promise<void> };
 const Context = createContext<LanguageContext | null>(null);
 
-export function PreviewLanguageProvider({ children }: { children: ReactNode }) {
+export function AppLanguageProvider({ children }: { children: ReactNode }) {
   const locales = useLocales();
   const [preference, setPreference] = useState<LanguagePreference>('system');
   const [status, setStatus] = useState<Status>('loading');
@@ -39,8 +39,8 @@ export function PreviewLanguageProvider({ children }: { children: ReactNode }) {
   }, []);
   return <Context.Provider value={{ language: preference === 'system' ? selectLanguage(locales) : preference, preference, status, select }}>{children}</Context.Provider>;
 }
-export function usePreviewLanguage(): LanguageContext {
+export function useStoredLanguage(): LanguageContext {
   const value = useContext(Context);
-  if (!value) throw new Error('Preview language provider missing');
+  if (!value) throw new Error('App language provider missing');
   return value;
 }
