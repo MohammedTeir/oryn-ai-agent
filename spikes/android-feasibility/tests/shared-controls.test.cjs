@@ -13,6 +13,7 @@ test('shared controls expose labels, disabled behavior and announced status', ()
     const oldLoad = Module._load;
     Module._load = function(request, parent, isMain) {
       if (request === 'react-native') return { Text: 'Text', Pressable: 'Pressable', StyleSheet: { create: x => x } };
+      if (request === '../typography') return oldLoad.call(this, require('node:path').resolve(require('node:path').dirname(parent.filename), '../typography.ts'), parent, isMain);
       return oldLoad.call(this, request, parent, isMain);
     };
     function load(file) {

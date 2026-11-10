@@ -1,3 +1,4 @@
+import { candidateTypography } from './typography';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Alert, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import tokens from '../../../docs/design/tokens.json';
@@ -147,8 +148,8 @@ export function LatestConversation({ language }: { language: AppLanguage }) {
 const styles = StyleSheet.create({
   container: { gap: tokens.spacing_dp.md },
   message: { padding: tokens.spacing_dp.md, marginVertical: tokens.spacing_dp.xs, backgroundColor: tokens.color.surface, borderRadius: tokens.radius_dp.md },
-  text: { color: tokens.color.textPrimary, fontSize: tokens.typography_sp.bodySmall.size },
-  identifier: { color: tokens.color.textSecondary, fontSize: tokens.typography_sp.caption.size, writingDirection: 'ltr', textAlign: 'left' },
-  input: { minHeight: tokens.touch.minTarget_dp, padding: tokens.spacing_dp.md, color: tokens.color.textPrimary, fontSize: tokens.typography_sp.body.size, borderColor: tokens.color.border, borderWidth: tokens.elevation_dp.subtle, borderRadius: tokens.radius_dp.md },
+  text: { color: tokens.color.textPrimary, fontSize: tokens.typography_sp.bodySmall.size, fontFamily: candidateTypography.regular },
+  identifier: { color: tokens.color.textSecondary, fontSize: tokens.typography_sp.caption.size, fontFamily: candidateTypography.regular, writingDirection: 'ltr', textAlign: 'left' },
+  input: { minHeight: tokens.touch.minTarget_dp, padding: tokens.spacing_dp.md, color: tokens.color.textPrimary, fontSize: tokens.typography_sp.body.size, fontFamily: candidateTypography.regular, borderColor: tokens.color.border, borderWidth: tokens.elevation_dp.subtle, borderRadius: tokens.radius_dp.md },
   button: { minHeight: tokens.touch.minTarget_dp, alignItems: 'center', justifyContent: 'center', backgroundColor: tokens.color.primaryLight, borderRadius: tokens.radius_dp.md },
 });

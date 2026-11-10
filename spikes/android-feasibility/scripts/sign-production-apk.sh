@@ -35,6 +35,7 @@ if grep -q 'com\.termux\.permission\.RUN_COMMAND' artifacts/production-apk-permi
   echo 'Unexpected Termux execution permission in shell APK' >&2; exit 1
 fi
 python3 scripts/verify-shell-apk.py "$signed"
+python3 scripts/verify-font-apk.py "$signed"
 python3 scripts/verify-secure-store-backup.py "$build_tools/aapt" "$signed"
 cp "$signed" artifacts/oryn-production.apk
 node scripts/integrity.cjs artifacts/oryn-production.apk > artifacts/production-apk.sha256

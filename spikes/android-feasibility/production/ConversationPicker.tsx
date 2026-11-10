@@ -1,3 +1,4 @@
+import { candidateTypography } from './typography';
 import { useEffect, useRef, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import tokens from '../../../docs/design/tokens.json';
@@ -44,7 +45,7 @@ export function ConversationPicker({ language, onSelect, onClose }: { language: 
 }
 const styles = StyleSheet.create({
   container: { gap: tokens.spacing_dp.sm },
-  text: { color: tokens.color.textPrimary, fontSize: tokens.typography_sp.bodySmall.size },
-  identifier: { color: tokens.color.textSecondary, fontSize: tokens.typography_sp.caption.size, writingDirection: 'ltr', textAlign: 'left' },
+  text: { color: tokens.color.textPrimary, fontSize: tokens.typography_sp.bodySmall.size, fontFamily: candidateTypography.regular },
+  identifier: { color: tokens.color.textSecondary, fontSize: tokens.typography_sp.caption.size, fontFamily: candidateTypography.regular, writingDirection: 'ltr', textAlign: 'left' },
   button: { minHeight: tokens.touch.minTarget_dp, padding: tokens.spacing_dp.sm, justifyContent: 'center', backgroundColor: tokens.color.primaryLight, borderRadius: tokens.radius_dp.md },
 });
