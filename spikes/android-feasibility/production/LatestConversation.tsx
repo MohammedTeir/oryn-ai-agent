@@ -12,6 +12,7 @@ import type { PendingMessage } from './localMessage';
 import { checkDurable, fromRecord, retryDurable, stageAndSave, toRecord, type DurableState } from './durableMessage';
 import { createPendingMessageStore } from '../storage/pendingMessage';
 import { openLocalDatabase } from '../storage/database';
+import { ActionButton } from './components/ActionButton';
 
 const repository = createAppConversationRepository();
 const pendingStore = createPendingMessageStore(openLocalDatabase);
@@ -132,8 +133,8 @@ export function LatestConversation({ language }: { language: AppLanguage }) {
       {pageLoading && <Text style={styles.text}>{t.conversationsLoading}</Text>}
       {pageError && <Text style={styles.text}>{t.conversationsError}</Text>}
     </View>
-    {result.kind === 'loaded' && pages.length > 1 && <Pressable accessibilityRole="button" disabled={pageLoading} accessibilityState={{ disabled: pageLoading }} onPress={() => void showPage(pages.slice(0, -1))} style={styles.button}><Text style={styles.text}>{t.messagesPrevious}</Text></Pressable>}
-    {result.kind === 'loaded' && result.mayHaveMore && <Pressable accessibilityRole="button" disabled={pageLoading} accessibilityState={{ disabled: pageLoading }} onPress={nextPage} style={styles.button}><Text style={styles.text}>{t.messagesNext}</Text></Pressable>}
+    {result.kind === 'loaded' && pages.length > 1 && <ActionButton label={t.messagesPrevious} disabled={pageLoading} onPress={() => void showPage(pages.slice(0, -1))} />}
+    {result.kind === 'loaded' && result.mayHaveMore && <ActionButton label={t.messagesNext} disabled={pageLoading} onPress={nextPage} />}
     <TextInput accessibilityLabel={t.messageInput} placeholder={t.messageInput} placeholderTextColor={tokens.color.textSecondary} multiline value={draft} onChangeText={setDraft} maxLength={20000} editable={saveState !== 'saving' && saveState !== 'unknown' && saveState !== 'conflict' && saveState !== 'not_saved'} style={styles.input} />
     <Pressable accessibilityRole="button" accessibilityState={{ disabled: !draft.trim() || saveState === 'saving' || saveState === 'unknown' || saveState === 'conflict' || saveState === 'not_saved' || (result.kind !== 'empty' && result.kind !== 'loaded') }} disabled={!draft.trim() || saveState === 'saving' || saveState === 'unknown' || saveState === 'conflict' || saveState === 'not_saved' || (result.kind !== 'empty' && result.kind !== 'loaded')} onPress={() => void save()} style={styles.button}><Text style={styles.text}>{t.messageSave}</Text></Pressable>
     <View accessibilityLiveRegion="polite"><Text style={styles.text}>{saveState === 'saving' ? t.messageSaving : saveState === 'saved' ? t.messageSaved : saveState === 'not_saved' ? t.messageRetryNeeded : saveState === 'not_staged' ? t.messageNotSaved : saveState === 'unknown' ? t.messageUnknown : saveState === 'conflict' ? t.messageConflict : ''}</Text></View>

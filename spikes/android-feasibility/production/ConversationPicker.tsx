@@ -6,6 +6,8 @@ import { strings } from '../milestone1/strings';
 import { createAppConversationRepository } from '../storage/appConversations';
 import type { ConversationCursor } from '../storage/conversations';
 import { loadConversationList, type ConversationListPage } from './conversationList';
+import { ActionButton } from './components/ActionButton';
+import { StatusMessage } from './components/StatusMessage';
 const repo = createAppConversationRepository();
 export function ConversationPicker({ language, onSelect, onClose }: { language: AppLanguage; onSelect: (id: string) => void; onClose: () => void }) {
   const t = strings[language];
@@ -31,13 +33,13 @@ export function ConversationPicker({ language, onSelect, onClose }: { language: 
   };
   return <View style={styles.container}>
     <Text accessibilityRole="header" style={styles.text}>{t.conversationPickerTitle}</Text>
-    {page.kind === 'loading' && <Text accessibilityLiveRegion="polite" style={styles.text}>{t.conversationsLoading}</Text>}
-    {page.kind === 'error' && <><Text accessibilityRole="alert" style={styles.text}>{t.conversationsError}</Text><Pressable accessibilityRole="button" onPress={() => void show(cursors)} style={styles.button}><Text style={styles.text}>{t.conversationsRefresh}</Text></Pressable></>}
+    {page.kind === 'loading' && <StatusMessage message={t.conversationsLoading} />}
+    {page.kind === 'error' && <><StatusMessage message={t.conversationsError} error /><ActionButton label={t.conversationsRefresh} onPress={() => void show(cursors)} /></>}
     {page.kind === 'loaded' && page.conversations.length === 0 && <Text style={styles.text}>{cursors.length > 1 ? t.conversationPageEmpty : t.conversationsEmpty}</Text>}
     {page.kind === 'loaded' && page.conversations.map(item => <Pressable key={item.id} accessibilityRole="button" accessibilityLabel={`${t.conversationSelect}: ${item.id}`} onPress={() => onSelect(item.id)} style={styles.button}><Text style={styles.text}>{t.conversationSelect}</Text><Text selectable style={styles.identifier}>{item.id}</Text></Pressable>)}
-    {page.kind === 'loaded' && cursors.length > 1 && <Pressable accessibilityRole="button" onPress={() => void show(cursors.slice(0, -1))} style={styles.button}><Text style={styles.text}>{t.messagesPrevious}</Text></Pressable>}
-    {page.kind === 'loaded' && page.mayHaveMore && <Pressable accessibilityRole="button" onPress={next} style={styles.button}><Text style={styles.text}>{t.messagesNext}</Text></Pressable>}
-    <Pressable accessibilityRole="button" onPress={onClose} style={styles.button}><Text style={styles.text}>{t.close}</Text></Pressable>
+    {page.kind === 'loaded' && cursors.length > 1 && <ActionButton label={t.messagesPrevious} onPress={() => void show(cursors.slice(0, -1))} />}
+    {page.kind === 'loaded' && page.mayHaveMore && <ActionButton label={t.messagesNext} onPress={next} />}
+    <ActionButton label={t.close} onPress={onClose} />
   </View>;
 }
 const styles = StyleSheet.create({

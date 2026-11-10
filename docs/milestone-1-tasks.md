@@ -37,7 +37,7 @@ Physical-device acceptance is grouped at the end of Milestone 1 at the owner’s
 ### M1-02 — AI Agent design/RTL approval gate
 **Priority:** P0 | **Depends on:** M1-01 findings (can research in parallel) | **Status:** OPEN
 
-**Review proposal:** [AI Agent typography, brand and RTL design gate](design/milestone-1-ai-agent-rtl-review.md). Design review and owner approval are pending; no font/artwork changes have been accepted.
+**Review proposal:** [AI Agent typography, brand and RTL design gate](design/milestone-1-ai-agent-rtl-review.md). On 2026-11-10 the owner approved IBM Plex Sans Arabic as a candidate for further testing; final typography/device approval and the wordmark remain pending.
 
 - Obtain approval for an Arabic+Latin font family with a verified distributable license; document actual font choice and mirroring rules.
 - Review Arabic mockups for onboarding, **AI Agent first**, approval card, and subsequently Terminal & Tools and Settings. Do not redesign secondary screens ahead of their approvals.
@@ -69,7 +69,7 @@ Physical-device acceptance is grouped at the end of Milestone 1 at the owner’s
 **Evidence and remaining gates:** [Application shell verification](feasibility/milestone-1-shell-verification.md). Cloud checks do not substitute for device acceptance or an independent signing-key backup.
 
 ### M1-05 — Shared UI components, i18n, accessibility and icons
-**Priority:** P0 | **Depends on:** M1-02, M1-04 | **Status:** OPEN
+**Priority:** P0 | **Depends on:** M1-02, M1-04 | **Status:** PARTIAL — shared button/status controls in the shell; broader component, typography, RTL and device acceptance remain open
 
 - Token-driven components, typed semantic `AppIcon`, Light Mode only, icons from verified installed exports.
 - Complete bilingual strings, RTL mirroring rules, LTR command output blocks, text scaling, screen-reader roles/announcements, contrast and minimum 48 dp targets.
