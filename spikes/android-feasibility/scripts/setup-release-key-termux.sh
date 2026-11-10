@@ -6,7 +6,7 @@ umask 077
 repo='MohammedTeir/oryn-ai-agent'
 key_dir="$HOME/.oryn-release-signing"
 key_file="$key_dir/oryn-release.p12"
-for tool in gh keytool openssl base64 tr sed; do command -v "$tool" >/dev/null || { printf 'Missing required tool: %s\n' "$tool" >&2; exit 1; }; done
+for tool in gh keytool base64 tr sed; do command -v "$tool" >/dev/null || { printf 'Missing required tool: %s\n' "$tool" >&2; exit 1; }; done
 login=$(gh api user --jq .login) || { echo 'Cannot verify GitHub account. Run gh auth login first.' >&2; exit 1; }
 if [[ "$login" != 'MohammedTeir' ]]; then echo 'Sign in to the MohammedTeir GitHub account before continuing.' >&2; exit 1; fi
 if [[ -e "$key_dir" ]]; then
