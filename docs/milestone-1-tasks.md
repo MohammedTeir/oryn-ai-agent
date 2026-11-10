@@ -69,7 +69,7 @@ Physical-device acceptance is grouped at the end of Milestone 1 at the owner’s
 **Evidence and remaining gates:** [Application shell verification](feasibility/milestone-1-shell-verification.md). Cloud checks do not substitute for device acceptance or an independent signing-key backup.
 
 ### M1-05 — Shared UI components, i18n, accessibility and icons
-**Priority:** P0 | **Depends on:** M1-02, M1-04 | **Status:** PARTIAL — shared button/status controls in the shell; broader component, typography, RTL and device acceptance remain open
+**Priority:** P0 | **Depends on:** M1-02, M1-04 | **Status:** PARTIAL — shared button/status controls and owner-approved candidate font in the shell; broader components, final typography, RTL and device acceptance remain open
 
 - Token-driven components, typed semantic `AppIcon`, Light Mode only, icons from verified installed exports.
 - Complete bilingual strings, RTL mirroring rules, LTR command output blocks, text scaling, screen-reader roles/announcements, contrast and minimum 48 dp targets.

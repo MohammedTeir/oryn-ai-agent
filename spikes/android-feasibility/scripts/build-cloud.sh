@@ -28,6 +28,7 @@ fi
 )
 apk=android/app/build/outputs/apk/debug/app-debug.apk
 "$ANDROID_HOME/build-tools/37.0.0/apksigner" verify --verbose --print-certs "$apk" > artifacts/apk-signature.txt
+python3 scripts/verify-font-apk.py "$apk"
 node scripts/integrity.cjs "$apk" > artifacts/apk.sha256
 cp "$apk" artifacts/oryn-feasibility-debug.apk
 "$ANDROID_HOME/build-tools/37.0.0/aapt" dump badging "$apk" > artifacts/apk-badging.txt

@@ -14,7 +14,7 @@ cp -a "$repo_root/assets/ORYN_Brand_Assets" "$stage/assets/"
 tar -C "$source_root" -cf - app.json package.json package-lock.json metro.config.js tsconfig.json language.ts \
   production milestone1/AppLanguage.tsx milestone1/AppIcon.tsx milestone1/navigation.ts milestone1/strings.ts \
   storage/database.ts storage/migrations.ts storage/conversations.ts storage/appConversations.ts storage/pendingMessage.ts storage/languagePreference.ts \
-  plugins/withCompatibleSplash.cjs scripts/verify-shell-apk.py scripts/verify-secure-store-backup.py scripts/integrity.cjs scripts/prepare-release-gradle.py \
+  plugins/withCompatibleSplash.cjs plugins/withFontLicense.cjs scripts/verify-font-apk.py scripts/verify-shell-apk.py scripts/verify-secure-store-backup.py scripts/integrity.cjs scripts/prepare-release-gradle.py \
   | tar -C "$stage/spikes/android-feasibility" -xf -
 cd "$stage/spikes/android-feasibility"
 ln -s "$source_root/node_modules" node_modules
@@ -64,6 +64,7 @@ test -f "$unsigned"
 "$ANDROID_HOME/build-tools/37.0.0/aapt" dump badging "$unsigned" > "$work/unsigned-badging.txt"
 grep -q "^package: name='io[.]github[.]mohammedteir[.]oryn'" "$work/unsigned-badging.txt"
 python3 scripts/verify-shell-apk.py "$unsigned"
+python3 scripts/verify-font-apk.py "$unsigned"
 mkdir -p "$source_root/artifacts"
 cp "$unsigned" "$source_root/artifacts/oryn-production-unsigned.apk"
 printf 'Unsigned production-identity shell built; signing and acceptance remain open.\n'

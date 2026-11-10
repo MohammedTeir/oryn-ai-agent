@@ -1,3 +1,4 @@
+import { candidateTypography } from './typography';
 import { useEffect, useReducer } from 'react';
 import { BackHandler, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import tokens from '../../../docs/design/tokens.json';
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
   brand: { flex: 1, flexDirection: 'row', alignItems: 'center', minWidth: 0 },
   brandSymbol: { width: tokens.spacing_dp.xxl, height: tokens.spacing_dp.xxl },
   brandText: { color: tokens.brand.wordmarkNavy, fontSize: tokens.typography_sp.H4.size, fontWeight: '700' },
-  caption: { color: tokens.color.textSecondary, fontSize: tokens.typography_sp.caption.size, flexShrink: 1 },
+  caption: { color: tokens.color.textSecondary, fontSize: tokens.typography_sp.caption.size, fontFamily: candidateTypography.regular, flexShrink: 1 },
   iconButton: { minWidth: tokens.touch.minTarget_dp, minHeight: tokens.touch.minTarget_dp, alignItems: 'center', justifyContent: 'center' },
   content: { flexGrow: 1, padding: tokens.spacing_dp.xl, gap: tokens.spacing_dp.lg },
   segments: { flexDirection: 'row', gap: tokens.spacing_dp.xs },
@@ -68,6 +69,6 @@ const styles = StyleSheet.create({
   navigation: { flexDirection: 'row', borderTopWidth: tokens.elevation_dp.subtle, borderColor: tokens.color.border },
   tab: { flex: 1, minHeight: tokens.touch.minTarget_dp, alignItems: 'center', justifyContent: 'center', padding: tokens.spacing_dp.sm },
   tabSymbol: { width: tokens.spacing_dp.xl, height: tokens.spacing_dp.xl },
-  title: { fontSize: tokens.typography_sp.H3.size, color: tokens.color.textPrimary },
-  text: { fontSize: tokens.typography_sp.bodySmall.size, color: tokens.color.textPrimary, textAlign: 'center' },
+  title: { fontSize: tokens.typography_sp.H3.size, fontFamily: candidateTypography.semibold, color: tokens.color.textPrimary },
+  text: { fontSize: tokens.typography_sp.bodySmall.size, fontFamily: candidateTypography.regular, color: tokens.color.textPrimary, textAlign: 'center' },
 });

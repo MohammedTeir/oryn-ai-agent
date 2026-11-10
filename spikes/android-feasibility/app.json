@@ -48,7 +48,18 @@
       "expo-localization",
       "expo-sqlite",
       "expo-asset",
-      "expo-secure-store"
+      "expo-secure-store",
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./production/fonts/IBMPlexSansArabic-Regular.ttf",
+            "./production/fonts/IBMPlexSansArabic-SemiBold.ttf",
+            "./production/fonts/IBMPlexSansArabic-Bold.ttf"
+          ]
+        }
+      ],
+      "./plugins/withFontLicense.cjs"
     ],
     "autolinking": {
       "nativeModulesDir": "./modules"

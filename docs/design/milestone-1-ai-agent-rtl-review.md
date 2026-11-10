@@ -35,7 +35,7 @@ Source/rights evidence: the exact Google Fonts files at commit [`702964cf46bd1bf
 
 On 2026-11-09, fontTools `TTFont.getBestCmap()` found every non-whitespace character in the 28 English and Arabic sample strings below in each of these three files. Each also contains `arab` and `latn` GSUB script entries. This is a character-map inspection, **not** proof of Arabic shaping, visual quality, accessibility or complete Unicode coverage on Android; test actual strings, mixed-direction text, fallback, selected weights and device rendering before approval. Do not assume other files or versions have identical coverage.
 
-**No font files are included in this proposal PR** and no font family is inserted into `tokens.json` yet. Do not assume font rendering on Android 10/11+ or licensed redistributability of any alternative font without inspection.
+**Candidate integration:** the exact files and OFL license are included in the Android shell for owner-approved testing. The source and APK asset hashes are verified. No final font family is recorded in `tokens.json` yet; Android rendering and accessibility remain unverified. Do not infer licensed redistributability of any alternative font without inspection.
 
 ### Typography review samples
 
