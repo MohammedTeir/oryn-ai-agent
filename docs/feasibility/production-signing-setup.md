@@ -8,11 +8,11 @@ The `Production-signed shell build` workflow runs on updates to `main` or manual
 
 This session cannot manage repository secrets: GitHub returned HTTP 403 for the Actions secrets API. Do not paste a keystore, password, GitHub token, or Base64 key into chat or commit them to the repository. The owner can create the new key in Termux and send it directly to GitHub Actions secrets with `gh`; GitHub CLI encrypts secret values before upload.
 
-1. In Termux, install the tools (the `openjdk-21`, `gh` and `openssl` arm64 Termux packages were checked on 2026-11-09):
+1. In Termux, install the tools (the `openjdk-21` and `gh` arm64 Termux packages were checked on 2026-11-09):
 
    ```sh
    pkg update
-   pkg install openjdk-21 gh openssl curl less
+   pkg install openjdk-21 gh curl less
    gh auth login --hostname github.com --git-protocol https --web
    gh auth status
    ```
