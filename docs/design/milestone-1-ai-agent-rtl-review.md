@@ -21,9 +21,9 @@ Existing [brand asset package](../../assets/ORYN_Brand_Assets/README.md) says th
 
 **Header wordmark issue:** the canonical primary logo includes a tagline, which cannot be legible under the 12 sp minimum if squeezed into the header. The preview uses the approved symbol alongside text `ORYN`. Keep that temporary combination and seek an **approved tagline-free wordmark asset** rather than cropping, tracing, recoloring or replacing the canonical brand artwork.
 
-## Typography candidate — pending explicit approval
+## Typography candidate — approved for further testing
 
-**Recommendation to review:** **IBM Plex Sans Arabic** as one family for Arabic and English. The exact candidate files examined below contain the characters in the proposed sample copy; this is not a claim of complete coverage for every language, arbitrary command, or future interface string. The family remains **unapproved** and Android rendering remains unverified.
+**Recommendation to review:** **IBM Plex Sans Arabic** as one family for Arabic and English. The exact candidate files examined below contain the characters in the proposed sample copy; this is not a claim of complete coverage for every language, arbitrary command, or future interface string. On 2026-11-10, the owner approved this candidate for further testing. This is not final design or device approval; Android rendering remains unverified.
 
 Source/rights evidence: the exact Google Fonts files at commit [`702964cf46bd1bf33d0745d24bbaac33edf8b8af`](https://github.com/google/fonts/tree/702964cf46bd1bf33d0745d24bbaac33edf8b8af/ofl/ibmplexsansarabic) include an [SIL Open Font License 1.1](https://github.com/google/fonts/blob/702964cf46bd1bf33d0745d24bbaac33edf8b8af/ofl/ibmplexsansarabic/OFL.txt), copyright IBM Corp., with the reserved font name “Plex”. The license permits use and redistribution under its conditions; any distribution must include the applicable copyright and license notice, and modified versions must respect the reserved-name conditions. Review the license itself before distribution. The pinned upstream [investigation](https://github.com/google/fonts/blob/702964cf46bd1bf33d0745d24bbaac33edf8b8af/ofl/ibmplexsansarabic/upstream_info.md) identifies these as precompiled Google Fonts files, with no buildable sources at its referenced source commit.
 
@@ -115,6 +115,6 @@ These strings are **design-copy proposals**. Actual screen strings must use the 
 
 ## Next decision
 
-For **M1-02**, request the owner's explicit approval/rejection of IBM Plex Sans Arabic as the preferred typography family (subject to real glyph/Android QA), and confirmation that the existing source AI Agent screen remains the layout reference. If a tagged/approved tagline-free wordmark does not exist, prepare a **separate owner-approved brand deliverable**, not an unauthorized crop or trace.
+For **M1-02**, record the owner’s approval of IBM Plex Sans Arabic as a candidate for further testing, then obtain final typography approval after real Android glyph and accessibility QA. Confirm that the existing source AI Agent screen remains the layout reference. If a tagged/approved tagline-free wordmark does not exist, prepare a **separate owner-approved brand deliverable**, not an unauthorized crop or trace.
 
 M1-01 language-selection smoke evidence is recorded separately in [the device verification register](../feasibility/milestone-1-language-device-verification.md). **Do not infer M1-01 full closure from that limited report.**
