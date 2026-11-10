@@ -43,4 +43,6 @@ If upload stops partway, do not rerun the key-generation script or generate a se
 
 ## Verification status
 
-Automated cloud tests use an ephemeral test-only signing key, not the owner's release key. A production key has not been created or configured by this environment; a successful real-key workflow run and the owner's independent backup are still required. The release workflow does not replace physical-device, security, accessibility or milestone acceptance.
+On 2026-11-10, the owner reported creating the release key on their phone and configuring all five GitHub Actions secrets. The [production-signing workflow run 42780761306](https://github.com/MohammedTeir/oryn-ai-agent/actions/runs/42780761306) built source commit `7b1270392742c11b83953b816fb7284979bcbba3`, with app ID `io.github.mohammedteir.oryn`, versionCode 3 and Android minimum API 29. The artifact SHA-256 was `c8be1b818c61abc5d2acbff4e61b0672b71ba619f704e08b965917a049309d8d`. The downloaded artifact passed independent `apksigner` v3 and SHA-256 verification; its public certificate SHA-256, `4effa4f817418ee72a81421fe760a70df7e4592b20e4b54c8cc7c29d4ff11efd`, matches the owner's report. Earlier cloud signing tests used disposable keys.
+
+The owner's independent key and password backup has not been confirmed. This artifact is an incomplete shell, not a public release. Signing verification does not replace physical-device, security, accessibility or milestone acceptance.

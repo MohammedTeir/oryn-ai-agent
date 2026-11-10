@@ -76,4 +76,4 @@ No license has been selected yet. Do not assume this repository is open-source l
 
 **ORYN** is a working product name. Trademark, app-store, and domain availability have not yet been cleared.
 
-The owner selected Android application ID `io.github.mohammedteir.oryn` for production. [Production signing setup](docs/feasibility/production-signing-setup.md) describes the separate release key and incomplete-shell build; production signing and device acceptance remain unverified until the owner's key is configured and tested.
+The owner selected Android application ID `io.github.mohammedteir.oryn` for production. [Production signing setup](docs/feasibility/production-signing-setup.md) describes the separate release key and incomplete-shell build; a real-key shell build has been verified, while key backup and device acceptance remain open.
